@@ -1,0 +1,402 @@
+//除banner动画处理外，和index_new.css一样
+$num: 12; // banner items number
+$wait_time: 3.5s; // banner stay time
+$slide_time: 1.5s; // banner slide time
+
+
+$cycle: ($wait_time + $slide_time)*2; //banner slide cycle(silde two times)
+$first_start_time: ($wait_time/$cycle) * 100%; //first slide start key frame
+$second_start_time: $first_start_time+50%; //second slide start key frame
+
+$first_slide_end: floor($num/2)/($num*2)*100%; //banner-animation 50% tanslate-x
+$slide_wrapper_width: ($num*2)/ceil($num/2)*100%; //.index-banner-box : width
+
+@keyframes banner-animation {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    #{$first_start_time} {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-$first_slide_end, 0);
+    }
+
+    #{$second_start_time} {
+        transform: translate(-$first_slide_end, 0);
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+/* change index.css style */
+.newests-wrapper {
+    width: 1000px;
+}
+
+.about-container {
+    overflow: hidden;
+    padding-left: 45px;
+    background-color: #f5f5f5;
+    @media (max-width: 1440px) {
+        padding-left: 39px;
+    }
+    @media (max-width: 1024px) {
+        padding-left: 40px;
+    }
+    @media (max-width: 800px) {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 1080px) {
+    .newests-wrapper {
+        width: 722px;
+    }
+}
+
+@media (max-width: 768px) {
+    .newests-wrapper {
+        width: auto;
+        max-width: 640px;
+    }
+}
+
+@media (max-width: 640px) {
+    .newests-wrapper {
+        max-width: 640px;
+    }
+}
+
+/* change end */
+img {
+    max-width: 100%;
+}
+
+.index-banner-wrapper {
+    background-color: #efebdf;
+    overflow: hidden;
+}
+
+.index-banner-box {
+    width: 200%;
+    overflow: hidden;
+}
+
+.index-banner {
+    width: 50%;
+    display: flex;
+    float: left;
+}
+
+.banner-part-one,
+.banner-part-two {
+    width: 50%;
+    /* display: inline-block; */
+    display: inline-flex;
+}
+
+.banner-item {
+    display: inline-block;
+    flex-grow: 1;
+    width: 160px;
+}
+
+.banner-item-a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #fff;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        background-image: url(/static/imgs/index-banner-mask.png);
+        background-size: cover;
+    }
+}
+
+.banner-item-bg {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.no-click {
+    cursor: auto;
+}
+
+.banner-item-logo {
+    display: block;
+    // width: 132px;
+    width: 126px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 36px;
+    transform: translate(-50%, 0);
+    z-index: 3;
+}
+
+.banner-item-logo:hover {
+    transform: translate(-50%, -10px);
+}
+
+/* .banner-title-img{
+    margin-top: -1.979%;
+    margin-top: -1.979vw;
+    width: 100%;
+} */
+.banner-title-img {
+    display: block;
+    width: 100%;
+    padding-bottom: 3.334%;
+    background-image: url(/static/imgs/index-banner-bottom.png);
+    background-size: 100% auto;
+    background-position: left bottom;
+    @media (max-width: 1024px) {
+        background-image: url(/static/imgs/index-banner-bottom-640@2x.png); 
+    }
+    
+    @media (max-width: 768px) {
+        padding-bottom: 4.06%;
+        background-image: url(/static/imgs/index-banner-bottom-640@2x.png);
+    }
+    
+    @media (max-width: 420px) {
+        padding-bottom: 6.933%;
+        background-image: url(/static/imgs/index-banner-bottom-375@2x.png);
+    }
+}
+
+
+.index-about-wrapper {
+    width: auto;
+    height: 420px;
+    margin: 0 auto;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 1080px) {
+        height: 330px;
+    }
+    @media (max-width: 800px) {
+        flex-direction: column;
+        height: auto;
+        padding: 41px 0 23px;
+    }
+    @media (max-width: 640px) {
+        padding: 42px 0 30px;
+    }
+    @media (max-width: 414px) {
+        padding: 30px 0 21px;
+    }
+}
+
+.about-text-box {
+    // padding-left: 45px;
+    width: 452px;
+    margin-right: 24px;
+    // margin-top: 92px;
+    // display: inline-block;
+    vertical-align: middle;
+    cursor: default;
+    @media (max-width: 1080px){
+        width: 359px;
+        margin-right: 14px;
+    }
+    @media (max-width: 800px) {
+        width: 83.333%;
+        margin-right: 0;
+        margin-bottom: 18px;
+    }
+    @media (max-width: 640px) {
+        width: 62.5%;
+        margin-right: 0;
+        margin-bottom: 13px;
+    }
+    @media (max-width: 414px) {
+        width: 85.333%;
+        margin-right: 0;
+        margin-bottom: 19px;
+    }
+}
+
+.about-title {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    line-height: 1.375;
+    text-align: left;
+    color: #614a0b;
+    @media (max-width: 768px) {
+        margin-bottom: 17px;
+        font-size: 20px;
+        & span {
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 640px) {
+        margin-bottom: 13px;
+        font-size: 24px;
+        & span {
+            font-size: 24px;
+        }
+    }
+    @media (max-width: 414px) {
+        margin-bottom: 10px;
+        font-size: 18px;
+        line-height: 25px;
+        height: 25px;
+        & span {
+            font-size: 18px;
+        }
+    }
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 1.63;
+    text-align: justify;
+    color: #49443d;
+    @media (max-width: 1080px) {
+        font-size: 14px;
+        line-height: 1.57;
+    }
+    @media (max-width: 800px) {
+        line-height: 22px;
+    }
+}
+
+.suncity-map {
+    max-width: 541px;
+    @media (max-width: 1080px) {
+        max-width: 389px;
+    }
+    @media (max-width: 800px) {
+        display: block;
+        max-width: 489px;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        max-width: 464px;
+        width: 72.5%;
+    }
+    @media (max-width: 414px) {
+        width: 85.333%;
+    }
+}
+
+@media (max-width: 1500px) {
+    .banner-item-logo {
+        width: 92px;
+        bottom: 21px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .banner-item-logo {
+        width: 65px;
+        bottom: 20px;
+    }
+
+    .about-title {
+        margin-bottom: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-item-logo {
+        width: 48px;
+        bottom: 15px;
+    }
+
+    .icon-suncity-more {
+        width: 20px;
+        height: 14px;
+        margin-left: 10px;
+        background-size: 10px 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .index-banner-wrapper {
+        background: url(/static/imgs/fix-banner-flicker.jpg) no-repeat;
+        background-size: contain;
+    }
+
+    .index-banner-box {
+        width: $slide_wrapper_width;
+        overflow: hidden;
+        animation: banner-animation $cycle infinite;
+        animation-timing-function: linear;
+        // -webkit-backface-visibility: hidden;
+        // -moz-backface-visibility: hidden;
+        // -ms-backface-visibility: hidden;
+        // backface-visibility: hidden;
+        // -webkit-perspective: 1000;
+        // -moz-perspective: 1000;
+        // -ms-perspective: 1000;
+        // perspective: 1000;
+        // -webkit-transform:translate3d(0,0,0);
+        // transform:translate3d(0,0,0);
+    }
+
+    .index-banner-box:hover {
+        animation-play-state: paused
+    }
+
+    .banner-item-logo {
+        /* width: 90px; */
+        // width: 84%;
+        width: 82px;
+        /* height: 68px; */
+        // height: 21.58%;
+        // height: 64px;
+        /* bottom: 23px; */
+        // bottom: 7.3%;
+        bottom: 19px;
+    }
+
+    .about-title {
+        margin-bottom: 13px;
+    }
+
+    .about-title span {
+        font-size: 24px;
+    }
+
+    .icon-suncity-more {
+        width: 24px;
+        height: 18px;
+        margin-left: 18px;
+        background-size: 12px 18px;
+    }
+}
+
+@media (max-width: 414px) {
+    .banner-item-logo {
+        width: 49px;
+        // height: 38px;
+        bottom: 11px;
+    }
+
+    .icon-suncity-more {
+        width: 18px;
+        height: 13px;
+        margin-left: 8px;
+        background-size: 9px 13px;
+    }
+}

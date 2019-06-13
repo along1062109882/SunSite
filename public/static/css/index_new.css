@@ -1,0 +1,618 @@
+@keyframes banner-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-25%, 0);
+  }
+  85% {
+    transform: translate(-25%, 0);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+/* change index.css style */
+.newests-wrapper {
+  width: 1000px;
+}
+
+.about-container {
+  overflow: hidden;
+  padding-left: 45px;
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 1440px) {
+  .about-container {
+    padding-left: 39px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-container {
+    padding-left: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  .about-container {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 1080px) {
+  .newests-wrapper {
+    width: 722px;
+  }
+}
+
+@media (max-width: 768px) {
+  .newests-wrapper {
+    width: auto;
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .newests-wrapper {
+    max-width: 640px;
+  }
+}
+
+/* change end */
+img {
+  max-width: 100%;
+}
+/* banner 图添加手风琴效果*/
+.ts {
+  overflow: hidden;
+  /* width: 1072px; */
+  width: 100%;
+  margin: 0 auto;
+}
+.ts-ul {
+  overflow: hidden;
+  width: 100%;
+  height: 440px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+}
+.ts-ul li {
+  width: 15%;
+  list-style-type: none;
+  overflow: hidden;
+  float: left;
+  background-size: cover; 
+  -webkit-transition: width 0.5s;
+  position: relative;
+}
+.ts-ul li.on  img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.ts-ul b {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.5s;
+  display: block;
+  /* height: 440px; */
+  /* text-indent: -9999em; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  line-height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ts-ul b p {
+  font-size: 18px;
+  letter-spacing: -0px;
+  color: #ffffff;
+  width: 10px;
+  /* height: 32px; */
+  line-height: 30px;
+  text-align: center;
+}
+.ts-ul li > img {
+  /* width: 100%; */
+  /* height: 100%;; */
+}
+.ts-ul-li1{
+  background: url('/static/imgs/index-banner-vip.jpg');
+  background-position: center;
+  /* background-size: 100% 100%; */
+  text-align: center;
+}
+
+.ts-ul-li2{
+  background: url('/static/imgs/index-banner-concert.jpg') no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.ts-ul-li3{
+  background: url('/static/imgs/index-banner-travel.jpg') no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.ts-ul-li4{
+  background: url('/static/imgs/index-banner-food.jpg') no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.ts-ul-li5{
+  background: url('/static/imgs/index-banner-sunluxe.jpg') no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.ts-ul-li6{
+  background: url('/static/imgs/index-banner-management.jpg') no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.ts-ul li.on {
+  width: 60%;
+  height: 440px;
+  background-position: center;
+}
+.ts-ul li.on b{
+  opacity: 0;
+  filter: Alpha(opacity=0);
+}
+@media(max-width: 1440px) {
+  .ts-ul {
+    height: 385px;
+  }
+  .ts-ul li b p {
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .ts-ul li.on {
+    height: 385px;
+  }
+}
+@media(max-width: 1024px) {
+  .ts-ul {
+    height: 400px;
+  }
+  .ts-ul li b p {
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .ts-ul li.on {
+    height: 400px;
+  }
+  .ts-ul li {
+    width: 8%;
+    list-style-type: none;
+    overflow: hidden;
+    float: left;
+    background-size: cover;
+    -webkit-transition: width 0.5s;
+    position: relative;
+  }
+}
+@media(max-width: 768px) {
+  .ts-ul {
+    height: 263px;
+  }
+  .ts-ul li b p {
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .ts-ul li.on {
+    height: 263px;;
+  }
+}
+@media(max-width: 640px) {
+  .ts-ul {
+    height: 188px;
+  }
+  .ts-ul li b p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .ts-ul li.on {
+    height: 188px;;
+  }
+}
+@media(max-width: 414px) {
+  .ts-ul li b p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+@media(max-width: 375px) {
+  .ts-ul {
+    height: 132px;
+  }
+  .ts-ul li b p {
+    font-size: 11px;
+    line-height: 14px;
+  }
+  .ts-ul li.on {
+    height: 132px;;
+  }
+}
+.index-banner-wrapper {
+  background-color: #efebdf;
+  overflow: hidden;
+}
+
+.index-banner-box {
+  width: 200%;
+  overflow: hidden;
+}
+
+.index-banner {
+  width: 80%;
+  display: flex;
+  float: left;
+}
+
+.banner-part-one,
+.banner-part-two {
+  width: 50%;
+  /* display: inline-block; */
+  display: inline-flex;
+}
+
+.banner-item {
+  /* display: inline-block; */
+  flex-grow: 1;
+  width: 160px;
+}
+
+.banner-item-a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #fff;
+}
+
+.banner-item-a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-image: url(/static/imgs/index-banner-mask.png);
+  background-size: cover;
+}
+
+.banner-item-bg {
+  /* display: none; */
+  width: 0%;
+  position: relative;
+  z-index: 1;
+}
+
+.no-click {
+  cursor: auto;
+}
+
+.banner-item-logo {
+  display: block;
+  height: 20%;
+  /* width: 126px;
+  height: auto; */
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  transform: translate(-50%, 0);
+  z-index: 3;
+}
+
+.banner-item-logo:hover {
+  transform: translate(-50%, -10px);
+}
+
+/* .banner-title-img{
+    margin-top: -1.979%;
+    margin-top: -1.979vw;
+    width: 100%;
+} */
+.banner-title-img {
+  display: block;
+  width: 100%;
+  padding-bottom: 3.34%;
+  background-image: url(/static/imgs/group-4.svg);
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+@media (min-width: 1700px)  {
+  .banner-title-img {
+      background-size: unset;
+  }
+}
+@media (max-width: 1024px) {
+  .banner-title-img {
+    background-image: url(/static/imgs/group-2.svg);
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-title-img {
+    /* padding-bottom: 4.06%; */
+    background-image: url(/static/imgs/group-2.svg);
+  }
+}
+
+@media (max-width: 420px) {
+  .banner-title-img {
+    padding-bottom: 6.933%;
+    background-image: url(/static/imgs/group-375.svg);
+  }
+}
+
+.index-about-wrapper {
+  width: auto;
+  height: 420px;
+  margin: 0 auto;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1080px) {
+  .index-about-wrapper {
+    height: 330px;
+  }
+}
+
+@media (max-width: 800px) {
+  .index-about-wrapper {
+    flex-direction: column;
+    height: auto;
+    padding: 41px 0 23px;
+  }
+}
+
+@media (max-width: 640px) {
+  .index-about-wrapper {
+    padding: 42px 0 30px;
+  }
+}
+
+@media (max-width: 414px) {
+  .index-about-wrapper {
+    padding: 30px 0 21px;
+  }
+}
+
+.about-text-box {
+  width: 452px;
+  margin-right: 24px;
+  vertical-align: middle;
+  cursor: default;
+}
+
+@media (max-width: 1080px) {
+  .about-text-box {
+    width: 359px;
+    margin-right: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  .about-text-box {
+    width: 83.333%;
+    margin-right: 0;
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-text-box {
+    width: 62.5%;
+    margin-right: 0;
+    margin-bottom: 13px;
+  }
+}
+
+@media (max-width: 414px) {
+  .about-text-box {
+    width: 85.333%;
+    margin-right: 0;
+    margin-bottom: 19px;
+  }
+}
+
+.about-title {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  line-height: 1.375;
+  text-align: left;
+  color: #614a0b;
+}
+
+@media (max-width: 768px) {
+  .about-title {
+    margin-bottom: 17px;
+    font-size: 20px;
+  }
+  .about-title span {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-title {
+    margin-bottom: 13px;
+    font-size: 24px;
+  }
+  .about-title span {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 414px) {
+  .about-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 25px;
+    height: 25px;
+  }
+  .about-title span {
+    font-size: 18px;
+  }
+}
+
+.about-text {
+  font-size: 16px;
+  line-height: 1.63;
+  text-align: justify;
+  color: #49443d;
+}
+
+@media (max-width: 1080px) {
+  .about-text {
+    font-size: 14px;
+    line-height: 1.57;
+  }
+}
+
+@media (max-width: 800px) {
+  .about-text {
+    line-height: 22px;
+  }
+}
+
+.suncity-map {
+  max-width: 541px;
+}
+
+@media (max-width: 1080px) {
+  .suncity-map {
+    max-width: 389px;
+  }
+}
+
+@media (max-width: 800px) {
+  .suncity-map {
+    display: block;
+    max-width: 489px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .suncity-map {
+    max-width: 464px;
+    width: 72.5%;
+  }
+}
+
+@media (max-width: 414px) {
+  .suncity-map {
+    width: 85.333%;
+  }
+}
+
+@media (max-width: 1500px) {
+  .banner-item-logo {
+    width: 76.7%;
+    height: 20%;
+    bottom: 21px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .banner-item-logo {
+    /* width: 65px; */
+    width: 76.7%;
+    height: 20%;
+    bottom: 20px;
+  }
+  .about-title {
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-item-logo {
+    /* width: 48px; */
+    width: 76.7%;
+    height: 20%;
+    bottom: 15px;
+  }
+  .icon-suncity-more {
+    width: 20px;
+    height: 14px;
+    margin-left: 10px;
+    background-size: 10px 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .index-banner-wrapper {
+    background: url(/static/imgs/fix-banner-flicker.jpg) no-repeat;
+    background-size: contain;
+  }
+  .index-banner-box {
+    width: 400%;
+    overflow: hidden;
+    animation: banner-animation 10s infinite;
+    animation-timing-function: linear;
+  }
+  .index-banner-box:hover {
+    animation-play-state: paused;
+  }
+  .banner-item-logo {
+    /* width: 90px; */
+    /* width: 82px; */
+    /* height: 68px; */
+    /* bottom: 23px; */
+    width: 76.7%;
+    height: 20%;
+    bottom: 19px;
+  }
+  .about-title {
+    margin-bottom: 13px;
+  }
+  .about-title span {
+    font-size: 18px;
+  }
+  .icon-suncity-more {
+    width: 24px;
+    height: 18px;
+    margin-left: 18px;
+    background-size: 12px 18px;
+  }
+}
+
+@media (max-width: 414px) {
+  .banner-item-logo {
+    /* width: 49px; */
+    width: 76.7%;
+    height: 20%;
+    bottom: 11px;
+  }
+  .icon-suncity-more {
+    width: 18px;
+    height: 13px;
+    margin-left: 8px;
+    background-size: 9px 13px;
+  }
+}

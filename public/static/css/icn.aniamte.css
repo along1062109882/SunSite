@@ -1,0 +1,8 @@
+.childcompany-logo-column-3 a:hover { 
+  transform: translate(0, -10px);
+  -webkit-transform: translate(0, -10px);
+  -moz-transform: translate(0, -10px);
+  -o-transform: translate(0, -10px);
+  -ms-transform: translate(0, -10px);
+  -webkit-transition: All 0.4s linear;
+}

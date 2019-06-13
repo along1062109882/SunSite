@@ -1,0 +1,518 @@
+footer {
+  background-color: #e1dbcf;
+}
+
+@media (min-width: 769px) {
+  .footer-wide-frame {
+    display: block;
+  }
+
+  .footer-fold-frame {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-fold-frame {
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+  }
+  .footer-wide-frame {
+    display: none;
+  }
+
+  .footer-fold-frame {
+    display: block;
+  }
+}
+
+/* WIDE FRAME */
+/* ------------------------------------ */
+
+.footer-wide-frame {
+  max-width: 800px;
+  margin: auto;
+}
+@media (min-width: 1081px) {
+  .footer-wide-frame {
+      max-width: 1000px;
+  }
+}
+/* Divider */
+.footer-divider {
+  max-width: 1000px;
+  height: 1px;
+  background-color: #cac1af;
+  margin: 24px auto 12px;
+}
+
+/* Links */
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 46px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.footer-links a {
+  color: #614a0b;
+  display: inline-block;
+}
+
+/* About Us */
+.footer-links-aboutus {
+
+}
+
+.footer-links-aboutus-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #614a0b;
+}
+
+.footer-links-aboutus-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #614a0b;
+}
+
+/* Child Company */
+.footer-links-childcompany {
+
+}
+
+.footer-links-childcompany-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #614a0b;
+}
+
+.footer-links-childcompany-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #614a0b;
+  width: 135px;
+}
+/* .footer-links-childcompany-text .footer-link:nth-of-type(2n) {
+  margin-left: 10px;
+} */
+/* Pages */
+.footer-links-pages {
+
+}
+
+.footer-links-pages-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #614a0b;
+}
+
+.footer-links-pages-text {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  margin-top: 24px;
+  color: #614a0b;
+}
+
+/* SNS */
+.footer-links-sns div:nth-child(3){
+  margin-top: 24px;
+}
+
+.footer-links-sns-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #614a0b;
+  /* margin-top: 10px; */
+}
+/* .footer-links-childcompany-text a:nth-child(2){
+  margin-left: 10px;
+} */
+.footer-links-sns-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #614a0b;
+}
+
+.footer-links-sns-icons-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  /* margin-top: 24px; */
+  color: #614a0b;
+}
+
+.footer-links-sns-icons {
+
+}
+
+.footer-links-sns-icons img {
+  padding: 5px 5px 0px 0px;
+  width: 41px;
+  height: 41px;
+}
+
+.footer-links-sns-icons-pop {
+  display: block;
+  position: absolute;
+  display: none;
+}
+
+/* Contact */
+.footer-contact {
+  padding-bottom: 46px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+.footer-contact-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-top: 12px;
+  color: #614a0b;
+}
+
+.footer-contact-title a {
+  color: #614a0b;
+}
+
+.footer-contact-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #614a0b;
+}
+
+/* FOLD FRAME */
+/* ------------------------------------ */
+.footer-fold-frame {
+    max-width: 601px;
+    margin: auto;
+    text-align: left;
+}
+@media(max-width: 640px) {
+  .footer-fold-frame {
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+ }
+}
+/* Divider */
+.footer-fold-divider {
+  max-width: 600px;
+  height: 1px;
+  background-color: #cac1af;
+  margin: 12px 24px;
+}
+
+/* Links */
+.footer-fold-links {
+  padding-top: 46px;
+}
+
+.footer-fold-links span {
+  color: #614a0b;
+}
+
+/* About Us */
+.footer-fold-links-aboutus {
+
+}
+
+.footer-fold-links-aboutus-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
+  padding-left: 30px;
+  color: #614a0b;
+  cursor: pointer;
+}
+
+.footer-fold-links-aboutus-title img {
+  float: right;
+  margin-right: 30px;
+  padding-top: 8px;
+}
+
+.footer-fold-links-aboutus-group {
+  display: none;
+}
+
+.footer-fold-links-aboutus-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 30px;
+  padding-left: 40px;
+  color: #49443d;
+}
+
+/* Child Company */
+.footer-fold-links-childcompany {
+
+}
+
+.footer-fold-links-childcompany-title, .footer-fold-links-childcompany-news{
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
+  padding-left: 30px;
+  color: #614a0b;
+  cursor: pointer;
+}
+
+.footer-fold-links-childcompany-title img, .footer-fold-links-childcompany-news img {
+  float: right;
+  margin-right: 30px;
+  padding-top: 8px;
+}
+
+.footer-fold-links-childcompany-group, .footer-fold-links-childcompany-group-news {
+  display: none;
+}
+
+.footer-fold-links-childcompany-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 30px;
+  padding-left: 40px;
+  color: #49443d;
+}
+
+/* News */
+.footer-fold-links-news {
+
+}
+
+.footer-fold-links-news-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+.footer-fold-links-news-title a {
+  color: #614a0b;
+}
+
+/* Duty */
+.footer-fold-links-duty {
+
+}
+
+.footer-fold-links-duty-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+/* Jobs */
+.footer-fold-links-jobs {
+
+}
+
+.footer-fold-links-jobs-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+/* Magazine */
+.footer-fold-links-magazine {
+
+}
+
+.footer-fold-links-magazine-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-left: 30px;
+  color: #614a0b;
+  cursor: pointer;
+}
+
+.footer-fold-links-magazine-title img {
+  float: right;
+  margin-right: 30px;
+  padding-top: 8px;
+}
+
+.footer-fold-links-magazine-group {
+  display: none;
+}
+
+.footer-fold-links-magazine-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 30px;
+  padding-left: 40px;
+  color: #49443d;
+}
+
+/* SNS */
+.footer-fold-links-sns {
+
+}
+
+.footer-fold-links-sns-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+.footer-fold-links-sns-title span {
+  color: #614a0b;
+}
+
+.footer-fold-links-sns-icon {
+  margin-top: 5px;
+  padding-left: 30px;
+}
+
+.footer-fold-links-sns-icon img {
+  margin-right: 5px;
+}
+
+.footer-fold-links-sns-icons-pop {
+  display: block;
+  position: absolute;
+}
+
+/* Contact */
+.footer-fold-contact {
+  padding-bottom: 46px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+.footer-fold-contact-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-top: 12px;
+  color: #614a0b;
+}
+
+.footer-fold-contact-text {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #614a0b;
+}
+
+.footer-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  cursor: pointer;
+  display: none;
+}
+@media (min-width: 641px) and (max-width:769px) {
+  /* Contact */
+  
+.footer-wide-frame {
+    max-width: 700px;
+    margin: auto;
+}
+.footer-fold-contact {
+  padding-bottom: 46px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+.footer-fold-contact-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-top: 12px;
+  color: #614a0b;
+  display: block;
+}
+
+.footer-fold-contact-title a {
+  color: #614a0b;
+}
+
+.footer-fold-contact-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #614a0b;
+  display: inline-block;
+  }
+.footer_text {
+  display: inline-block
+ }
+}
+@media (max-width: 640px) {
+  /* Contact */
+  
+.footer-wide-frame {
+    max-width: 700px;
+    margin: auto;
+}
+.footer-fold-contact {
+  padding-bottom: 46px;
+  padding-left: 30px;
+  color: #614a0b;
+}
+
+.footer-fold-contact-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  padding-top: 12px;
+  color: #614a0b;
+  display: block;
+}
+
+.footer-fold-contact-title a {
+  color: #614a0b;
+}
+
+.footer-fold-contact-text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #614a0b;
+  display: block;
+  }
+.footer_text {
+  display: block
+ }
+}
+.footer-links-childcompany-text a {
+  width: 100%;;
+}
+.footer-links-pages-title:nth-child(1){
+  padding-bottom: 9.5px
+}
+.footer-links-pages-title:nth-child(2){
+  padding-bottom: 3px;
+  cursor: default;
+}
+.footer-links-pages-title:nth-child(2) a {
+  cursor: default;
+}
+.footer-links-pages-title:nth-child(4){
+  padding-bottom: 9.5px
+}

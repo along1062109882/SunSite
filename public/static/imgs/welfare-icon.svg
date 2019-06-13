@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="97" height="106" viewBox="0 0 97 106">
+    <defs>
+        <text id="b" fill="#E3DFD3" font-family="PingFangTC-Semibold, PingFang TC" font-size="50" font-weight="500">
+            <tspan x="0" y="53">員工</tspan> <tspan x="0" y="113">福利</tspan>
+        </text>
+        <filter id="a" width="103%" height="103.3%" x="-1.5%" y="-1.7%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceAlpha" result="shadowBlurInner1" stdDeviation="1.5"/>
+            <feOffset dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+            <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0.55561756 0 0 0 0 0.553370448 0 0 0 0 0.553370448 0 0 0 0.5 0"/>
+        </filter>
+        <filter id="c" width="103%" height="103.3%" x="-1.5%" y="-1.7%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceAlpha" result="shadowBlurInner1" stdDeviation="1.5"/>
+            <feOffset dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+            <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0.55561756 0 0 0 0 0.553370448 0 0 0 0 0.553370448 0 0 0 0.5 0"/>
+        </filter>
+    </defs>
+    <g fill="#E3DFD3" fill-rule="evenodd" transform="translate(-1 -8)">
+        <use filter="url(#a)" xlink:href="#b"/>
+        <use filter="url(#c)" xlink:href="#b"/>
+    </g>
+</svg>

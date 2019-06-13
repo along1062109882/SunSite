@@ -1,0 +1,223 @@
+.banner {
+  object-fit: contain;
+  background-image: linear-gradient(to left, #e3ddc8, #faf7e7 49%, #e3ddc8);
+  padding: 50px 160px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.banner-wrapper {
+  display: inline-block;
+  max-width: 1080px;
+}
+
+.banner p {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 76%;
+  padding-left: 6%;
+  font-size: 16px;
+  line-height: 1.8;
+	letter-spacing: 0.1px;
+	text-align: left;
+  color: #49443d;
+  vertical-align: middle;
+}
+
+.big-triangle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url('/static/imgs/childcompany_brown-bg.svg');
+  background-size: cover;
+  z-index: 1;
+}
+
+.mainImgsContainer {
+  overflow: hidden;
+  position: relative;
+}
+
+.mainImgsContainer .navigator-bar-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 2;
+}
+
+.mainImgsContainer .navigator-bar {
+  position: relative;
+  left: -50%;
+}
+
+.mainImgsContainer .bar {
+  border-color: #fff; 
+  margin-right: 14px;
+}
+
+.mainImgsContainer .bar:last-child,
+.mainImgsContainer .bar-selected:last-child {
+  margin-right: 0;
+}
+
+.mainImgsContainer .bar-selected {
+  margin-right: 14px;
+  border-color: #fff; 
+  background-color: #fff;
+}
+
+.mainImgs {
+  position: absolute;
+}
+
+.mainImgs .mainImg {
+  float: left;
+}
+
+@media(max-width: 1080px) {
+  .banner-wrapper {
+    max-width: 768px;
+  }
+
+  .banner p {
+    width: initial;
+    max-width: 70%;
+    font-size: 14px;
+    line-height: 1.57;
+  }
+}
+
+/* @media(min-width: 1500px) {
+  .big-triangle {
+    border-bottom: 1200px solid rgba(96, 69, 0, 0.5);;
+    border-left: 800px solid transparent;
+  }
+} */
+
+.wow.fadeIn {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  line-height: 1.8;
+  max-width: 540px !important;
+  z-index: 999;
+}
+
+.wow.fadeIn .h-one {
+  text-align: right;
+  animation: none !important;
+}
+
+.wow.fadeIn p {
+  font-size: 16px;
+}
+
+.wow.fadeIn.hidden-375 {
+  display: none;
+}
+
+@media(max-width: 1080px) {
+  .h-one {
+    font-size: 14px !important;
+  }
+
+  .banner p {
+    width: initial;
+    max-width: 70%;
+    font-size: 14px;
+    line-height: 1.57;
+  }
+
+  .wow.fadeIn p {
+    font-size: 14px;
+    line-height: 1.57 !important;
+    font-size: 14px;
+    margin-top: 12px;
+  }
+
+  .wow.fadeIn {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    line-height: 1.8;
+    max-width: 384px !important;
+    z-index: 999;
+  }
+}
+
+@media(max-width: 768px) {
+  .banner {
+    padding: 16px;
+  }
+
+  .banner p {
+    max-width: initial;
+  }
+
+  .big-triangle {
+    position: static;
+  }
+
+  .mainImg .wow.fadeIn {
+    display: none;
+  }
+
+  .mainImg img {
+    height: 440px;
+  }
+
+  .wow.fadeIn.hidden-375 {
+    display: block;
+    position: static;
+    background-color: #877242;
+    padding: 30px 80px;
+    max-width: initial !important;
+  }
+
+  .wow.fadeIn.hidden-375 .h-one {
+    text-align: center;
+    font-size: 18px !important;
+    line-height: 1;
+  }
+
+  .banner-wrapper {
+    padding: 4px 64px 14px;
+  }
+
+  .banner-wrapper p {
+    padding: 0;
+    margin-top: 10px;
+  }
+}
+
+@media(max-width: 640px) {
+
+  .mainImg img {
+    height: 350px;
+  }
+}
+
+@media(max-width: 400px) {
+  .wow.fadeIn.hidden-375 {
+    padding: 24px;
+  }
+
+  .banner-wrapper {
+    padding: 4px 14px 14px;
+  }
+
+  .mainImg img {
+    height: 220px;
+  }
+}
+
+/* change style v3 */
+.banner p {
+  width: 73%;
+  text-align: justify;
+}
+.mainImg img{
+  width: 100%;
+}
