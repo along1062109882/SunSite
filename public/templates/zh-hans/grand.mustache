@@ -49,7 +49,7 @@
             <nav class='grand_nav'>
                 <ol>
                     <li class='grand_active'> 澳门格兰披治大赛车</li>
-                    <li>太陽城集團十週</li>
+                    <li>太阳集团十周年</li>
                     <li>张学友世界巡回演唱</li>
                 </ol>
                 <p></P>
@@ -58,7 +58,7 @@
                 <div class="swiper-wrapper">
                 <!-- 下面是4个不同颜色的轮播滑块 -->
                 <div class="swiper-slide" ><span class='swiper_active' id='slide_car'>澳门格兰披治大赛车</span></div>
-                <div class="swiper-slide" ><span id='slide_ten'>太陽城集團十週年</span></div>
+                <div class="swiper-slide" ><span id='slide_ten'>太阳集团十周年</span></div>
                 <div class="swiper-slide"><span id='slide_music'>张学友世界巡回演唱</span></div>
                 </div>
                 <div class="swiper-button-prev"><img src="/static/imgs/left_btn.png" /></div><!--左箭头-->
@@ -68,6 +68,7 @@
                 <ul>
                 {{#Grand}}
                     <li>
+                    <a href="{{url}}" target='_blank'>
                         {{#index}}
                              <div>
                                  <div class="grand_p">
@@ -75,9 +76,7 @@
                                    <div class='content'>{{{content}}}</div>
                                  </div>
                                  <span>
-                                     <a href="{{url}}" target='_blank'>
                                          <b>进入专页</b>
-                                     </a>
                                  </span>
                              </div>
                             {{#img_url}}
@@ -100,12 +99,12 @@
                                    <div class='content'>{{{content}}}</div>
                                  </div>
                                 <span>
-                                    <a href="{{url}}" target='_blank'>
+
                                         <b>进入专页</b>
-                                    </a>
                                 </span>
                             </div>
                         {{/index}}
+                        </a>
                     </li>
                 {{/Grand}}
                 </ul>
@@ -114,6 +113,7 @@
                 <ul>
                 {{#Annual}}
                     <li>
+                       <a href="{{url}}" target='_blank'>
                         {{#index}}
                              <div>
                                  <div class="grand_p">
@@ -121,9 +121,7 @@
                                    <div class='content'>{{{content}}}</div>
                                  </div>
                                  <span>
-                                     <a href="{{url}}" target='_blank'>
-                                         <b>进入专页</b>
-                                     </a>
+                                     <b>进入专页</b>
                                  </span>
                              </div>
                             {{#img_url}}
@@ -146,12 +144,11 @@
                                    <div class='content'>{{{content}}}</div>
                                  </div>
                                 <span>
-                                    <a href="{{url}}" target='_blank'>
-                                        <b>进入专页</b>
-                                    </a>
+                                    <b>进入专页</b>
                                 </span>
                             </div>
                         {{/index}}
+                        </a>
                     </li>
                 {{/Annual}}
                 </ul>
@@ -160,6 +157,7 @@
                 <ul>
                 {{#Concert}}
                     <li>
+                    <a href="{{url}}" target='_blank'>
                         {{#index}}
                              <div>
                                  <div class="grand_p">
@@ -167,9 +165,7 @@
                                    <div class='content'>{{{content}}}</div>
                                  </div>
                                  <span>
-                                     <a href="{{url}}" target='_blank'>
-                                         <b>进入专页</b>
-                                     </a>
+                                      <b>进入专页</b>
                                  </span>
                              </div>
                             {{#img_url}}
@@ -192,12 +188,11 @@
                                    <div class='content'>{{{content}}}</div>
                                  </div>
                                 <span>
-                                    <a href="{{url}}" target='_blank'>
-                                        <b>进入专页</b>
-                                    </a>
+                                     <b>进入专页</b>
                                 </span>
                             </div>
                         {{/index}}
+                        </a>
                     </li>
                 {{/Concert}}
                 </ul>

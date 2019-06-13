@@ -100,7 +100,10 @@
     display: flex;
     flex-wrap: wrap;
 }
-.grand_container ul li {
+.grand_container ul li{
+    width: 100%;
+}
+.grand_container ul li a{
     width: 100%;
     display: flex;
     justify-content: center;

@@ -84,8 +84,12 @@
           </nav>
         </div>
         <div class="news-container">
-           <div class=''>
-                  <p><a href="/a.pdf" class="btn" target="_blank">3434}}</a></p>
+           <div class='release_content'>
+              {{#PostPreviews}}
+                   {{#cover_link}}
+                       <p><a href='{{url}}' target="_blank">{{title}}</a></p>
+                   {{/cover_link}}
+              {{/PostPreviews}}
             </div>
         <div class="news-page-wrapper">
           {{#Paging}}
@@ -126,13 +130,6 @@
           }
         });
       }
-       $(function() {
-              $('btn').on('click', function() {
-              var url = $(this).attr('href')
-
-                window.location.href = url;
-              })
-          });
     </script>
     <script src="/static/js/release.js"></script>
     <script src="/static/js/footer.js"></script>

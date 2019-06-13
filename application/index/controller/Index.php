@@ -203,10 +203,101 @@ class Index extends Controller
         if($get_year){
             $where[] = ['publish_time','like','%'.$get_year.'%'];
         }
+//        if($keyword){
+//            $where[] = ['publish_time','like','%'.$keyword.'%'];
+//        }
+        $datas = $this->getNews($where,$in_lang);
+        if($datas){
+            $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
+
+            $cate = Categories::where(['slug'=>'news','parent_id'=>0])->field('id,slug')->with('detail')->find();
+            $cate = $cate?$cate->toArray():[];
+            if(isset($cate['detail']) && $cate['detail']){
+                $cate['language'] = '';
+                $cate['name'] = '';
+                foreach ($cate['detail'] as $ck=>$cv){
+                    if($cate['detail'][$ck]['language']==$in_lang){
+                        $cate['language'] = $in_lang;
+                        $cate['name'] = $cate['detail'][$ck]['name'];
+                    }
+                }
+                unset($cate['detail']);
+            }
+
+            $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
+
+            foreach ($datas as $dk=>$dv){
+                if($keyword){
+                    if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
+
+                    }else{
+                        unset($datas[$dk]);
+                    }
+                }
+            }
+            if($keyword && $datas){
+                $this->order($datas,'date');
+            }
+            $count = count($datas);
+            $all_page = ceil($count/9);
+            $all_page = $all_page?$all_page:1;
+            for ($i=1;$i<=$all_page;$i++){
+                $p['No'] = $i;
+                $Paging['Pages'][] = $p;
+            }
+            $Paging['PageCount'] = $all_page;
+            $Paging['CurrentPage'] = $get_page;
+            $Paging['FirstPage'] = 1;
+            $Paging['LastPage'] = $all_page;
+            $Paging['PreviousPage'] = ($get_page-1 <= 0)? 1 : $get_page-1;
+            $Paging['NextPage'] = ($get_page+1>$all_page) ?$all_page : $get_page+1;
+
+
+            $result['LanguageDisplay'] = $language;
+            $result['CurrentRootCategory'] = $cate;
+            $result['CurrentCategorySlug'] = $cate?$cate['slug']:'';
+            $result['PostPreviews'] = array_slice($datas,$offset,$limit);
+            $result['Year'] = $year;
+            $result['Years'] = $all_year;
+            $result['Paging'] = $Paging;
+
+            $mustache = Mustache::mustache($this->lang);
+            $tpl = $mustache->loadTemplate('news');
+            return $tpl->render($result);
+        }
+
+        $mustache = Mustache::mustache($this->lang);
+        if($get_year||$keyword){
+            $tpl = $mustache->loadTemplate('news');
+        }else{
+            $tpl = $mustache->loadTemplate('404');
+        }
+        return $tpl->render(array('LanguageDisplay' => $language));
+    }
+
+    public function post_news()
+    {
+        $this->getLang();
+        $language = $this->lang;
+        $in_lang = $this->all_lang[$language];
+        $get_year = isset($_REQUEST['year'])?$_REQUEST['year']:0;
+        $get_page = isset($_REQUEST['page'])?$_REQUEST['page']:1;
+        $keyword = isset($_REQUEST['key'])?$_REQUEST['key']:'';
+        $limit = $this->request->post('limit', 9,'intval');
+        $offset = ($get_page - 1) * $limit;
+
+        $where[] = ['post_type','=','news'];
+        $where[] = ['deleted','=',0];
+        $where[] = ['status','=',1];
+        $all_datas = $this->getNews($where,$in_lang);
+        if($get_year){
+            $where[] = ['publish_time','like','%'.$get_year.'%'];
+        }
         if($keyword){
             $where[] = ['publish_time','like','%'.$keyword.'%'];
         }
         $datas = $this->getNews($where,$in_lang);
+        $result = [];
         if($datas){
             $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
 
@@ -261,19 +352,13 @@ class Index extends Controller
             $result['Years'] = $all_year;
             $result['Paging'] = $Paging;
 
-            $mustache = Mustache::mustache($this->lang);
-            $tpl = $mustache->loadTemplate('news');
-            return $tpl->render($result);
+
         }
 
-        $mustache = Mustache::mustache($this->lang);
-        if($get_year||$keyword){
-            $tpl = $mustache->loadTemplate('news');
-        }else{
-            $tpl = $mustache->loadTemplate('404');
-        }
-        return $tpl->render(array('LanguageDisplay' => $language));
+        return $result;
+
     }
+
     public function getNews($where,$in_lang){
         $aws = new Aws();
         $datas = Posts::where($where)->where('publish_time','<=',date('Y-m-d H:i:s'))->with('detail,coverLink,squareLink')->order('publish_time','desc')->select()->toArray();
@@ -759,7 +844,7 @@ class Index extends Controller
 //                    return $tpl->render(array('LanguageDisplay' => $language));
                 }
 
-                $result['PostUnpublished'] = $result['CurrentPost']['status']?false:true;
+                $result['PostUnpublished'] = false;
                 $mustache = Mustache::mustache($this->lang);
                 $tpl = $mustache->loadTemplate('jobs-vip');
                 return $tpl->render($result);
@@ -1040,6 +1125,8 @@ return $result;
     //  餐廳體驗
     public function sun_food()
     {
+        $aws = new Aws();
+
         $this->getLang();
         $language = $this->lang;
         $in_lang = $this->all_lang[$language];
@@ -1048,7 +1135,7 @@ return $result;
         $banner = LinkTarget::where(['owner_type'=>'food'])->field('id,link_id')->with('getLink')->select()->toArray();
         if($banner){
             foreach ($banner as $k=>$v){
-                $banner[$k]['url'] = $banner[$k]['get_link']['url']?$banner[$k]['get_link']['url']:'';
+                $banner[$k]['url'] = $banner[$k]['get_link']['url']?$aws->getUrl($banner[$k]['get_link']['url']):'';
                 $banner[$k]['description'] = $banner[$k]['get_link']?$banner[$k]['get_link']['description']:'';
                 unset($banner[$k]['get_link']);
             }
@@ -1058,7 +1145,7 @@ return $result;
 
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['img_url'] = $datas[$k]['links']['url']?$datas[$k]['links']['url']:'';
+                $datas[$k]['img_url'] = $datas[$k]['links']['url']?$aws->getUrl($datas[$k]['links']['url']):'';
                 if($datas[$k]['get_content']){
                     foreach ($datas[$k]['get_content'] as $ck=>$cv){
                         if($datas[$k]['get_content'][$ck]['language']==$in_lang){
@@ -1123,7 +1210,15 @@ return $result;
         return $tpl->render(array('LanguageDisplay' => $language,'Banner'=>$banner,'News'=>$news));
     }
 
-
+    public function jobs_application()
+    {
+        $this->getLang();
+        $language = $this->lang;
+        $result = $this->getMenu($language);
+        $mustache = Mustache::mustache($this->lang);
+        $tpl = $mustache->loadTemplate('jobs-application');
+        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
+    }
 
     public function sun_entertainment()
     {

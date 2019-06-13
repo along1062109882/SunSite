@@ -159,15 +159,31 @@ $(function () {
             $(this).children('a')[0].click();
         });
     }
+    function search(lan, years, keyword){
+        $.ajax({
+            type: 'POST',
+            url: '/' + lan + '/post_news' ,
+            data: {year: years, key: keyword},
+            success: function (data) {
+                alert(1)
+                console.log(data)
+                // var must = new Mustache();
+                Mustache.render('.news-container',data);
+                $('.news-container').html(Mustache.render('.news-container',data))
+            },
+        });
+    }
     // 输入框内容匹配进行模糊搜索
     $('.search_btn').on('click', function() {
         var newYear = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
         if (location.pathname.indexOf('/zh-hans') != -1) {
-            window.location.href = "/zh-hans/news?year=" + newYear + '&key=' + keyword;
+            // window.location.href = "/zh-hans/news?year=" + newYear + '&key=' + keyword;
+            search('zh-hans', newYear, keyword)
         }
         else if (location.pathname.indexOf('/zh-hant') != -1) {
-            window.location.href = "/zh-hant/news?year=" + newYear + '&key=' + keyword;
+            // window.location.href = "/zh-hant/news?year=" + newYear + '&key=' + keyword;
+            search('zh-hant', newYear, keyword)
         }
         console.log($('#filter_search').val())
         console.log($('.drop-down input').val())

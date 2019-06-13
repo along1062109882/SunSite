@@ -11,7 +11,7 @@
 
 namespace think;
 
-use think\facade\Config;
+use think\Config;
 use think\facade\Cookie;
 
 class Lang
@@ -200,7 +200,7 @@ class Lang
      * @access public
      * @return string
      */
-    public function detect1()
+    public function detect()
     {
         // 自动侦测设置获取语言选择
         $langSet = '';
@@ -233,31 +233,31 @@ class Lang
      * @access public
      * @return string
      */
-    public function detect() {
-        // 自动侦测设置获取语言选择
-        $langSet = Config::get('default_lang');
-        if (isset($_GET[$this->langDetectVar])) {
-            // url中设置了语言变量
-            $langSet = strtolower($_GET[$this->langDetectVar]);
-            Cookie::set($this->langCookieVar, $langSet, 3600);
-        } elseif (Cookie::get($this->langCookieVar)) {
-            // 获取上次用户的选择
-            $langSet = strtolower(Cookie::get($this->langCookieVar));
-        } elseif ($langSet) {
-            // 获取默认语言
-            Cookie::set($this->langCookieVar, $langSet, 3600);
-        } elseif (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-            // 自动侦测浏览器语言
-            preg_match('/^([a-z\d\-]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches);
-            $langSet = strtolower($matches[1]);
-            Cookie::set($this->langCookieVar, $langSet, 3600);
-        }
-        if (empty($this->allowLangList) || in_array($langSet, $this->allowLangList)) {
-            // 合法的语言
-            $this->range = $langSet;
-        }
-        return $this->range;
-    }
+//    public function detect() {
+//        // 自动侦测设置获取语言选择
+//        $langSet = Config::get('default_lang');
+//        if (isset($_GET[$this->langDetectVar])) {
+//            // url中设置了语言变量
+//            $langSet = strtolower($_GET[$this->langDetectVar]);
+//            Cookie::set($this->langCookieVar, $langSet, 3600);
+//        } elseif (Cookie::get($this->langCookieVar)) {
+//            // 获取上次用户的选择
+//            $langSet = strtolower(Cookie::get($this->langCookieVar));
+//        } elseif ($langSet) {
+//            // 获取默认语言
+//            Cookie::set($this->langCookieVar, $langSet, 3600);
+//        } elseif (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+//            // 自动侦测浏览器语言
+//            preg_match('/^([a-z\d\-]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches);
+//            $langSet = strtolower($matches[1]);
+//            Cookie::set($this->langCookieVar, $langSet, 3600);
+//        }
+//        if (empty($this->allowLangList) || in_array($langSet, $this->allowLangList)) {
+//            // 合法的语言
+//            $this->range = $langSet;
+//        }
+//        return $this->range;
+//    }
 
     /**
      * 设置当前语言到Cookie

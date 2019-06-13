@@ -955,6 +955,9 @@ img {
     margin-top: 2px;
   }
 }
+.swiper-button-next, .swiper-button-prev{
+  display:none;
+}
 /* @media (min-width: 1700px) {
   .hotal_img_right {
     justify-content: left;

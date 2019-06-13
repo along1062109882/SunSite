@@ -464,7 +464,19 @@ function headerHandleNav() {
       $(this).find('a').css({ 'color': '#49443d' });
     }
   });
-  // ---------------------------
+
+
+    $('#header-nav-title-duty').on(headerDragEvent.out, function (e) {
+    if (headerISWideScreen) {
+        $(this).find('a').css({ 'background-color': '#fff', 'color': '#49443d', 'box-shadow': 'none', 'padding-bottom': '0px' });
+    }
+    else {
+        $(this).css({ 'background-color': '#fff' });
+        $(this).find('a').css({ 'color': '#49443d' });
+    }
+});
+
+// ---------------------------
 
   //
 

@@ -13,7 +13,7 @@
 //use think\facade\Config;
 //use think\Lang;
 //Lang::setAllowLangList(['zh-cn','en-us']);
-\think\facade\Lang::detect();
+//\think\facade\Lang::detect();
 
 /**
  * 数据签名认证
