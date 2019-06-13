@@ -47,7 +47,7 @@ class Index extends Controller
     public function getLang(){
         $uri = array_filter(explode('/',$_SERVER['REQUEST_URI']));
 //        $uri = array_filter(explode('/',$_SERVER['PATH_INFO']));
-        $this->lang = $uri[1];
+        $this->lang = $uri?$uri[1]:'zh-hant';
     }
 
     public function getMenu($language){
