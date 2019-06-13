@@ -64,7 +64,7 @@
                 <!--<p class="add_title">上传图片</p>-->
             <!--</span>-->
         <!--</div>-->
-        <input type="file" name="file" accept="image/*">
+        <input type="file" name="file" accept="image/*" lay-verify="required">
 
     </div>
     <div class="layui-form-item flex-column">
@@ -99,9 +99,12 @@
             dataType: "json",
             success: function (data) {
                 if(data.code===200){
-                    parent.layer.msg('添加成功',{icon:1});
+                    parent.layer.msg('成功',{icon:1});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    parent.location.reload();
                 }else{
-                    parent.layer.msg('添加失败',{icon:2});
+                    parent.layer.msg('失败',{icon:2});
                 }
             }
         });

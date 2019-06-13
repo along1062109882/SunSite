@@ -27,6 +27,13 @@ class Manage extends Common
      */
     public function sun_entertainment()
     {
+        //演唱会
+        $one = Entertainment::where(['deleted'=>0,'type'=>1])->count();
+        //文化
+        $two = Entertainment::where(['deleted'=>0,'type'=>2])->count();
+        $this->assign('one', $one);
+        $this->assign('two', $two);
+
         return $this->fetch();
     }
 

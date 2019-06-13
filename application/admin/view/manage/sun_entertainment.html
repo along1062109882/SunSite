@@ -164,7 +164,8 @@
                 layer.closeAll();
             }
         };
-
+        var one = "<?php echo $one; ?>";
+        var two = "<?php echo $two; ?>";
 
         //方法级渲染-默认显示入金记录
         var ins1 = table.render(tableIns1);
@@ -173,7 +174,7 @@
         //编辑用户
         function edit(id){
             var index = layui.layer.open({
-                title : "编辑用户",
+                title : "编辑",
                 type : 2,
                 area: ['900px', '400px'],
                 fixed: false, //不固定
@@ -235,8 +236,10 @@
                         layer.msg(data.msg, {icon:icon,time: 1500}, function () {
                             if(data.code){
                                 obj.del();
+                                one = one - 1;
                             }
                         });
+                        // this.location.reload();
                     })
                 });
             }
@@ -255,8 +258,10 @@
                         layer.msg(data.msg, {icon:icon,time: 1500}, function () {
                             if(data.code){
                                 obj.del();
+                                two = two -1;
                             }
                         });
+                        // this.location.reload();
                     })
                 });
             }
@@ -277,17 +282,32 @@
                                 obj.del();
                             }
                         });
+                        // this.location.reload();
                     })
                 });
             }
         });
 
+
         $(".adduser_btn").click(function(){
-            // 
-            if ($('.layui-tab li').eq(2).hasClass("layui-this")) {
+            if($('.layui-tab li').eq(0).hasClass("layui-this")) {
+                if(one < 8){
+                    edit('');
+                }else {
+                    parent.layer.msg('最多添加8張圖',{icon:1});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                }
+            }else if($('.layui-tab li').eq(1).hasClass("layui-this")) {
+                if(two < 8){
+                    edit('');
+                }else {
+                    parent.layer.msg('最多添加8張圖',{icon:1});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                }
+            }else if ($('.layui-tab li').eq(2).hasClass("layui-this")) {
                 edit_banner('');
-            } else {
-                edit('');
             }
         })
 
