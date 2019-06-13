@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>瞩目盛事 - 太阳城集团 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/aboutus.css" />
+    <link rel="stylesheet" href="/static/css/animate.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <link rel="stylesheet" href="/static/css/event.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+    <!-- banner -->
+    <div class="common-banner"> 
+      <div class="common-banner-content">
+        <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">{{CurrentRootCategory.Name}}</h1>
+      </div>
+    </div>
+    <!-- company contribution -->
+    <div class="childcompany">
+      <aside class="news-swiper-wrapper">
+        <div class="news-swiper-button-prev"></div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {{#PostPreviews}}
+            <span class="swiper-slide js-swiper-slide js-item" data-slug="{{Slug}}"><p>{{Title}}</p></span>
+            {{/PostPreviews}}
+          </div>
+        </div>
+        <div class="news-swiper-button-next"></div>
+      </aside>
+      <div class="bigevent-wrapper">
+        <div class="event-name-list">
+          {{#PostPreviews}}
+          <span data-slug="{{Slug}}">{{Title}}</span>
+          {{/PostPreviews}}
+        </div>
+        <div class="gradient-border"></div>
+        <div class="childcompany_ul">
+          {{#PostPreviews}}
+          <section class="wow slideInLeft" data-slug="{{Slug}}">
+            {{#CoverLink}}
+            <a href="/{{LanguageDisplay}}/events/{{Slug}}"><img src="{{Url}}" title="{{Description}}" alt="{{Name}}" srcset="{{Url}} 2x, {{Url}} 3x"></a>
+            {{/CoverLink}}
+            <div class="event-content-wrapper">
+              <div class="event-content">
+                <div class="temp-wrapper">
+                  <h2 class="h-one">{{Title}}</h2>
+                  <p>{{{Excerpt}}}</p>
+                </div>
+              </div>
+              <div class="event-link"><a href="/{{LanguageDisplay}}/events/{{Slug}}">进入专页</a></div>
+            </div>
+          </section>
+          {{/PostPreviews}}
+        </div>
+        <div class="diamond diamond-left"></div>
+        <div class="diamond diamond-right"></div>
+        <div class="diamond-background"></div>
+      </div>
+    </div>
+    {{> footer}}
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/vender/swiper.min.js"></script>
+    <script src="/static/js/event.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+  </body>
+</html>

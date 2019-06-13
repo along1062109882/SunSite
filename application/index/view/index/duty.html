@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>{:lang('duty')} - {:lang('suncity_zh_en')}</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../static/css/owl.theme.default.css" />
+    <link rel="stylesheet" href="../static/css/base.css" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <link rel="stylesheet" href="../static/css/aboutus.css" />
+    <link rel="stylesheet" href="../static/css/animate.css" />
+    <link rel="stylesheet" href="../static/css/duty.css" />
+    <link rel="stylesheet" href="../static/css/header.css" />
+    <link rel="stylesheet" href="../static/css/footer.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  {include file="index@public/header" /}
+    <div class="common-banner">
+      <div class="common-banner-content">
+        <img src="../static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">{:lang('duty')}</h1>
+      </div>
+    </div>
+    <!-- company contribution -->
+    <div class="contribution">
+      <img class="hidden-heart-375" src="../static/imgs/response-heart-375.jpg">
+      <div class="contribution-content">
+        <div class="wow fadeIn response-text">
+          <h2 class="h-one">{:lang('corporate_contribution')}</h2>
+          <p>{:lang('corporate_contribution_content')}</p>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item white-bg">
+      <div class="activity-wrapper">
+        <div class="wow fadeInLeft activity-info">
+          <div class="activity-img-wrapper">
+            <img src="../static/imgs/icn-charity-gold.png" srcset="../static/imgs/icn-charity-gold@2x.png 2x, ../static/imgs/icn-charity-gold@3x.png 3x">
+            <h2 class="activity-name"></h2>
+          </div>
+          <div class="activity-detail">
+            {:lang('beneficiary_institution')}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item brown-bg">
+      <div class="activity-wrapper">
+        <div class="wow fadeInLeft activity-info community-activities">
+          <div class="activity-img-wrapper">
+            <img src="../static/imgs/icn-helping-hands.png" srcset="../static/imgs/icn-helping-hands@2x.png 2x, ../static/imgs/icn-helping-hands@3x.png 3x">
+            <h2 class="activity-name"></h2>
+          </div>
+          <div class="activity-detail">
+            {:lang('contribution')}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- slide -->
+    <div class="slide diamond-bg">
+      <h2 class="slide-title"><a href="../news">{:lang('related_news')}<i class="icon-suncity-more"></i></a></h2>
+      <div class="slide-wrapper">
+        <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-slide" id="carousel">
+        </div>
+      </div>
+    </div>
+  {include file="index@public/footer" /}
+    <script src="../static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/vender/wow.min.js"></script>
+    <script src="../static/js/vender/owl.carousel.min.js"></script>
+    <script src="../static/js/duty.js"></script>
+    <script src="../static/js/header.js"></script>
+    <script src="../static/js/footer.js"></script>
+    <script src="../static/js/vender/utility.js"></script>
+    <script src="../static/js/hreflang.js"></script>
+  </body>
+</html>

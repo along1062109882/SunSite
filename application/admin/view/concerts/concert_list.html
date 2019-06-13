@@ -1,0 +1,188 @@
+{extend name="base/base" /}
+{block name="main"}
+<style>
+    .layui-table-cell {
+        height: 100%;
+        text-overflow: inherit;
+        overflow: visible;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    tbody tr{
+        height: 150px;
+    }
+</style>
+<form class="layui-form">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form">
+            <!--<div class="layui-inline">-->
+                <!--&lt;!&ndash;<label class="labels">標題</label>&ndash;&gt;-->
+                <!--<div class="layui-input-inline">-->
+                    <!--<input type="text" class="layui-input searchVal" placeholder="輸入標題以搜索" name="keyword" id="title"/>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="layui-inline">
+                <a class="layui-btn layui-btn-danger layui-btn-normal adduser_btn">添加</a>
+                <!--<button class="layui-btn search_btn" data-types="reset" type="reset" id="reset">重置</button>-->
+                <!--<button class="layui-btn search_btn" type="button" data-types="reload">搜索</button>-->
+            </div>
+        </form>
+    </blockquote>
+    <table id="usersList" lay-filter="usersList"></table>
+    <!--操作-->
+    <script type="text/html" id="usersListBar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">編輯</a>
+        <!--<a class="layui-btn layui-btn-xs" lay-event="edit_basic">編輯基礎信息</a>-->
+        <!--<a class="layui-btn layui-btn-xs" lay-event="edit_desc">編輯描述信息</a>-->
+        <!--<a class="layui-btn layui-btn-xs" lay-event="edit_ticket">編輯票務信息</a>-->
+        <!--<a class="layui-btn layui-btn-xs" lay-event="edit_intro">編輯詳細介紹</a>-->
+        <a class="layui-btn layui-btn-xs" lay-event="edit_pic">編輯圖片</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    </script>
+
+
+</form>
+{/block}
+{block name="script"}
+<script>
+    layui.use(['jquery','form','layer','laydate','table','laytpl'],function(){
+        var form = layui.form,
+            layer = parent.layer === undefined ? layui.layer : top.layer,
+            $ = layui.jquery,
+            laydate = layui.laydate,
+            laytpl = layui.laytpl,
+            table = layui.table;
+
+        //用户列表
+        var tableIns = {
+            id:'id',
+            elem: '#usersList',
+            url : "/admin/get_concert_data",
+            cellMinWidth : 95,
+            page : true,
+            limit:10,
+            limits:[5,10,15,20],
+            // height : "full-125",
+            height: 680,
+            size:'lg',
+            method:'post',
+            // id:'usersListTable',
+            cols : [[
+                {field: 'id', title: '演唱會 ID',align: 'center'},
+                {field: 'publish_time', title: '發佈時間', align:'center'},
+                {field: 'state', title: '狀態', align:'center'},
+                {field: 'name', title: '演唱會繁體名稱', align:'center'},
+                {title: '操作', templet:'#usersListBar',fixed:"right",align:"center"}
+            ]],
+            done: function(res, curr, count){
+                layer.closeAll();
+            }
+        };
+
+
+        //方法级渲染-默认显示入金记录
+        var ins1 = table.render(tableIns);
+
+
+        //表格搜索和重载
+        var $ = layui.$,
+            active = {
+                reload: function(){
+                    var index = layer.msg('数据加载中,请耐心等待...', {
+                        icon: 16,shade: 0.5,time:500
+                    });
+                    var keyword = $('#title').val();
+                    ins1.reload({
+                        where: {
+                            //根据MT4搜索
+                            keyword:keyword,
+                        }
+                    });
+                },
+            };
+
+        $('.search_btn').on('click', function(){
+            var types = $(this).data('types');
+            if(types === 'reset'){
+                ins1.reload({
+                    where: {
+                        //根据MT4搜索
+                        types:types,
+                        keyword:'',
+                    }
+                });
+                $("#reset").on("click",function(){ window.location.reload();});
+
+            }
+            active[types] ? active[types].call(this) : '';
+        });
+
+
+        $(".adduser_btn").click(function(){
+            edit("{:url('/admin/concertEdit')}");
+        });
+
+        //编辑用户
+        function edit(url){
+            var index = layui.layer.open({
+                title : "編輯",
+                type : 2,
+                area: ['900px', '400px'],
+                fixed: false, //不固定
+                maxmin: true,
+                content : url,
+                success : function(layero, index){
+                    var body = layui.layer.getChildFrame('body', index);
+                    setTimeout(function(){
+                        layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                            tips: 3
+                        });
+                    },500)
+                }
+            })
+            // layui.layer.full(index);
+            window.sessionStorage.setItem("index",index);
+            //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
+            $(window).on("resize",function(){
+                // layui.layer.full(window.sessionStorage.getItem("index"));
+            })
+        }
+        //列表操作
+        table.on('tool(usersList)', function(obj){
+            var layEvent = obj.event, data = obj.data;
+            // if(layEvent === 'edit_basic'){ //编辑
+            //     edit("{:url('/admin/concert_basic')}"+'?id='+data.id);
+            // } else if(layEvent === 'edit_desc'){
+            //     edit("{:url('/admin/concert_desc')}"+'?id='+data.id);
+            // }else if(layEvent === 'edit_ticket'){
+            //     edit("{:url('/admin/concert_ticket')}"+'?id='+data.id);
+            // }else if(layEvent === 'edit_intro'){
+            //     edit("{:url('/admin/concert_intro')}"+'?id='+data.id);
+            // }else if(layEvent === 'edit_pic'){
+            //     edit("{:url('/admin/concert_pic')}"+'?id='+data.id);
+            // }
+            if(layEvent === 'edit'){ //编辑
+                edit("{:url('/admin/concertEdit')}"+'?id='+data.id);
+            }else if(layEvent === 'edit_pic'){
+                edit("{:url('/admin/event_album')}"+'?id='+data.id+'&type=1');
+            }
+            else if(layEvent === 'del'){ //删除
+                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                    $.post("{:url('/admin/concertDelete')}",{id:data.id},function(data){
+                        var icon=5;
+                        if(data.code){
+                            icon=6;
+                        }
+                        layer.msg(data.msg, {icon:icon,time: 1500}, function () {
+                            if(data.code){
+                                obj.del();
+                            }
+                        });
+                    })
+                });
+            }
+        });
+
+    })
+</script>
+{/block}

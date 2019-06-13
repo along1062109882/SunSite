@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="太陽城集團{{CurrentRootCategory.name}}{{CurrentCategoryName}}" />
+    <meta name="keywords" content="太陽城集團,{{CurrentRootCategory.name}},{{CurrentCategoryName}}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>{{Year}} 年 - 集團動態 - 太陽城集團 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/animate.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <link rel="stylesheet" href="/static/css/news_new.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+
+    <!-- new -->
+    <!-- banner -->
+    <div class="common-banner">
+      <div class="common-banner-content">
+        <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">新聞動態</h1>
+      </div>
+    </div>
+    <!-- news -->
+    <div class="news-wrapper diamond-bg">
+      <div class="news-swiper-wrapper">
+        <div class="news-swiper-button-prev"></div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {{#Categories}}
+            <a class="swiper-slide" href="/{{LanguageDisplay}}/{{CurrentRootCategory.slug}}/category/{{Slug}}">
+              <span>{{Name}}</span>
+            </a>
+            {{/Categories}}
+          </div>
+        </div>
+        <div class="news-swiper-button-next"></div>
+      </div>
+        <div class='news-nav'>
+          <nav class='news-filter'>
+              <span class="yearPrev"><img src="/static/imgs/job-arrow-down.svg" alt="up-button" /></span>
+              <ol class='drop-down'>
+                <li>
+                    <input id="drop-down-year" type="text" value={{Year}} readonly="readonly">
+                    <span class="icon">
+                      <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;"/>
+                    </span>
+                    <ol class='filter-list'>
+                      {{#Years}}
+                        <li><a href="/{{LanguageDisplay}}/news?year={{.}}">{{.}}</a></li>
+                      {{/Years}}
+                    </ol>
+                </li>
+              </ol>
+              <span class="yearNext"><img src="/static/imgs/job-arrow-down.svg" alt="up-button" /></span>
+          </nav>
+          <nav class='search_filter'>
+              <div>
+                <input id="filter_search" type="text" value=''>
+                <span class='search_btn'>
+                   <img src="/static/imgs/search.png" style="vertical-align: baseline;"/>
+                </span>
+              </div>
+          </nav>
+        </div>
+        <div class="news-container">
+          {{#PostPreviews}}
+          <div class="cell wow flipInY news-item">
+            <a href="/{{LanguageDisplay}}/{{CurrentRootCategory.slug}}/category/{{CurrentCategorySlug}}/{{slug}}">
+              <div>
+                <div class="ratio-16-9">
+                  {{#cover_link}}
+                  <img src="{{url}}" title="{{description}}" alt="{{name}}" srcset="{{url}} 2x, {{url}} 3x">
+                  {{/cover_link}}
+                  {{^cover_link}}
+                  <img src="/static/imgs/group.svg" title="{{description}}" alt="{{name}}" srcset="/static/imgs/group.svg 2x, /static/imgs/group.svg 3x">
+                  {{/cover_link}}
+                </div>
+                <div class="news-info">
+                  <h2 class="news-title">{{title}}</h2>
+                  <p class="news-sketch">{{{excerpt}}}</p>
+                  <span class="item-date">{{date}}</span>
+                  <span class="go-more">繼續閱讀</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          {{/PostPreviews}}
+        </div>
+        <div class="news-page-wrapper">
+          {{#Paging}}
+          <!--a href="/{{LanguageDisplay}}/{{CurrentRootCategory.slug}}/category/{{CurrentCategorySlug}}?page={{FirstPage}}"-->
+          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page=1">
+            <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
+          </a>
+          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page={{PreviousPage}}">
+            <img src="/static/imgs/next-page.svg" class="first-page">
+          </a>
+          {{#Pages}}
+          <a class="news-page" href="/{{LanguageDisplay}}/news?year={{Year}}&page={{No}}">{{No}}</a>
+          {{/Pages}}
+          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page={{NextPage}}">
+            <img src="/static/imgs/next-page.svg" class="next-page">
+          </a>
+          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page={{LastPage}}">
+            <img src="/static/imgs/last-page-botton.svg" class="last-page-button">
+          </a>
+          {{/Paging}}
+        </div>
+      </div>
+    </div>
+    {{> footer}}
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/vender/swiper.min.js"></script>
+    <script src="/static/js/vender/pagination.js"></script>
+    <script type="text/javascript">
+      window.__initialSlide__ = parseInt('{{ Paging.CurrentPage }}');
+      if (window.__initialSlide__ == 0) {
+        $(".news-page").eq(0).addClass('active');
+      } else {
+        $(".news-page").each(function (i, e) {
+          if (parseInt(e.innerHTML) === window.__initialSlide__) {
+            $(e).addClass('active');
+          }
+        });
+      }
+    </script>
+    <script src="/static/js/news.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+  </body>
+</html>

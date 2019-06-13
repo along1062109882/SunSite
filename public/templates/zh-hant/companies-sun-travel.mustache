@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>太陽旅遊 - 太陽城集團 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/static/css/owl.theme.default.css" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/childcompany_new.css">
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+    {{! <h1 class="title-for-seo">太陽旅遊</h1> }}
+     <div class="common-banner"> 
+      <div class="common-banner-content">
+        <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">環球旅遊</h1>
+      </div>
+    </div>
+    <!-- banner -->
+    <div class="banner-box">
+      <div class="wow slideInLeft banner-wrapper">
+        {{! <a href="http://www.suncitygroup.com.hk/index.php/hotel-resort-service-2/" target="_blank" class="logo-link"><img class="banner-logo" src="/static/imgs/logo-sun-travel-02.png" srcset="/static/imgs/logo-sun-travel-02@2x.png 2x, /static/imgs/logo-sun-travel-02@3x.png 3x" alt="sun-travel"></a> }}
+        <div class="banner-text">
+          <p>太陽城集團旗下太陽旅遊致力成為7大城市旅遊專家, 包括澳門、墨爾本、悉尼、峴港、仁川、馬尼拉及金邊等；專業的服務團隊，為客戶提供全方位的旅遊建議和行程安排，由交通住宿到餐飲娛樂，一一打點妥當，帶您暢遊世界各地，帶來貼心的多元化旅遊體驗。一站式旅遊預訂服務，使客戶輕鬆出行，隨心所欲，盡顯非凡。</p>
+        </div>
+         {{! <a href="http://www.suncitygroup.com.hk/index.php/hotel-resort-service-2/" target="_blank" class="know-more">了解更多</a> }}
+      </div>
+    </div>
+    <!-- content -->
+    {{! <div class="mainImg">
+      <img src="/static/imgs/child-company-7.jpg" alt="Suncity Group" />
+    </div> }}
+     <!-- banner 图添加轮播效果-->
+    <div  class="swiper-container">
+       <div class="swiper-wrapper">
+          <!-- 下面是4个不同颜色的轮播滑块 -->
+          {{#Banner}}
+          <div class="swiper-slide"><img src="{{url}}" alt="{{description}}" /></div>
+          {{/Banner}}
+        </div>
+        <div class="swiper-button-prev"></div><!--左箭头-->
+        <div class="swiper-button-next"></div><!--右箭头-->
+        <div class="swiper-pagination"></div><!--分页器（就是4个点点）-->
+    </div>
+    <div class='tab_type'>
+      <p class='tab_one'>
+          <img class="banner-logo" src="/static/imgs/logo-sun-travel-02.png" srcset="/static/imgs/logo-sun-travel-02@2x.png 2x, /static/imgs/logo-sun-travel-02@3x.png 3x" alt="sun-travel">
+      </p>
+    </div>
+    <div class='show_type_content1 type_one' >
+        <div>
+          <p>
+            太陽旅遊提供一站式旅遊預訂服務，客戶可預訂海陸空交通運輸、奢華住宿，輕鬆遊覽世界各地；本公司更可為客戶預訂全球大型演唱會及娛樂節目門票，同時提供特色餐廳訂座服務，讓客戶享受隨心所欲的旅遊體驗。強大的服務團隊將提供旅遊建議服務以至各項旅程安排，讓尊貴客戶盡顯非凡氣派，展現顯赫身份。
+          </p>
+        </div>
+    </div>
+    <section class="latest-news diamond-bg">
+      <h1 class="latest-news-title"><a href="/{{LanguageDisplay}}/news">最新消息<i class="more-button"></i></a></h1>
+      <div class="slide-wrapper">
+        <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-slide" id="carousel">
+          {{#News}}
+          <div class="slide-item">
+            <a href="/{{LanguageDisplay}}/news/category/{{slug}}">
+              <div class="ratio-16-9"><img src="{{square_link.url}}" class='onerror'  ></div>
+              <div class="item-info">
+                <p class="item-info-text">{{title}}</p>
+                <div class="item-date">{{date}}</div>
+                <span class="go-more">繼續閱讀</span>
+              </div>
+            </a>
+          </div>
+          {{/News}}
+        </div>
+      </div>
+    </section>
+    {{> footer}}
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/swiper.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/vender/owl.carousel.min.js"></script>
+    <script src="/static/js/childcompany.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+  </body>
+</html>

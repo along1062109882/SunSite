@@ -1,0 +1,151 @@
+{extend name="base/base" /}
+{block name="main"}
+<form id="form" method="post" class="layui-form layui-form-pane" enctype="multipart/form-data" action="#">
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>繁體標題</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title_hk" id="title_hk" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.title_hk)?$list.title_hk:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>繁體metaData</label>
+        <div class="layui-input-inline">
+            <input type="text" name="meta_hk" id="meta_hk" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.meta_hk)?$list.meta_hk:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>繁體allText</label>
+        <div class="layui-input-inline">
+            <input type="text" name="text_hk" id="text_hk" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.text_hk)?$list.text_hk:''}">
+        </div>
+    </div>
+
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>簡體標題</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title_cn" id="title_cn" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.title_cn)?$list.title_cn:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>簡體metaData</label>
+        <div class="layui-input-inline">
+            <input type="text" name="meta_cn" id="meta_cn" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.meta_cn)?$list.meta_cn:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>簡體allText</label>
+        <div class="layui-input-inline">
+            <input type="text" name="text_cn" id="text_cn" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.text_cn)?$list.text_cn:''}">
+        </div>
+    </div>
+
+    <div class="layui-form-item flex-column">
+        <label class="labels">英文標題</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title_en" id="title_en" placeholder="请输入" autocomplete="off" class="layui-input"
+                   value="{:isset($list.title_en)?$list.title_en:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels">英文metaData</label>
+        <div class="layui-input-inline">
+            <input type="text" name="meta_en" id="meta_en" placeholder="请输入" autocomplete="off" class="layui-input"
+                   value="{:isset($list.meta_en)?$list.meta_en:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels">英文allText</label>
+        <div class="layui-input-inline">
+            <input type="text" name="text_en" id="text_en" placeholder="请输入" autocomplete="off" class="layui-input"
+                   value="{:isset($list.text_en)?$list.text_en:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>狀態</label>
+        <div class="layui-input-inline">
+            <!--{form:radio name="status" list="['0'=>'草稿','1'=>'已發布']" value="$list['status']"}-->
+            <select name="status" lay-verify="required" id="status">
+                <option value="">請選擇狀態</option>
+                <option value="0" <?php if(isset($list['status']) && $list['status']==0){echo "selected";} ?>>草稿</option>
+                <option value="1" <?php if(isset($list['status']) && $list['status']==1){echo "selected";} ?>>已發布</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>發佈時間</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" id="test1" name="test1" placeholder="請選擇日期" value="{:isset($list.time)?$list.time:''}" autocomplete="off" lay-verify="required">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>PDF</label>
+        <!--<div id="test2" class="add_img">-->
+            <!--<span >-->
+                <!--<p class="add">+</p>-->
+                <!--<p class="add_title">上传PDF</p>-->
+            <!--</span>-->
+        <!--</div>-->
+        <input type="file" name="file" accept=".pdf" multiple>
+
+    </div>
+    <div class="layui-form-item flex-column">
+        <div class="layui-input-inline">
+            <input type="hidden" name="id" id="id" value="{:isset($list['id'])?$list['id']:''}">
+
+            <button class="layui-btn" lay-submit lay-filter="*" id="commit">發布</button>
+            <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+        </div>
+    </div>
+</form>
+{/block}
+{block name="script"}
+{css href="/form-select/formSelects-v4.css" /}
+<script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+
+<script>
+    layui.config({
+        base: '/form-select/' //此处路径请自行处理, 可以使用绝对路径
+    }).extend({
+        formSelects: 'formSelects-v4'
+    });
+
+    layui.use(['form', 'jquery', 'formSelects','layedit','laydate','upload'], function () {
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+            ,type: 'datetime'
+            ,trigger: 'click'
+        });
+
+    });
+    $("#commit").on("click", function (){
+        var form = new FormData($('#form')[0]);
+        $.ajax({
+            url: '/admin/publishCommit',
+            type: 'POST',
+            cache: false,
+            data: form,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (data) {
+                if(data.code===200){
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    parent.layer.msg('成功',{icon:1});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg('失败',{icon:2});
+                }
+            }
+        });
+    });
+</script>
+{/block}

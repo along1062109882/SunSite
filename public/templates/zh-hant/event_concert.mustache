@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+  <meta http-equiv="Content-Language" content="zh-HK">
+  <title>{{CurrentRootCategory.Name}} - 矚目盛事 - 太陽城集團 SUNCITYGROUP</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="/static/css/owl.theme.default.css" />
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/css/animate.css" />
+  <link rel="stylesheet" href="/static/css/event_concert.css" />
+  <link rel="stylesheet" href="/static/css/header.css" />
+  <link rel="stylesheet" href="/static/css/footer.css" />
+  <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+   <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  {{> header }}
+  <!-- banner -->
+  <div class="common-banner">
+    <div class="common-banner-content">
+      <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+      <h1 class="common-banner-title">{{CurrentRootCategory.Name}}</h1>
+    </div>
+  </div>
+  <div class="main-content">
+    <section class="describe" style="order:{{Describe.SectionIndex}}">
+      <div class="travel-content">
+        <div class="travel-info">
+          <div class="wow fadeInLeft">
+            <h2 class="section-title">{{Describe.Title}}</h2>
+            <h3 class="section-subtitle">{{Describe.Subtitle}}</h3>
+            <p class="travel-detail">{{{Describe.Detail}}}</p>
+          </div>
+        </div>
+        <div class="entertainment-travel wow fadeInRight">
+          <img src="/static/imgs/events/logo-for_concert-7.gif" alt="logo-for_concert-7s" class="scale-with-grid">
+        </div>
+      </div>
+    </section>
+    <section class="concert-ticket" style="order:{{ConcertTicket.SectionIndex}};background-color: {{ConcertTicket.BackgroundColor}}">
+      <img src="{{ConcertTicket.BackgroundImg.Mobile}}" class="concert-poster-mobile">
+      <div class="concert-content">
+        <div class="concert-info">
+          <h2 class="section-title">{{ConcertTicket.Title}}</h2>
+          {{#ConcertTicket.TicketList}}
+          <div class="">
+            <h3 class="section-subtitle">{{Subtitle}}<span class="subscript">{{Subscript}}</span></h3>
+            <p class="concert-info-date">{{DateReservation}}</p>
+            <p class="concert-info-date">{{DateStay}}</p>
+            <div class="ticket-detail">
+              {{Detail.Title}}
+              <p>
+                {{{Detail.Content}}}
+              </p>
+            </div>
+          </div>
+          {{/ConcertTicket.TicketList}}
+          <a id="order_now" target="_blank" href="{{ConcertTicket.OrderUrl}}" class="img-btn"><img src="/static/imgs/events/group-6.png" srcset="/static/imgs/events/group-6@2x.png 2x, /static/imgs/events/group-6@3x.png 3x" class="Group-6" title="立即订购"></a>
+        </div>
+        <div class="concert-poster">
+          <img src="{{ConcertTicket.BackgroundImg.PC}}" alt="{{ConcertTicket.BackgroundImg.Alt}}">
+        </div>
+      </div>
+    </section>
+    <section class="brief-introduction" style="order:{{BriefIntroduction.SectionIndex}};background-color: {{BriefIntroduction.BackgroundColor}}">
+      <div class="introduction-content  wow fadeInUp">
+        <h2 class="section-title">{{BriefIntroduction.Title}}</h2>
+        <p class="introduction-detail">{{{BriefIntroduction.Content}}}</p>
+      </div>
+      <div class="introduction-img-wrap">
+        <img src="{{BriefIntroduction.BackgroundImg.Mobile}}" class="MAYDAY-LIVE-TOUR-ss">
+      </div>
+    </section>
+    {{#Slide.Show}}
+    <section class="slide-wrapper" style="background-color: {{Slide.BackgroundColor}}">
+      <div class="view-wrapper">
+        <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-list" id="carousel">
+          {{#Slide.SlideItem}}
+          <div class="ratio-16-9"><img src="{{Url}}" alt="{{Alt}}" width="322" height="216"></div>
+          {{/Slide.SlideItem}}
+        </div>
+      </div>
+    </section>
+    {{/Slide.Show}}
+    <section class="companies-info">
+      <!-- 需求里没有说这部分需要更改，未修改 -->
+      <ul class="company-wrap">
+        <li>
+          <img src="/static/imgs/events/sun-entertainment.png" srcset="/static/imgs/events/sun-entertainment@2x.png 2x,
+             /static/imgs/events/sun-entertainment@3x.png 3x" class="sun-entertainment wow fadeInLeft">
+          <p class="wow fadeInLeft">太陽娛樂文化於2011年初正式成立，致力為觀眾帶來高質素的娛樂享受。並主要從事電影製作及發行、籌辦演唱會和策劃宣傳活動。</p>
+        </li>
+        <li>
+          <img src="/static/imgs/events/sun-travel.png" srcset="/static/imgs/events/sun-travel@2x.png 2x,
+             /static/imgs/events/sun-travel@3x.png 3x" class="sun-travel wow fadeInRight">
+          <p class="wow fadeInRight">太陽旅遊提供一站式旅遊預訂服務，客戶可預訂海陸空交通運輸、奢華住宿，輕鬆遊覽世界各地；本公司更可為客戶預訂全球大型演唱會及娛樂節目門票，同時提供特色餐廳訂座服務，讓客戶享受隨心所欲的旅遊體驗。</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+  {{> footer}}
+  <div class="element_to_pop_up">
+    <div class="bigpic-header-wrapper">
+      <span class="btn-close">
+        <img src="/static/imgs/bigpic-close.svg" />
+      </span>
+    </div>
+    <img src="" />
+  </div>
+  <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+  <script src="/static/js/vender/wow.min.js"></script>
+  <script src="/static/js/vender/owl.carousel.min.js"></script>
+  <script src="/static/js/vender/bpopup.min.js"></script>
+  <script src="/static/js/event_concert.js"></script>
+  <script src="/static/js/header.js"></script>
+  <script src="/static/js/footer.js"></script>
+  <script src="/static/js/vender/utility.js"></script>
+  <script src="/static/js/hreflang.js"></script>
+</body>
+
+</html>

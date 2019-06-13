@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>太陽餐飲集團有限公司 - 太陽城集團 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/static/css/owl.theme.default.css" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/childcompany_new.css">
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+    {{! <h1 class="title-for-seo">太陽餐飲集團有限公司</h1> }}
+    <div class="common-banner"> 
+      <div class="common-banner-content">
+        <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">餐飲體驗</h1>
+      </div>
+    </div>
+    <!-- banner -->
+    <div class="banner-box">
+      <div class="wow slideInLeft banner-wrapper">
+        {{! <a href="http://www.skyconceptmacau.com/" target="_blank" class="logo-link"><img class="banner-logo" src="/static/imgs/logo-sun-food-02.png" srcset="/static/imgs/logo-sun-food-02@2x.png 2x, /static/imgs/logo-sun-food-02@3x.png 3x" alt="sun-food"></a> }}
+        <div class="banner-text">
+          <p>太陽城集團致力為客人提供全方位的餐飲服務體驗，旗下太陽餐飲集團在澳門建立多個餐飲品牌，包括SKY 21、天潮、太陽飯店等，推動澳門餐飲業務。同時，集團亦積極發展海外餐飲業務，先後在墨爾本和馬尼拉，設立太陽廚房以及老友記等不同類型的餐廳，未來更會拓展到不同地區，務求為客人帶來更豐富的餐飲體驗。</p>
+        </div>
+         {{! <a href="http://www.skyconceptmacau.com/" target="_blank" class="know-more">了解更多</a> }}
+      </div>
+    </div>
+    <!-- content -->
+    {{! <div class="mainImg">
+      <img src="/static/imgs/corporate-sun-food.jpg" alt="Suncity Group" />
+    </div> }}
+    <div  class="swiper-container">
+       <div class="swiper-wrapper">
+          <!-- 下面是4个不同颜色的轮播滑块 -->
+          {{#Banner}}
+             <div class="swiper-slide"><img src="{{url}}" alt="{{description}}" /></div>
+          {{/Banner}}
+        </div>
+        <div class="swiper-button-prev"></div><!--左箭头-->
+        <div class="swiper-button-next"></div><!--右箭头-->
+        <div class="swiper-pagination"></div><!--分页器（就是4个点点）-->
+    </div>
+    <div class='tab_type tab_types'>
+      <p class='tab_one'>
+         各式餐飲
+      </p>
+    </div>
+     <div class='show_type_food'>
+          <ul>
+          {{#Data}}
+            <li>
+            <a href="{{url}}" target="_blank">
+                <img src="{{img_url}}"  alt="{{title}}">
+                <p>{{title}}</p>
+            </a>
+            </li>
+          {{/Data}}
+          </ul>
+     </div>
+
+    <section class="latest-news diamond-bg">
+      <h1 class="latest-news-title"><a href="/{{LanguageDisplay}}/news">最新消息<i class="more-button"></i></a></h1>      
+      <div class="slide-wrapper">
+        <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-slide" id="carousel">
+          {{#News}}
+          <div class="slide-item">
+            <a href="/{{LanguageDisplay}}/news/category/{{slug}}">
+              <div class="ratio-16-9"><img src="{{square_link.url}}" class='onerror'  ></div>
+              <div class="item-info">
+                <p class="item-info-text">{{title}}</p>
+                <div class="item-date">{{date}}</div>
+                <span class="go-more">繼續閱讀</span>
+              </div>
+            </a>
+          </div>
+          {{/News}}
+        </div>
+      </div>
+    </section>
+
+    {{> footer}}
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/swiper.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/vender/owl.carousel.min.js"></script>
+    <script src="/static/js/childcompany.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+  </body>
+</html>

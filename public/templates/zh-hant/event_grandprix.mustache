@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+  <meta http-equiv="Content-Language" content="zh-HK">
+  <title>{{CurrentRootCategory.Name}} - 矚目盛事 - 太陽城集團 SUNCITYGROUP</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="/static/css/owl.theme.default.css" />
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/css/animate.css" />
+  <link rel="stylesheet" href="/static/css/event_grandprix.css" />
+  <link rel="stylesheet" href="/static/css/header.css" />
+  <link rel="stylesheet" href="/static/css/footer.css" />
+  <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  {{> header }}
+  <!-- banner -->
+  <div class="common-banner">
+    <div class="common-banner-content">
+      <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+      <h1 class="common-banner-title">{{CurrentRootCategory.Name}}</h1>
+    </div>
+  </div>
+  <div class="main-content">
+    <section class="video-wrapper">
+      <video src="{{VideoUrl}}" id="videoDom" poster="{{PosterUrl}}" preload="auto" class="video-dom"></video>
+      <!-- 原版网页上提供的视频尺寸为18:7，但设置显示区域尺寸为 16:9；新设计稿显示尺寸为16:8.3。关于视频要如何显示，需要确认 -->
+      <!-- 此外，视频播放是否使用插件，是否静音播放，是否循环播放，是否自动播放。 -->
+      <!-- autoplay="true -->
+    </section>
+    <section class="countdown-wrapper">
+      <div class="countdown-content">
+        <h3 class="countdown-subtitle">{{CountDown.Subtitle}}</h3>
+        <h2 class="countdown-title">{{CountDown.Title}}</h2>
+        <div class="countdown">
+          <div class="wow zoomIn number-wrapper">
+            <span class="number" id="days">00</span>
+            <span>天</span>
+          </div>
+          <div class="wow zoomIn number-wrapper">
+            <span class="number" id="hours">00</span>
+            <span>小時</span>
+          </div>
+          <div class="wow zoomIn number-wrapper">
+            <span class="number" id="minutes">00</span>
+            <span>分鐘</span>
+          </div>
+          <div class="wow zoomIn number-wrapper">
+            <span class="number" id="seconds">00</span>
+            <span>秒</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <img src="{{CompetitionPoster.Url}}" alt="{{CompetitionPoster.Alt}}" class="competition-poster">
+    </section>
+    <section class="ticket-wrapper diamond-bg">
+      <div class="section-content-wrapper">
+        <h2 class="section-title">{{TicketInfo.Title}}</h2>
+        <p class="ticket-info-date">{{TicketInfo.DateReservation}}</p>
+        <p class="ticket-info-date">{{TicketInfo.DateStay}}</p>
+        <ul class="ticket-list">
+          {{#TicketInfo.List}}
+          <li class="ticket-item">
+            <div class="ticket-icon-wrap">
+              <img src="{{Icon.Url}}" alt="{{Icon.Alt}}">
+            </div>
+            <h3 class="ticket-title">{{Title}}</h3>
+            <p class="fare-info">{{{Fare}}}</p>
+            <p class="ticket-tip">{{{TicketTip}}}</p>
+            <ul class="ticket-dateil-wrapper">
+              {{#DetailInfo}}
+              <li class="ticket-dateil">{{{.}}}</li>
+              {{/DetailInfo}}
+            </ul>
+            {{#TelephoneNumber}}
+            <div class="telephone-info">
+              <p class="telephone-bumber">{{TelephoneNumberInfo}}</p>
+              <p class="telephone-bumber"><a href="tel:{{TelephoneNumber}}">{{TelephoneNumber}}</a></p>
+            </div>
+            {{/TelephoneNumber}} {{#OrderUrl}}
+            <a href="{{OrderUrl}}" target="_blank" class="img-btn">立即訂購
+            </a> {{/OrderUrl}}
+          </li>
+          {{/TicketInfo.List}}
+        </ul>
+      </div>
+    </section>
+    <section class="slide-wrapper section-interval tidbit">
+      <div class="section-content-wrapper">
+        <h3 class="slide-title">{{Tidbit.Title}}</h3>
+        <div class="view-wrapper">
+          <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-list" id="carousel">
+            {{#Tidbit.List}}
+            <div class="ratio-16-9"><img src="{{Url}}" alt="{{Alt}}" class="tidbit-item" width="335"></div>
+            {{/Tidbit.List}}
+          </div>
+        </div>
+      </div>
+    </section>
+    {{#EventFocus.Show}}
+    <section class="slide-wrapper event-focus event-focus">
+      <div class="section-content-wrapper">
+        <h3 class="slide-title">相關動態</h3>
+        <div class="view-wrapper">
+          <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-list" id="carousel2">
+            {{#EventFocus.List}}
+            <div class="event-focus-item">
+                <a href="/{{LanguageDisplay}}/news/category/racing/{{Slug}}">
+                <div class="ratio-16-9"><img src="{{CoverLink.Url}}" alt="{{CoverLink.Description}}"></div>
+                <div class="event-focus-item-info">
+                  <p class="item-info-title">{{Title}}</p>
+                  <div class="event-date">{{Date}}</div>
+                  <span class="continue-reading">繼續閱讀</span>
+                </div>
+              </a>
+            </div>
+            {{/EventFocus.List}}
+          </div>
+        </div>
+      </div>
+    </section>
+    {{/EventFocus.Show}}
+    <section class="runway-wrapper section-interval">
+      <div class="section-content-wrapper">
+        <img src="/static/imgs/events/route-map-3-140.png" alt="route-map" class="runway-img">
+        <div class="runway-info">
+          <h2 class="section-title">東望洋跑道</h2>
+          <h3 class="section-subtitle">致命的吸引力 ・明星車手的搖籃</h3>
+          <p class="runway-length">總長度： 3.8英里（6.2公里）
+            <br />賽道最窄闊度： 22.8英呎（7米）</p>
+          <p class="runway-detail">混合著葡式及現代建築的街道上包含了高速的直路和迂迴的急彎，被公認為世界上其中一條對車手有極高要求的賽道。東望洋賽道的山路賽段極具挑戰，高速直路駛入葡京彎令人熱血沸騰，加上澳門格蘭披治大賽的競爭激烈，成為許多渴望晉級一級方程式車手的必經之路。</p>
+        </div>
+      </div>
+    </section>
+    <section class="diamond-bg runway-focus">
+      <div class="section-content-wrapper">
+        <h2 class="runway-focus-title">大看台</h2>
+        <h3 class="runway-focus-subtitle">大賽中的主看台，於跑道的起點及終點位置，在眾看台中最能感受賽車的緊張刺激氣氛。大看台的座位居高臨下，在比賽初段清楚觀賞各車手起步的衝勁，衝線一刻盡情為車手給予掌聲與歡呼聲，享受無與倫比的國際賽車盛事。</h3>
+        <ul class="runway-bends">
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第一彎 | 文華東方彎</p>
+              <p class="bend-describe">全場最高速的彎</p>
+            </div>
+            <p class="bend-detail">
+              原名遊艇會彎是起步後到達的第一個彎角，多年前是澳門遊艇會的舊址。澳門遊艇會現已遷往青洲。現今坐立於該角的澳門文華東方酒店，故現命名為文華東方彎。文華東方彎亦是全場最高速的彎，在財神酒店澳門香港埠際賽中最高速時速達200公里，在三級方程式賽車更達至時速260公里。
+            </p>
+          </li>
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第二彎 | 葡京彎</p>
+              <p class="bend-describe">各車手發揮競賽實力的位置</p>
+            </div>
+            <p class="bend-detail">
+              葡京彎是緊接著文華東方彎，因位置近於葡京酒店而命名。過了高速的文華東方彎後，車手們為爭先轉入葡京彎；往往發生險象環生的多車連環相撞的意外。所以此彎最能讓各車手發揮競賽實力及用盡戰驅的制動性能。
+            </p>
+          </li>
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第三彎 | 嘉思欄馬路彎</p>
+              <p class="bend-describe">爭取時間的一刻</p>
+            </div>
+            <p class="bend-detail">
+              從嘉思欄馬路彎開始是上斜的路段。車手為爭取時間，由離開葡京彎後便會快速沖上這上斜路段。
+            </p>
+          </li>
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第四彎 | 產房彎</p>
+              <p class="bend-describe">最具特式的多個連接彎路段</p>
+            </div>
+            <p class="bend-detail">
+              產房彎以澳門的婦產醫院命名。產房彎開始就是東望洋跑道最具特式的多個連接彎路段，刺激非常。車手們為求用盡賽道的每一分一寸，而令賽車非常緊貼圍欄；場面驚險萬分。
+            </p>
+          </li>
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第五彎 | 海角遊魂彎</p>
+              <p class="bend-describe">轉向達180度的左彎</p>
+            </div>
+            <p class="bend-detail">
+              海角遊魂彎以澳門的七大峰之一命名，是個頗長並轉向達180度的左彎。賽道狹窄之餘亦因長彎道，而考驗車手們掌控油門的能力與車輪的差速裝置的能力。
+            </p>
+          </li>
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第六彎 | 髮夾彎</p>
+              <p class="bend-describe">又稱死亡之彎</p>
+            </div>
+            <p class="bend-detail">
+              髮夾彎是本賽道的特別地方之一，狹窄的程度在一眾賽事中數一數二。亦由於此路段極為狹窄，賽會規定各車手絕不能在此路段超車，以減低意外發生之可能。
+            </p>
+          </li>
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第七彎 | 漁翁彎</p>
+              <p class="bend-describe">考驗車手極精準的入彎角度</p>
+            </div>
+            <p class="bend-detail">
+              在極速上僅次於文華東方彎的漁翁彎要求車手極精準的入彎角度， 而使戰車能以高速進入接下來的水塘北角彎。
+            </p>
+          </li>
+          <li class="bend">
+            <div class="bend-name-wrapper">
+              <p class="bend-name">第八彎 | 水塘北角彎</p>
+              <p class="bend-describe">爭奪衝線奪冠</p>
+            </div>
+            <p class="bend-detail">
+              東望洋跑道最後的水塘北角彎，車手們會為準備衝線奪冠或痛快的在文華東方彎上飛馳。他們都在水塘北角彎比試一番， 爭奪更佳的行車路線以極速飛往格仔旗。
+            </p>
+          </li>
+        </ul>
+        <div class="runway-end">
+          在最後一彎後，便是各車手衝刺的時刻。觀眾於此目送車手起步，亦在此迎接車手衝線，一起分享勝利的喜悅。
+        </div>
+      </div>
+      <ul class="car-racing">
+        <li class="car-racing-item">
+          <img class="car-racing-img" src="/static/imgs/events/f-3-x-1000.jpg" srcset="/static/imgs/events/f-3-x-1000@2x.jpg 2x,
+                   /static/imgs/events/f-3-x-1000@3x.jpg 3x" alt="f-3-x-1000">
+          <img class="car-racing-img-hover" src="/static/imgs/events/f-3-content-2.jpg" srcset="/static/imgs/events/f-3-content-2@2x.jpg 2x,
+         /static/imgs/events/f-3-content-2@3x.jpg 3x" alt="f-3-x-1000">
+        </li>
+        <li class="car-racing-item">
+          <img class="car-racing-img" src="/static/imgs/events/carx-1000.jpg" srcset="/static/imgs/events/carx-1000@2x.jpg 2x,
+                   /static/imgs/events/carx-1000@3x.jpg 3x" alt="carx-1000">
+          <img class="car-racing-img-hover" src="/static/imgs/events/car-content-t-cv-2.jpg" srcset="/static/imgs/events/car-content-t-cv-2@2x.jpg 2x,
+         /static/imgs/events/car-content-t-cv-2@3x.jpg 3x" alt="car-content-t-cv-2">
+        </li>
+        <li class="car-racing-item">
+          <img class="car-racing-img" src="/static/imgs/events/motorcyclex-1000.jpg" srcset="/static/imgs/events/motorcyclex-1000@2x.jpg 2x,
+                   /static/imgs/events/motorcyclex-1000@3x.jpg 3x" alt="motorcyclex-1000">
+          <img class="car-racing-img-hover" src="/static/imgs/events/motorcycle-content-tc-2017.jpg" srcset="/static/imgs/events/motorcycle-content-tc-2017@2x.jpg 2x,
+         /static/imgs/events/motorcycle-content-tc-2017@3x.jpg 3x" alt="motorcycle-content-tc-2017">
+        </li>
+        <li class="car-racing-item">
+          <img class="car-racing-img" src="/static/imgs/events/scooterx-1000.jpg" srcset="/static/imgs/events/scooterx-1000@2x.jpg 2x,
+                   /static/imgs/events/scooterx-1000@3x.jpg 3x" alt="scooterx-1000">
+          <img class="car-racing-img-hover" src="/static/imgs/events/scooter-content-t-cv-2.jpg" srcset="/static/imgs/events/scooter-content-t-cv-2@2x.jpg 2x,
+         /static/imgs/events/scooter-content-t-cv-2@3x.jpg 3x" alt="scooter-content-t-cv-2">
+        </li>
+      </ul>
+    </section>
+  </div>
+  {{> footer}}
+  <div class="element_to_pop_up">
+    <div class="bigpic-header-wrapper">
+      <span class="btn-close">
+        <img src="/static/imgs/bigpic-close.svg" />
+      </span>
+    </div>
+    <img src="" />
+  </div>
+  <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+  <script src="/static/js/vender/wow.min.js"></script>
+  <script src="/static/js/vender/owl.carousel.min.js"></script>
+  <script src="/static/js/vender/bpopup.min.js"></script>
+  <script src="/static/js/event_grandprix.js"></script>
+  <script>
+  document.getElementById("videoDom").volume = 0;
+  var endTime = parseInt("{{EndTime}}");
+  StartCountdown(endTime);
+  document.getElementById("videoDom").onclick = function () {
+    this.play();
+  };
+  </script>
+  <script src="/static/js/header.js"></script>
+  <script src="/static/js/footer.js"></script>
+  <script src="/static/js/vender/utility.js"></script>
+  <script src="/static/js/hreflang.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+{extend name="base/base" /}
+{block name="main"}
+<style>
+    .layui-table-fixed-r td{height:58px!important;}
+    .layui-table-fixed-r th{height:58px!important;}
+    .layui-table img {
+        /*width: 100%;*/
+        /*height: 100%;*/
+        max-width: 300px;min-height: 80px;
+    }
+    table tr td .laytable-cell-1-0-0 {
+        padding:0px!important;;
+        height: 200px!important;;
+        /*width: 200px!important;*/
+        line-height: 200px!important;;
+    }
+    .layui-layer-content{
+        display: flex;justify-content: center;align-items: center;
+    }
+</style>
+<form class="layui-form">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form">
+            <div class="layui-inline">
+                <!--<label class="labels">標題</label>-->
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input searchVal" placeholder="輸入標題以搜索" name="keyword" id="title"/>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn search_btn" data-types="reset" type="reset" id="reset">重置</button>
+                <button class="layui-btn search_btn" type="button" data-types="reload">搜索</button>
+            </div>
+        </form>
+    </blockquote>
+    <table id="usersList" lay-filter="usersList"></table>
+    <!--操作-->
+    <script type="text/html" id="usersListBar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    </script>
+    <!--<script type="text/html" id="big">-->
+        <!--<div><img src="{{ d.url}}"></div>-->
+    <!--</script>-->
+
+</form>
+{/block}
+{block name="script"}
+<script>
+    layui.use(['jquery','form','layer','laydate','table','laytpl'],function(){
+        var form = layui.form,
+            layer = parent.layer === undefined ? layui.layer : top.layer,
+            $ = layui.jquery,
+            laydate = layui.laydate,
+            laytpl = layui.laytpl,
+            table = layui.table;
+        laydate.render({
+            elem: '#test1' //指定元素
+            ,type: 'datetime'
+        });
+        laydate.render({
+            elem: '#test2' //指定元素
+            ,type: 'datetime'
+        });
+        //用户列表
+        var tableIns = {
+            id:'id',
+            elem: '#usersList',
+            url : "/admin/get_video_data",
+            cellMinWidth : 95,
+            page : true,
+            limit:10,
+            limits:[5,10,15,20],
+            // height : "full-125",
+            height: 680,
+            size:'sm',
+            method:'post',
+            // id:'usersListTable',
+            cols : [[
+                {field: 'url', title: '圖片',align: 'center',templet:'<div><video src="{{ d.url}}"></div>'},
+                {field: 'name', title: '標題', align:'center', width:200},
+                {field: 'description', title: '描述', align:'center'},
+                {title: '操作', width:320, templet:'#usersListBar',fixed:"right",align:"center"}
+            ]],
+            done: function(res, curr, count){
+                layer.closeAll();
+            }
+        };
+
+
+        //方法级渲染-默认显示入金记录
+        var ins1 = table.render(tableIns);
+
+
+        //表格搜索和重载
+        var $ = layui.$,
+            active = {
+                reload: function(){
+                    var index = layer.msg('数据加载中,请耐心等待...', {
+                        icon: 16,shade: 0.5,time:500
+                    });
+                    var keyword = $('#title').val();
+                    ins1.reload({
+                        where: {
+                            //根据MT4搜索
+                            keyword:keyword,
+                        }
+                    });
+                },
+            };
+
+        $('.search_btn').on('click', function(){
+            var types = $(this).data('types');
+            if(types === 'reset'){
+                ins1.reload({
+                    where: {
+                        //根据MT4搜索
+                        types:types,
+                        keyword:'',
+                    }
+                });
+                $("#reset").on("click",function(){ window.location.reload();});
+
+            }
+            active[types] ? active[types].call(this) : '';
+        });
+
+        //编辑用户
+        function edit(id){
+            var index = layui.layer.open({
+                title : "编辑用户",
+                type : 2,
+                area: ['900px', '400px'],
+                fixed: false, //不固定
+                maxmin: true,
+                content : "{:url('/admin/videoEdit')}"+'?id='+id,
+                success : function(layero, index){
+                    var body = layui.layer.getChildFrame('body', index);
+                    setTimeout(function(){
+                        layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                            tips: 3
+                        });
+                    },500)
+                }
+            })
+            // layui.layer.full(index);
+            window.sessionStorage.setItem("index",index);
+            //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
+            $(window).on("resize",function(){
+                // layui.layer.full(window.sessionStorage.getItem("index"));
+            })
+        }
+        //列表操作
+        table.on('tool(usersList)', function(obj){
+            var layEvent = obj.event, data = obj.data;
+            if(layEvent === 'edit'){ //编辑
+                edit(data.id);
+            } else if(layEvent === 'del'){ //删除
+                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                    $.post("{:url('/admin/videoDelete')}",{id:data.id},function(data){
+                        var icon=5;
+                        if(data.code){
+                            icon=6;
+                        }
+                        layer.msg(data.msg, {icon:icon,time: 1500}, function () {
+                            if(data.code){
+                                obj.del();
+                            }
+                        });
+                    })
+                });
+            }
+        });
+
+    })
+</script>
+{/block}

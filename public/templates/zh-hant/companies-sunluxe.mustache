@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>太陽臻薈(SUNLUXE) - 太陽城集團 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/static/css/owl.theme.default.css" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/childcompany_new.css">
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+    {{! <h1 class="title-for-seo">太陽臻薈(SUNLUXE)</h1> }}
+    <div class="common-banner"> 
+      <div class="common-banner-content">
+        <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">奢華購物</h1>
+      </div>
+    </div>
+    <!-- banner -->
+    <div class="banner-box">
+      <div class="wow slideInLeft banner-wrapper">
+        {{! <a href="javascript:void(0);" target="_blank" class="logo-link"><img class="banner-logo" src="/static/imgs/logo-sunluxe-02.png" srcset="/static/imgs/logo-sunluxe-02@2x.png 2x, /static/imgs/logo-sunluxe-02@3x.png 3x" alt="sunluxe"></a> }}
+        <div class="banner-text">
+          <p>太陽城集團設有專業的服務團隊為客戶搜羅各種稀罕珍品和奢侈品；還提供專人陪同暢遊全澳潮流熱點及選購頂級設計師品牌，為客人締造專屬的嶄新購物之旅。另外，集團旗下的太陽國際車業專注引入各國名車，一站式服務由銷售到保養維修服務都一應提供，尊享優質禮遇服務。</p>
+        </div>
+      </div>
+    </div>
+    <!-- content -->
+    {{! <div class="mainImg">
+      <img src="/static/imgs/corporate-sunluxe.jpg" alt="Suncity Group" />
+    </div> }}
+    <!-- banner 图添加轮播效果-->
+    <div  class="swiper-container">
+       <div class="swiper-wrapper">
+          <!-- 下面是4个不同颜色的轮播滑块 -->
+          {{#Banner}}
+             <div class="swiper-slide"><img src="{{url}}" alt="{{description}}" /></div>
+          {{/Banner}}
+        </div>
+        <div class="swiper-button-prev"></div><!--左箭头-->
+        <div class="swiper-button-next"></div><!--右箭头-->
+        <div class="swiper-pagination"></div><!--分页器（就是4个点点）-->
+    </div>
+    <div class='tab_type'>
+      <p class='tab_one'>
+          <img class="banner-logo" src="/static/imgs/logo-sun-automobile-02.png" srcset="/static/imgs/logo-sun-automobile-02@2x.png 2x, /static/imgs/logo-sun-automobile-02@3x.png 3x" alt="sun-automobile">
+      </p>
+    </div>
+    <div class='show_type_content1 type_one' >
+        <div>
+          <p>
+            太陽國際車業致力引進各國名車，包括法拉利、瑪莎拉蒂等，更專營進口限量版超跑，並設全新名車銷售服務、原廠零件及保養維修服務，讓愛車之人能輕易購買心頭好，駕馭超跑非凡速度，尊享優質禮遇服務。
+          </p>
+        </div>
+    </div>
+    <section class="latest-news diamond-bg">
+      <h1 class="latest-news-title"><a href="/{{LanguageDisplay}}/news">最新消息<i class="more-button"></i></a></h1>
+      <div class="slide-wrapper">
+        <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-slide" id="carousel">
+          {{#News}}
+          <div class="slide-item">
+            <a href="/{{LanguageDisplay}}/news/category/{{slug}}">
+              <div class="ratio-16-9"><img src="{{square_link.url}}" class='onerror'  ></div>
+              <div class="item-info">
+                <p class="item-info-text">{{title}}</p>
+                <div class="item-date">{{date}}</div>
+                <span class="go-more">繼續閱讀</span>
+              </div>
+            </a>
+          </div>
+          {{/News}}
+        </div>
+      </div>
+    </section>
+    {{> footer}}
+    <script src="/static/js/swiper.min.js"></script>
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/vender/owl.carousel.min.js"></script>
+    <script src="/static/js/childcompany.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+  </body>
+</html>

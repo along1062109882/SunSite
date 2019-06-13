@@ -1,0 +1,45 @@
+{extend name="base/base" /}
+{block name="main"}
+<form id="form" method="post" class="layui-form layui-form-pane" enctype="multipart/form-data">
+    <div class="layui-form-item flex-column">
+        <label class="labels">圖片</label>
+        <input type="file" name="file" accept="image/*">
+
+    </div>
+    <div class="layui-form-item flex-column">
+        <div class="layui-input-inline">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="type" value="<?php echo $type; ?>">
+
+            <button class="layui-btn" lay-submit lay-filter="*" id="commit">確認</button>
+            <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+        </div>
+    </div>
+</form>
+{/block}
+{block name="script"}
+{css href="/form-select/formSelects-v4.css" /}
+<script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+
+<script>
+    $("#commit").on("click", function (){
+        var form = new FormData($('#form')[0]);
+        $.ajax({
+            url: '/admin/sun_banner_commit',
+            type: 'POST',
+            cache: false,
+            data: form,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (data) {
+                if(data.code===200){
+                    parent.layer.msg('添加成功',{icon:1});
+                }else{
+                    parent.layer.msg('添加失败',{icon:2});
+                }
+            }
+        });
+    });
+</script>
+{/block}

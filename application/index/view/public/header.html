@@ -1,0 +1,73 @@
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="page-header">
+
+    <nav class="header-nav">
+        <a class="header-nav-logo" href=".." title="Suncity Group">
+            <!-- <img src="/static/imgs/suncity-logo.svg" alt="suncity-logo" /> -->
+            <img src="../../static/imgs/suncity-group-logo.png" srcset="../../static/imgs/suncity-group-logo@2x.png 2x, ../../static/imgs/suncity-group-logo@3x.png 3x" alt="suncity-logo" />
+        </a>
+        <div class="header-nav-button">
+            <img src="../../static/imgs/news-toggle-grid.svg">
+        </div>
+        <ol class="header-nav-group">
+            <li class="header-nav-title" id="header-nav-title-aboutus">
+                <a href="../about-us">{:lang('Group introduce')}</a>
+                <!-- <img src="/static/imgs/nav-arrow-down.svg"></img> -->
+            </li>
+            <!-- <ol class="header-nav-item-group" id="header-nav-item-group-aboutus">
+              <li><a href="/zh-hant/about-us/#about-us-overview">集團簡介</a></li>
+              <li><a href="/zh-hant/about-us/#about-us-bossword">行政總裁的話</a></li>
+            </ol> -->
+            <li class="header-nav-title" id="header-nav-title-childcompany">
+                <a href="javascript:void(0);">{:lang('Group business')}</a>
+                <img class="more-menu" src="../../static/imgs/nav-arrow-down.svg"></img>
+            </li>
+            <ol class="header-nav-item-group" id="header-nav-item-group-childcompany">
+                <li><a href="/companies/sun-vip">{:lang('sun-vip')}</a></li>
+                <li><a href="/companies/sun-entertainment">{:lang('sun-entertainment')}</a></li>
+                <li><a href="/companies/sun-entertainment-concert">{:lang('sun-entertainment-concert')}</a></li>
+                <li><a href="/companies/sun-travel">{:lang('sun-travel')}</a></li>
+                <li><a href="/companies/sun-food">{:lang('sun-food')}</a></li>
+                <li><a href="/companies/sun-automobile">{:lang('sun-automobile')}</a></li>
+                <li><a href="/companies/sunluxe">{:lang('sunluxe')}</a></li>
+                <li><a href="/companies/sun-sia">{:lang('sun-sia')}</a></li>
+                <li><a href="/companies/sun-financial">{:lang('sun-financial')}</a></li>
+                <li><a href="/companies/sun-century">{:lang('sun-century')}</a></li>
+                <li><a href="/companies/sun-management">{:lang('sun-management')}</a></li>
+            </ol>
+            <li class="header-nav-title" id="header-nav-title-duty"><a href="../duty">{:lang('duty')}</a></li>
+            <li class="header-nav-title" id="header-nav-title-news"><a href="../news">{:lang('news')}</a></li>
+            <!-- change events position -->
+            <li class="header-nav-title" id="header-nav-title-jobs"><a href="../jobs">{:lang('jobs')}</a></li>
+            <li class="header-nav-group-language">
+                <a class="header-toggle-language btn" href="" lang='tw' title="{:lang('Traditional Chinese')}">
+                    <img src="../../static/imgs/hant.svg" alt="suncity-logo" />
+                </a>
+                <a class="header-toggle-language btn" href="" lang='cn' title="{:lang('Simplified Chinese')}">
+                    <img src="../../static/imgs/hans.svg" alt="suncity-logo" />
+                </a>
+            </li>
+        </ol>
+        <div class="language-box">
+            <a class="header-toggle-language btn" href="" lang='tw' title="{:lang('Traditional Chinese')}">
+                <img src="../../static/imgs/hant.svg" alt="suncity-logo" />
+            </a>
+            <a class="header-toggle-language btn" href="" lang='cn' title="{:lang('Simplified Chinese')}">
+                <img src="../../static/imgs/hans.svg" alt="suncity-logo" />
+            </a>
+        </div>
+    </nav>
+</header>    <!-- change -->
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.js"></script>
+<script>
+    $('.btn').click(function(){
+        var data={'lang':$(this).attr('lang')}
+        $.get("{:url('lang')}",data,function(){
+            location.reload();
+        })
+    })
+</script>

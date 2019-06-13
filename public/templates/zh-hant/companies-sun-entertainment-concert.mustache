@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>太陽娛樂文化 - 太陽城集團 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/static/css/owl.theme.default.css" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/childcompany_new.css">
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+    {{! <h1 class="title-for-seo">太陽娛樂演唱會</h1> }}
+    <div class="common-banner"> 
+      <div class="common-banner-content">
+        <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">影視娛樂</h1>
+      </div>
+    </div>
+    <!-- banner -->
+    <div class="banner-box">
+      <div class="wow slideInLeft banner-wrapper">
+        {{! <a href="http://www.sunconcert.com" target="_blank" class="logo-link"><img class="banner-logo" src="/static/imgs/logo-sun-entertainment-concert-02.png" srcset="/static/imgs/logo-sun-entertainment-concert-02@2x.png 2x, /static/imgs/logo-sun-entertainment-concert-02@3x.png 3x" alt="sun-enterainment-concert"></a> }}
+        <div class="banner-text">
+          <p>太陽娛樂演唱會專注於籌辦及策劃大型演唱會及綜合娛樂項目，務求為觀眾提供最精彩的娛樂體驗。公司放眼世界，致力於香港、內地、澳門、台灣、東南亞、歐洲、美加等地籌辦演唱會、娛樂表演及大型展覽活動。憑藉專業知識及豐富的經驗，太陽娛樂演唱會精心策劃並執行演唱會統籌工作，每個細節都力求完美，以打造最高質素的演唱會。為迎接更輝煌的未來，公司將繼續對更多不同類型的表演項目進行投資，藉以提升公司於市場的地位，推動娛樂業界的發展。</p>
+        </div>
+        {{! <a href="http://www.sunconcert.com" target="_blank" class="know-more">了解更多</a> }}
+      </div>
+    </div>
+    <!-- content -->
+    {{! <div class="mainImg">
+      <img src="/static/imgs/corporate-sun-entertainment-concert.jpg" alt="Suncity Group" />
+    </div> }}
+    <!-- banner 图添加轮播效果-->
+    <div  class="swiper-container">
+       <div class="swiper-wrapper">
+          <!-- 下面是4个不同颜色的轮播滑块 -->
+          {{#Banner}}
+          <div class="swiper-slide"><img src="{{url}}" alt="{{description}}" /></div>
+          {{/Banner}}
+        </div>
+        <div class="swiper-button-prev"></div><!--左箭头-->
+        <div class="swiper-button-next"></div><!--右箭头-->
+        <div class="swiper-pagination"></div><!--分页器（就是4个点点）-->
+    </div>
+     <!-- Tab切换 -->
+    <div class='show_type'>
+        <div class='tab_type'>
+          <p class='tab_one'>
+             <img class="banner-logo" src="/static/imgs/logo-sun-entertainment-concert-02.png" srcset="/static/imgs/logo-sun-entertainment-concert-02@2x.png 2x, /static/imgs/logo-sun-entertainment-concert-02@3x.png 3x" alt="sun-enterainment-concert">
+             <span></span>
+          </p>
+          <p class='tab_two'>
+             <img class="banner-logo" src="/static/imgs/logo-sun-entertainment-02.png" srcset="/static/imgs/logo-sun-entertainment-02@2x.png 2x, /static/imgs/logo-sun-entertainment-02@3x.png 3x" alt="sun-enterainment">
+            <span></span>
+          </p>
+        </div>
+        <div class='show_type_img type_one'>
+          <ul>
+          {{#Concert}}
+            <li>
+               <img src="{{url}}"  alt="{{title}}">
+            </li>
+          {{/Concert}}
+          </ul>
+        </div>
+        <div class='show_type_img type_two'>
+          <ul>
+          {{#Culture}}
+            <li>
+               <img src="{{url}}"  alt="{{title}}">
+            </li>
+          {{/Culture}}
+          </ul>
+        </div>
+        <div class='show_type_content1 type_one' >
+           <div>
+              <p>
+                太陽娛樂演唱會專注於籌辦及策劃大型演唱會及綜合娛樂項目，務求為觀眾提供最精彩的娛樂體驗。公司放眼世界，致力於香港、內地、澳門、台灣、東南亞、歐洲、美加等地籌辦演唱會、娛樂表演及大型展覽活動。憑藉專業知識及豐富的經驗，太陽娛樂演唱會精心策劃並執行演唱會統籌工作，每個細節都力求完美，以打造最高質素的演唱會。為迎接更輝煌的未來，公司將繼續對更多不同類型的表演項目進行投資，藉以提升公司於市場的地位，推動娛樂業界的發展。
+              </p>
+           </div>
+       </div>
+       <div class='show_type_content1 type_two'>
+           <div>
+              <p>太陽娛樂文化有限公司主要從事電影製作及發行。自 2011 年成立以來，太陽娛樂積極製作及投資電影，投資及製作接近65部電影，總票房高達130億港元，成績斐然。作品包括《低俗喜劇》、《春嬌救志明》、《狂舞派》、《赤道》、《掃毒》、《賭城風雲》系列、《殺破狼 II》、《殺破狼‧貪狼》、《狂獸》、《湄公河行動》、及《紅海行動》等。</p>
+              <br>
+              <p>2015 年，由鄭保瑞執導、 TONY JAA、吳京及張晉主演的動作巨片《殺破狼II》，於中國內地票房達5.6 億元人民幣，李忠志憑該片獲得第35屆香港電影金像獎最佳動作設計。</p>
+              <br>
+              <p>2017年，由葉偉信執導，古天樂、林家棟及吳樾主演的《殺破狼‧貪狼》，在各大電影頒獎典禮橫掃多個獎項，包括第12屆亞洲電影大獎奪得最佳動作電影及最佳男主角(古天樂)，於第37屆香港電影金像獎榮獲最佳男主角(古天樂)、最佳動作設計(洪金寶)及最佳音響效果(曾景祥、李耀強)三項大獎。</p>
+              <br>
+              <p>2018年，太陽娛樂聯合投資電影《紅海行動》更於內地獲得超過36億人民幣票房。</p>
+              <br>
+           </div>
+       </div>
+    <section class="latest-news diamond-bg">
+      <h1 class="latest-news-title"><a href="/{{LanguageDisplay}}/news">最新消息<i class="more-button"></i></a></h1>
+      <div class="slide-wrapper">
+        <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-slide" id="carousel">
+          {{#News}}
+          <div class="slide-item">
+            <a href="/{{LanguageDisplay}}/news/category/{{slug}}">
+              <div class="ratio-16-9"><img src="{{square_link.url}}" class='onerror'  ></div>
+              <div class="item-info">
+                <p class="item-info-text">{{title}}</p>
+                <div class="item-date">{{date}}</div>
+                <span class="go-more">繼續閱讀</span>
+              </div>
+            </a>
+          </div>
+          {{/News}}
+        </div>
+      </div>
+    </section>
+    {{> footer}}
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/swiper.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/vender/owl.carousel.min.js"></script>
+    <script src="/static/js/childcompany.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+  </body>
+</html>

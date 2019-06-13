@@ -1,0 +1,117 @@
+{extend name="base/base" /}
+{block name="main"}
+<form id="form" method="post" class="layui-form layui-form-pane" enctype="multipart/form-data" action="#">
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>類別</label>
+        <div class="layui-input-inline">
+            <select name="type" lay-verify="required" lay-verify="required" id="type">
+                <option value="">請選擇類別</option>
+                <option value="1" <?php if(isset($list['type']) && $list['type']==1){echo "selected";} ?>>演唱會</option>
+                <option value="2" <?php if(isset($list['type']) && $list['type']==2){echo "selected";} ?>>文化</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>繁體標題</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title_hk" id="title_hk" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.title_hk)?$list.title_hk:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>繁體metaData</label>
+        <div class="layui-input-inline">
+            <input type="text" name="meta_hk" id="meta_hk" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.meta_hk)?$list.meta_hk:''}">
+        </div>
+    </div>
+
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>簡體標題</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title_cn" id="title_cn" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.title_cn)?$list.title_cn:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>簡體metaData</label>
+        <div class="layui-input-inline">
+            <input type="text" name="meta_cn" id="meta_cn" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+                   value="{:isset($list.meta_cn)?$list.meta_cn:''}">
+        </div>
+    </div>
+
+    <div class="layui-form-item flex-column">
+        <label class="labels">英文標題</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title_en" id="title_en" placeholder="请输入" autocomplete="off" class="layui-input"
+                   value="{:isset($list.title_en)?$list.title_en:''}">
+        </div>
+    </div>
+    <div class="layui-form-item flex-column">
+        <label class="labels">英文metaData</label>
+        <div class="layui-input-inline">
+            <input type="text" name="meta_en" id="meta_en" placeholder="请输入" autocomplete="off" class="layui-input"
+                   value="{:isset($list.meta_en)?$list.meta_en:''}">
+        </div>
+    </div>
+
+    <div class="layui-form-item flex-column">
+        <label class="labels"><span class='Important'>*</span>圖片</label>
+        <!--<div id="test1" class="add_img">-->
+            <!--<span >-->
+                <!--<p class="add">+</p>-->
+                <!--<p class="add_title">上传图片</p>-->
+            <!--</span>-->
+        <!--</div>-->
+        <input type="file" name="file" accept="image/*">
+
+    </div>
+    <div class="layui-form-item flex-column">
+        <div class="layui-input-inline">
+            <input type="hidden" name="id" id="id" value="{:isset($list['id'])?$list['id']:''}">
+
+            <button class="layui-btn" lay-submit lay-filter="*" id="commit">確認</button>
+            <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+        </div>
+    </div>
+</form>
+{/block}
+{block name="script"}
+{css href="/form-select/formSelects-v4.css" /}
+<script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+<script>
+
+    layui.config({
+        base: '/form-select/' //此处路径请自行处理, 可以使用绝对路径
+    }).extend({
+        formSelects: 'formSelects-v4'
+    });
+    $("#commit").on("click", function (){
+        var form = new FormData($('#form')[0]);
+        $.ajax({
+            url: '/admin/sun_entertainment_edit_commit',
+            type: 'POST',
+            cache: false,
+            data: form,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (data) {
+                if(data.code===200){
+                    parent.layer.msg('添加成功',{icon:1});
+                }else{
+                    parent.layer.msg('添加失败',{icon:2});
+                }
+            }
+        });
+    });
+    layui.use(['form', 'jquery', 'formSelects','layedit','upload'], function () {
+
+        var $ = layui.jquery,
+            layer = layui.layer,
+            form = layui.form;
+    });
+
+</script>
+{/block}

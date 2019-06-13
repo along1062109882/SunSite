@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>就业机会 - 太阳城集团 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/aboutus.css" />
+    <link rel="stylesheet" href="/static/css/animate.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <link rel="stylesheet" href="/static/css/job.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+    <!-- banner -->
+    <div class="common-banner">
+      <div class="common-banner-content">
+        <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo"/>
+        <h1 class="common-banner-title">就业机会</h1>
+      </div>
+    </div>
+    <!-- strategy -->
+    <div class="declaration">
+      <div class="declaration-content">
+        <div class="declaration-bg-img-box">
+          <!-- <img class="declaration-bg-img declaration-bg-img-1920" src="/static/imgs/job-strategy-2018-12-06.jpg" alt="">
+          <img class="declaration-bg-img declaration-bg-img-1440" src="/static/imgs/job-strategy-1440-2018-12-06.jpg" alt="">
+          <img class="declaration-bg-img declaration-bg-img-1024" src="/static/imgs/job-strategy-1440-2018-12-06.jpg" alt="">
+          <img class="declaration-bg-img declaration-bg-img-768" src="/static/imgs/job-strategy-1440-2018-12-06.jpg" alt="">
+          <img class="declaration-bg-img declaration-bg-img-640" src="/static/imgs/job-strategy-1440-2018-12-06.jpg" alt="">
+          <img class="declaration-bg-img declaration-bg-img-375" src="/static/imgs/job-strategy-375-2018-12-06.jpg" alt=""> -->
+          <img class="declaration-bg-img declaration-bg-img-1920" src="{{Banner.Img1920}}" alt="">
+          <img class="declaration-bg-img declaration-bg-img-1440" src="{{Banner.Img1440}}" alt="">
+          <img class="declaration-bg-img declaration-bg-img-1024" src="{{Banner.Img1024}}" alt="">
+          <img class="declaration-bg-img declaration-bg-img-768" src="{{Banner.Img768}}" alt="">
+          <img class="declaration-bg-img declaration-bg-img-640" src="{{Banner.Img640}}" alt="">
+          <img class="declaration-bg-img declaration-bg-img-375" src="{{Banner.Img375}}" alt="">
+        </div>
+        <div class="declaration-detail wow slideInRight">
+          <!-- <h2 class="declaration-title">「尊重人才‧成就未来」</h2>
+          <p class="declaration-text">是太阳城集团的员工发展方针。我们为各职级的同事们安排必备的课程，帮助员工提升竞争力，为他们职业生涯作发展、作规划。诚邀你们加入太阳城集团！</p> -->
+          <h2 class="declaration-title">{{Banner.Title}}</h2>
+          <p class="declaration-text">{{Banner.Content}}</p>
+        </div>
+      </div>
+    </div>
+    <!-- job opportunity -->
+    <div class="opportunity">
+      <div class="menu">
+        <h2 class="menu-title">职位空缺</h2>
+        <div class="divider"></div>
+        <ul>
+          {{#Jobs}}
+            <li id="{{FirstSubSlug}}" class="category-item">
+              <div class="category-wrapper">
+                <div class="category">
+                  <!-- <a href="/{{LanguageDisplay}}/jobs-vip/{{FirstSubSlug}}#content" class="first-class-menu"> -->
+                  <!-- <a href="/{{LanguageDisplay}}/jobs-vip/{{FirstSubSlug}}" class="first-class-menu"> -->
+                    <div class="category-title">
+                      <img src="/static/imgs/job-category-logo.svg" />
+                      <h3 class="department">{{Name}}</h3>
+                    </div>
+                    <img class="job-arrow-down" src="/static/imgs/job-arrow-down.svg" />
+                  <!-- </a> -->
+                </div>
+                <div class="divider"></div>
+                <ul class="submenu-box">
+                  {{#Posts}}
+                    <li class="job-item-link">
+                      <a href="/{{LanguageDisplay}}/jobs-vip/{{slug}}">
+                        {{title}}
+                      </a>
+                    </li>
+                  {{/Posts}}
+                </ul>
+              </div>
+            </li>
+          {{/Jobs}}
+        </ul>
+      </div>
+      <div class="menu-375">
+          <span>职位空缺</span>
+          <div class="job-dropdown unfold">
+              <span class="defaultName">{{CurrentCategory.Name}}</span>
+            <span class="icon">
+              <img src="/static/imgs/job-arrow-down.svg" />
+            </span>
+            <ul>
+              {{#Jobs}}
+                <li class="category-wrapper">
+                  <span><a href="/{{LanguageDisplay}}/jobs-vip/{{FirstSubSlug}}">{{name}}</a></span>
+                </li>
+              {{/Jobs}}
+            </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="jobs-swiper-wrapper">
+        <div class="jobs-swiper-button-prev"></div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {{#AllPostsBelongToCategory}}
+              <li class="swiper-slide js-swiper-slide js-item">
+                <a href="/{{LanguageDisplay}}/jobs-vip/{{slug}}">{{title}}</a>
+              </li>
+            {{/AllPostsBelongToCategory}}
+          </div>
+        </div>
+        <div class="jobs-swiper-button-next" ></div>
+      </div>
+      <div class="content" id="content">
+        <div class="des-wrapper wow fadeIn">
+          <div class="requirement-wrapper">
+            <div class="requirement">
+              <h2 class="jop-title">
+                <img src="/static/imgs/job-category-logo.svg" />
+                <span>{{CurrentCategory.Name}}-{{CurrentPost.title}}</span>
+              </h2>
+              <div class="des-block">{{{CurrentPost.content}}}</div>
+              <a href="https://www.suncity-group.com/contactUs/careerDetail"  target="_blank"><img src="/static/imgs/job-apply.svg" /></a>
+            </div>
+            <div class="welfare">
+              <i class="welfare-title">员工福利</i>
+              <div class="welfare-detail">
+                <ul>
+                  <li><img src="/static/imgs/holiday-icon.svg" alt="">有薪年假、生日假</li>
+                  <li><img src="/static/imgs/pension-icon.svg" alt="">退休保障計劃、醫療保障</li>
+                  <li><img src="/static/imgs/mea-icon.svg" alt="">膳食、洗衣福利</li>
+                  <li><img src="/static/imgs/training-icon.svg" alt="">在職培訓、良好晉升機會</li>
+                  <li><img src="/static/imgs/allowance-icon.svg" alt="">花紅、津貼、勤工獎  (福利組合視乎部門職位而定) </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- map -->
+    <div class="address">
+      <div class="address-wrapper">
+        <div class="map-wrapper">
+          <div id="googleMap" class="wow fadeIn"></div>
+        </div>
+        <div class="contact-us  wow fadeIn">
+          <h2>招聘中心</h2>
+          <span>招聘热线<a href="tel:+85388911331">+853 8891 1331</a></span>
+          <div>
+            <img src="/static/imgs/job-clock.svg"/>
+            <span>10:00 – 19:00 （星期六，日及公众假期除外）</span>
+          </div>
+          <div>
+            <img src="/static/imgs/job-mail.svg"/>
+            <a href="mailto:jobs@suncity-group.com">jobs@suncity-group.com</a>
+          </div>
+          <div>
+            <img src="/static/imgs/job-location.svg"/>
+            <span>澳门宋玉生广场263号中土大厦4楼H至M座</span>
+          </div>
+          <div class="qr-code-wrapper">
+            <div class="qr-code-box">
+              <img src="/static/imgs/fb-icon-brown.svg" class="fb-icon-button" alt="">
+              <img src="/static/imgs/fb-qr-code.png" srcset="/static/imgs/fb-qr-code@2x.png 2x, /static/imgs/fb-qr-code@3x.png 3x" alt="" class="qr-code">
+            </div>
+            <div class="qr-code-box">
+              <img src="/static/imgs/in-icon-brown.svg" class="fb-icon-button" alt="">
+              <img src="/static/imgs/in-qr-code.png" srcset="/static/imgs/in-qr-code@2x.png 2x, /static/imgs/in-qr-code@3x.png 3x" alt="" class="qr-code">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{> footer}}
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/vender/swiper.min.js"></script>
+    <script src="/static/js/job.js"></script>
+    <script src="/static/js/googleMap.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+    <script>
+        var  str = '{{#Jobs}}"{{Slug}}":"{{Name}}",{{#Posts}}"{{slug}}":"{{name}}",{{/Posts}}{{/Jobs}}';
+        var json = JSON.parse('{' + str.slice(0,-1) + '}');
+        var slug = "";
+        var srcArr = location.href.split('/');
+          slug = (srcArr[srcArr.length -1]);
+          console.log(slug);
+          if (slug == 'jobs-vip') {
+              var txt = $('.job-dropdown ul li').eq(0).text();
+              $('.defaultName').text(txt);
+          } else {
+            $('.defaultName').text(json[slug]);
+          } 
+
+    </script>
+  </body>
+</html>

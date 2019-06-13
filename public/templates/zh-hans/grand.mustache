@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="太阳城集团{{CurrentRootCategory.Name}}{{CurrentCategoryName}}" />
+    <meta name="keywords" content="太阳城集团,{{CurrentRootCategory.Name}},{{CurrentCategoryName}}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Language" content="zh-HK">
+    <title>精彩盛事 - 太阳城集团 SUNCITYGROUP</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/animate.css" />
+    <link rel="stylesheet" href="/static/css/news_new.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/swiper.min.css" />
+    <link rel="stylesheet" href="/static/css/disclaimer.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MH9NFH');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    {{> header }}
+
+    <!-- new -->
+    <!-- banner -->
+    <div class="common-banner">
+      <div class="common-banner-content">
+        <img src="/static/imgs/sun-logo.svg" alt="sun-logo" class="sun-logo" />
+        <h1 class="banner-title">精彩盛事</h1>
+      </div>
+    </div>
+    <!-- news -->
+    <div class="news-wrapper diamond-bg">
+        <div class='grand_section'>
+            <nav class='grand_nav'>
+                <ol>
+                    <li class='grand_active'> 澳门格兰披治大赛车</li>
+                    <li>太陽城集團十週</li>
+                    <li>张学友世界巡回演唱</li>
+                </ol>
+                <p></P>
+            </nav>
+             <div  class="swiper-container">
+                <div class="swiper-wrapper">
+                <!-- 下面是4个不同颜色的轮播滑块 -->
+                <div class="swiper-slide" ><span class='swiper_active' id='slide_car'>澳门格兰披治大赛车</span></div>
+                <div class="swiper-slide" ><span id='slide_ten'>太陽城集團十週年</span></div>
+                <div class="swiper-slide"><span id='slide_music'>张学友世界巡回演唱</span></div>
+                </div>
+                <div class="swiper-button-prev"><img src="/static/imgs/left_btn.png" /></div><!--左箭头-->
+                <div class="swiper-button-next"><img src="/static/imgs/right_btn.png" /></div><!--右箭头-->
+            </div>
+            <div class='grand_container grand_car'>
+                <ul>
+                {{#Grand}}
+                    <li>
+                        {{#index}}
+                             <div>
+                                 <div class="grand_p">
+                                   <div class='title'>{{name}}</div>
+                                   <div class='content'>{{{content}}}</div>
+                                 </div>
+                                 <span>
+                                     <a href="{{url}}" target='_blank'>
+                                         <b>进入专页</b>
+                                     </a>
+                                 </span>
+                             </div>
+                            {{#img_url}}
+                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
+                            {{/img_url}}
+                            {{^img_url}}
+                            <span><img src="/static/imgs/grand_car.png" alt="Suncity_grand_car" /></span>
+                            {{/img_url}}
+                        {{/index}}
+                        {{^index}}
+                            {{#img_url}}
+                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
+                            {{/img_url}}
+                            {{^img_url}}
+                            <span><img src="/static/imgs/grand_car.png" alt="Suncity_grand_car" /></span>
+                            {{/img_url}}
+                            <div>
+                                 <div class="grand_p">
+                                   <div class='title'>{{name}}</div>
+                                   <div class='content'>{{{content}}}</div>
+                                 </div>
+                                <span>
+                                    <a href="{{url}}" target='_blank'>
+                                        <b>进入专页</b>
+                                    </a>
+                                </span>
+                            </div>
+                        {{/index}}
+                    </li>
+                {{/Grand}}
+                </ul>
+            </div>
+            <div class='grand_container grand_ten'>
+                <ul>
+                {{#Annual}}
+                    <li>
+                        {{#index}}
+                             <div>
+                                 <div class="grand_p">
+                                   <div class='title'>{{name}}</div>
+                                   <div class='content'>{{{content}}}</div>
+                                 </div>
+                                 <span>
+                                     <a href="{{url}}" target='_blank'>
+                                         <b>进入专页</b>
+                                     </a>
+                                 </span>
+                             </div>
+                            {{#img_url}}
+                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
+                            {{/img_url}}
+                            {{^img_url}}
+                            <span><img src="/static/imgs/grand_ten_year.png" alt="Suncity_grand_ten_year" /></span>
+                            {{/img_url}}
+                        {{/index}}
+                        {{^index}}
+                            {{#img_url}}
+                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
+                            {{/img_url}}
+                            {{^img_url}}
+                            <span><img src="/static/imgs/grand_ten_year.png" alt="Suncity_grand_ten_year" /></span>
+                            {{/img_url}}
+                            <div>
+                                 <div class="grand_p">
+                                   <div class='title'>{{name}}</div>
+                                   <div class='content'>{{{content}}}</div>
+                                 </div>
+                                <span>
+                                    <a href="{{url}}" target='_blank'>
+                                        <b>进入专页</b>
+                                    </a>
+                                </span>
+                            </div>
+                        {{/index}}
+                    </li>
+                {{/Annual}}
+                </ul>
+            </div>
+            <div class='grand_container grand_music'>
+                <ul>
+                {{#Concert}}
+                    <li>
+                        {{#index}}
+                             <div>
+                                 <div class="grand_p">
+                                   <div class='title'>{{name}}</div>
+                                   <div class='content'>{{{content}}}</div>
+                                 </div>
+                                 <span>
+                                     <a href="{{url}}" target='_blank'>
+                                         <b>进入专页</b>
+                                     </a>
+                                 </span>
+                             </div>
+                            {{#img_url}}
+                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
+                            {{/img_url}}
+                            {{^img_url}}
+                            <span><img src="/static/imgs/grand_music.png" alt="Suncity_grand_music" /></span>
+                            {{/img_url}}
+                        {{/index}}
+                        {{^index}}
+                            {{#img_url}}
+                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
+                            {{/img_url}}
+                            {{^img_url}}
+                            <span><img src="/static/imgs/grand_music.png" alt="Suncity_grand_music" /></span>
+                            {{/img_url}}
+                            <div>
+                                 <div class="grand_p">
+                                   <div class='title'>{{name}}</div>
+                                   <div class='content'>{{{content}}}</div>
+                                 </div>
+                                <span>
+                                    <a href="{{url}}" target='_blank'>
+                                        <b>进入专页</b>
+                                    </a>
+                                </span>
+                            </div>
+                        {{/index}}
+                    </li>
+                {{/Concert}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{> footer}}
+    <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/swiper.min.js"></script>
+    <script src="/static/js/vender/wow.min.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vender/utility.js"></script>
+    <script src="/static/js/hreflang.js"></script>
+    <script src='/static/js/grand.js'></script>
+  </body>
+</html>

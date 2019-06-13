@@ -1,0 +1,44 @@
+{extend name="base/base" /}
+{block name="main"}
+<div class="layui-row layui-col-space10">
+    <div class="layui-col-lg6 layui-col-md12">
+        <blockquote class="layui-elem-quote title">系统基本参数</blockquote>
+        <table class="layui-table magt0">
+            <colgroup>
+                <col width="150">
+                <col>
+            </colgroup>
+            <tbody>
+            <tr>
+                <td>当前版本</td>
+                <td class="version">1.0</td>
+            </tr>
+            <tr>
+                <td>开发作者</td>
+                <td class="author">lf</td>
+            </tr>
+            <tr>
+                <td>服务器环境</td>
+                <td class="server">{$Think.const.PHP_OS}</td>
+            </tr>
+            <tr>
+                <td>运行环境</td>
+                <td class="">{$Request.server.SERVER_SOFTWARE}</td>
+            </tr>
+            <tr>
+                <td>ThinkPHP版本</td>
+                <td class="server">{$Think.VERSION}</td>
+            </tr>
+            <tr>
+                <td>数据库版本</td>
+                <td class="dataBase">{:db()->query('select version() as version')[0]['version']}</td>
+            </tr>
+            <tr>
+                <td>最大上传限制</td>
+                <td class="maxUpload">{:ini_get('upload_max_filesize')}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{/block}
