@@ -61,42 +61,40 @@
           <p></p>
         </div>
       </div>
-      <div id="content_one" class="content_box">
+     <div class="container">
+       <div id="content_one" class="content_box">
         <form action="">
           <div class="block">
             <label for="">地区：</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择地区">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <select class="selectBoxRadioBtnBox region">
+              <option value="" selected="selected">请选择</option>
+            </select>
           </div>
           <div class="block">
             <label for="">第一选择：</label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
+            <select class="selectBoxRadioBtnBox change_first">
+              <option value="" selected="selected">请选择</option>
+            </select>
             </span>
           </div>
           <div class="block">
             <label for=""></label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
+            <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择</option>
+            </select>
             </span>
           </div>
           <div class="block">
             <label for="">第二选择：</label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择部门">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择部门</option>
+            </select>
           </div>
           <div class="block">
             <label for=""></label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择职位">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+           <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择职位</option>
+            </select>
           </div>
           <div class="block">
             <label for="">薪资要求：</label>
@@ -104,10 +102,9 @@
           </div>
           <div class="block">
             <label for="">离职通知期：</label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择</option>
+            </select>
           </div>
         </form>
       </div>
@@ -122,11 +119,14 @@
             <input class="drop-down" type="text" name="text" placeholder="请输入">
           </div>
           <div class="block">
-            <label for="">联系电话:</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <label for="">联络电话：</label>
+            <div class="radioBtnBox">
+              <select class="selectBox">
+                <option value="" selected="selected">请选择</option>
+              </select>
+              <p class="divider"></p>
+              <input class="drop-down-contact-phone" type="text" name="text" placeholder="请输入">
+            </div>
           </div>
           <div class="block">
             <label for="">介绍人关系：</label>
@@ -462,7 +462,8 @@
 
       <div class="content_seven" id="content_seven">
         <!-- 中文 -->
-        <div class="block">
+        <form>
+           <div class="block">
           <label for="">中文</label>
           <div class="radioBtnBox"></div>
         </div>
@@ -485,6 +486,7 @@
               <label for="chineseWriteGeneral" class="radioLabel radioLabelLeft"></label>
             </span>
           </div>
+        </form>
         </div>
 
         <!-- 广东话 -->
@@ -728,9 +730,11 @@
           <label for="">其他技能：</label>
           <textarea name="description" cols="30" rows="10" placeholder="请输入"></textarea>
         </div>
-        <!-- 家庭成员信息 -->
         <p class="footer_line"></p>
-        <form action="">
+      </div>
+        <!-- 家庭成员信息 -->
+      <div class="content_eight" id="content_eight">
+          <form action="">
           <div class="block">
             <label for="">关系：</label>
             <input class="drop-down" type="text" placeholder="请输入">
@@ -797,10 +801,10 @@
           <p class="add">+ 添加</p>
         </div>
         <p class="footer_line"></p>
-
-
+      </div>
         <!-- 背景申报 -->
-        <div class="block">
+       <div class="content_nine" id="content_nine">
+           <div class="block">
           <label for="" style="line-height: 20px">刑事记录，是否曾因刑事案件被定罪：</label>
           <select class="selectBoxRadioBtnBox">
             <option value="" selected="selected">请选择</option>
@@ -824,153 +828,143 @@
         </div>
         <p class="footer_line"></p>
 
-
+       </div>
         <!-- 相关文件 -->
-        <div class="block">
-          <label for="" style="line-height: 20px">文件類型：</label>
-          <select class="selectBoxRadioBtnBox">
-            <option value="" selected="selected">请选择</option>
-          </select>
+        <div id="content_ten" class="content_ten">
+          <div class="block">
+            <label for="" style="line-height: 20px">文件類型：</label>
+            <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择</option>
+            </select>
+          </div>
+          <div class="block">
+            <label for="" style="line-height: 20px">上傳文件：</label>
+            <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择</option>
+            </select>
+          </div>
+          <div class="block">
+            <label for="">文件名稱：</label>
+            <input class="drop-down" type="text" placeholder="请输入">
+          </div>
+          <div class="block">
+            <label for="" style="line-height: 20px">備註：</label>
+            <textarea name="description" cols="30" rows="10" placeholder="请输入"></textarea>
+          </div>
+          <p class="footer_line"></p>
+          <div class="change_btn">
+            <p class="add">+ 添加</p>
+          </div>
+          <p class="footer_line"></p>
         </div>
-        <div class="block">
-          <label for="" style="line-height: 20px">上傳文件：</label>
-          <select class="selectBoxRadioBtnBox">
-            <option value="" selected="selected">请选择</option>
-          </select>
-        </div>
-        <div class="block">
-          <label for="">文件名稱：</label>
-          <input class="drop-down" type="text" placeholder="请输入">
-        </div>
-        <div class="block">
-          <label for="" style="line-height: 20px">備註：</label>
-          <textarea name="description" cols="30" rows="10" placeholder="请输入"></textarea>
-        </div>
-        <p class="footer_line"></p>
-        <div class="change_btn">
-          <p class="add">+ 添加</p>
-        </div>
-        <p class="footer_line"></p>
-
-
         <!-- 得知招聘途径 -->
-        <div class="block">
-          <label for="">太陽城集團網站：</label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp1" checked>
-              <label for="sunHttp1" class="radioLabel"></label>
-            </span>
+        <div class="content_eleven" id="content_eleven">
+            <form>
+                <div class="block">
+            <label for="">太陽城集團網站：</label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp1" checked>
+                <label for="sunHttp1" class="radioLabel"></label>
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">勞⼯事務局：</label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp2">
-              <label for="sunHttp2" class="radioLabel"></label>
-            </span>
+          <div class="block">
+            <label for="">勞⼯事務局：</label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp2">
+                <label for="sunHttp2" class="radioLabel"></label>
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">宣傳單張：</label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp3">
-              <label for="sunHttp3" class="radioLabel"></label>
-            </span>
+          <div class="block">
+            <label for="">宣傳單張：</label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp3">
+                <label for="sunHttp3" class="radioLabel"></label>
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">朋友：</label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp4">
-              <label for="sunHttp4" class="radioLabel"></label>
-            </span>
+          <div class="block">
+            <label for="">朋友：</label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp4">
+                <label for="sunHttp4" class="radioLabel"></label>
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">推薦⼈計劃：</label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp5">
-              <label for="sunHttp5" class="radioLabel"></label>
-            </span>
+          <div class="block">
+            <label for="">推薦⼈計劃：</label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp5">
+                <label for="sunHttp5" class="radioLabel"></label>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div class="block">
-          <label for="">報紙：</label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp6">
-              <label for="sunHttp6" class="radioLabel"></label>
-            </span>
-            <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+          <div class="block">
+            <label for="">報紙：</label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp6">
+                <label for="sunHttp6" class="radioLabel"></label>
+              </span>
+              <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">招聘網站： </label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp7">
-              <label for="sunHttp7" class="radioLabel"></label>
-            </span>
-            <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+          <div class="block">
+            <label for="">招聘網站： </label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp7">
+                <label for="sunHttp7" class="radioLabel"></label>
+              </span>
+              <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">社交平台： </label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp8">
-              <label for="sunHttp8" class="radioLabel"></label>
-            </span>
-            <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+          <div class="block">
+            <label for="">社交平台： </label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp8">
+                <label for="sunHttp8" class="radioLabel"></label>
+              </span>
+              <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">校園網⾴： </label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp9">
-              <label for="sunHttp9" class="radioLabel"></label>
-            </span>
-            <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+          <div class="block">
+            <label for="">校園網⾴： </label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp9">
+                <label for="sunHttp9" class="radioLabel"></label>
+              </span>
+              <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+            </div>
           </div>
-        </div>
-        <div class="block">
-          <label for="">其他：</label>
-          <div class="radioBtnBox">
-            <span class="radioBtn">
-              <input type="radio" name="sunHttp" id="sunHttp10">
-              <label for="sunHttp10" class="radioLabel"></label>
-            </span>
-            <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+          <div class="block">
+            <label for="">其他：</label>
+            <div class="radioBtnBox">
+              <span class="radioBtn">
+                <input type="radio" name="sunHttp" id="sunHttp10">
+                <label for="sunHttp10" class="radioLabel"></label>
+              </span>
+              <input class="drop-down" type="text" placeholder="请列明" style="width: 60%">
+            </div>
           </div>
+            </form>
         </div>
-
-
-
-
-
-
-
-
-      </div>
-
-
-
-
-
-
-    </div>
-    <div class="footer">
+     </div>
+  </div>
+  <div class="footer">
       <p class="prev">上一步</p>
       <p class="next">下一步</p>
+      <p class="success">完成</p>
     </div>
-  </div>
   {{> footer}}
   <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
   <script src="/static/js/vender/wow.min.js"></script>
@@ -978,6 +972,7 @@
   <script src="/static/js/header.js"></script>
   <script src="/static/js/vender/utility.js"></script>
   <script src="/static/js/hreflang.js"></script>
+  <script src="/static/js/application.js"></script>
 </body>
 
 </html>

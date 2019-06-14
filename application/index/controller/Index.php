@@ -711,6 +711,27 @@ class Index extends Controller
 //        $tpl = $mustache->loadTemplate('jobs');
 //        return $tpl->render(array('LanguageDisplay' => $this->lang));
 //    }
+    public function getParam(){
+        $cache = cache('params');
+
+        if(!$cache){
+            $json = [
+                "identity"=>"90000002",
+                "password"=>"123456"
+            ];
+            $api = Api::postCurl('json_web_token','',$json);
+
+            if(isset($api['data']) && !empty($api['data'])){
+                $token = $api['data']['token'];
+                $data = Api::getCurl('applicant_profiles/import_options',$token);
+                if($data){
+                    $cache = $data;
+                    cache('params',$cache,['expire'=>600]);
+                }
+            }
+        }
+        return $cache;
+    }
     //就業機會
     public function jobs_vip()
     {
@@ -1222,10 +1243,12 @@ return $result;
     {
         $this->getLang();
         $language = $this->lang;
-        $result = $this->getMenu($language);
+//        $result = $this->getMenu($language);
+//        $data = $this->getParam();'Data'=>$data
+
         $mustache = Mustache::mustache($this->lang);
         $tpl = $mustache->loadTemplate('jobs-application');
-        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
+        return $tpl->render(array('LanguageDisplay' => $language));
     }
 
     public function sun_entertainment()

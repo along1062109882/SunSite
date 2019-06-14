@@ -31,6 +31,7 @@ Route::get('/zh-hans/news/category/all', 'index/news');
 Route::get('/zh-hans/news/category/:name', 'index/news_post');
 Route::get('/zh-hans/news', 'index/news');
 Route::post('/zh-hans/post_news', 'index/post_news');
+Route::get('/zh-hans/getParam', 'index/getParam');
 
 Route::get('/zh-hans/release', 'index/release');
 Route::get('/zh-hans/grand', 'index/grand');
@@ -66,6 +67,7 @@ Route::get('/zh-hant/news/category/all', 'index/news');
 Route::get('/zh-hant/news/category/:name', 'index/news_post');
 Route::get('/zh-hant/news', 'index/news');
 Route::post('/zh-hant/post_news', 'index/post_news');
+Route::get('/zh-hant/getParam', 'index/getParam');
 
 
 Route::get('/zh-hant/release', 'index/release');

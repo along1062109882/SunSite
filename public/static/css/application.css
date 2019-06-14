@@ -63,16 +63,16 @@
     background: #ccc;
 }
 
-.pagination_content li b:nth-child(even) {
+.pagination_content li b {
     background-color: #a19062;
     height: 3px;
     width: 7.8%;
     display: block;
     position: absolute;
     top: 9px;
-    left: 5.2%;
-    /* z-index: 0; */
-    margin-left: 9%;
+    z-index: -1;
+    /* margin-left: 5%; */
+    display: none;
 }
 
 .active {
@@ -126,7 +126,7 @@ label {
 input,
 textarea {
     vertical-align: top;
-    width: 40%;
+    width: 41%;
     height: 40px;
     position: relative;
     border-radius: 4px;
@@ -255,8 +255,8 @@ input[type="radio"] {
 
 .radioLabel {
     position: absolute;
-    left: 25px;
-    top: 0px;
+    /* left: 25px; */
+    top: 0;
     width: 20px;
     height: 20px;
     border: solid 1px #e5dcc9;
@@ -286,9 +286,9 @@ input:checked+.radioLabel::after {
     display: flex;
     justify-content: space-between;
     vertical-align: top;
-    width: 40%;
+    width: 42%;
     height: 40px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     align-items: center;
 }
 
@@ -304,7 +304,8 @@ input:checked+.radioLabel::after {
     /*替换选择框的最右侧显示小箭头图片*/
     background: url("/static/imgs/job-arrow-down.svg") no-repeat scroll right center #ffffff;
     /*为下拉小箭头留出一点位置，避免被文字覆盖*/
-    padding: 0 5px;
+    padding: 0 5px; 
+    background-position: 85%;
 }
 
 .divider {
@@ -326,7 +327,7 @@ input:checked+.radioLabel::after {
     -webkit-appearance: none;
     /*替换选择框的最右侧显示小箭头图片*/
     background: url("/static/imgs/job-arrow-down.svg") no-repeat scroll right #ffffff;
-    background-position: 85% 15px;
+    background-position: 90% 15px;
     /*为下拉小箭头留出一点位置，避免被文字覆盖*/
     padding: 0 5px;
 }
