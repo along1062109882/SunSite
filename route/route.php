@@ -109,7 +109,7 @@ Route::get('/', 'index/index');
 // * 免权限验证路由
 // */
 Route::group('admin', [
-    'login$'=>'admin/Login/login',                                         //登录
+    'login'=>'admin/Login/login',                                         //登录
     'editPassword'=>'admin/User/editPassword',                             //重置密码
     'logout$'=>'admin/Login/logout',                                       //退出
     'check$'=>'admin/User/check',                                          //验证用户是否存在
@@ -276,6 +276,7 @@ Route::group('admin', [
  * 没有定义的路由全部使用该路由
  */
 Route::miss('index/index/unknown');
+//Route::miss('admin/Login/login');
 return [
 
 ];
