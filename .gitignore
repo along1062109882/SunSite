@@ -103,6 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-public/uploads/
+SunSite/public/uploads/
 .idea/
 .DS_Store
