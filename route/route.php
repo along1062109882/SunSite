@@ -275,7 +275,7 @@ Route::group('admin', [
  * miss路由
  * 没有定义的路由全部使用该路由
  */
-Route::miss('admin/Login/login');
+Route::miss('index/index/unknown');
 return [
 
 ];

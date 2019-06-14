@@ -140,6 +140,14 @@ class Index extends Controller
         $tpl = $mustache->loadTemplate('index');
         return $tpl->render(array('LanguageDisplay' => $language,'LatestNews'=>$news));
     }
+    public function unknown()
+    {
+        $this->getLang();
+        $language = $this->lang;
+        $mustache = Mustache::mustache($language);
+        $tpl = $mustache->loadTemplate('404');
+        return $tpl->render(array('LanguageDisplay' => $language));
+    }
 
     public function lang() {
         $this->lang = $_GET['lang'];
