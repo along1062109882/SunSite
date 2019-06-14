@@ -39,9 +39,9 @@ class System extends Common
                         array_map('rmdir', $dirs);
                     }
                 }
-                $this->success('缓存清空成功');
+                $this->success('緩存清空成功');
             } else {
-                $this->error('请选择清除的范围');
+                $this->error('請選擇清除範圍');
             }
         }
     }
@@ -86,10 +86,10 @@ class System extends Common
         ])->hidden(['id'])->select();
         $header = [
             'UID'=>'integer',
-            '账号'=>'string',
-            '昵称'=>'string',
-            '最后登录IP'=>'string',
-            '登陆时间'=>'string'
+            '賬號'=>'string',
+            '暱稱'=>'string',
+            '最後登錄IP'=>'string',
+            '登錄時間'=>'string'
         ];
         return download_excel($list->toArray(), $header , 'login_log.xlsx');
     }
@@ -106,7 +106,7 @@ class System extends Common
     {
         if ($this->request->isPost()) {
             $list = AuthRule::order('sort desc')->select();
-            return show($list,0,'获取成功');
+            return show($list,0,'獲取成功');
         }
         return $this->fetch();
     }
@@ -150,7 +150,7 @@ class System extends Common
                 $this->assign('data', $data);
             }
             $menu = AuthRule::where('pid', '=', 0)->order('sort desc')->column('id,title');
-            $menu[0] = '顶级菜单';
+            $menu[0] = '頂級菜單';
             ksort($menu);
             $this->assign('menu', $menu);
             return $this->fetch();
@@ -165,9 +165,9 @@ class System extends Common
     public function deleteMenu()
     {
         $id = $this->request->post('id', 0, 'intval');
-        empty($id) && $this->error('参数错误');
+        empty($id) && $this->error('參數錯誤');
         if (AuthRule::where('pid', '=', $id)->count() > 0) {
-            $this->error('该菜单存在子菜单,无法删除!');
+            $this->error('該菜單存在子菜單,无法删除!');
         }
         $res = AuthRule::where('id', '=', $id)->delete();
         if ($res) {

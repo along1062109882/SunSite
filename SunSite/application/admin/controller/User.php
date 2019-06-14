@@ -119,9 +119,9 @@ class User extends Common
         $username = $this->request->get('username', '', 'trim');
         $res = UserModel::where('user', '=', $username)->field('uid')->find();
         if ($res) {
-            $msg = ['code' => 1, 'msg' => '账号已存在'];
+            $msg = ['code' => 1, 'msg' => '賬號已存在'];
         } else {
-            $msg = ['status' => 0, 'info' => '验证通过'];
+            $msg = ['status' => 0, 'info' => '驗證通過'];
         }
         return $msg;
     }
@@ -138,10 +138,10 @@ class User extends Common
                 $res = UserService::delete($uid);
                 return $res;
             } else {
-                $this->error('无法删除超级管理员');
+                $this->error('無法刪除超級管理員');
             }
         } else {
-            $this->error('参数错误');
+            $this->error('參數錯誤');
         }
     }
 
@@ -181,7 +181,7 @@ class User extends Common
                 return AuthGroupService::add($title);
             }
         } else {
-            $this->error('非法请求');
+            $this->error('非法請求');
         }
     }
 
@@ -196,7 +196,7 @@ class User extends Common
             $status = $this->request->post('status', 0, 'intval');
             return AuthGroupService::edit($id, ['status' => $status]);
         } else {
-            $this->error('非法请求');
+            $this->error('非法請求');
         }
     }
 
@@ -223,13 +223,13 @@ class User extends Common
         if ($this->request->isPost()) {
             $id = $this->request->post('id', 0, 'intval');
             $rules = $this->request->post('rules', []);
-            if (!$rules) $this->error('参数错误');
+            if (!$rules) $this->error('參數錯誤');
             sort($rules);
             $rules = implode(',', $rules);
             $res = AuthGroupService::edit($id, ['rules' => $rules], true);
             return $res;
         } else {
-            $this->error('非法请求');
+            $this->error('非法請求');
         }
     }
 

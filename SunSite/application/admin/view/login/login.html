@@ -17,13 +17,13 @@
 <form class="layui-form" id="login-form">
     <div class="login_face"><img src="/images/face.jpg" class="userAvatar"></div>
     <div class="layui-form-item input-item">
-        <label for="userName">用户名</label>
-        <input type="text" placeholder="请输入用户名" autocomplete="off" id="userName" name="user" class="layui-input"
+        <label for="userName">用戶名</label>
+        <input type="text" placeholder="請輸入用戶名" autocomplete="off" id="userName" name="user" class="layui-input"
                lay-verify="required">
     </div>
     <div class="layui-form-item input-item">
-        <label for="password">密码</label>
-        <input type="password" placeholder="请输入密码" autocomplete="off" id="password" name="password" class="layui-input"
+        <label for="password">密碼</label>
+        <input type="password" placeholder="請輸入密碼" autocomplete="off" id="password" name="password" class="layui-input"
                lay-verify="required">
     </div>
     {if  $is_open_captcha}
@@ -39,7 +39,7 @@
     {/if}
 
     <div class="layui-form-item " style="margin: 30px 0px">
-        <button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
+        <button class="layui-btn layui-block" lay-filter="login" lay-submit>登錄</button>
     </div>
 </form>
 <script type="text/javascript" src="/layui/layui.js"></script>
@@ -53,7 +53,7 @@
         form.on("submit(login)", function (data) {
             var obj = $(this);
             var data = data.field;
-            obj.text("登录中...").attr("disabled", "disabled").addClass("layui-disabled");
+            obj.text("登錄中...").attr("disabled", "disabled").addClass("layui-disabled");
             $.ajax({
                 url: "{:url('/admin/login/login')}",
                 type: 'post',
@@ -70,7 +70,7 @@
                         if (data.code) {
                             location.href = data.url;
                         } else {
-                            obj.text("登录").removeAttr("disabled").removeClass("layui-disabled");
+                            obj.text("登錄").removeAttr("disabled").removeClass("layui-disabled");
                             {if  $is_open_captcha}
                                 $('#captcha').attr('src', '{:url(\'/verify\')}');
                             {/if}
@@ -80,8 +80,8 @@
 
                 },
                 error: function (e) {
-                    obj.text("登录").removeAttr("disabled").removeClass("layui-disabled");
-                    layer.msg('登录错误，请检查配置是否正确', {icon: 5});
+                    obj.text("登錄").removeAttr("disabled").removeClass("layui-disabled");
+                    layer.msg('登錄錯誤，請檢查配置是否正確', {icon: 5});
                 }
             })
             return false;

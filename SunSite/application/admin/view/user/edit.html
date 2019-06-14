@@ -2,30 +2,30 @@
 {block name="main"}
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/edit')}">
     <div class="layui-form-item">
-        <label class="layui-form-label">账号</label>
+        <label class="layui-form-label">賬號</label>
         <div class="layui-input-block">
-            <input type="text" name="user" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="user" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.user)?$list.user:''}" {if condition="isset($list['uid'])" }readonly {else /}
             lay-verify="required|username"{/if}>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">昵称</label>
+        <label class="layui-form-label">暱稱</label>
         <div class="layui-input-block">
-            <input type="text" name="name" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="name" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.name)?$list.name:''}" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
+        <label class="layui-form-label">密碼</label>
         {if condition="!isset($list['uid'])"}
             <div class="layui-input-block">
-                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" value=""
+                <input type="password" name="password" placeholder="請輸入密碼" autocomplete="off" class="layui-input" value=""
                        lay-verify="required|password">
             </div>
         {else /}
             <div class="layui-input-block">
-                <input type="password" name="password" placeholder="重置密码，不填不修改" autocomplete="off" class="layui-input" value=""
+                <input type="password" name="password" placeholder="重置密碼，不填不修改" autocomplete="off" class="layui-input" value=""
                        lay-verify="password">
             </div>
         {/if}
@@ -87,7 +87,7 @@
             password:function(value, item){
                 if(value){
                     if(!(/^[\w\W]{6,25}$/.test(value))){
-                        return '用户名不能全为数字';
+                        return '用戶名不能全為數字';
                     }
                 }
             }

@@ -57,11 +57,11 @@
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del1">删除</a>
     </script>
     <script type="text/html" id="usersListBar2">
-        <a class="layui-btn layui-btn-xs" lay-event="edit2">选择</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit2">選擇</a>
         <!--<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del2">删除</a>-->
     </script>
     <script type="text/html" id="usersListBar3">
-        <a class="layui-btn layui-btn-xs" lay-event="edit3">选择</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit3">選擇</a>
         <!--<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del3">删除</a>-->
     </script>
     <script type="text/html" id="titleTpl1">
@@ -195,7 +195,7 @@
             if(layEvent === 'edit1'){ //编辑
                 edit(data.id);
             } else if(layEvent === 'del1'){ //删除
-                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/event_choice_delete')}",{id:data.id,type:type,post_id:post_id},function(data){
                         var icon=5;
                         if(data.code){
@@ -218,7 +218,7 @@
             if(layEvent === 'edit2'){ //编辑
                 edit(data.id);
             } else if(layEvent === 'del2'){ //删除
-                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/sun_banner_delete')}",{id:data.id,type:type},function(data){
                         var icon=5;
                         if(data.code){
@@ -241,7 +241,7 @@
             if(layEvent === 'edit3'){ //编辑
                 edit(data.id);
             } else if(layEvent === 'del3'){ //删除
-                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/sun_banner_delete')}",{id:data.id,type:type},function(data){
                         var icon=5;
                         if(data.code){

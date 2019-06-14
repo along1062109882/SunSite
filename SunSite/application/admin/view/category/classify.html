@@ -9,8 +9,8 @@
     <blockquote class="layui-elem-quote quoteBox">
         <form class="layui-form">
             <div class="layui-inline">
-                <a class="layui-btn layui-btn-danger layui-btn-normal" onclick="add();">添加节点</a>
-                <a class="layui-btn  layui-btn-normal" onclick="openAll();">展开或折叠全部</a>
+                <a class="layui-btn layui-btn-danger layui-btn-normal" onclick="add();">添加節點</a>
+                <a class="layui-btn  layui-btn-normal" onclick="openAll();">展開或折疊全部</a>
             </div>
         </form>
     </blockquote>
@@ -20,7 +20,7 @@
            {{ d.status== 1 ? 'checked' : '' }}>
 </script>
 <script type="text/html" id="action">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">編輯</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
 </script>
 <table class="layui-table" id="treeTable" lay-filter="treeTable"></table>
@@ -65,7 +65,7 @@
         treeGrid.on('tool(' + tableId + ')', function (obj) {
             var data = obj.data;
             if (obj.event === 'del') {
-                layer.confirm('确定删除操作？', {icon: 3, title: '提示信息'}, function (index) {
+                layer.confirm('確定刪除操作？', {icon: 3, title: '提示信息'}, function (index) {
                     $.post("{:url('/admin/classifyDelete')}", {id: data.id}, function (data) {
                         var icon = 5;
                         if (data.code) {
@@ -92,14 +92,14 @@
         var index = layui.layer.open({
             type: 2,
             title: '添加',
-            area: ['900px', '400px'],
+            area: ['100%', '400px'],
             fixed: false, //不固定
             maxmin: true,
             content: "{:url('/admin/classifyEdit')}",
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {
-                    layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('點擊返回列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 }, 500)
@@ -121,14 +121,14 @@
         var index = layui.layer.open({
             type: 2,
             title: '编辑',
-            area: ['900px', '400px'],
+            area: ['100%', '400px'],
             fixed: false, //不固定
             maxmin: true,
             content: "{:url('/admin/classifyEdit')}" + '?id=' + id,
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {
-                    layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('點擊返回列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 }, 500)

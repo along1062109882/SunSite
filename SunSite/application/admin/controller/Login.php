@@ -60,19 +60,19 @@ class Login extends Controller
     public function unlock()
     {
         if (!$this->request->isPost()) {
-            $this->error('非法请求');
+            $this->error('非法請求');
         }
         $uid = get_user_id();
         if (!$uid) {
-            $this->error('登录信息过期', url('/admin/login'));
+            $this->error('登錄信息過期', url('/admin/login'));
         }
         $password = input('password', '', 'trim');
 
         $psd = UserModel::where('uid', '=', get_user_id())->value('password');
         if (password_verify($password, $psd)) {
-            $this->success('解锁成功');
+            $this->success('解鎖成功');
         } else {
-            $this->error('密码错误');
+            $this->error('密碼錯誤');
         }
     }
 

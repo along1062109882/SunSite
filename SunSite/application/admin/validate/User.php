@@ -19,10 +19,10 @@ class User extends Validate
     ];
 
     protected $message = [
-        'user.require' => '用户名不能为空',
-        'user.length' => '用户名长度2-25位',
-        'password.require' => '密码不能为空',
-        'password.length' => '密码长度6-25位',
+        'user.require' => '用戶名不能為空',
+        'user.length' => '用戶名長度2-25位',
+        'password.require' => '密碼不能為空',
+        'password.length' => '密碼長度6-25位',
 //        'code.require' => '验证码不能为空',
 //        'code.captcha' => '验证码错误'
     ];

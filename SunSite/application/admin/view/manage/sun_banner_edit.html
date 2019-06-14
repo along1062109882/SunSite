@@ -3,7 +3,17 @@
 <form id="form" method="post" class="layui-form layui-form-pane" enctype="multipart/form-data">
     <div class="layui-form-item flex-column">
         <label class="labels">圖片</label>
-        <input type="file" name="file" accept="image/*">
+        <div class="uploadImgBox">
+            <!-- 没有图片显示这个 -->
+            <div id="noImg" class="add_img">
+                <span>
+                    <p class="add">+</p>
+                    <p class="add_title">上傳圖片</p>
+                </span>
+            </div>
+            <img src="" alt="" id="myImg">
+            <input type="file" name="file" accept="image/*" id="uploadImage">
+        </div>
 
     </div>
     <div class="layui-form-item flex-column">
@@ -22,7 +32,34 @@
 <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
 
 <script>
-    $("#commit").on("click", function (){
+    // 点击 input 展示需要上传
+    const uploadImage_el = document.getElementById("uploadImage");
+    // 监听 input change 事件
+    uploadImage_el.addEventListener('change', function () {
+        if (!uploadImage_el.value) {
+            alert('沒有選擇文件');
+            return;
+        }
+        // 获取File引用:
+        const file = uploadImage_el.files[0];
+        // 读取文件:
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            const data = e.target.result;
+            // 预览图片
+            $('#myImg').attr('src', data);
+            // 将默认隐藏
+            $('#noImg').addClass('promptHide');
+        };
+        // 以DataURL的形式读取文件:
+        reader.readAsDataURL(file);
+
+    });
+
+
+
+
+    $("#commit").on("click", function () {
         var form = new FormData($('#form')[0]);
         $.ajax({
             url: '/admin/sun_banner_commit',
@@ -33,10 +70,10 @@
             contentType: false,
             dataType: "json",
             success: function (data) {
-                if(data.code===200){
-                    parent.layer.msg('添加成功',{icon:1});
-                }else{
-                    parent.layer.msg('添加失败',{icon:2});
+                if (data.code === 200) {
+                    parent.layer.msg('成功', { icon: 1 });
+                } else {
+                    parent.layer.msg('失败', { icon: 2 });
                 }
             }
         });

@@ -63,15 +63,15 @@
     </div>
     <!--操作-->
     <script type="text/html" id="usersListBar1">
-        <a class="layui-btn layui-btn-xs" lay-event="edit1">编辑</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit1">編輯</a>
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del1">删除</a>
     </script>
     <script type="text/html" id="usersListBar2">
-        <a class="layui-btn layui-btn-xs" lay-event="edit2">编辑</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit2">編輯</a>
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del2">删除</a>
     </script>
     <script type="text/html" id="usersListBar3">
-        <a class="layui-btn layui-btn-xs" lay-event="edit3">编辑</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit3">編輯</a>
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del3">删除</a>
     </script>
     <script type="text/html" id="titleTpl1">
@@ -174,16 +174,16 @@
         //编辑用户
         function edit(id){
             var index = layui.layer.open({
-                title : "编辑",
+                title : "編輯",
                 type : 2,
-                area: ['900px', '400px'],
+                area: ['100%', '400px'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/sun_entertainment_edit')}"+'?id='+id,
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
-                        layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                        layui.layer.tips('點擊返回列表', '.layui-layer-setwin .layui-layer-close', {
                             tips: 3
                         });
                     },500)
@@ -199,16 +199,16 @@
         // 编辑对应模块的 banner 图
         function edit_banner(id){
             var index = layui.layer.open({
-                title : "编辑用户",
+                title : "編輯",
                 type : 2,
-                area: ['900px', '400px'],
+                area: ['100%', '400px'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/sun_banner_edit')}"+'?id='+id+'&type=1',
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
-                        layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                        layui.layer.tips('點擊返回列表', '.layui-layer-setwin .layui-layer-close', {
                             tips: 3
                         });
                     },500)
@@ -227,7 +227,7 @@
             if(layEvent === 'edit1'){ //编辑
                 edit(data.id);
             } else if(layEvent === 'del1'){ //删除
-                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/sun_entertainment_delete')}",{id:data.id},function(data){
                         var icon=5;
                         if(data.code){
@@ -249,7 +249,7 @@
             if(layEvent === 'edit2'){ //编辑
                 edit(data.id);
             } else if(layEvent === 'del2'){ //删除
-                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/sun_entertainment_delete')}",{id:data.id},function(data){
                         var icon=5;
                         if(data.code){
@@ -271,7 +271,7 @@
             if(layEvent === 'edit3'){ //编辑
                 edit_banner(data.id);
             } else if(layEvent === 'del3'){ //删除
-                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/sun_banner_delete')}",{id:data.id,type:1},function(data){
                         var icon=5;
                         if(data.code){

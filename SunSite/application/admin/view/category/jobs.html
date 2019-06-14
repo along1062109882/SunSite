@@ -47,7 +47,7 @@
     <table id="usersList" lay-filter="usersList"></table>
     <!--操作-->
     <script type="text/html" id="usersListBar">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">編輯</a>
         <!--<a class="layui-btn layui-btn-xs" lay-event="album">相簿</a>-->
         <!--<a class="layui-btn layui-btn-xs" lay-event="cover">封面</a>-->
         <!--<a class="layui-btn layui-btn-xs" lay-event="square">方形封面</a>-->
@@ -114,7 +114,7 @@
         var $ = layui.$,
             active = {
                 reload: function(){
-                    var index = layer.msg('数据加载中,请耐心等待...', {
+                    var index = layer.msg('數據加載中,請耐心等待...', {
                         icon: 16,shade: 0.5,time:500
                     });
                     var int_id = $('#type').val();
@@ -150,14 +150,14 @@
             var index = layui.layer.open({
                 title : "添加",
                 type : 2,
-                area: ['900px', '400px'],
+                area: ['100%', '400px'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/jobsEdit')}",
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
-                        layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                        layui.layer.tips('點擊返回列表', '.layui-layer-setwin .layui-layer-close', {
                             tips: 3
                         });
                     },500)
@@ -175,14 +175,14 @@
             var index = layui.layer.open({
                 title : "编辑",
                 type : 2,
-                area: ['900px', '400px'],
+                area: ['100%', '400px'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/jobsEdit')}"+'?id='+id,
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
-                        layui.layer.tips('点击此处返回列表', '.layui-layer-setwin .layui-layer-close', {
+                        layui.layer.tips('點擊返回列表', '.layui-layer-setwin .layui-layer-close', {
                             tips: 3
                         });
                     },500)
@@ -206,7 +206,7 @@
             if(layEvent === 'edit'){ //编辑
                 edit(data.id);
             } else if(layEvent === 'del'){ //删除
-                layer.confirm('确定删除操作？',{icon:3, title:'提示信息'},function(index){
+                layer.confirm('確定刪除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/jobsDelete')}",{id:data.id},function(data){
                         var icon=5;
                         if(data.code){

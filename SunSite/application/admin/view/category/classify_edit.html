@@ -17,77 +17,77 @@
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>slug：</label>
         <div class="layui-input-inline">
-            <input type="text" name="slug" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+            <input type="text" name="slug" placeholder="請輸入" autocomplete="off" class="layui-input" lay-verify="required"
                    value="{:isset($list.slug)?$list.slug:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>展示順序：</label>
         <div class="layui-input-inline">
-            <input type="text" name="seq" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required"
+            <input type="text" name="seq" placeholder="請輸入" autocomplete="off" class="layui-input" lay-verify="required"
                    value="{:isset($list.seq)?$list.seq:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">分類繁體名稱：</label>
         <div class="layui-input-inline">
-            <input type="text" name="name_hk" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="name_hk" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.name_hk)?$list.name_hk:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">分類簡體名稱：</label>
         <div class="layui-input-inline">
-            <input type="text" name="name_cn" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="name_cn" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.name_cn)?$list.name_cn:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">分類英文名稱：</label>
         <div class="layui-input-inline">
-            <input type="text" name="name_en" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="name_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.name_en)?$list.name_en:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">繁體橫幅標題：</label>
         <div class="layui-input-inline">
-            <input type="text" name="title_hk" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="title_hk" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.title_hk)?$list.title_hk:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">簡體橫幅標題：</label>
         <div class="layui-input-inline">
-            <input type="text" name="title_cn" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="title_cn" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.title_cn)?$list.title_cn:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">英文橫幅標題：</label>
         <div class="layui-input-inline">
-            <input type="text" name="title_en" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="title_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.title_en)?$list.title_en:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">繁體橫幅正文：</label>
         <div class="layui-input-inline">
-            <input type="text" name="content_hk" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="content_hk" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.content_hk)?$list.content_hk:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">簡體橫幅正文：</label>
         <div class="layui-input-inline">
-            <input type="text" name="content_cn" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="content_cn" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.content_cn)?$list.content_cn:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">英文橫幅正文：</label>
         <div class="layui-input-inline">
-            <input type="text" name="content_en" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="content_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.content_en)?$list.content_en:''}">
         </div>
     </div>
@@ -205,15 +205,7 @@
         upload.render({
             elem: '#test'
             ,url: '/admin/classifyEdit'
-            // ,data:{
-            //     name:function(){
-            //         return $('#name').val();
-            //     },
-            //     description:function(){
-            //         return $('#description').val();
-            //     },
-            //     type:0
-            // }
+
             ,accept: 'images'
             ,acceptMime: 'image/jpg, image/png'
             ,auto: false //选择文件后不自动上传

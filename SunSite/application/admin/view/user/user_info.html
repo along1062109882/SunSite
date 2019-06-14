@@ -6,41 +6,41 @@
 			<img class="layui-upload-img layui-circle userFaceBtn userAvatar" id="userFace" src="{$info.head}">
 			<input type="hidden" value="{$info.head}" id="head">
 		</div>
-		<button type="button" class="layui-btn layui-btn-primary userFaceBtn"><i class="layui-icon">&#xe67c;</i> 我要换一个头像</button>
+		<button type="button" class="layui-btn layui-btn-primary userFaceBtn"><i class="layui-icon">&#xe67c;</i> 我要換一個頭像</button>
 	</div>
 	<div class="layui-col-md6 layui-col-xs12">
 		<div class="layui-form-item">
-			<label class="layui-form-label">用户名</label>
+			<label class="layui-form-label">用戶名</label>
 			<div class="layui-input-block">
 				<input type="text" value="{$info.user}" disabled class="layui-input layui-disabled">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">用户组</label>
+			<label class="layui-form-label">用戶組</label>
 			<div class="layui-input-block">
 				<input type="text" value="{$info.group_titles}" disabled class="layui-input layui-disabled">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">真实姓名</label>
+			<label class="layui-form-label">真實姓名</label>
 			<div class="layui-input-block">
 				<input type="text" value="{$info.name}" id="name" placeholder="请输入真实姓名" lay-verify="required" class="layui-input realName">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">登录次数</label>
+			<label class="layui-form-label">登錄次數</label>
 			<div class="layui-input-block">
 				<input type="text" value="{$info.login_count}" disabled class="layui-input layui-disabled">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">最后登录ip</label>
+			<label class="layui-form-label">最後登錄ip</label>
 			<div class="layui-input-block">
 				<input type="text" value="{$info.last_login_ip}" disabled class="layui-input layui-disabled">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">登录时间</label>
+			<label class="layui-form-label">登錄時間</label>
 			<div class="layui-input-block">
 				<input type="text" value="{$info.last_login_time}" disabled class="layui-input layui-disabled">
 			</div>
@@ -79,7 +79,7 @@
 				layer.msg(data.msg, {icon:icon,time: 1500});
 			},
 			error: function(){
-				layer.msg('上传失败', {icon:icon,time: 1500});
+				layer.msg('上傳失敗', {icon:icon,time: 1500});
 			}
 		});
 

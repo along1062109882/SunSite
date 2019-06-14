@@ -44,16 +44,16 @@ class AuthGroupService
      */
     public static function edit($id, $data, $authcache = false)
     {
-        if (!$id || !$data) Result::error('参数错误');
+        if (!$id || !$data) Result::error('參數錯誤');
         $group = new AuthGroup;
         $res = $group->save($data, ['id' => $id]);
         if ($res) {
             if ($authcache) {
                 Cache::clear(config('auth.cache_tag'));//清除Auth类设置的缓存
             }
-            $mag = Result::success('编辑成功');
+            $mag = Result::success('編輯成功');
         } else {
-            $mag = Result::error('编辑失败');
+            $mag = Result::error('編輯失败');
         }
         return $mag;
     }

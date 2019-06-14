@@ -1,48 +1,207 @@
 {extend name="base/base" /}
 {block name="main"}
 <style>
-    .thumb {margin-left:5px; margin-top:15px; height:128px}
-    #prevModal {width:100%; height:100%; text-align:center; display:none;}
-    #img_prev {max-width:98%; max-height:98%; margin: 10px auto}
+	.thumb {
+		margin-left: 5px;
+		margin-top: 15px;
+		height: 128px
+	}
+
+	#prevModal {
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		display: none;
+	}
+
+	#img_prev {
+		max-width: 98%;
+		max-height: 98%;
+		margin: 10px auto;
+	}
+
+	#multiple_uploadImgBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 10px;
+	}
+
+	.uploadImgBox {
+		position: relative;
+	}
+
+	#multiple_noImg {
+		margin: 0;
+	}
+
+	#multiple_uploadImage {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+
+	.multiple_myImgStyle {
+		width: 100px;
+		height: 100px;
+		margin: 0 10px;
+	}
+
+	.promptHide {
+		display: none;
+	}
+
+	.deleteCurrentImgBox {
+		position: relative;
+	}
+
+	.deleteBtn {
+		position: absolute;
+		top: -10px;
+		right: 0;
+		width: 15px;
+		height: 15px;
+		font-size: 25px;
+		text-align: center;
+		line-height: 15px;
+		color: red;
+		transform: rotate(45deg);
+		cursor: pointer;
+	}
+	#imgLabelsTitle{
+		color: red;
+    margin-left: 10px;
+    font-size: 14px;
+	}
 </style>
 <form id="form" method="post" enctype="multipart/form-data" class="layui-form layui-form-pane" action="#">
-    <div class="layui-form-item flex-column">
-        <label class="labels">圖片</label>
-        <input type="file" name="file[]" accept="image/*" multiple>
-    </div>
+	<div class="layui-form-item flex-column">
+		<label class="labels">圖片<span id="imgLabelsTitle"></span></label>
+		<div id="multiple_uploadImgBox">
+			<!-- 默认显示添加图片元素，当选择图片后，会在次元素 前边 prepend 动态添加 img 做为 预览 -->
+			<span class="uploadImgBox">
+				<!-- 没有图片显示这个 -->
+				<span id="multiple_noImg" class="add_img">
+					<span>
+						<p class="add">+</p>
+						<p class="add_title">上傳圖片</p>
+					</span>
+				</span>
+				<input type="file" name="file" accept="image/*" id="multiple_uploadImage">
+		</div>
+	</div>
+	</div>
+	<!--<div class='layui-input-block' id='div_prev' title=''></div>-->
 
-    <div class="layui-form-item flex-column">
-        <div class="layui-input-inline">
-            <button class="layui-btn" lay-submit lay-filter="*" id="commit">提交</button>
-            <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
-        </div>
-    </div>
+	<div class="layui-form-item flex-column">
+		<div class="layui-input-inline">
+			<button type="button" class="layui-btn" lay-submit lay-filter="*" id="commit">提交</button>
+			<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+		</div>
+	</div>
 </form>
 {/block}
 {block name="script"}
 <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
 
 <script>
+	// 获取页面中的 img 元素
+	const createTheImg_el = document.getElementsByClassName('multiple_myImgStyle');
+	// 点击 input 展示需要上传
+	const multiple_uploadImage_el = document.getElementById("multiple_uploadImage");
 
-    $("#commit").on("click", function (){
-        var form = new FormData($('#form')[0]);
-        $.ajax({
-            url: '/admin/uploadCommit',
-            type: 'POST',
-            cache: false,
-            data: form,
-            processData: false,
-            contentType: false,
-            dataType: "json",
-            success: function (data) {
-                if(data.code===200){
-                    parent.layer.msg('添加成功',{icon:1});
-                }else{
-                    parent.layer.msg('添加失败',{icon:2});
-                }
-            }
-        });
-    });
+	// 发送的图片 List
+	let imgEl_list = [];
+
+	// 监听 input change 事件
+	multiple_uploadImage_el.addEventListener('change', function () {
+
+		if (!multiple_uploadImage_el.value) {
+			alert('沒有選擇文件');
+			return;
+		}
+
+		// 获取File引用:
+		const file = multiple_uploadImage_el.files[0];
+		imgEl_list.push(file);
+
+		// 读取文件:
+		let reader = new FileReader();
+		reader.onload = function (e) {
+			const data = e.target.result;
+			// 预览图片
+			$('#multiple_uploadImgBox').prepend(`
+					<div class="deleteCurrentImgBox">
+							<img src=${data} alt="" class="multiple_myImgStyle">
+							<p class="deleteBtn" id="deleteImg_action">+</p>
+							<p class="deleteBtn " id="deleteImg_action" data-name=${file.name}>+</p>
+					</div>
+				`);
+
+			// 页面 预览 img 元素 超过 6 个时候 隐藏 上传按钮
+			if (createTheImg_el.length >= 6) {
+				$('#multiple_noImg').addClass('promptHide');
+				$("#imgLabelsTitle").text('(最大上傳 6 張圖片)')
+			}
+
+			// 点击删除图片
+			$("#multiple_uploadImgBox").on("click", "#deleteImg_action", function () {
+
+				// 根据当前要删除的 图片 name 到 已放入到 imgEl_list 数组中的 数据 name 筛选过滤掉
+				const current_el_name = $(this).data('name');
+				imgEl_list = imgEl_list.filter(function (imgEl_list) {
+					return imgEl_list.name !== current_el_name;
+				});
+				// 根据当前要删除的 图片 删除对应的页面元素
+				$(this).parent(".deleteCurrentImgBox").remove();
+				// 页面 预览 img 元素 小于 6 个时候 显示 上传按钮
+				if (createTheImg_el.length < 6) {
+					$('#multiple_noImg').removeClass('promptHide');
+					$("#imgLabelsTitle").text("")
+				}
+
+			});
+
+
+		};
+		// 以DataURL的形式读取文件
+		reader.readAsDataURL(file);
+		// file input 每次 change 结束后 清空一下 input 中的值
+		multiple_uploadImage_el.value = '';
+	});
+
+	$("#commit").on("click", function () {
+		// 发送图片 fromData
+		const uploadPictureCollection = new FormData();
+		// 循环 放入到 imgEl_list 要上传的 file 放到 formData 中
+		imgEl_list.forEach(item => {
+			uploadPictureCollection.append("file[]", item);
+		});
+		
+		$.ajax({
+			url: '/admin/uploadCommit',
+			type: 'POST',
+			cache: false,
+			data: uploadPictureCollection,
+			processData: false,
+			contentType: false,
+			dataType: "json",
+			success: function (data) {
+				// 刷新页面
+				location.reload();
+				// 清空 要上传的 file 数组
+				imgEl_list = [];
+				if (data.code === 200) {
+					parent.layer.msg('成功', { icon: 1 });
+				} else {
+					parent.layer.msg('失败', { icon: 2 });
+				}
+			}
+		});
+	});
 
 </script>
 {/block}

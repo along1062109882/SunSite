@@ -59,10 +59,10 @@
                         //关闭当前iframe页面
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
-                        parent.layer.msg('添加成功',{icon:1});
+                        parent.layer.msg('成功',{icon:1});
                         parent.location.reload();
                     }else{
-                        parent.layer.msg('添加失败',{icon:2});
+                        parent.layer.msg('失败',{icon:2});
                     }
                 }
             });

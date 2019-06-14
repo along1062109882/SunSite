@@ -2,49 +2,49 @@
 {block name="main"}
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/editMenu')}">
     <div class="layui-form-item">
-        <label class="layui-form-label">所属层级</label>
+        <label class="layui-form-label">所屬層級</label>
         <div class="layui-input-block">
             {form:select name="pid" list="$menu" value="$data['pid']" option="['lay-verif'=>'required']"}
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">名称</label>
+        <label class="layui-form-label">名稱</label>
         <div class="layui-input-block">
-            <input type="text" name="title" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="title" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($data.title)?$data.title:''}" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">url</label>
         <div class="layui-input-block">
-            <input type="text" name="name" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="name" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($data.name)?$data.name:''}" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">图标</label>
+        <label class="layui-form-label">圖標</label>
         <div class="layui-input-block">
-            <input type="text" name="icon" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="icon" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($data.icon)?$data.icon:''}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">排序</label>
         <div class="layui-input-block">
-            <input type="text" name="sort" placeholder="请输入" autocomplete="off" class="layui-input"
+            <input type="text" name="sort" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($data.sort)?$data.sort:'1'}">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">类型</label>
+        <label class="layui-form-label">類型</label>
         <div class="layui-input-block">
-            {form:radio name="menu" list="['1'=>'菜单','0'=>'行为']" value="$data['menu']"}
+            {form:radio name="menu" list="['1'=>'菜單','0'=>'行為']" value="$data['menu']"}
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">是否禁用</label>
         <div class="layui-input-block">
-            {form:radio name="status" list="['1'=>'启用','0'=>'禁用']" value="$data['status']"}
+            {form:radio name="status" list="['1'=>'啟用','0'=>'禁用']" value="$data['status']"}
         </div>
     </div>
     <div class="layui-form-item">

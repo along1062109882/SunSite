@@ -38,15 +38,15 @@ class UserService
         }
         $list = User::where(['user' => $data['user']])->find();
         if (empty($list)) {
-            return Result::error('账号不存在');
+            return Result::error('賬號不存在');
         }
         if ($list['status'] == 0) {
-            $msg = Result::error('账号禁用');
+            $msg = Result::error('賬號禁用');
         } elseif (!password_verify($data['password'], $list['password'])) {
-            $msg = Result::error('密码错误');
+            $msg = Result::error('密碼錯誤');
         } else {
             self::autoSession($list['uid']);
-            $msg = Result::success('登录成功', url('/admin/index'));
+            $msg = Result::success('登錄成功', url('/admin/index'));
         }
         return $msg;
     }
@@ -121,7 +121,7 @@ class UserService
     {
         $list = User::get($uid);
         if (!password_verify($oldpsd, $list['password'])) {
-            $msg = Result::error('原密码错误');
+            $msg = Result::error('原密碼錯誤');
             return $msg;
         }
         $list->password = password_hash($newpsd, PASSWORD_DEFAULT);
@@ -130,7 +130,7 @@ class UserService
             //清除当前登录信息
             session('user_auth', null);
             session('user_auth_sign', null);
-            $msg = Result::success('重置成功,请重新登录', url('/admin/login'));
+            $msg = Result::success('重置成功,請重新登錄', url('/admin/login'));
         } else {
             $msg = Result::error('修改失败');
         }
@@ -150,7 +150,7 @@ class UserService
         $validate = validate('User');
         if (!$validate->scene('add')->check($data)) {
             //令牌数据无效时重置令牌
-            $validate->getError() != '令牌数据无效' ? $token = Request::token() : $token = '';
+            $validate->getError() != '令牌數據無效' ? $token = Request::token() : $token = '';
             $msg = Result::error($validate->getError(), null, ['token' => $token]);
             return $msg;
         }
@@ -218,12 +218,12 @@ class UserService
             $AuthGroupAccess = new AuthGroupAccess;
             $res2 = $AuthGroupAccess->saveAll($save, false);
             if ($res2) {
-                $msg = Result::success('编辑成功', url('/admin/userlist'));
+                $msg = Result::success('編輯成功', url('/admin/userlist'));
             } else {
-                $msg = Result::error('编辑失败');
+                $msg = Result::error('編輯失敗');
             }
         } else {
-            $msg = Result::error('编辑失败');
+            $msg = Result::error('編輯失敗');
         }
         return $msg;
     }
@@ -238,10 +238,10 @@ class UserService
     public static function delete($uid)
     {
         if (!$uid) {
-            return Result::error('参数错误');
+            return Result::error('參數錯誤');
         }
         if ($uid == 1) {
-            return Result::error('超级管理员无法删除');
+            return Result::error('超級管理員無法刪除');
         }
         $res = User::destroy($uid);
         if ($res) {

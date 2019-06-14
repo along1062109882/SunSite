@@ -1,36 +1,36 @@
 {extend name="base/base" /}
 {block name="main"}
 <fieldset class="layui-elem-field layui-field-title">
-    <legend>系统配置</legend>
+    <legend>系統配置</legend>
 </fieldset>
 <div class="layui-row layui-tab-content">
     <div class="layui-col-md6">
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">网站标题</label>
+                <label class="layui-form-label">網站標題</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" required lay-verify="required" placeholder="请输入网站标题"
+                    <input type="text" name="title" required lay-verify="required" placeholder="請輸入網站標題"
                            value="{$data.value.title}" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">网站名称</label>
+                <label class="layui-form-label">網站名稱</label>
                 <div class="layui-input-block">
-                    <input type="text" name="name" required lay-verify="required" placeholder="请输入网站名称"
+                    <input type="text" name="name" required lay-verify="required" placeholder="請輸入網站名稱"
                            value="{$data.value.name}" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">备案号</label>
+                <label class="layui-form-label">備案號</label>
                 <div class="layui-input-block">
-                    <input type="text" name="icp" required lay-verify="required" placeholder="请输入备案号"
+                    <input type="text" name="icp" required lay-verify="required" placeholder="請輸入備案號"
                            value="{$data.value.icp}" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">版权信息</label>
+                <label class="layui-form-label">版權信息</label>
                 <div class="layui-input-block">
-                    <input type="text" name="copyright" required lay-verify="required" placeholder="请输入版权信息"
+                    <input type="text" name="copyright" required lay-verify="required" placeholder="請輸入版權信息"
                            value="{$data.value.copyright}" value="{$data.value.name}" autocomplete="off"
                            class="layui-input">
                 </div>
