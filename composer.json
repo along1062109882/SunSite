@@ -23,7 +23,8 @@
         "mustache/mustache": "2.12.0",
         "topthink/think-captcha": "2.*",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "ramsey/uuid": "^2.9"
+        "ramsey/uuid": "^3.8",
+        "moontoast/math": "^1.1"
     },
     "autoload": {
         "psr-4": {

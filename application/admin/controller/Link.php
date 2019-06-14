@@ -52,7 +52,7 @@ class Link extends Common
         if($datas){
             $aws = new Aws();
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = $aws->getUrl($datas[$k]['url']);
+                $datas[$k]['url'] = $datas[$k]['url']?$aws->getUrl($datas[$k]['url']):'';
             }
         }
         $count = Links::where($map)->count();
@@ -274,7 +274,7 @@ class Link extends Common
                 if($datas){
                     $aws = new Aws();
                     foreach ($datas as $k=>$v){
-                        $datas[$k]['url'] = $aws->getUrl($datas[$k]['url']);
+                        $datas[$k]['url'] = $datas[$k]['url']?$aws->getUrl($datas[$k]['url']):'';
                     }
                 }
                 $count = Links::where($map)->count();
@@ -285,7 +285,7 @@ class Link extends Common
                 if($datas){
                     $aws = new Aws();
                     foreach ($datas as $k=>$v){
-                        $datas[$k]['url'] = $aws->getUrl($datas[$k]['url']);
+                        $datas[$k]['url'] = $datas[$k]['url']?$aws->getUrl($datas[$k]['url']):'';
                     }
                 }
                 $count = Links::where($map)->count();
@@ -298,7 +298,7 @@ class Link extends Common
                     if($datas){
                         $aws = new Aws();
                         foreach ($datas as $k=>$v){
-                            $datas[$k]['url'] = $aws->getUrl($datas[$k]['url']);
+                            $datas[$k]['url'] = $datas[$k]['url']?$aws->getUrl($datas[$k]['url']):'';
                         }
                     }
                     $count = Links::where($map)->count();
@@ -340,7 +340,7 @@ class Link extends Common
         if($datas){
             $aws = new Aws();
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = $aws->getUrl($datas[$k]['url']);
+                $datas[$k]['url'] = $datas[$k]['url']?$aws->getUrl($datas[$k]['url']):'';
             }
         }
         $count = Links::where($map)->count();

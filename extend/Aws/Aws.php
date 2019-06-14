@@ -10,9 +10,9 @@ namespace Aws;
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
 
-use Rhumsaa\Uuid\Uuid;
-use Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException;
 use Aws\Spyc;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class Aws
 {

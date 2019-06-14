@@ -109,6 +109,7 @@ Route::get('/', 'index/index');
 // * 免权限验证路由
 // */
 Route::group('admin', [
+    ''=>'admin/Login/login',
     'login'=>'admin/Login/login',                                         //登录
     'editPassword'=>'admin/User/editPassword',                             //重置密码
     'logout$'=>'admin/Login/logout',                                       //退出

@@ -178,12 +178,12 @@ $(function () {
         var newYear = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
         if (location.pathname.indexOf('/zh-hans') != -1) {
-            // window.location.href = "/zh-hans/news?year=" + newYear + '&key=' + keyword;
-            search('zh-hans', newYear, keyword)
+            window.location.href = "/zh-hans/news?year=" + newYear + '&key=' + keyword;
+            // search('zh-hans', newYear, keyword)
         }
         else if (location.pathname.indexOf('/zh-hant') != -1) {
-            // window.location.href = "/zh-hant/news?year=" + newYear + '&key=' + keyword;
-            search('zh-hant', newYear, keyword)
+            window.location.href = "/zh-hant/news?year=" + newYear + '&key=' + keyword;
+            // search('zh-hant', newYear, keyword)
         }
         console.log($('#filter_search').val())
         console.log($('.drop-down input').val())
