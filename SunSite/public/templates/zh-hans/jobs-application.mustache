@@ -66,43 +66,42 @@
         <form action="">
           <div class="block">
             <label for="">地区：</label>
-            <select class="selectBoxRadioBtnBox region">
+            <select class="selectBoxRadioBtnBox region" id='region_one'>
               <option value="" selected="selected">请选择</option>
             </select>
           </div>
           <div class="block">
             <label for="">第一选择：</label>
-            <select class="selectBoxRadioBtnBox change_first">
+            <select class="selectBoxRadioBtnBox change_first" id='first_change_one'>
               <option value="" selected="selected">请选择</option>
             </select>
             </span>
           </div>
           <div class="block">
             <label for=""></label>
-            <select class="selectBoxRadioBtnBox">
+            <select class="selectBoxRadioBtnBox first_change" id='change_first_one'>
               <option value="" selected="selected">请选择</option>
             </select>
-            </span>
           </div>
-          <div class="block">
+          <div class="block ">
             <label for="">第二选择：</label>
-            <select class="selectBoxRadioBtnBox">
+            <select class="selectBoxRadioBtnBox second_str" id='second_change_one'>
               <option value="" selected="selected">请选择部门</option>
             </select>
           </div>
           <div class="block">
             <label for=""></label>
-           <select class="selectBoxRadioBtnBox">
+           <select class="selectBoxRadioBtnBox first_change" id='change_second_one'>
               <option value="" selected="selected">请选择职位</option>
             </select>
           </div>
           <div class="block">
             <label for="">薪资要求：</label>
-            <input type="text" name="text" placeholder="请输入金额">
+            <input type="text" name="text" placeholder="请输入金额" id='money_one'>
           </div>
           <div class="block">
             <label for="">离职通知期：</label>
-            <select class="selectBoxRadioBtnBox">
+            <select class="selectBoxRadioBtnBox work_back" id='work_back_one'>
               <option value="" selected="selected">请选择</option>
             </select>
           </div>
@@ -112,39 +111,31 @@
         <form action="">
           <div class="block">
             <label for="">介绍人姓名：</label>
-            <input class="drop-down" type="text" placeholder="请输入">
+            <input class="drop-down" type="text" placeholder="请输入" id='name_second'>
           </div>
           <div class="block">
             <label for="">介绍人员工编号：</label>
-            <input class="drop-down" type="text" name="text" placeholder="请输入">
+            <input class="drop-down" type="text" name="text" placeholder="请输入" id='number_second'>
           </div>
           <div class="block">
             <label for="">联络电话：</label>
-            <div class="radioBtnBox">
-              <select class="selectBox">
-                <option value="" selected="selected">请选择</option>
-              </select>
-              <p class="divider"></p>
-              <input class="drop-down-contact-phone" type="text" name="text" placeholder="请输入">
-            </div>
+              <input class="drop-down" type="text" name="text" placeholder="请输入" id='phone_second'>
           </div>
           <div class="block">
             <label for="">介绍人关系：</label>
-            <input class="drop-down" type="text" name="text" placeholder="请输入">
+            <input class="drop-down" type="text" name="text" placeholder="请输入" id='introd_second'>
           </div>
           <div class="block">
             <label for="">介绍人场馆/职位:</label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择部门">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <select class="selectBoxRadioBtnBox jieshao" id='introd_deparment_second'>
+              <option value="" selected="selected">请选择</option>
+            </select>
           </div>
           <div class="block">
             <label for=""></label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择职位">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+           <select class="selectBoxRadioBtnBox first_change jieshao_job" id='introd_job_second'>
+              <option value="" selected="selected">请选择</option>
+            </select>
           </div>
         </form>
       </div>
@@ -166,18 +157,16 @@
           </div>
           <div class="block">
             <label for="">性别:</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <select class="selectBoxRadioBtnBox gender">
+              <option value="" selected="selected">请选择</option>
+            </select>
             <span class="important">*</span>
           </div>
           <div class="block">
             <label for="">婚宴状况:</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <select class="selectBoxRadioBtnBox applicat">
+              <option value="" selected="selected">请选择</option>
+            </select>
           </div>
           <div class="block">
             <label for="">出生日期：</label>
@@ -208,32 +197,23 @@
           </div>
           <div class="block">
             <label for="">电话号码(住宅):</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+                         <input class="drop-down" type="text" name="text" placeholder="请输入">
+
           </div>
           <div class="block">
             <label for="">流动电话:</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+                         <input class="drop-down" type="text" name="text" placeholder="请输入">
+
             <span class="important">*</span>
           </div>
           <div class="block">
             <label for="">其他电话：</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+                          <input class="drop-down" type="text" name="text" placeholder="请输入">
+
           </div>
           <div class="block">
             <label for="">电邮地址：</label>
-            <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+              <input class="drop-down" type="text" name="text" placeholder="请输入">
           </div>
           <div class="block">
             <label for="">是否申请签证才可在澳门工作：</label>
@@ -269,10 +249,9 @@
             </div>
             <div class="block">
               <label for="">学历程度:</label>
-              <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-              <span class="icon">
-                <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-              </span>
+              <select class="selectBoxRadioBtnBox study">
+              <option value="" selected="selected">请选择</option>
+            </select>
               <span class="important">*</span>
             </div>
             <div class="block">
@@ -285,18 +264,20 @@
             </div>
             <div class="block">
               <label for="">是否毕业:</label>
-              <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-              <span class="icon">
-                <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-              </span>
+              <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">是</option>
+              <option value="" selected="selected">否</option>
+            </select>
               <span class="important">*</span>
             </div>
             <div class="block">
               <label for="">是否最高学历：</label>
-              <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-              <span class="icon">
-                <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-              </span>
+              <select class="selectBoxRadioBtnBox ">
+              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">是</option>
+              <option value="" selected="selected">否</option>
+            </select>
               <span class="important">*</span>
             </div>
           </form>
@@ -321,11 +302,9 @@
             </div>
             <div class="block">
               <label for="">学历程度:</label>
-              <input class="drop-down" type="text" readonly="readonly" placeholder="请选择">
-              <span class="important">*</span>
-              <span class="icon">
-                <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-              </span>
+             <select class="selectBoxRadioBtnBox study">
+              <option value="" selected="selected">请选择</option>
+            </select>
             </div>
             <div class="block">
               <label for="">颁发年份：</label>
@@ -337,18 +316,20 @@
             </div>
             <div class="block">
               <label for="">是否毕业:</label>
-              <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-              <span class="icon">
-                <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-              </span>
+             <select class="selectBoxRadioBtnBox ">
+              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">是</option>
+              <option value="" selected="selected">否</option>
+            </select>
               <span class="important">*</span>
             </div>
             <div class="block">
               <label for="">是否最高学历：</label>
-              <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-              <span class="icon">
-                <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-              </span>
+             <select class="selectBoxRadioBtnBox">
+              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">是</option>
+              <option value="" selected="selected">否</option>
+            </select>
               <span class="important">*</span>
             </div>
           </form>
@@ -442,10 +423,8 @@
             </div>
             <div class="block">
               <label for="">公司电话：</label>
-              <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-              <span class="icon">
-                <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-              </span>
+                            <input class="drop-down" type="text" name="text" placeholder="请输入">
+
             </div>
             <div class="block">
               <label for="">前負責人/上司姓名：</label>
@@ -750,10 +729,11 @@
           </div>
           <div class="block">
             <label for="">性别：</label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+            <select class="selectBoxRadioBtnBox ">
+              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">是</option>
+              <option value="" selected="selected">否</option>
+            </select>
           </div>
           <div class="block">
             <label for="">出生日期：</label>
@@ -761,31 +741,27 @@
           </div>
           <div class="block">
             <label for="">联络电话：</label>
-            <div class="radioBtnBox">
-              <select class="selectBox">
-                <option value="" selected="selected">请选择</option>
-              </select>
-              <p class="divider"></p>
-              <input class="drop-down-contact-phone" type="text" name="text" placeholder="请输入">
-            </div>
+                          <input class="drop-down" type="text" name="text" placeholder="请输入">
+
           </div>
           <div class="block">
             <label for="">是否现职本公司</label>
-            <input class="drop-down" type="text" name="text" readonly="readonly" placeholder="请选择">
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" style="vertical-align: baseline;" />
-            </span>
+             <select class="selectBoxRadioBtnBox ">
+              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">是</option>
+              <option value="" selected="selected">否</option>
+            </select>
             <span class="important">*</span>
           </div>
           <div class="block">
             <label for="">部门：</label>
-            <select class="selectBoxRadioBtnBox">
+            <select class="selectBoxRadioBtnBox deparment">
               <option value="" selected="selected">请选择</option>
             </select>
           </div>
           <div class="block">
             <label for="">职位：</label>
-            <select class="selectBoxRadioBtnBox">
+            <select class="selectBoxRadioBtnBox jobs">
               <option value="" selected="selected">请选择</option>
             </select>
           </div>
@@ -793,6 +769,8 @@
             <label for="">是否紧急联系人</label>
             <select class="selectBoxRadioBtnBox">
               <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">是</option>
+              <option value="" selected="selected">否</option>
             </select>
           </div>
         </form>
@@ -808,6 +786,8 @@
           <label for="" style="line-height: 20px">刑事记录，是否曾因刑事案件被定罪：</label>
           <select class="selectBoxRadioBtnBox">
             <option value="" selected="selected">请选择</option>
+            <option value="" selected="selected">是</option>
+            <option value="" selected="selected">否</option>
           </select>
         </div>
         <div class="block">
@@ -818,12 +798,16 @@
           <label for="" style="line-height: 20px">閣下或閣下親屬是否擁有公司與太陽城有生意往來的關係：</label>
           <select class="selectBoxRadioBtnBox">
             <option value="" selected="selected">请选择</option>
+            <option value="" selected="selected">是</option>
+            <option value="" selected="selected">否</option>
           </select>
         </div>
         <div class="block">
           <label for="" style="line-height: 20px">閣下或閣下親屬是否擁有太陽城集團所屬各貴賓廳之戶口：</label>
           <select class="selectBoxRadioBtnBox">
             <option value="" selected="selected">请选择</option>
+            <option value="" selected="selected">是</option>
+            <option value="" selected="selected">否</option>
           </select>
         </div>
         <p class="footer_line"></p>
@@ -839,9 +823,7 @@
           </div>
           <div class="block">
             <label for="" style="line-height: 20px">上傳文件：</label>
-            <select class="selectBoxRadioBtnBox">
-              <option value="" selected="selected">请选择</option>
-            </select>
+            <input class="selectBoxRadioBtnBox" type="file" style='background: url(/static/imgs/fill-1.svg) no-repeat scroll right #ffffff; background-position: 90% 15px;' placeholder='请上传'/>
           </div>
           <div class="block">
             <label for="">文件名稱：</label>
@@ -971,7 +953,7 @@
   <script src="/static/js/footer.js"></script>
   <script src="/static/js/header.js"></script>
   <script src="/static/js/vender/utility.js"></script>
-  <script src="/static/js/hreflang.js"></script>
+  {{! <script src="/static/js/hreflang.js"></script> }}
   <script src="/static/js/application.js"></script>
 </body>
 

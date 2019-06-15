@@ -128,12 +128,13 @@ $(function () {
 });
 // 中间大图区域添加轮播效果
   //轮播图函数
+  console.log($('.swiper-container .swiper-slide').length)
   var mySwiper = new Swiper('.swiper-container', {//初始化Swiper
-    autoplay: {//自动切换
+    autoplay: $('.swiper-container .swiper-slide').length > 0 ?{//自动切换
         delay: 3000,
         stopOnLastSlide: false,
         disableOnInteraction: false,
-      },
+      } : false,
      navigation: {//前进后退
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',

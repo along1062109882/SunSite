@@ -67,44 +67,25 @@
             <div class='grand_container grand_car'>
                 <ul>
                 {{#Grand}}
-                    <li>
-                    <a href="{{url}}" target='_blank'>
-                        {{#index}}
-                             <div>
-                                 <div class="grand_p">
-                                   <div class='title'>{{name}}</div>
-                                   <div class='content'>{{{content}}}</div>
-                                 </div>
-                                 <span>
-                                         <b>进入专页</b>
-                                 </span>
-                             </div>
-                            {{#img_url}}
-                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
-                            {{/img_url}}
-                            {{^img_url}}
-                            <span><img src="/static/imgs/grand_car.png" alt="Suncity_grand_car" /></span>
-                            {{/img_url}}
-                        {{/index}}
-                        {{^index}}
-                            {{#img_url}}
-                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
-                            {{/img_url}}
-                            {{^img_url}}
-                            <span><img src="/static/imgs/grand_car.png" alt="Suncity_grand_car" /></span>
-                            {{/img_url}}
-                            <div>
-                                 <div class="grand_p">
-                                   <div class='title'>{{name}}</div>
-                                   <div class='content'>{{{content}}}</div>
-                                 </div>
-                                <span>
-
-                                        <b>进入专页</b>
-                                </span>
-                            </div>
-                        {{/index}}
-                        </a>
+                    <li class="grand-item">
+                      <a href="{{url}}" target='_blank' class="grand-box">
+                        <div class="grand-detail">
+                          <div class="grand_p">
+                            <div class='title'>{{name}}</div>
+                            <div class='content'>{{{content}}}</div>
+                          </div>
+                          <span class='special_page'>
+                            <b>进入专页</b>
+                          </span>
+                        </div>
+                        {{#img_url}}
+                          <span class="grand-banner"><img src="{{img_url}}" alt="{{alt}}" /></span>
+                        {{/img_url}}
+                        {{^img_url}}
+                          <span class="grand-banner"><img src="/static/imgs/grand_car.png" alt="Suncity_grand_car" /></span>
+                        {{/img_url}}
+                        
+                      </a>
                     </li>
                 {{/Grand}}
                 </ul>
@@ -112,43 +93,25 @@
             <div class='grand_container grand_ten'>
                 <ul>
                 {{#Annual}}
-                    <li>
-                       <a href="{{url}}" target='_blank'>
-                        {{#index}}
-                             <div>
-                                 <div class="grand_p">
-                                   <div class='title'>{{name}}</div>
-                                   <div class='content'>{{{content}}}</div>
-                                 </div>
-                                 <span>
-                                     <b>进入专页</b>
-                                 </span>
-                             </div>
-                            {{#img_url}}
-                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
-                            {{/img_url}}
-                            {{^img_url}}
-                            <span><img src="/static/imgs/grand_ten_year.png" alt="Suncity_grand_ten_year" /></span>
-                            {{/img_url}}
-                        {{/index}}
-                        {{^index}}
-                            {{#img_url}}
-                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
-                            {{/img_url}}
-                            {{^img_url}}
-                            <span><img src="/static/imgs/grand_ten_year.png" alt="Suncity_grand_ten_year" /></span>
-                            {{/img_url}}
-                            <div>
-                                 <div class="grand_p">
-                                   <div class='title'>{{name}}</div>
-                                   <div class='content'>{{{content}}}</div>
-                                 </div>
-                                <span>
-                                    <b>进入专页</b>
-                                </span>
-                            </div>
-                        {{/index}}
-                        </a>
+                   <li class="grand-item">
+                      <a href="{{url}}" target='_blank' class="grand-box">
+                        {{#img_url}}
+                          <span class="grand-banner"><img src="{{img_url}}" alt="{{alt}}" /></span>
+                        {{/img_url}}
+                        {{^img_url}}
+                          <span class="grand-banner"><img src="/static/imgs/grand_car.png" alt="Suncity_grand_car" /></span>
+                        {{/img_url}}
+                        <div class="grand-detail">
+                          <div class="grand_p">
+                            <div class='title'>{{name}}</div>
+                            <div class='content'>{{{content}}}</div>
+                          </div>
+                          <span class='special_page'>
+                            <b >进入专页</b>
+                          </span>
+                        </div>
+                        
+                      </a>
                     </li>
                 {{/Annual}}
                 </ul>
@@ -156,43 +119,25 @@
             <div class='grand_container grand_music'>
                 <ul>
                 {{#Concert}}
-                    <li>
-                    <a href="{{url}}" target='_blank'>
-                        {{#index}}
-                             <div>
-                                 <div class="grand_p">
-                                   <div class='title'>{{name}}</div>
-                                   <div class='content'>{{{content}}}</div>
-                                 </div>
-                                 <span>
-                                      <b>进入专页</b>
-                                 </span>
-                             </div>
-                            {{#img_url}}
-                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
-                            {{/img_url}}
-                            {{^img_url}}
-                            <span><img src="/static/imgs/grand_music.png" alt="Suncity_grand_music" /></span>
-                            {{/img_url}}
-                        {{/index}}
-                        {{^index}}
-                            {{#img_url}}
-                            <span><img src="{{img_url}}" alt="{{alt}}" /></span>
-                            {{/img_url}}
-                            {{^img_url}}
-                            <span><img src="/static/imgs/grand_music.png" alt="Suncity_grand_music" /></span>
-                            {{/img_url}}
-                            <div>
-                                 <div class="grand_p">
-                                   <div class='title'>{{name}}</div>
-                                   <div class='content'>{{{content}}}</div>
-                                 </div>
-                                <span>
-                                     <b>进入专页</b>
-                                </span>
-                            </div>
-                        {{/index}}
-                        </a>
+                    <li class="grand-item">
+                      <a href="{{url}}" target='_blank' class="grand-box">
+                        {{#img_url}}
+                          <span class="grand-banner"><img src="{{img_url}}" alt="{{alt}}" /></span>
+                        {{/img_url}}
+                        {{^img_url}}
+                          <span class="grand-banner"><img src="/static/imgs/grand_car.png" alt="Suncity_grand_car" /></span>
+                        {{/img_url}}
+                        <div class="grand-detail">
+                          <div class="grand_p">
+                            <div class='title'>{{name}}</div>
+                            <div class='content'>{{{content}}}</div>
+                          </div>
+                          <span class='special_page'>
+                            <b>进入专页</b>
+                          </span>
+                        </div>
+                       
+                      </a>
                     </li>
                 {{/Concert}}
                 </ul>

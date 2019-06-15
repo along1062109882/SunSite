@@ -103,25 +103,59 @@
 .grand_container ul li{
     width: 100%;
 }
-.grand_container ul li a{
+/* .grand_container ul li a{
     width: 100%;
     display: flex;
     justify-content: center;
     padding-bottom: 30px;
     cursor: pointer;
+} */
+.grand-item {
+  margin-bottom: 30px;
 }
-.grand_container ul li span {
-    width: 88%;
+.grand-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    position: relative;
 }
-.grand_container ul li span img {
+.grand-item:nth-of-type(2n-1) > .grand-box {
+    flex-direction: row-reverse;
+}
+.grand-banner {
+    flex-basis: 60%;
+}
+.grand-detail {
+    flex-basis: 40%;
+    width: 40%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+.grand-item:nth-of-type(2n-1) > .grand-box .grand-detail {
+    right: 0;
+    left: auto;
+}
+/* .grand_container ul li span {
+    flex-basis: 60%;
+} */
+.grand-banner img {
     width: 100%;
 }
-.grand_container ul li div {
+/* .grand_container ul li span img {
+    width: 100%;
+} */
+/* .grand_container ul li div {
     width: 45%;
     background-size: contain;
     background-repeat: no-repeat;
-}
-.grand_container ul li div .grand_p {
+} */
+.grand_p {
+    flex: 1;
     height: 82.8%;
     width: 100%;
     background-image: url(/static/imgs/suncityLogo404@3x.png);
@@ -129,16 +163,23 @@
     background-size: 100% 100%;
     text-align: center;
     /*padding-bottom: 20px;*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
 }
-.grand_container ul li div .grand_p .title {
+.grand_p .title {
     width: 100%;
     padding: 15px 0;
     color: #fff;
     font-weight: 700;
     font-size: 20px;
+    flex: 0 0;
 }
-.grand_container .content {
-    width: 90%;
+.grand_p .content {
+    flex: 1 1;
+    padding: 0 10%;
     color: #fff;
     font-size: 16px;
     display: inline-block;
@@ -146,6 +187,17 @@
     font-weight: 700;
     height: 70%;
     line-height: normal;
+    overflow: hidden;
+}
+.grand_p .content p {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2em;
+    height: 7.2em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
 }
 
 @media(max-width: 1600px) {
@@ -176,7 +228,7 @@
         line-height: normal;
     }
 }
-.grand_container ul li div span{
+.special_page{
     width: 100%;
     /* height: 17%;; */
     display: flex;
@@ -195,11 +247,11 @@
         /*height: 77.8%;*/
     /*}*/
 /*}*/
-.grand_container ul li div span b {
+.special_page b {
     color: #a19062;
 }
 @media (max-width: 1024px){
-    .grand_container ul li div span b {
+    .special_page b {
         font-size: 16px;
     }
 }
@@ -224,7 +276,21 @@
     /*}*/
 }
 @media (max-width: 640px) {
-    .grand_section {
+    .grand-item .grand-box {
+        flex-direction: column;
+    }
+    .grand-detail {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+    .grand-item:nth-of-type(2n-1) > .grand-box {
+        flex-direction: column;
+    }
+    /* .grand-box {
+        flex-direction: column;
+    } */
+    /* .grand_section {
         width: 70%;
         height: auto;
         margin-left: 15%;
@@ -238,13 +304,17 @@
     .grand_container ul li > div  {
         width: 100%;
         height: 248px;
-    }
+    } */
     .grand_container ul li div .grand_p {
         background-image: url('/static/imgs/group.svg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         padding-bottom: 20px;
+        min-height: 200px;
+    }
+    .special_page{
+        height: 60px;;
     }
 }
 @media(max-width: 414px) {
@@ -374,4 +444,14 @@
 .swiper_active {
     background-color: #a19062;
     color: #fff;
+}
+@media (max-width: 1439px) {
+    .common-banner-content {
+        /* margin-left: 25.98%; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+    }
 }
