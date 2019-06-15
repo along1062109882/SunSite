@@ -4,19 +4,19 @@
     <blockquote class="layui-elem-quote quoteBox">
         <form class="layui-form">
             <div class="layui-inline">
-                <label class="labels"><span class='Important'>*</span>最早發佈時間</label>
+                <label class="labels">最早發佈時間</label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input searchVal" id="test1" placeholder="請選擇日期" name="start_time" autocomplete="off"/>
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="labels"><span class='Important'>*</span>最晚發佈時間</label>
+                <label class="labels">最晚發佈時間</label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input searchVal" id="test2" placeholder="請選擇日期" name="end_time" autocomplete="off"/>
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="labels"><span class='Important'>*</span>標題</label>
+                <label class="labels">標題</label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input searchVal" placeholder="" name="title" id="title"/>
                 </div>
@@ -42,7 +42,11 @@
         {{ d.status == 0 ? '草稿' : '已發布' }}
     </script>
     <script type="text/html" id="fileTpl">
-        <a href="{{d.url}}" target="_blank">{{ d.file}}</a>
+        {{# if(d.url){ }}
+        <a href="{{d.url}}" target="_blank" onclick="js_method();return false;">{{ d.file}}</a>
+        {{# } else { }}
+        {{ d.file}}
+        {{# } }}
     </script>
 </form>
 {/block}

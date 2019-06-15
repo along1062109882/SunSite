@@ -91,6 +91,7 @@
 					</span>
 				</span>
 				<input type="file" name="file" accept="image/*" id="multiple_uploadImage">
+			</span>
 		</div>
 	</div>
 	</div>
@@ -180,7 +181,10 @@
 		imgEl_list.forEach(item => {
 			uploadPictureCollection.append("file[]", item);
 		});
-		
+		if(imgEl_list.length===0){
+			msg('請選擇上傳圖片');
+			return false;
+		}
 		$.ajax({
 			url: '/admin/uploadCommit',
 			type: 'POST',

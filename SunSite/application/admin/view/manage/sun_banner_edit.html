@@ -60,6 +60,11 @@
 
 
     $("#commit").on("click", function () {
+        var slug = $("input[ name='file']").val();
+        if(!slug){
+            msg('請選擇上傳圖片');
+            return false;
+        }
         var form = new FormData($('#form')[0]);
         $.ajax({
             url: '/admin/sun_banner_commit',

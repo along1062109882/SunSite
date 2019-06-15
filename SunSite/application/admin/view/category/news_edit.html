@@ -2,19 +2,18 @@
 {block name="main"}
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/newsEdit')}">
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>選擇分類</label>
+        <label class="labels">選擇分類</label>
         <div class="layui-input-inline">
-            <select name="type" lay-verify="required">
+            <select name="type">
                 <option value="0">請選擇</option>
                 <?php foreach($grouplist as $key=>$val): ?>
                 <option value="<?php echo $val['id']; ?>" <?php if(isset($list['type']) && $list['type']==$val['id']){echo "selected";} ?> > <?php echo $val['title']; ?></option>
                 <?php endforeach; ?>
             </select>
-            <!--{form:select name="group_id" list="$grouplist" value = "$list['group_id']"  default="[''=>'請選擇']"  option="['xm-select'=>'selectId','id'=>'group_id','lay-verify'=>'required']"}-->
         </div>
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>slug（說明：當分類選擇為「大賽車」時文章會在「大賽車」專題模板中抽取出來，slug 請填寫 'event-post-grand-prix-〇'，〇為對應大賽車專題 ID，如 slug 填寫 'event-post-grand-prix-89'，則這個帖子會在 ID 為 98 的大賽車專題的「相關動態」模塊中顯示）</label>
+        <label class="labels"><span class='Important'>*</span>slug</label>
         <div class="layui-input-inline">
             <input type="text" name="slug" placeholder="這裡填寫url中的path" autocomplete="off" class="layui-input"
                    value="{:isset($list.slug)?$list.slug:''}" lay-verify="required">
@@ -24,7 +23,7 @@
         <label class="labels"><span class='Important'>*</span>狀態</label>
         <div class="layui-input-inline">
             <!--{form:radio name="status" list="['0'=>'草稿','1'=>'已發布']" value="$list['status']"}-->
-            <select name="status" lay-verify="required">
+            <select name="status" lay-verify="required" id="status">
                 <option value="">請選擇狀態</option>
                 <option value="0" <?php if(isset($list['status']) && $list['status']==0){echo "selected";} ?>>草稿</option>
                 <option value="1" <?php if(isset($list['status']) && $list['status']==1){echo "selected";} ?>>已發布</option>
@@ -106,7 +105,7 @@
     <div class="layui-form-item flex-column">
         <label class="labels">英文標題</label>
         <div class="layui-input-inline">
-            <input type="text" name="title_en" placeholder="請輸入" autocomplete="off" class="layui-input" required
+            <input type="text" name="title_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.title_en)?$list.title_en:''}">
         </div>
     </div>
@@ -119,14 +118,14 @@
     <div class="layui-form-item flex-column">
         <label class="labels">英文预览</label>
         <div class="layui-input-inline">
-            <input type="text" name="show_en" placeholder="請輸入" autocomplete="off" class="layui-input" required
+            <input type="text" name="show_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.show_en)?$list.show_en:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
         <label class="labels">英文 SEO Keywords</label>
         <div class="layui-input-inline">
-            <input type="text" name="keyword_en" placeholder="請輸入" autocomplete="off" class="layui-input" required
+            <input type="text" name="keyword_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                    value="{:isset($list.keyword_en)?$list.keyword_en:''}">
         </div>
     </div>
@@ -141,7 +140,7 @@
         <div class="layui-input-inline">
             <input type="hidden" name="id" value="{:isset($list['id'])?$list['id']:''}">
 
-            <button class="layui-btn" lay-submit lay-filter="*">發布帖子</button>
+            <button class="layui-btn" lay-submit lay-filter="*" id="commit">發布</button>
             <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
         </div>
     </div>
@@ -174,25 +173,53 @@
             layer = layui.layer,
             form = layui.form;
 
-        //表单提交
-        form.on("submit(*)", function (data) {
+        $("#commit").on("click", function (){
+            var slug = $("input[ name='slug']").val();
+            var title_hk = $("input[ name='title_hk']").val();
+            var title_cn = $("input[ name='title_cn']").val();
+            var status = $("#status option:selected").val();
+            var time = $("input[ name='time']").val();
+            if(!slug){
+                msg('slug不能為空');
+                return false;
+            }
+            if(status === ''){
+                msg('狀態不能為空');
+                return false;
+            }
+            if(!time){
+                msg('發佈時間不能為空');
+                return false;
+            }
+            if(!title_hk){
+                msg('繁體標題不能為空');
+                return false;
+            }
+            if (!layedit.getContent(demo)) {
+                msg('繁體正文不能为空');
+                return false;
+            }
+            if(!title_cn){
+                msg('簡體標題不能為空');
+                return false;
+            }
+            if (!layedit.getContent(demo1)) {
+                msg('簡體正文不能为空');
+                return false;
+            }
+            var form = new FormData($('#form')[0]);
+            form.append("content_hk", layedit.getContent(demo));
+            form.append("content_cn", layedit.getContent(demo1));
+            form.append("content_en", layedit.getContent(demo2));
 
-            if(!layedit.getContent(demo)){
-                parent.layer.msg('繁體內容不能为空',{icon:2});
-                return false;
-            }
-            if(!layedit.getContent(demo1)){
-                parent.layer.msg('簡體內容不能为空',{icon:2});
-                return false;
-            }
-            data.field.content_hk = layedit.getContent(demo);
-            data.field.content_cn = layedit.getContent(demo1);
-            data.field.content_en = layedit.getContent(demo2);
             //ajax执行
             $.ajax({
-                type: "post",
                 url: '/admin/newsEdit',
-                data:data.field,
+                type: 'POST',
+                cache: false,
+                data: form,
+                processData: false,
+                contentType: false,
                 dataType: "json",
                 success: function(data){
                     if(data.code==200){

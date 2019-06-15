@@ -46,9 +46,6 @@
     }
 </style>
 <form id="form" method="post" enctype="multipart/form-data" class="layui-form layui-form-pane" action="#">
-    <!--图片：        <input type="file" name="img">-->
-    <!--name：<input type="text" name="name" placeholder="请输入" id="name" autocomplete="off" class="layui-input">-->
-    <!--<input type="submit">-->
     <div class="layui-form-item flex-column">
         <label class="labels">圖片</label>
         <div class="uploadImgBox">
@@ -115,6 +112,11 @@
     });
     // 点击确定开始上传
     $("#commit").on("click", function () {
+        var file = $("input[ name='file']").val();
+        if(!file){
+            msg('請選擇上傳圖片');
+            return false;
+        }
         var form = new FormData($('#form')[0]);
         $.ajax({
             url: '/admin/uploadCommit',

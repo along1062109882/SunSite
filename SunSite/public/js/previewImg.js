@@ -1,9 +1,9 @@
 function previewImg(config) {
     if(!config.src || config.src==""){
-        layer.msg("没有发现图片！");
+        layer.msg("沒有發現圖片！");
         return ;
     }
-    var default_config = {title: "图片预览"};
+    var default_config = {title: "圖片預覽"};
     var img = new Image();
     img.onload = function() {
         //避免图片还未加载完成无法获取到图片的大小。

@@ -704,13 +704,8 @@ class Index extends Controller
         $tpl = $mustache->loadTemplate('grand');
         return $tpl->render($result);
     }
-//    public function jobs()
-//    {
-//        $this->getLang();
-//        $mustache = Mustache::mustache($this->lang);
-//        $tpl = $mustache->loadTemplate('jobs');
-//        return $tpl->render(array('LanguageDisplay' => $this->lang));
-//    }
+
+
     public function getParam(){
         $cache = cache('params');
 
@@ -731,6 +726,24 @@ class Index extends Controller
             }
         }
         return $cache;
+    }
+
+    public function jobCommit(){
+        $jsonData = isset($_REQUEST['data'])?$_REQUEST['data']:[];
+        $json = [
+            "identity"=>"90000002",
+            "password"=>"123456"
+        ];
+        $api = Api::postCurl('json_web_token','',$json);
+
+        if(isset($api['data']) && !empty($api['data'])){
+            $token = $api['data']['token'];
+            $data = Api::postCurl('applicant_profiles/import_options',$token,$jsonData);
+            if(isset($data['state']) && $data['state'] == 'success'){
+                return ['code'=>0,'msg'=>'success'];
+            }
+        }
+        return ['code'=>101,'msg'=>'fail'];
     }
     //就業機會
     public function jobs_vip()

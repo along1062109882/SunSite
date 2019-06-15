@@ -101,3 +101,29 @@ form input.layui-input[disabled]{ background:#f2f2f2; color:#595963!important; }
 
 .change_btn { margin-top: 20px;}
 .layui-table-page {text-align: center;}
+
+/* 图片上传样式 */
+.uploadImgBox {
+    width: 110px;
+    height: 115px;
+    overflow: hidden;
+    position: relative;
+}
+
+#uploadImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+#myImg {
+    width: 100%;
+    height: 100%;
+}
+
+.promptHide {
+    display: none;
+}

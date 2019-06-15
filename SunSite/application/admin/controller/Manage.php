@@ -83,6 +83,8 @@ class Manage extends Common
     public function sun_entertainment_edit()
     {
         $id = $this->request->get('id');
+        $type = $this->request->get('type',0,'intval');
+        $where= $this->request->get('where','');
         if($id){
             $datas = Entertainment::where(['id'=>$id])->field('id,type,link_id')->with('links,getContent')->find()->toArray();
             $list=[];
@@ -126,6 +128,8 @@ class Manage extends Common
             }
             $this->assign('list', $list);
         }
+        $this->assign('where', $where);
+        $this->assign('type', $type);
 
         return $this->fetch();
     }
@@ -512,6 +516,8 @@ class Manage extends Common
     public function sun_food_edit()
     {
         $id = $this->request->get('id');
+        $where= $this->request->get('where','');
+
         if($id){
             $datas = Food::where(['id'=>$id])->field('id,url,link_id')->with('links,getContent')->find()->toArray();
             $list=[];
@@ -566,6 +572,8 @@ class Manage extends Common
             }
             $this->assign('list', $list);
         }
+        $this->assign('where', $where);
+
         return $this->fetch();
     }
 

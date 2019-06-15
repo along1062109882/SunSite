@@ -53,6 +53,9 @@
         </div>
     </div>
     <!--操作-->
+    <script type="text/html" id="listImg">
+        <div><img src="{{d.url}}" onclick="previewImg(this)"></div>
+    </script>
     <script type="text/html" id="usersListBar1">
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del1">删除</a>
     </script>
@@ -111,7 +114,7 @@
             where:{id:post_id,type:type},
             cols : [[
                 {field: 'sort', title: 'ID', width:100, fixed: 'left', align:'center', templet:'#titleTpl1'},
-                {field: 'url', title: '圖片',align: 'center',templet:'<div><img src="{{ d.url}}" onclick="previewImg(this)"></div>'},
+                {field: 'url', title: '圖片',align: 'center',templet:'#listImg'},
                 {field: 'name', title: '標題', align:'center'},
                 {field: 'description', title: '描述', align:'center'},
                 {title: '操作', templet:'#usersListBar1',fixed:"right",align:"center"}
@@ -134,7 +137,7 @@
             where:{id:post_id,type:type},
             cols : [[
                 {field: 'sort', title: 'ID', width:100, fixed: 'left', align:'center', templet:'#titleTpl2'},
-                {field: 'url', title: '圖片',align: 'center',templet:'<div><img src="{{ d.url}}" onclick="previewImg(this)"></div>'},
+                {field: 'url', title: '圖片',align: 'center',templet:'#listImg'},
                 {field: 'name', title: '標題', align:'center'},
                 {field: 'description', title: '描述', align:'center'},
                 {title: '操作', templet:'#usersListBar2',fixed:"right",align:"center"}
@@ -157,7 +160,7 @@
             where:{id:post_id,type:type},
             cols : [[
                 {field: 'sort', title: 'ID', width:100, fixed: 'left', align:'center', templet:'#titleTpl3'},
-                {field: 'url', title: '圖片',align: 'center',templet:'<div><img src="{{ d.url}}" onclick="previewImg(this)"></div>'},
+                {field: 'url', title: '圖片',align: 'center',templet:'#listImg'},
                 {field: 'name', title: '標題', align:'center'},
                 {field: 'description', title: '描述', align:'center'},
                 {title: '操作', templet:'#usersListBar2',fixed:"right",align:"center"}

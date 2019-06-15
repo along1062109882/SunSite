@@ -39,9 +39,9 @@
         <a class="layui-btn layui-btn-xs" lay-event="edit">編輯</a>
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
     </script>
-    <!--<script type="text/html" id="big">-->
-        <!--<div><img src="{{ d.url}}"></div>-->
-    <!--</script>-->
+    <script type="text/html" id="listImg">
+        <div><img src="{{d.url}}" onclick="previewImg(this)"></div>
+    </script>
 
 </form>
 {/block}
@@ -80,7 +80,7 @@
             method:'post',
             // id:'usersListTable',
             cols : [[
-                {field: 'url', title: '圖片',align: 'center',templet:'<div><img src="{{ d.url}}" onclick="previewImg(this)"></div>'},
+                {field: 'url', title: '圖片',align: 'center',templet:'#listImg'},
                 {field: 'name', title: '標題', align:'center'},
                 {field: 'description', title: '描述', align:'center'},
                 {title: '操作', templet:'#usersListBar',fixed:"right",align:"center"}

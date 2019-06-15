@@ -69,7 +69,6 @@
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>狀態</label>
         <div class="layui-input-inline">
-            <!--{form:radio name="status" list="['0'=>'草稿','1'=>'已發布']" value="$list['status']"}-->
             <select name="status" lay-verify="required" id="status">
                 <option value="">請選擇狀態</option>
                 <option value="0" <?php if(isset($list['status']) && $list['status']==0){echo "selected";} ?>>草稿</option>
@@ -84,15 +83,8 @@
         </div>
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>PDF</label>
-        <!--<div id="test2" class="add_img">-->
-            <!--<span >-->
-                <!--<p class="add">+</p>-->
-                <!--<p class="add_title">上传PDF</p>-->
-            <!--</span>-->
-        <!--</div>-->
-        <input type="file" name="file" accept=".pdf" multiple>
-
+        <label class="labels">PDF</label>
+        <input type="file" name="file" accept=".pdf">
     </div>
     <div class="layui-form-item flex-column">
         <div class="layui-input-inline">
@@ -125,8 +117,53 @@
         });
 
     });
+
+
+
     $("#commit").on("click", function (){
+        var title_hk = $("input[ name='title_hk']").val();
+        var meta_hk = $("input[ name='meta_hk']").val();
+        var text_hk = $("input[ name='text_hk']").val();
+        var title_cn = $("input[ name='title_cn']").val();
+        var meta_cn = $("input[ name='meta_cn']").val();
+        var text_cn = $("input[ name='text_cn']").val();
+        var status = $("#status option:selected").val();
+        var time = $("input[ name='test1']").val();
+        if(!title_hk){
+            msg('繁體標題不能為空');
+            return false;
+        }
+        if(!meta_hk){
+            msg('繁體metaData不能為空');
+            return false;
+        }
+        if(!text_hk){
+            msg('繁體allText不能為空');
+            return false;
+        }
+        if(!title_cn){
+            msg('簡體標題不能為空');
+            return false;
+        }
+        if(!meta_cn){
+            msg('簡體metaData不能為空');
+            return false;
+        }
+        if(!text_cn){
+            msg('簡體allText不能為空');
+            return false;
+        }
+        if(status === ''){
+            msg('狀態不能為空');
+            return false;
+        }
+        if(!time){
+            msg('發佈時間不能為空');
+            return false;
+        }
+
         var form = new FormData($('#form')[0]);
+
         $.ajax({
             url: '/admin/publishCommit',
             type: 'POST',
@@ -147,5 +184,6 @@
             }
         });
     });
+
 </script>
 {/block}

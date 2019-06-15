@@ -39,7 +39,7 @@
     <div class="layui-form-item flex-column">
         <label class="labels">英文標題：</label>
         <div class="layui-input-inline">
-            <input type="text" name="title_en" placeholder="請輸入" autocomplete="off" class="layui-input" required
+            <input type="text" name="title_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                 value="{:isset($list.title_en)?$list.title_en:''}">
         </div>
     </div>
@@ -61,7 +61,7 @@
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>狀態：</label>
         <div class="layui-input-inline">
-            <select name="status" lay-verify="required">
+            <select name="status" lay-verify="required" id="status">
                 <option value="">請選擇狀態</option>
                 <option value="0" <?php if(isset($list['state']) && $list['state']==0){echo "selected";} ?>>草稿</option>
                 <option value="1" <?php if(isset($list['state']) && $list['state']==1){echo "selected";} ?>>已發布</option>
@@ -94,7 +94,7 @@
         <div class="layui-input-inline">
             <input type="hidden" name="id" value="{:isset($list['id'])?$list['id']:''}">
 
-            <button class="layui-btn" lay-submit lay-filter="*">確認</button>
+            <button class="layui-btn" lay-submit lay-filter="*" id="commit">確認</button>
             <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
         </div>
     </div>
@@ -153,16 +153,50 @@
         var demo = layedit.build('demo'); //建立编辑器
         var demo1 = layedit.build('demo1'); //建立编辑器
         var demo2 = layedit.build('demo2'); //建立编辑器
-
-
-        //表单提交
-        form.on("submit(*)", function (data) {
+        $("#commit").on("click", function (){
+            var slug = $("input[ name='slug']").val();
+            var title_hk = $("input[ name='title_hk']").val();
+            var title_cn = $("input[ name='title_cn']").val();
+            var url = $("input[ name='url']").val();
+            var status = $("#status option:selected").val();
+            var time = $("input[ name='time']").val();
+            if(!slug){
+                msg('slug不能為空');
+                return false;
+            }
+            if(!title_hk){
+                msg('繁體標題不能為空');
+                return false;
+            }
             if (!layedit.getContent(demo)) {
-                parent.layer.msg('繁體內容不能为空', { icon: 2 });
+                msg('繁體內容不能为空');
+                return false;
+            }
+            if(!title_cn){
+                msg('簡體標題不能為空');
                 return false;
             }
             if (!layedit.getContent(demo1)) {
-                parent.layer.msg('簡體內容不能为空', { icon: 2 });
+                msg('簡體內容不能为空');
+                return false;
+            }
+            if(!url){
+                msg('url不能為空');
+                return false;
+            }else{
+                var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+                var objExp=new RegExp(Expression);
+                if(objExp.test(url) != true){
+                    msg("url格式不正確！請重新輸入");
+                    return false;
+                }
+            }
+            if(status === ''){
+                msg('狀態不能為空');
+                return false;
+            }
+            if(!time){
+                msg('發佈時間不能為空');
                 return false;
             }
             var form = new FormData($('#form')[0]);

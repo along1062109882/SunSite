@@ -50,6 +50,12 @@
     <!-- <table id="usersList" lay-filter="usersList"></table> -->
     
     <!--操作-->
+    <script type="text/html" id="listImg">
+        <div><img src="{{d.img_url}}" onclick="previewImg(this)"></div>
+    </script>
+    <script type="text/html" id="bannerImg">
+        <div><img src="{{d.url}}" onclick="previewImg(this)"></div>
+    </script>
     <script type="text/html" id="usersListBar">
         <a class="layui-btn layui-btn-xs" lay-event="edit">編輯</a>
         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">刪除</a>
@@ -94,7 +100,7 @@
             // id:'usersListTable',
             cols : [[
                 {field: 'sort', title: 'ID', width:100, fixed: 'left', align:'center', templet:'#titleTpl'},
-                {field: 'img_url', title: '圖片',align: 'center',templet:'<div><img src="{{ d.img_url}}" onclick="previewImg(this)" style="width:80%;height: 80%;"></div>'},
+                {field: 'img_url', title: '圖片',align: 'center',templet:'#listImg'},
                 {field: 'id', title: 'id', align:'center',hide:true},
                 {field: 'title', title: '標題', align:'center'},
                 {field: 'url', title: 'URL', align:'center'},
@@ -122,7 +128,7 @@
             // id:'usersListTable',
             cols : [[
                 {field: 'sort', title: 'ID', width:100, fixed: 'left', align:'center', templet:'#titleTpl1'},
-                {field: 'url', title: '圖片',align: 'center',templet:'<div><img src="{{ d.url}}" onclick="previewImg(this)"></div>'},
+                {field: 'url', title: '圖片',align: 'center',templet:'#bannerImg'},
                 {title: '操作', width:320, templet:'#usersListBar1',fixed:"right",align:"center"}
 
             ]],
@@ -136,14 +142,14 @@
         var ins1 = table.render(tableIns);
         var ins2 = table.render(tableIns1);
         //编辑用户
-        function edit(id){
+        function edit(id,where){
             var index = layui.layer.open({
                 title : "編輯",
                 type : 2,
                 area: ['100%', '400px'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/sun_food_edit')}"+'?id='+id,
+                content : "{:url('/admin/sun_food_edit')}"+'?id='+id+'&where='+where,
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -228,7 +234,7 @@
         $(".adduser_btn").click(function(){
             // edit('');
             if ($('.layui-tab li').eq(0).hasClass("layui-this")) {
-                edit('');
+                edit('','add');
             } else {
                 edit_banner('');
             }
