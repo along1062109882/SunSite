@@ -63,13 +63,13 @@
             elem: '#test1' //指定元素
             ,type: 'datetime'
             ,trigger: 'click'
-
+            ,max: 0
         });
         laydate.render({
             elem: '#test2' //指定元素
             ,type: 'datetime'
             ,trigger: 'click'
-
+            ,max: 0
         });
         //用户列表
         var tableIns = {
@@ -144,7 +144,7 @@
             var index = layui.layer.open({
                 title : "添加",
                 type : 2,
-                area: ['100%', '400px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/publishEdit')}",
@@ -169,7 +169,7 @@
             var index = layui.layer.open({
                 title : "編輯",
                 type : 2,
-                area: ['100%', '400px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/publishEdit')}"+'?id='+id,
@@ -211,6 +211,7 @@
                                 obj.del();
                             }
                         });
+                        location.reload();
                     })
                 });
             }

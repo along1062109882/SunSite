@@ -183,13 +183,8 @@
                     icon=6;
                 }
                 layer.msg(data.msg, {icon:icon,time: 1500}, function () {
-                    if(data.code){
-                        obj.del();
-                    }
                 });
-                var index = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(index);
-                parent.location.reload();
+                location.reload();
             })
         }
         //列表操作
@@ -209,9 +204,9 @@
                                 obj.del();
                             }
                         });
+                        location.reload();
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
-                        parent.location.reload();
                     })
                 });
             }
@@ -232,9 +227,9 @@
                                 obj.del();
                             }
                         });
+                        location.reload();
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
-                        parent.location.reload();
                     })
                 });
             }
@@ -255,9 +250,9 @@
                                 obj.del();
                             }
                         });
+                        location.reload();
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
-                        parent.location.reload();
                     })
                 });
             }

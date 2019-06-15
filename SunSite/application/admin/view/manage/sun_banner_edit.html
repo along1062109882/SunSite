@@ -57,8 +57,6 @@
     });
 
 
-
-
     $("#commit").on("click", function () {
         var slug = $("input[ name='file']").val();
         if(!slug){
@@ -75,8 +73,12 @@
             contentType: false,
             dataType: "json",
             success: function (data) {
+                // location.reload();
                 if (data.code === 200) {
-                    parent.layer.msg('成功', { icon: 1 });
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    parent.layer.msg('成功',{icon:1});
+                    parent.location.reload();
                 } else {
                     parent.layer.msg('失败', { icon: 2 });
                 }

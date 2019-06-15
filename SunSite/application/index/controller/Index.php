@@ -149,36 +149,15 @@ class Index extends Controller
         return $tpl->render(array('LanguageDisplay' => $language));
     }
 
-    public function lang() {
-        $this->lang = $_GET['lang'];
-        var_dump($_GET);die();
-        switch ($_GET['lang']) {
-            case 'cn':
-                cookie('think_var', 'zh-cn');
-                break;
-            case 'en':
-                cookie('think_var', 'en-us');
-                break;
-            case 'tw':
-                cookie('think_var', 'zh-tw');
-                break;
-            default:
-                cookie('think_var', 'zh-cn');
-        }
-    }
-    public function hello($name = 'ThinkPHP5')
-    {
-        return 'hello,' . $name;
-    }
+
     //集團介紹
     public function about_us()
     {
         $this->getLang();
         $language = $this->lang;
-        $result = $this->getMenu($language);
         $mustache = Mustache::mustache($this->lang);
         $tpl = $mustache->loadTemplate('aboutus');
-        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
+        return $tpl->render(array('LanguageDisplay' => $language));
     }
 
     //貴賓服務
@@ -211,9 +190,6 @@ class Index extends Controller
         if($get_year){
             $where[] = ['publish_time','like','%'.$get_year.'%'];
         }
-//        if($keyword){
-//            $where[] = ['publish_time','like','%'.$keyword.'%'];
-//        }
         $datas = $this->getNews($where,$in_lang);
         if($datas){
             $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
@@ -301,9 +277,7 @@ class Index extends Controller
         if($get_year){
             $where[] = ['publish_time','like','%'.$get_year.'%'];
         }
-        if($keyword){
-            $where[] = ['publish_time','like','%'.$keyword.'%'];
-        }
+
         $datas = $this->getNews($where,$in_lang);
         $result = [];
         if($datas){
@@ -327,14 +301,14 @@ class Index extends Controller
 
             foreach ($datas as $dk=>$dv){
                 if($keyword){
-                    if(stristr($datas[$dk]['title'],$keyword)){
+                    if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
 
                     }else{
                         unset($datas[$dk]);
                     }
                 }
             }
-            if($keyword){
+            if($keyword && $datas){
                 $this->order($datas,'date');
             }
             $count = count($datas);
@@ -528,9 +502,6 @@ class Index extends Controller
         if($get_year){
             $where[] = ['publish_time','like','%'.$get_year.'%'];
         }
-        if($keyword){
-            $where[] = ['publish_time','like','%'.$keyword.'%'];
-        }
         $datas = $this->getNews($where,$in_lang);
         if($datas){
             $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
@@ -551,13 +522,13 @@ class Index extends Controller
             $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
             foreach ($datas as $dk=>$dv){
                 if($keyword){
-                    if(stristr($datas[$dk]['title'],$keyword)){
+                    if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
                     }else{
                         unset($datas[$dk]);
                     }
                 }
             }
-            if($keyword){
+            if($keyword && $datas){
                 $this->order($datas,'date');
             }
 
@@ -593,29 +564,81 @@ class Index extends Controller
         $tpl = $mustache->loadTemplate('404');
         return $tpl->render(array('LanguageDisplay' => $language));
     }
+    public function post_release()
+    {
+        $this->getLang();
+        $language = $this->lang;
+        $in_lang = $this->all_lang[$language];
+        $get_year = isset($_REQUEST['year'])?$_REQUEST['year']:0;
+        $get_page = isset($_REQUEST['page'])?$_REQUEST['page']:1;
+        $keyword = isset($_REQUEST['key'])?$_REQUEST['key']:'';
+        $limit = $this->request->post('limit', 9,'intval');
+        $offset = ($get_page - 1) * $limit;
+
+        $where[] = ['post_type','=','publish'];
+        $where[] = ['deleted','=',0];
+        $where[] = ['status','=',1];
+        $all_datas = $this->getNews($where,$in_lang);
+        if($get_year){
+            $where[] = ['publish_time','like','%'.$get_year.'%'];
+        }
+        $result=[];
+        $datas = $this->getNews($where,$in_lang);
+        if($datas){
+            $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
+
+            $cate = Categories::where(['slug'=>'publish','parent_id'=>0])->field('id,slug')->with('detail')->find();
+            $cate = $cate?$cate->toArray():[];
+            if(isset($cate['detail']) && $cate['detail']){
+                $cate['language'] = '';
+                $cate['name'] = '';
+                foreach ($cate['detail'] as $ck=>$cv){
+                    if($cate['detail'][$ck]['language']==$in_lang){
+                        $cate['language'] = $in_lang;
+                        $cate['name'] = $cate['detail'][$ck]['name'];
+                    }
+                }
+                unset($cate['detail']);
+            }
+            $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
+            foreach ($datas as $dk=>$dv){
+                if($keyword){
+                    if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
+                    }else{
+                        unset($datas[$dk]);
+                    }
+                }
+            }
+            if($keyword && $datas){
+                $this->order($datas,'date');
+            }
+
+            $count = count($datas);
+            $all_page = ceil($count/9);
+            $all_page = $all_page?$all_page:1;
+            for ($i=1;$i<=$all_page;$i++){
+                $p['No'] = $i;
+                $Paging['Pages'][] = $p;
+            }
+            $Paging['PageCount'] = $all_page;
+            $Paging['CurrentPage'] = $get_page;
+            $Paging['FirstPage'] = 1;
+            $Paging['LastPage'] = $all_page;
+            $Paging['PreviousPage'] = ($get_page-1 <= 0)? 1 : $get_page-1;
+            $Paging['NextPage'] = ($get_page+1>$all_page) ?$all_page : $get_page+1;
 
 
-    public function getUrl(){
-        $uri = explode('?',$_SERVER['REQUEST_URI']);
-        $uri = explode('=',$uri[1]);
+            $result['LanguageDisplay'] = $language;
+            $result['CurrentRootCategory'] = $cate;
+            $result['CurrentCategorySlug'] = $cate?$cate['slug']:'';
+            $result['PostPreviews'] = array_slice($datas,$offset,$limit);
+            $result['Year'] = $year;
+            $result['Years'] = $all_year;
+            $result['Paging'] = $Paging;
+        }
 
-        $aws = new Aws();
-        $url = $aws->getUrl($uri[1]);
-//        Header("HTTP/1.1 302 Moved Temporarily");
-//        Header("Location: $url");
-//        exit;
-
-        $headers = get_headers($url);
-                var_dump($headers);die();
-
-//        if ($headers && $headers['Location']){
-//            echo $headers['Location'];
-//        }
-        header('Content-type: application/pdf');
-        header('Content-Disposition: attachment; filename="' . $uri[1] . '"');
-        echo file_get_contents($url);
+        return $result;
     }
-
     //矚目盛事
     public function grand()
     {
@@ -881,9 +904,6 @@ class Index extends Controller
                     $result['CurrentPost']=[];
                     $result['CurrentCategory']=[];
                     $result['Banner']=[];
-//                    $mustache = Mustache::mustache($this->lang);
-//                    $tpl = $mustache->loadTemplate('404');
-//                    return $tpl->render(array('LanguageDisplay' => $language));
                 }
 
                 $result['PostUnpublished'] = false;
@@ -896,178 +916,7 @@ class Index extends Controller
         $tpl = $mustache->loadTemplate('404');
         return $tpl->render(array('LanguageDisplay' => $language));
     }
-    public function jobs_vip2()
-    {
-        $this->getLang();
-        $uri = array_filter(explode('/',$_SERVER['REQUEST_URI']));
-        if(count($uri)<3){
-            array_push($uri,'');
-        }
-        $slug = end($uri);
-//        return $uri;
-        $language = $this->lang;
-        $in_lang = $this->all_lang[$language];
-        $datas = Categories::where(['slug'=>'jobs','deleted'=>0])->field('*')->order('seq','asc')->with('detail,son')->select()->toArray();
-        $result = [];
-//        return $datas;
-        if(isset($datas[0]['son']) && !empty($datas[0]['son'])){
-            $data['son'] = $datas[0]['son'];
-            $result['LanguageDisplay'] = $this->lang;
-            if(isset($data['son'])){
-                $result['Jobs'] = [];
-                $posts = $data['son'];
-                foreach ($posts as $pks=>$pvs){
-                    $big_join['Name'] = $posts[$pks]['detail']?$posts[$pks]['detail'][$in_lang]['name']:'';
-                    $big_join['Slug'] = $posts[$pks]['slug'];
-                    $big_join['FirstSubSlug'] = isset($posts[$pks]['post'][0]['detail']['slug'])?$posts[$pks]['post'][0]['detail']['slug']:'';
-                    $big_join['Posts'] = [];
-                    if($posts[$pks]['post']){
-                        foreach ($posts[$pks]['post'] as $post_key=>$post_val){
-                            $joins['id'] = $posts[$pks]['post'][$post_key]['id'];
-                            $joins['created'] = $posts[$pks]['post'][$post_key]['created'];
-                            $joins['updated'] = $posts[$pks]['post'][$post_key]['updated'];
-                            $joins['slug'] = $posts[$pks]['post'][$post_key]['detail']?$posts[$pks]['post'][$post_key]['detail']['slug']:'';
-                            $joins['cover_link_id'] = $posts[$pks]['post'][$post_key]['detail']?$posts[$pks]['post'][$post_key]['detail']['cover_link_id']:0;
-                            $joins['square_link_id'] = $posts[$pks]['post'][$post_key]['detail']?$posts[$pks]['post'][$post_key]['detail']['square_link_id']:0;
-                            $joins['publish_time'] = $posts[$pks]['post'][$post_key]['detail']?$posts[$pks]['post'][$post_key]['detail']['publish_time']:'';
-                            $joins['status'] = $posts[$pks]['post'][$post_key]['detail']?$posts[$pks]['post'][$post_key]['detail']['status']:0;
-                            $joins['title'] = '';
-                            $joins['excerpt'] = '';
-                            $joins['content'] = '';
-                            $joins['keywords'] = '';
-                            $joins['description'] = '';
-                            $joins['date'] = '';
-                            $joins['cover_link'] = '';
-                            $joins['square_link'] = '';
-                            if(isset($posts[$pks]['post'][$post_key]['detail']['detail'][$in_lang]) && $posts[$pks]['post'][$post_key]['detail']['detail'][$in_lang]){
-                                $joins['title'] = $posts[$pks]['post'][$post_key]['detail']['detail'][$in_lang]['title'];
-                                $joins['excerpt'] = $posts[$pks]['post'][$post_key]['detail']['detail'][$in_lang]['excerpt'];
-                                $joins['content'] = $posts[$pks]['post'][$post_key]['detail']['detail'][$in_lang]['content'];
-                                $joins['keywords'] = $posts[$pks]['post'][$post_key]['detail']['detail'][$in_lang]['keywords'];
-                                $joins['description'] = $posts[$pks]['post'][$post_key]['detail']['detail'][$in_lang]['description'];
-                                $big_join['Posts'][] = $joins;
-                            }
-                        }
-                    }
-                    $result['Jobs'][] = $big_join;
-                }
-                $slug = $slug?$slug:(isset($result['Jobs'][0]['Posts'][0]['slug'])?$result['Jobs'][0]['Posts'][0]['slug']:'');
-                $current = Posts::where(['slug'=>$slug])->with('detail,getCategory')->find();
 
-                if($current){
-                    $current = $current->toArray();
-                    $result['CurrentPost']['id'] = $current['id'];
-                    $result['CurrentPost']['created'] = $current['created'];
-                    $result['CurrentPost']['updated'] = $current['updated'];
-                    $result['CurrentPost']['slug'] = $current['slug'];
-                    $result['CurrentPost']['cover_link_id'] = $current['cover_link_id'];
-                    $result['CurrentPost']['square_link_id'] = $current['square_link_id'];
-                    $result['CurrentPost']['publish_time'] = $current['publish_time'];
-                    $result['CurrentPost']['status'] = $current['status'];
-                    $result['CurrentPost']['title'] = '';
-                    $result['CurrentPost']['excerpt'] = '';
-                    $result['CurrentPost']['content'] = '';
-                    $result['CurrentPost']['keywords'] = '';
-                    $result['CurrentPost']['description'] = '';
-                    $result['CurrentPost']['date'] = date("F j, Y",strtotime($current['publish_time']));
-                    $result['CurrentPost']['cover_link'] = '';
-                    $result['CurrentPost']['square_link'] = '';
-                    if($current['detail']){
-                        foreach ($current['detail'] as $ck=>$cv){
-                            if($current['detail'][$ck]['language'] == $in_lang){
-                                $result['CurrentPost']['title'] = $cv['title'];
-                                $result['CurrentPost']['excerpt'] = $cv['excerpt'];
-                                $result['CurrentPost']['content'] = $cv['content'];
-                                $result['CurrentPost']['keywords'] = $cv['keywords'];
-                                $result['CurrentPost']['description'] = $cv['description'];
-                            }
-                        }
-                    }
-
-                    $result['Banner']['Img1920'] = '';
-                    $result['Banner']['Img1440'] = '';
-                    $result['Banner']['Img1024'] = '';
-                    $result['Banner']['Img768'] = '';
-                    $result['Banner']['Img640'] = '';
-                    $result['Banner']['Img375'] = '';
-                    $result['Banner']['Title'] = '';
-                    $result['Banner']['Content'] = '';
-                    if(isset($current['get_category']['category']) && $current['get_category']['category']){
-                        $result['CurrentCategory']['id'] = $current['get_category']['category']['id'];
-                        $result['CurrentCategory']['Slug'] = $current['get_category']['category']['slug'];
-                        $result['CurrentCategory']['Name'] = $current['get_category']['category']['detail']?$current['get_category']['category']['detail'][$in_lang]['name']:'';
-                        $result['CurrentCategory']['language'] = $in_lang;
-                        $result['CurrentCategory']['is_current'] = false;
-
-                        $result['Banner']['Img1920'] = $current['get_category']['category']['banner_img_1920'];
-                        $result['Banner']['Img1440'] = $current['get_category']['category']['banner_img_1440'];
-                        $result['Banner']['Img1024'] = $current['get_category']['category']['banner_img_1024'];
-                        $result['Banner']['Img768'] = $current['get_category']['category']['banner_img_768'];
-                        $result['Banner']['Img640'] = $current['get_category']['category']['banner_img_640'];
-                        $result['Banner']['Img375'] = $current['get_category']['category']['banner_img_375'];
-
-                    }
-                    if(isset($current['get_category']['category']['get_content_detail']) && $current['get_category']['category']['get_content_detail']){
-                        foreach ($current['get_category']['category']['get_content_detail'] as $gk=>$gv){
-                            if($gv['language']==$in_lang){
-                                if($gv['owner_field'] == 'BannerTitle'){
-                                    $result['Banner']['Title'] = $gv['data'];
-                                }
-                                if($gv['owner_field'] == 'BannerContent'){
-                                    $result['Banner']['Content'] = $gv['data'];
-                                }
-                            }
-                        }
-
-                    }
-                }else{
-                    $mustache = Mustache::mustache($this->lang);
-                    $tpl = $mustache->loadTemplate('404');
-                    return $tpl->render(array('LanguageDisplay' => $language));
-                }
-
-                $result['PostUnpublished'] = $result['CurrentPost']['status']?false:true;
-                $result['AllPostsBelongToCategory'] = [];
-                if(isset($data['son'][0]['post']) && !empty($data['son'][0]['post'])){
-                    $post = $data['son'][0]['post'];
-
-                    foreach ($post as $pk=>$pv){
-                        $join['id'] = $post[$pk]['id'];
-                        $join['created'] = $post[$pk]['created'];
-                        $join['updated'] = $post[$pk]['updated'];
-                        $join['slug'] = $post[$pk]['detail']?$post[$pk]['detail']['slug']:'';
-                        $join['cover_link_id'] = $post[$pk]['detail']?$post[$pk]['detail']['cover_link_id']:0;
-                        $join['square_link_id'] = $post[$pk]['detail']?$post[$pk]['detail']['square_link_id']:0;
-                        $join['publish_time'] = $post[$pk]['detail']?$post[$pk]['detail']['publish_time']:'';
-                        $join['status'] = $post[$pk]['detail']?$post[$pk]['detail']['status']:0;
-                        $join['title'] = '';
-                        $join['excerpt'] = '';
-                        $join['content'] = '';
-                        $join['keywords'] = '';
-                        $join['description'] = '';
-                        $join['date'] = '';
-                        $join['cover_link'] = '';
-                        $join['square_link'] = '';
-                        if(isset($post[$pk]['detail']['detail'][$in_lang]) && $post[$pk]['detail']['detail'][$in_lang]){
-                            $join['title'] = $post[$pk]['detail']['detail'][$in_lang]['title'];
-                            $join['excerpt'] = $post[$pk]['detail']['detail'][$in_lang]['excerpt'];
-                            $join['content'] = $post[$pk]['detail']['detail'][$in_lang]['content'];
-                            $join['keywords'] = $post[$pk]['detail']['detail'][$in_lang]['keywords'];
-                            $join['description'] = $post[$pk]['detail']['detail'][$in_lang]['description'];
-                            $result['AllPostsBelongToCategory'][] = $join;
-                        }
-                    }
-                }
-return $result;
-                $mustache = Mustache::mustache($this->lang);
-                $tpl = $mustache->loadTemplate('jobs-vip');
-                return $tpl->render($result);
-            }
-        }
-        $mustache = Mustache::mustache($this->lang);
-        $tpl = $mustache->loadTemplate('404');
-        return $tpl->render(array('LanguageDisplay' => $language));
-    }
     //  社會責任
     public function duty()
     {
@@ -1251,7 +1100,7 @@ return $result;
         $tpl = $mustache->loadTemplate('companies-sun-management');
         return $tpl->render(array('LanguageDisplay' => $language,'Banner'=>$banner,'News'=>$news));
     }
-
+    //職位申請
     public function jobs_application()
     {
         $this->getLang();
@@ -1264,52 +1113,4 @@ return $result;
         return $tpl->render(array('LanguageDisplay' => $language));
     }
 
-    public function sun_entertainment()
-    {
-        $this->getLang();
-        $language = $this->lang;
-        $result = $this->getMenu($language);
-        $mustache = Mustache::mustache($this->lang);
-        $tpl = $mustache->loadTemplate('companies-sun-entertainment');
-        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
-    }
-
-    public function sun_automobile()
-    {
-        $this->getLang();
-        $language = $this->lang;
-        $result = $this->getMenu($language);
-        $mustache = Mustache::mustache($this->lang);
-        $tpl = $mustache->loadTemplate('companies-sun-automobile');
-        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
-    }
-
-
-    public function event()
-    {
-        $this->getLang();
-        $language = $this->lang;
-        $result = $this->getMenu($language);
-        $mustache = Mustache::mustache($this->lang);
-        $tpl = $mustache->loadTemplate('event');
-        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
-    }
-    public function event_concert()
-    {
-        $this->getLang();
-        $language = $this->lang;
-        $result = $this->getMenu($language);
-        $mustache = Mustache::mustache($this->lang);
-        $tpl = $mustache->loadTemplate('event_concert');
-        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
-    }
-    public function event_grandprix()
-    {
-        $this->getLang();
-        $language = $this->lang;
-        $result = $this->getMenu($language);
-        $mustache = Mustache::mustache($this->lang);
-        $tpl = $mustache->loadTemplate('event_grandprix');
-        return $tpl->render(array('LanguageDisplay' => $language,'Menu'=>$result));
-    }
 }

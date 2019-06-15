@@ -269,7 +269,7 @@ class Annuals extends Common
     {
         $id = $this->request->param('id', 0, 'intval');
         if ($id) {
-            $up = GrandPrix::update(['deleted_at'=>time()],['id'=>$id]);
+            $up = Annual::update(['deleted_at'=>date('Y-m-d H:i:s')],['id'=>$id]);
             if($up){
                 return Result::success('删除成功');
             }

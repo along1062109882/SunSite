@@ -182,7 +182,7 @@
             var index = layui.layer.open({
                 title : "編輯",
                 type : 2,
-                area: ['100%', '400px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/sun_entertainment_edit')}"+'?id='+id+'&where='+where+'&type='+type,
@@ -207,7 +207,7 @@
             var index = layui.layer.open({
                 title : "編輯",
                 type : 2,
-                area: ['100%', '400px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/sun_banner_edit')}"+'?id='+id+'&type=1',
@@ -231,7 +231,7 @@
         table.on('tool(usersList1)', function(obj){
             var layEvent = obj.event, data = obj.data;
             if(layEvent === 'edit1'){ //编辑
-                edit(data.id);
+                edit(data.id,'edit',1);
             } else if(layEvent === 'del1'){ //删除
                 layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/sun_entertainment_delete')}",{id:data.id},function(data){
@@ -245,7 +245,7 @@
                                 one = one - 1;
                             }
                         });
-                        // this.location.reload();
+                        location.reload();
                     })
                 });
             }
@@ -253,7 +253,7 @@
         table.on('tool(usersList2)', function(obj){
             var layEvent = obj.event, data = obj.data;
             if(layEvent === 'edit2'){ //编辑
-                edit(data.id);
+                edit(data.id,'edit',2);
             } else if(layEvent === 'del2'){ //删除
                 layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
                     $.post("{:url('/admin/sun_entertainment_delete')}",{id:data.id},function(data){
@@ -267,7 +267,7 @@
                                 two = two -1;
                             }
                         });
-                        // this.location.reload();
+                        location.reload();
                     })
                 });
             }
@@ -288,7 +288,7 @@
                                 obj.del();
                             }
                         });
-                        // this.location.reload();
+                        location.reload();
                     })
                 });
             }

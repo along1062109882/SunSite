@@ -127,7 +127,7 @@
             var index = layui.layer.open({
                 title : "編輯",
                 type : 2,
-                area: ['100%', '400px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : url,
@@ -178,6 +178,7 @@
                                 obj.del();
                             }
                         });
+                        location.reload();
                     })
                 });
             }

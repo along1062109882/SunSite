@@ -1,5 +1,7 @@
 {extend name="base/base" /}
 {block name="main"}
+<link href="/textarea/umeditor.min.css" type="text/css" rel="stylesheet">
+
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/newsEdit')}">
     <div class="layui-form-item flex-column">
         <label class="labels">選擇分類</label>
@@ -46,7 +48,9 @@
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>繁體正文</label>
         <div class="layui-input-inline">
-            <textarea id="demo" style="display: none;" name="content_hk" value="{:isset($list.content_hk)?$list.content_hk:''}">{:isset($list.content_hk)?$list.content_hk:''}</textarea>
+            <script type="text/plain" class="plainDome" id="dome" style="width:100%;height:280px;">
+
+            </script>
         </div>
     </div>
     <div class="layui-form-item flex-column">
@@ -66,7 +70,8 @@
     <div class="layui-form-item flex-column">
         <label class="labels">繁體 SEO Description</label>
         <div class="layui-input-inline">
-            <textarea class="layui-textarea" name="desc_hk" value="{:isset($list.desc_hk)?$list.desc_hk:''}">{:isset($list.desc_hk)?$list.desc_hk:''}</textarea>
+            <textarea class="layui-textarea" name="desc_hk" value="{:isset($list.desc_en)?$list.desc_en:''}">{:isset($list.desc_hk)?$list.desc_hk:''}</textarea>
+
         </div>
     </div>
     <div class="layui-form-item flex-column">
@@ -79,7 +84,9 @@
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>簡體正文</label>
         <div class="layui-input-inline">
-            <textarea id="demo1" style="display: none;" required name="content_cn" value="{:isset($list.content_cn)?$list.content_cn:''}">{:isset($list.content_cn)?$list.content_cn:''}</textarea>
+            <script type="text/plain" class="plainDome" id="dome1" style="width:100%;height:280px;">
+
+            </script>
         </div>
     </div>
     <div class="layui-form-item flex-column">
@@ -112,7 +119,9 @@
     <div class="layui-form-item flex-column">
         <label class="labels">英文正文</label>
         <div class="layui-input-inline">
-            <textarea id="demo2" style="display: none;" name="content_en" value="{:isset($list.content_en)?$list.content_en:''}">{:isset($list.content_en)?$list.content_en:''}</textarea>
+            <script type="text/plain" class="plainDome" id="dome2" style="width:100%;height:280px;">
+
+            </script>
         </div>
     </div>
     <div class="layui-form-item flex-column">
@@ -140,7 +149,7 @@
         <div class="layui-input-inline">
             <input type="hidden" name="id" value="{:isset($list['id'])?$list['id']:''}">
 
-            <button class="layui-btn" lay-submit lay-filter="*" id="commit">發布</button>
+            <button class="layui-btn" lay-submit lay-filter="*" id="commit">提交</button>
             <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
         </div>
     </div>
@@ -148,6 +157,10 @@
 {/block}
 {block name="script"}
 {css href="/form-select/formSelects-v4.css" /}
+<script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/textarea/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/textarea/umeditor.min.js"></script>
+<script type="text/javascript" src="/textarea/zh-cn.js"></script>
 <script>
     layui.config({
         base: '/form-select/' //此处路径请自行处理, 可以使用绝对路径
@@ -164,16 +177,29 @@
             ,trigger: 'click'
         });
 
-        var layedit = layui.layedit;
-        var demo = layedit.build('demo'); //建立编辑器
-        var demo1 = layedit.build('demo1'); //建立编辑器
-        var demo2 = layedit.build('demo2'); //建立编辑器
+        //实例化编辑器
+        const dome_el = UM.getEditor('dome');
+        dome_el.ready(function () {
+            dome_el.setContent(`{:isset($list.content_hk)?$list.content_hk:''}`);
+        })
+        const dome1_el = UM.getEditor('dome1');
+        dome1_el.ready(function () {
+            dome1_el.setContent(`{:isset($list.content_cn)?$list.content_cn:''}`);
+        })
+        const dome2_el = UM.getEditor('dome2');
+        dome2_el.ready(function () {
+            dome2_el.setContent(`{:isset($list.content_en)?$list.content_en:''}`);
+        })
 
         var $ = layui.jquery,
             layer = layui.layer,
             form = layui.form;
 
         $("#commit").on("click", function (){
+            const content_hk = dome_el.getContent();
+            const content_cn = dome1_el.getContent();
+            const content_en = dome2_el.getContent();
+
             var slug = $("input[ name='slug']").val();
             var title_hk = $("input[ name='title_hk']").val();
             var title_cn = $("input[ name='title_cn']").val();
@@ -195,22 +221,22 @@
                 msg('繁體標題不能為空');
                 return false;
             }
-            if (!layedit.getContent(demo)) {
-                msg('繁體正文不能为空');
+            if (!content_hk) {
+                msg('繁體內容不能为空');
                 return false;
             }
             if(!title_cn){
                 msg('簡體標題不能為空');
                 return false;
             }
-            if (!layedit.getContent(demo1)) {
-                msg('簡體正文不能为空');
+            if (!content_cn) {
+                msg('簡體內容不能为空');
                 return false;
             }
             var form = new FormData($('#form')[0]);
-            form.append("content_hk", layedit.getContent(demo));
-            form.append("content_cn", layedit.getContent(demo1));
-            form.append("content_en", layedit.getContent(demo2));
+            form.append("content_hk", content_hk);
+            form.append("content_cn", content_cn);
+            form.append("content_en", content_en);
 
             //ajax执行
             $.ajax({

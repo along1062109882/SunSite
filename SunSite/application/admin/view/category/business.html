@@ -141,7 +141,7 @@
             var index = layui.layer.open({
                 title : "添加",
                 type : 2,
-                area: ['100%', '400px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/businessEdit')}",
@@ -166,7 +166,7 @@
             var index = layui.layer.open({
                 title : "编辑",
                 type : 2,
-                area: ['100%', '400px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/businessEdit')}"+'?id='+id,
@@ -208,6 +208,7 @@
                                 obj.del();
                             }
                         });
+                        location.reload();
                     })
                 });
             }

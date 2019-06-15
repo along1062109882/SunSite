@@ -1,5 +1,7 @@
 {extend name="base/base" /}
 {block name="main"}
+<link href="/textarea/umeditor.min.css" type="text/css" rel="stylesheet">
+
 <form class="layui-form">
     <blockquote class="layui-elem-quote quoteBox">
         <form class="layui-form">
@@ -58,6 +60,10 @@
 </form>
 {/block}
 {block name="script"}
+<script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/textarea/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/textarea/umeditor.min.js"></script>
+<script type="text/javascript" src="/textarea/zh-cn.js"></script>
 <script>
     layui.use(['jquery','form','layer','laydate','table','laytpl'],function(){
         var form = layui.form,
@@ -70,13 +76,13 @@
             elem: '#test1' //指定元素
             ,type: 'datetime'
             ,trigger: 'click'
-
+            ,max: 0
         });
         laydate.render({
             elem: '#test2' //指定元素
             ,type: 'datetime'
             ,trigger: 'click'
-
+            ,max: 0
         });
         //用户列表
         var tableIns = {
@@ -120,6 +126,7 @@
                     var start_time = $('#test1').val();
                     var end_time = $('#test2').val();
                     var keyword = $('#title').val();
+
                     ins1.reload({
                         where: {
                             //根据MT4搜索
@@ -149,7 +156,7 @@
             var index = layui.layer.open({
                 title : "添加",
                 type : 2,
-                area: ['100%', '500px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : "{:url('/admin/newsEdit')}",
@@ -174,7 +181,7 @@
             var index = layui.layer.open({
                 title : "編輯",
                 type : 2,
-                area: ['100%', '500px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
                 content : url,
@@ -223,6 +230,7 @@
                                 obj.del();
                             }
                         });
+                        location.reload();
                     })
                 });
             }

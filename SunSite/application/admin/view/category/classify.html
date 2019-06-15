@@ -76,6 +76,7 @@
                                 obj.del();//删除对应的行
                             }
                         });
+                        location.reload();
                     });
                 });
             }
@@ -92,7 +93,7 @@
         var index = layui.layer.open({
             type: 2,
             title: '添加',
-            area: ['100%', '400px'],
+            area: ['100%', '100%'],
             fixed: false, //不固定
             maxmin: true,
             content: "{:url('/admin/classifyEdit')}",
@@ -121,7 +122,7 @@
         var index = layui.layer.open({
             type: 2,
             title: '编辑',
-            area: ['100%', '400px'],
+            area: ['100%', '100%'],
             fixed: false, //不固定
             maxmin: true,
             content: "{:url('/admin/classifyEdit')}" + '?id=' + id,

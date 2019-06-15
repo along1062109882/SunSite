@@ -16,24 +16,18 @@ Route::get('think', function () {
 Route::get('hello/:name', 'index/hello');
 //Route::get('/:lang', 'index/index');
 
-//Route::group('admin', [
-////    'login$'=>'admin/Login/login',                                         //登录
-////    'editPassword'=>'admin/User/editPassword',                             //重置密码
-////    'logout$'=>'admin/Login/logout',                                       //退出
-////    'check$'=>'admin/User/check',                                          //验证用户是否存在
-////    'unlock'=>'admin/Login/unlock',                                        //验证用户是否存在
-//    'verify'=>'admin/Login/verify',                                        //获取验证码
-//]);
 
-Route::get('/zh-hans/about-us', 'index/about_us');
-Route::get('/zh-hans/news/category/latest', 'index/news');
-Route::get('/zh-hans/news/category/all', 'index/news');
-Route::get('/zh-hans/news/category/:name', 'index/news_post');
+
+Route::get('/zh-hans/about-us', 'index/about_us');                                                          //集團介紹
+Route::get('/zh-hans/news/category/latest', 'index/news');                                                  //最新新聞
+Route::get('/zh-hans/news/category/all', 'index/news');                                                     //全部新聞
+Route::get('/zh-hans/news/category/:name', 'index/news_post');                                              //集團介紹
 Route::get('/zh-hans/news', 'index/news');
 Route::post('/zh-hans/post_news', 'index/post_news');
 Route::get('/zh-hans/getParam', 'index/getParam');
 
 Route::get('/zh-hans/release', 'index/release');
+Route::get('/zh-hans/post_release', 'index/post_release');
 Route::get('/zh-hans/grand', 'index/grand');
 Route::get('/zh-hans/news-post', 'index/news_post');
 Route::get('/zh-hans/jobs/:slug', 'index/jobs');
@@ -71,6 +65,7 @@ Route::get('/zh-hant/getParam', 'index/getParam');
 
 
 Route::get('/zh-hant/release', 'index/release');
+Route::get('/zh-hant/post_release', 'index/post_release');
 Route::get('/zh-hant/grand', 'index/grand');
 Route::get('/zh-hant/getUrl', 'index/getUrl');
 

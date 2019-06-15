@@ -128,6 +128,7 @@
         reader.readAsDataURL(file);
     });
 
+    var where = "<?php echo $where; ?>";
 
     $("#commit").on("click", function () {
         var title_hk = $("input[ name='title_hk']").val();
@@ -189,7 +190,10 @@
             dataType: "json",
             success: function (data) {
                 if (data.code === 200) {
-                    parent.layer.msg('成功', { icon: 1 });
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    parent.layer.msg('成功',{icon:1});
+                    parent.location.reload();
                 } else {
                     parent.layer.msg('失败', { icon: 2 });
                 }
