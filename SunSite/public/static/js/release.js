@@ -122,15 +122,55 @@ $(function () {
             $(this).children('a')[0].click();
         });
     }
-    // 输入框内容匹配进行模糊搜索
-    $('.search_btn').on('click', function() {
+    var lan = '';
+    if (location.pathname.indexOf('/zh-hans') != -1) {
+        lan = '/zh-hans/'
+    } else {
+        lan = '/zh-hant/'
+    } 
+    function filter_search () {
         var newYear = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
-        if (location.pathname.indexOf('/zh-hans') != -1) {
-            window.location.href = "/zh-hans/release?year=" + newYear + '&key=' + keyword;
-        }
-        else if (location.pathname.indexOf('/zh-hant') != -1) {
-            window.location.href = "/zh-hant/release?year=" + newYear + '&key=' + keyword;
-        }
+        $.ajax({
+            url: lan + "post_release",
+            method:'POST',
+            data:{year: newYear, key: keyword },
+            success: function (res) {
+                var str = '';
+                res.PostPreviews.forEach(item => {
+                   item.cover_link === null ? str+= '':
+                   str+= `
+                      <p><a href="/news?year=/${item.cover_link === null ? '' :item.cover_link.url}">${item.title}</a></p>
+                   `
+                })
+                $('.release_content').empty().append(str)
+                var Pagination_str = `
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Paging.Year}&page=1">
+                        <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
+                    </a>
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.FirstPage}">
+                        <img src="/static/imgs/next-page.svg" class="first-page">
+                    </a>
+                    <a class="news-page" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.CurrentPage}">${res.Paging.CurrentPage}</a>
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.NextPage}">
+                        <img src="/static/imgs/next-page.svg" class="next-page">
+                    </a>
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.LastPage}">
+                        <img src="/static/imgs/last-page-botton.svg" class="last-page-button">
+                    </a>`
+                $('.news-page-wrapper').empty().append(Pagination_str)
+            }
+        })
+    }
+    // 输入框内容匹配进行模糊搜索   
+    $('.search_btn').on('click', function() {
+        filter_search();
+    })
+    $('#filter_search').change(function () {
+        document.onkeydown = (function(e) {
+            if(e.keyCode == 13){
+                filter_search();
+            }
+        })
     })
 });

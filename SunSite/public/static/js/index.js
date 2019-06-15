@@ -86,10 +86,13 @@ $(function () {
     });
     function autoPlay() {
       timeOut = setInterval(function () {
+        if (index === totle) {
+            index = 0;
+        }
         index++;
         $(".ts-ul li").eq(index).addClass('on').siblings('li').removeClass('on');
-        if (index == totle) {
-          index = 0;
+        if (index == totle-1) {
+          index = -1;
         }
       }, 5000);
     }

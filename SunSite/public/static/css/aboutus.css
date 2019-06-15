@@ -219,7 +219,7 @@ p {
     display:block;
     margin:0;
     padding: 4% 0;
-    padding-left:7%;
+    padding-left:6%;
   }
 
 
@@ -287,13 +287,13 @@ p {
 	line-height: 1.08;
 }
 
-@media (min-width: 801px) and (max-width: 1024px) {
+@media (min-width: 831px) and (max-width: 1024px) {
   .bossword {
     background-image: url('/static/imgs/about-us-boss-1000.jpg');
     background-color: #a19062;
     background-repeat: no-repeat;
     background-size: cover;
-    max-height: 760px; 
+    /* max-height: 760px;  */
     text-align: center;
     vertical-align:bottom;
     margin:0;
@@ -351,7 +351,7 @@ p {
     line-height: 1.08;
   }
 }
-@media(max-width: 800px) {
+@media(max-width: 830px) {
   /*.bossword-wrapper {
     max-width: 768px;
     line-height: 1.57;

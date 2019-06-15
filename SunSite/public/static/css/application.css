@@ -101,6 +101,8 @@
     position: relative;
     justify-content: center;
     margin-top: 20px;
+    align-items: center;
+    font-size: 14px;
 }
 
 .center {
@@ -124,19 +126,23 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
     vertical-align: top;
-    width: 41%;
+    width: 40%;
     height: 40px;
     position: relative;
     border-radius: 4px;
     border: solid 1px #e5dcc9;
     background-color: #ffffff;
-    color: #b5b5b6;
+    /* color: #b5b5b6; */
     padding-left: 10px;
+    font-size: 14px;
     /*font-weight: 600;*/
 }
-
+input::-webkit-input-placeholder {
+      color: #b5b5b6;
+}
 .content_box {
     text-align: center;
     padding-bottom: 5%;
@@ -307,7 +313,21 @@ input:checked+.radioLabel::after {
     padding: 0 5px; 
     background-position: 85%;
 }
-
+textarea {
+    vertical-align: top;
+    width: 40%;
+    max-width: 40%;
+    height: 40px;
+    position: relative;
+    border-radius: 4px;
+    border: solid 1px #e5dcc9;
+    background-color: #ffffff;
+    color: #b5b5b6;
+    padding-left: 10px;
+    max-height: 200px;
+    min-height: 80px;
+    max-height: 100px;
+}
 .divider {
     width: 9px;
     border: 1px solid #a19062;
@@ -317,7 +337,7 @@ input:checked+.radioLabel::after {
     width: 60%;
 }
 .selectBoxRadioBtnBox{
-    width: 42%;
+    width: 41%;
     height: 40px;
     border-radius: 4px;
     border: solid 1px #e5dcc9;
@@ -330,4 +350,66 @@ input:checked+.radioLabel::after {
     background-position: 90% 15px;
     /*为下拉小箭头留出一点位置，避免被文字覆盖*/
     padding: 0 5px;
+}
+@media (min-width: 1440px) and (max-width: 1650px){
+    .important {
+        left: 80%;
+    }
+}
+@media (min-width: 1020px) and (max-width: 1439px){
+    .important {
+        left: 82%;
+    }
+}
+@media (min-width: 769px) and (max-width: 1019px){
+    .important {
+        left: 85%;
+    }
+}
+@media (min-width: 641px) and (max-width: 768px){
+    .important {
+        left: 89%;
+    }
+}
+
+@media(max-width: 640px){
+    .radioBtnBox {
+        width: 100%;
+    }
+    textarea {
+        max-width: 100%;
+    }
+    .block {
+        margin: 5px 0;
+        /* text-align: center; */
+        display: flex;
+        position: relative;
+        justify-content: left;
+        margin-top: 20px;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: flex-start;
+        width: 100%;        
+    }
+    .important {
+        color: #d74153;
+        font-size: 28px;
+        position: absolute;
+        left: -15px;
+        top: -3%;
+        line-height: 50px;
+    }
+    .selectBoxRadioBtnBox {
+        width: 100%;
+        padding-right: 50px;
+    }
+    input,textarea {
+        width: 100%;
+    }
+    .apliaction_content {
+        /* background: red; */
+        max-width: 80%;
+        height: 100%;
+        margin-left: 10%;
+    }
 }

@@ -173,20 +173,79 @@ $(function () {
             },
         });
     }
-    // 输入框内容匹配进行模糊搜索
-    $('.search_btn').on('click', function() {
+    function filter_search () {
         var newYear = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
-        if (location.pathname.indexOf('/zh-hans') != -1) {
-            window.location.href = "/zh-hans/news?year=" + newYear + '&key=' + keyword;
-            // search('zh-hans', newYear, keyword)
-        }
-        else if (location.pathname.indexOf('/zh-hant') != -1) {
-            window.location.href = "/zh-hant/news?year=" + newYear + '&key=' + keyword;
-            // search('zh-hant', newYear, keyword)
-        }
+        // if (location.pathname.indexOf('/zh-hans') != -1) {
+        //     window.location.href = "/zh-hans/news?year=" + newYear + '&key=' + keyword;
+        //     // search('zh-hans', newYear, keyword)
+        // }
+        // else if (location.pathname.indexOf('/zh-hant') != -1) {
+        //     window.location.href = "/zh-hant/news?year=" + newYear + '&key=' + keyword;
+        //     // search('zh-hant', newYear, keyword)
+        // }
         console.log($('#filter_search').val())
         console.log($('.drop-down input').val())
+        var lan = '';
+        if (location.pathname.indexOf('/zh-hans') != -1) {
+            lan = '/zh-hans/'
+        } else {
+            lan = '/zh-hant/'
+        }
+        $.ajax({
+            url: lan + "post_news",
+            method:'POST',
+            data:{year: newYear, key: keyword },
+            success: function (res) {
+                var str = '';
+                res.PostPreviews.forEach(item => {
+                    str += `
+                    <div class="cell wow flipInY news-item">
+                        <a href="/${res.LanguageDisplay}/${res.CurrentRootCategory.slug}/category/${res.CurrentCategorySlug}/${item.slug}">
+                        <div>
+                        <div class="ratio-16-9">
+                            <img src="${item.cover_link === null ? '' :item.cover_link.url}" title="${item.cover_link === null ? '' :item.cover_link.description}" alt="${item.cover_link === null ? '' :item.cover_link.name}" srcset="${item.cover_link === null ? '' :item.cover_link.url} 2x, ${item.cover_link === null ? '' :item.cover_link.url} 3x">
+                            <img src="/static/imgs/group.svg" title="${item.cover_link === null ? '' :item.cover_link.description}" alt="${item.cover_link === null ? '' :item.cover_link.name}" srcset="/static/imgs/group.svg 2x, /static/imgs/group.svg 3x">
+                        </div>
+                        <div class="news-info">
+                            <h2 class="news-title">${item.title}</h2>
+                            <p class="news-sketch">${item.excerpt}</p>
+                            <span class="item-date">${item.date}</span>
+                            <span class="go-more">${lan ==='/zh-hans' ? "继续阅读" : '繼續閱讀'}</span>
+                        </div>
+                        </div>
+                    </a>
+                    </div>`;
+                });
+                var Pagination_str = `
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=1">
+                        <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
+                    </a>
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.PreviousPage}">
+                        <img src="/static/imgs/next-page.svg" class="first-page">
+                    </a>
+                    <a class="news-page" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.Pages[0].No}">${res.Paging.Pages[0].No}</a>
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.NextPage}">
+                        <img src="/static/imgs/next-page.svg" class="next-page">
+                    </a>
+                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.LastPage}">
+                        <img src="/static/imgs/last-page-botton.svg" class="last-page-button">
+                    </a>`
+                $('.news-container').empty().append(str);
+                $('.news-page-wrapper').empty().append(Pagination_str);
+            }
+        })
+    }
+    // 输入框内容匹配进行模糊搜索
+    $('.search_btn').on('click', function() {
+        filter_search();
+    })
+    $('#filter_search').change(function () {
+        document.onkeydown = (function(e) {
+            if(e.keyCode == 13){
+                filter_search();
+            }
+        })
     })
     var listTemp = null;
     var cellTemp = null;
