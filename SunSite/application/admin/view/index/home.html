@@ -13,10 +13,10 @@
                 <td>當前版本</td>
                 <td class="version">1.0</td>
             </tr>
-            <tr>
-                <td>開發作者</td>
-                <td class="author">Sun</td>
-            </tr>
+            <!--<tr>-->
+                <!--<td>開發作者</td>-->
+                <!--<td class="author">Sun</td>-->
+            <!--</tr>-->
             <tr>
                 <td>服務器環境</td>
                 <td class="server">{$Think.const.PHP_OS}</td>
@@ -25,10 +25,10 @@
                 <td>運行環境</td>
                 <td class="">{$Request.server.SERVER_SOFTWARE}</td>
             </tr>
-            <tr>
-                <td>ThinkPHP版本</td>
-                <td class="server">{$Think.VERSION}</td>
-            </tr>
+            <!--<tr>-->
+                <!--<td>ThinkPHP版本</td>-->
+                <!--<td class="server">{$Think.VERSION}</td>-->
+            <!--</tr>-->
             <tr>
                 <td>數據庫版本</td>
                 <td class="dataBase">{:db()->query('select version() as version')[0]['version']}</td>
