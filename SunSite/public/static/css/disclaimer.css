@@ -59,6 +59,7 @@
 .grand_nav{
     width: 100%;
 }
+
 .grand_nav ol {
     display: flex;
     justify-content: center;
@@ -445,7 +446,7 @@
     background-color: #a19062;
     color: #fff;
 }
-@media (max-width: 1439px) {
+@media (max-width: 1024px) {
     .common-banner-content {
         /* margin-left: 25.98%; */
         display: flex;
