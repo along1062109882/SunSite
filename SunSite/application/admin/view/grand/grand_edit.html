@@ -237,10 +237,8 @@
                 dataType: "json",
                 success: function (data) {
                     if (data.code === 200) {
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
                         parent.layer.msg('成功', { icon: 1 });
-                        parent.location.reload();
+                        setTimeout(reload,1000);
                     } else {
                         parent.layer.msg('失败', { icon: 2 });
                     }
@@ -250,6 +248,10 @@
             return false;
         });
     });
-
+    function reload() {
+        var index=parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+        window.parent.location.reload();//刷新父页面
+        parent.layer.close(index);//关闭弹出层
+    }
 </script>
 {/block}
