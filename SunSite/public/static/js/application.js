@@ -112,7 +112,50 @@ $(function () {
     chage_num(0);
     // 点击下一步事件
     $('.next').on('click', function () {
-        console.log($('.container div').length)
+
+        // 頁面中所有 content_onlySign class 名的元素 用来做必填项的校验
+        const current_show_el_content = $('.container .content_onlySign');
+
+        let elvalue_isNull = true;
+
+        // 判斷哪個 有這個 content_onlySign class 名的元素是顯示的
+        current_show_el_content.each((index ,item) => {
+            // 判断 当前 item 元素 是否隐藏
+            if($(item).is(':visible')) {
+                //获取当前页面的必填项
+                const important_el = $(item).find('.important');
+                important_el.each((key,el_item)=>{
+                    //判断 input value 是否为空
+                    const current_el_val_is_null = $(el_item).siblings('.drop-down').val();
+                    if(current_el_val_is_null === ''){
+                        elvalue_isNull = false;
+                        return
+                    }
+
+                    //判断下拉框是否选择
+                    const current_el_select_is_null = $(el_item).siblings('.selectBoxRadioBtnBox').children();
+                    current_el_select_is_null.each( (inde_key,op_elItem) =>{
+                        if($(op_elItem).prop('selected')){
+                            if($(op_elItem).html()  === '请选择' || $(op_elItem).html()  === '请選擇' ){
+                                elvalue_isNull = false;
+                                return
+                            }
+                        }
+                    })
+                })
+
+            }
+        })
+        
+        if(!elvalue_isNull){
+            alert('请填写必填项')
+            return
+        }
+
+
+
+
+        // console.log($('.container div').length)
         num += 1;
         if (num >= 10  ) num = 10;
         chage_num(num)
