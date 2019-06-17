@@ -208,7 +208,7 @@ class Index extends Controller
                 unset($cate['detail']);
             }
 
-            $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
+            $year = $get_year?$get_year:'';
 
             foreach ($datas as $dk=>$dv){
                 if($keyword){
