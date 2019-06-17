@@ -114,6 +114,7 @@ class Link extends Common
     }
 
     public function uploadPhoto(){
+
 //        if($this->request->isPost())
 //        {
 //            $data = $this->request->post();

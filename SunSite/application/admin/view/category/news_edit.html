@@ -4,7 +4,7 @@
 
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/newsEdit')}">
     <div class="layui-form-item flex-column">
-        <label class="labels">選擇分類</label>
+        <label class="labels"><span class='Important'>*</span>選擇分類</label>
         <div class="layui-input-inline">
             <select name="type">
                 <option value="0">請選擇</option>
@@ -200,11 +200,16 @@
                         const content_cn = dome1_el.getContent();
                         const content_en = dome2_el.getContent();
 
+                        var type = $("#type option:selected").val();
                         var slug = $("input[ name='slug']").val();
                         var title_hk = $("input[ name='title_hk']").val();
                         var title_cn = $("input[ name='title_cn']").val();
                         var status = $("#status option:selected").val();
                         var time = $("input[ name='time']").val();
+                        if(type === 0){
+                            msg('請選擇分類');
+                            return false;
+                        }
                         if(!slug){
                             msg('slug不能為空');
                             return false;

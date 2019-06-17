@@ -512,23 +512,23 @@ class Category extends Common
             $list['keyword_en'] = '';
             $list['desc_en'] = '';
             if($llist[0]['detail']){
-                $list['title_hk'] = $llist[0]['detail'][0]['title'];
-                $list['content_hk'] = $llist[0]['detail'][0]['content'];
-                $list['show_hk'] = $llist[0]['detail'][0]['excerpt'];
-                $list['keyword_hk'] = $llist[0]['detail'][0]['keywords'];
-                $list['desc_hk'] = $llist[0]['detail'][0]['description'];
+                $list['title_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['title']:'';
+                $list['content_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['content']:'';
+                $list['show_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['excerpt']:'';
+                $list['keyword_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['keywords']:'';
+                $list['desc_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['description']:'';
 
-                $list['title_cn'] = $llist[0]['detail'][1]['title'];
-                $list['content_cn'] = $llist[0]['detail'][1]['content'];
-                $list['show_cn'] = $llist[0]['detail'][1]['excerpt'];
-                $list['keyword_cn'] = $llist[0]['detail'][1]['keywords'];
-                $list['desc_cn'] = $llist[0]['detail'][1]['description'];
+                $list['title_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['title']:'';
+                $list['content_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['content']:'';
+                $list['show_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['excerpt']:'';
+                $list['keyword_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['keywords']:'';
+                $list['desc_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['description']:'';
 
-                $list['title_en'] = $llist[0]['detail'][2]['title'];
-                $list['content_en'] = $llist[0]['detail'][2]['content'];
-                $list['show_en'] = $llist[0]['detail'][2]['excerpt'];
-                $list['keyword_en'] = $llist[0]['detail'][2]['keywords'];
-                $list['desc_en'] = $llist[0]['detail'][2]['description'];
+                $list['title_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['title']:'';
+                $list['content_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['content']:'';
+                $list['show_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['excerpt']:'';
+                $list['keyword_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['keywords']:'';
+                $list['desc_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['description']:'';
             }
 
         }
@@ -851,23 +851,23 @@ class Category extends Common
             $list['keyword_en'] = '';
             $list['desc_en'] = '';
             if($llist[0]['detail']){
-                $list['title_hk'] = $llist[0]['detail'][0]['title'];
-                $list['content_hk'] = $llist[0]['detail'][0]['content'];
-                $list['show_hk'] = $llist[0]['detail'][0]['excerpt'];
-                $list['keyword_hk'] = $llist[0]['detail'][0]['keywords'];
-                $list['desc_hk'] = $llist[0]['detail'][0]['description'];
+                $list['title_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['title']:'';
+                $list['content_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['content']:'';
+                $list['show_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['excerpt']:'';
+                $list['keyword_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['keywords']:'';
+                $list['desc_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['description']:'';
 
-                $list['title_cn'] = $llist[0]['detail'][1]['title'];
-                $list['content_cn'] = $llist[0]['detail'][1]['content'];
-                $list['show_cn'] = $llist[0]['detail'][1]['excerpt'];
-                $list['keyword_cn'] = $llist[0]['detail'][1]['keywords'];
-                $list['desc_cn'] = $llist[0]['detail'][1]['description'];
+                $list['title_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['title']:'';
+                $list['content_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['content']:'';
+                $list['show_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['excerpt']:'';
+                $list['keyword_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['keywords']:'';
+                $list['desc_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['description']:'';
 
-                $list['title_en'] = $llist[0]['detail'][2]['title'];
-                $list['content_en'] = $llist[0]['detail'][2]['content'];
-                $list['show_en'] = $llist[0]['detail'][2]['excerpt'];
-                $list['keyword_en'] = $llist[0]['detail'][2]['keywords'];
-                $list['desc_en'] = $llist[0]['detail'][2]['description'];
+                $list['title_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['title']:'';
+                $list['content_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['content']:'';
+                $list['show_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['excerpt']:'';
+                $list['keyword_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['keywords']:'';
+                $list['desc_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['description']:'';
             }
 
         }
@@ -1189,23 +1189,23 @@ class Category extends Common
             $list['keyword_en'] = '';
             $list['desc_en'] = '';
             if($llist[0]['detail']){
-                $list['title_hk'] = $llist[0]['detail'][0]['title'];
-                $list['content_hk'] = $llist[0]['detail'][0]['content'];
-                $list['show_hk'] = $llist[0]['detail'][0]['excerpt'];
-                $list['keyword_hk'] = $llist[0]['detail'][0]['keywords'];
-                $list['desc_hk'] = $llist[0]['detail'][0]['description'];
+                $list['title_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['title']:'';
+                $list['content_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['content']:'';
+                $list['show_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['excerpt']:'';
+                $list['keyword_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['keywords']:'';
+                $list['desc_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['description']:'';
 
-                $list['title_cn'] = $llist[0]['detail'][1]['title'];
-                $list['content_cn'] = $llist[0]['detail'][1]['content'];
-                $list['show_cn'] = $llist[0]['detail'][1]['excerpt'];
-                $list['keyword_cn'] = $llist[0]['detail'][1]['keywords'];
-                $list['desc_cn'] = $llist[0]['detail'][1]['description'];
+                $list['title_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['title']:'';
+                $list['content_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['content']:'';
+                $list['show_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['excerpt']:'';
+                $list['keyword_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['keywords']:'';
+                $list['desc_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['description']:'';
 
-                $list['title_en'] = $llist[0]['detail'][2]['title'];
-                $list['content_en'] = $llist[0]['detail'][2]['content'];
-                $list['show_en'] = $llist[0]['detail'][2]['excerpt'];
-                $list['keyword_en'] = $llist[0]['detail'][2]['keywords'];
-                $list['desc_en'] = $llist[0]['detail'][2]['description'];
+                $list['title_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['title']:'';
+                $list['content_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['content']:'';
+                $list['show_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['excerpt']:'';
+                $list['keyword_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['keywords']:'';
+                $list['desc_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['description']:'';
             }
 
         }
@@ -1343,6 +1343,7 @@ class Category extends Common
     public function publishEdit()
     {
         $id = $this->request->get('id');
+        $where = $this->request->get('where','');
         if($id){
             $llist = Posts::where(['id'=>$id])->with('detail,getCategory')->select()->toArray();
             $list=[];
@@ -1365,23 +1366,23 @@ class Category extends Common
                 $list['meta_en'] = '';
                 $list['text_en'] = '';
                 if($llist[0]['detail']){
-                    $list['title_hk'] = $llist[0]['detail'][0]['title'];
-                    $list['meta_hk'] = $llist[0]['detail'][0]['keywords'];
-                    $list['text_hk'] = $llist[0]['detail'][0]['description'];
+                    $list['title_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['title']:'';
+                    $list['meta_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['keywords']:'';
+                    $list['text_hk'] = isset($llist[0]['detail'][0])?$llist[0]['detail'][0]['description']:'';
 
-                    $list['title_cn'] = $llist[0]['detail'][1]['title'];
-                    $list['meta_cn'] = $llist[0]['detail'][1]['keywords'];
-                    $list['text_cn'] = $llist[0]['detail'][1]['description'];
+                    $list['title_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['title']:'';
+                    $list['meta_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['keywords']:'';
+                    $list['text_cn'] = isset($llist[0]['detail'][1])?$llist[0]['detail'][1]['description']:'';
 
-                    $list['title_en'] = $llist[0]['detail'][2]['title'];
-                    $list['meta_en'] = $llist[0]['detail'][2]['keywords'];
-                    $list['text_en'] = $llist[0]['detail'][2]['description'];
+                    $list['title_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['title']:'';
+                    $list['meta_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['keywords']:'';
+                    $list['text_en'] = isset($llist[0]['detail'][2])?$llist[0]['detail'][2]['description']:'';
                 }
             }
 
             $this->assign('list', $list);
         }
-
+        $this->assign('where', $where);
         return $this->fetch();
     }
     public function publishCommit(){

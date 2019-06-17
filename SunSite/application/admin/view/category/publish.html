@@ -87,7 +87,7 @@
                 {field: 'id', title: 'ID', width:0, align:"center"},
                 {field: 'title', title: '繁體標題',align:'center'},
                 {field: 'meta', title: '繁體metaData', align:'center'},
-                {field: 'text', title: '繁體allText', align:'center'},
+                {field: 'text', title: '繁體altText', align:'center'},
                 {field: 'publish_time', title: '發布時間', align:'center'},
                 {field: 'status', title: '狀態', align:'center',templet:'#statusTpl'},
                 {field: 'file', title: 'File', align:'center',templet:'#fileTpl'},
@@ -147,7 +147,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/publishEdit')}",
+                content : "{:url('/admin/publishEdit')}"+'?where=add',
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -172,7 +172,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/publishEdit')}"+'?id='+id,
+                content : "{:url('/admin/publishEdit')}"+'?id='+id+'&where=edit',
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){

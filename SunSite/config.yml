@@ -1,24 +1,24 @@
-db:
-  hostname: 39.104.167.255
-  database: sun
-  port:
-  username: root
-  password: 123456
-minio:
-  endpoint: http://172.21.76.28:9000
-  key: LTM287U5RO3EVNIPYDM3
-  secret: ETEh7gdxYT8qsQtj58I7U2GZC3WxBQhVgC0LN3Yc
-
 #db:
-#  username: suncity
-#  password: website_2018
-#  hostname: 192.201.65.99
-#  port: 3306
-#  database: cms
+#  hostname: 39.104.167.255
+#  database: sun
+#  port:
+#  username: root
+#  password: 123456
 #minio:
-#  endpoint: http://192.201.65.99:9000/source/
-#  key: 4BZ07VE7OK39MCXB9YRV
-#  secret: wjp5ppfRmpuSyGOAn55gsrelu14mwN8RLvberQoe
+#  endpoint: http://172.21.76.28:9000
+#  key: LTM287U5RO3EVNIPYDM3
+#  secret: ETEh7gdxYT8qsQtj58I7U2GZC3WxBQhVgC0LN3Yc
+
+db:
+  username: root
+  password: SUNCITY_WEBSITE_2018
+  hostname: 172.21.71.12
+  port: 3306
+  database: cms
+minio:
+  endpoint: http://172.21.71.12:9000
+  key: 4BZ07VE7OK39MCXB9YRV
+  secret: wjp5ppfRmpuSyGOAn55gsrelu14mwN8RLvberQoe
 
 app_debug: true
 

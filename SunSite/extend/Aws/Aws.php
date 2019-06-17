@@ -34,6 +34,7 @@ class Aws
     }
 
     public function getUrl($key){
+        $key = pathinfo($key)['filename'];
         $cmd = $this->S3->getCommand('GetObject', [
             'Bucket' => $this->bucket,
             'Key' => $key
@@ -47,35 +48,35 @@ class Aws
     public function Upload($tmp,$ext,$type){
 
 //        try {
-            $uuid1 = Uuid::uuid1()->toString();
-            if($type == 0){
-                $key = 'img/'.$uuid1.'.'.$ext;
-                $this->S3->putObject([
-                    'Bucket' => 'source',
-                    'Key'    => $key,
-                    'Body'   => fopen($tmp, 'r'),
-                    'ACL'    => 'public-read'
-                ]);
-            }elseif($type == 1){
-                $key = 'video/'.$uuid1.'.'.$ext;
-                $this->S3->putObject([
-                    'Bucket' => 'source',
-                    'Key'    => $key,
-                    'Body'   => fopen($tmp, 'r'),
-                    'ACL'    => 'public-read'
-                ]);
-            }elseif($type == 2){
-                $key = 'pdf/'.$uuid1.'.'.$ext;
-                $this->S3->putObject([
-                    'Bucket' => 'source',
-                    'Key'    => $key,
-                    'Body'   => fopen($tmp, 'r'),
-                    'ACL'    => 'public-read',
-                    'ContentType'=>'application/pdf',
-                    'ContentDisposition'=>'inline',
-                ]);
-            }
-            return $key;
+        $uuid1 = Uuid::uuid1()->toString();
+        if($type == 0){
+            $key = 'img/'.$uuid1.'.'.$ext;
+            $this->S3->putObject([
+                'Bucket' => 'source',
+                'Key'    => $uuid1,
+                'Body'   => fopen($tmp, 'r'),
+                'ACL'    => 'public-read'
+            ]);
+        }elseif($type == 1){
+            $key = 'video/'.$uuid1.'.'.$ext;
+            $this->S3->putObject([
+                'Bucket' => 'source',
+                'Key'    => $uuid1,
+                'Body'   => fopen($tmp, 'r'),
+                'ACL'    => 'public-read'
+            ]);
+        }elseif($type == 2){
+            $key = 'pdf/'.$uuid1.'.'.$ext;
+            $this->S3->putObject([
+                'Bucket' => 'source',
+                'Key'    => $uuid1,
+                'Body'   => fopen($tmp, 'r'),
+                'ACL'    => 'public-read',
+                'ContentType'=>'application/pdf',
+                'ContentDisposition'=>'inline',
+            ]);
+        }
+        return $key;
 //        } catch (S3Exception $e) {
 //            return $e->getMessage() . PHP_EOL;
 //        }
