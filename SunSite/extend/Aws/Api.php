@@ -83,6 +83,36 @@ class Api {
         return $result;
     }
 
+    public static function uploadCurl($url, $token,$file_path){
+
+        $ch = curl_init();
+        $headers = array("Content-Type:multipart/form-data","token:$token");
+        $parameters['file'] = curl_file_create($file_path);
+        if(substr($url,0,5)=='https'){
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);  // 从证书中检查SSL加密算法是否存在
+        }
+
+        curl_setopt($ch, CURLOPT_URL, self::API.$url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = curl_exec($ch);
+
+        if($error=curl_error($ch)){
+            return false;
+        }
+        curl_close($ch);
+        $result = array();
+
+        if($response){
+            $result = json_decode($response, true);
+        }
+        return $result;
+    }
 
 
     public static function getCurl($url,$token){

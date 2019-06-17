@@ -773,6 +773,27 @@ class Index extends Controller
         return $cache;
     }
 
+    public function jobUpload(){
+        if($_FILES){
+            $json = [
+                "identity"=>"90000002",
+                "password"=>"123456"
+            ];
+            $tmp = $_FILES['file']['tmp_name'];
+            $api = Api::postCurl('json_web_token','',$json);
+            if(isset($api['data']) && !empty($api['data'])){
+                $token = $api['data']['token'];
+                $data = Api::uploadCurl('attachments',$token,$tmp);
+                return $data;
+                if(isset($data['state']) && $data['state'] == 'success'){
+                    return ['code'=>0,'msg'=>'success'];
+                }
+            }
+        }
+
+
+    }
+
     public function jobCommit(){
         $jsonData = isset($_REQUEST['data'])?$_REQUEST['data']:[];
         $json = [
