@@ -188,12 +188,18 @@ class Index extends Controller
         $where[] = ['status','=',1];
         $all_datas = $this->getNews($where,$in_lang);
         if($get_year){
-            $where[] = ['publish_time','like','%'.$get_year.'%'];
+            $get_year = urldecode($get_year);
+            if($get_year == '全部'|| $get_year == 'All'){
+            }else{
+                $where[] = ['publish_time','like','%'.$get_year.'%'];
+            }
         }
+
+
         $datas = $this->getNews($where,$in_lang);
         if($datas){
             $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
-
+            array_unshift($all_year,'全部');
             $cate = Categories::where(['slug'=>'news','parent_id'=>0])->field('id,slug')->with('detail')->find();
             $cate = $cate?$cate->toArray():[];
             if(isset($cate['detail']) && $cate['detail']){
@@ -208,7 +214,7 @@ class Index extends Controller
                 unset($cate['detail']);
             }
 
-            $year = $get_year?$get_year:'';
+            $year = $get_year?$get_year:($in_lang==0?'全部':($in_lang==1?'全部':'All'));
 
             foreach ($datas as $dk=>$dv){
                 if($keyword){
@@ -275,13 +281,18 @@ class Index extends Controller
         $where[] = ['status','=',1];
         $all_datas = $this->getNews($where,$in_lang);
         if($get_year){
-            $where[] = ['publish_time','like','%'.$get_year.'%'];
+            $get_year = urldecode($get_year);
+            if($get_year == '全部'|| $get_year == 'All'){
+            }else{
+                $where[] = ['publish_time','like','%'.$get_year.'%'];
+            }
         }
 
         $datas = $this->getNews($where,$in_lang);
         $result = [];
         if($datas){
             $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
+            array_unshift($all_year,'全部');
 
             $cate = Categories::where(['slug'=>'news','parent_id'=>0])->field('id,slug')->with('detail')->find();
             $cate = $cate?$cate->toArray():[];
@@ -297,7 +308,8 @@ class Index extends Controller
                 unset($cate['detail']);
             }
 
-            $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
+//            $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
+            $year = $get_year?$get_year:($in_lang==0?'全部':($in_lang==1?'全部':'All'));
 
             foreach ($datas as $dk=>$dv){
                 if($keyword){
@@ -451,7 +463,7 @@ class Index extends Controller
         $mustache = Mustache::mustache($this->lang);
         $tpl = $mustache->loadTemplate('404');
         return $tpl->render(array('LanguageDisplay' => $language));
-}
+    }
     public function postDetail($data,$in_lang){
         $aws = new Aws();
         $datas = $data->toArray();
@@ -500,11 +512,16 @@ class Index extends Controller
         $where[] = ['status','=',1];
         $all_datas = $this->getNews($where,$in_lang);
         if($get_year){
-            $where[] = ['publish_time','like','%'.$get_year.'%'];
+            $get_year = urldecode($get_year);
+            if($get_year == '全部'|| $get_year == 'All'){
+            }else{
+                $where[] = ['publish_time','like','%'.$get_year.'%'];
+            }
         }
         $datas = $this->getNews($where,$in_lang);
         if($datas){
             $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
+            array_unshift($all_year,'全部');
 
             $cate = Categories::where(['slug'=>'publish','parent_id'=>0])->field('id,slug')->with('detail')->find();
             $cate = $cate?$cate->toArray():[];
@@ -519,7 +536,7 @@ class Index extends Controller
                 }
                 unset($cate['detail']);
             }
-            $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
+            $year = $get_year?$get_year:($in_lang==0?'全部':($in_lang==1?'全部':'All'));
             foreach ($datas as $dk=>$dv){
                 if($keyword){
                     if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
@@ -580,12 +597,17 @@ class Index extends Controller
         $where[] = ['status','=',1];
         $all_datas = $this->getNews($where,$in_lang);
         if($get_year){
-            $where[] = ['publish_time','like','%'.$get_year.'%'];
+            $get_year = urldecode($get_year);
+            if($get_year == '全部'|| $get_year == 'All'){
+            }else{
+                $where[] = ['publish_time','like','%'.$get_year.'%'];
+            }
         }
         $result=[];
         $datas = $this->getNews($where,$in_lang);
         if($datas){
             $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
+            array_unshift($all_year,'全部');
 
             $cate = Categories::where(['slug'=>'publish','parent_id'=>0])->field('id,slug')->with('detail')->find();
             $cate = $cate?$cate->toArray():[];
@@ -600,7 +622,7 @@ class Index extends Controller
                 }
                 unset($cate['detail']);
             }
-            $year = $datas[0]['publish_time']?date("Y",strtotime($datas[0]['publish_time'])):'';
+            $year = $get_year?$get_year:($in_lang==0?'全部':($in_lang==1?'全部':'All'));
             foreach ($datas as $dk=>$dv){
                 if($keyword){
                     if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){

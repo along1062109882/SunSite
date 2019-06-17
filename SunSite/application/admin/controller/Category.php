@@ -373,6 +373,10 @@ class Category extends Common
             $id = $data['id'];
 
             if (isset($id) && !empty($id)) {
+                $check = Posts::find(['slug'=>$data['slug']]);
+                if($check && $check['id'] != $data['id']){
+                    return Result::error('當前slug已存在');
+                }
                 //编辑
                 $posts = Posts::find(['id'=>$data['id']]);
                 $posts->post_type = 'news';
@@ -417,7 +421,10 @@ class Category extends Common
                     return Result::error('失敗');
                 }
             } else {
-
+                $check = Posts::find(['slug'=>$data['slug']]);
+                if($check){
+                    return Result::error('當前slug已存在');
+                }
                 //添加
                 $posts = new Posts();
                 $posts->post_type = 'news';
