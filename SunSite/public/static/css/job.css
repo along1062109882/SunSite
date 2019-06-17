@@ -886,6 +886,7 @@
   height: 380px;
   margin: 0 auto;
   background-size: cover;
+  overflow: hidden;
 }
 
 .declaration-detail {

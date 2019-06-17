@@ -112,7 +112,6 @@ $(function () {
     chage_num(0);
     // 点击下一步事件
     $('.next').on('click', function () {
-
         // 頁面中所有 content_onlySign class 名的元素 用来做必填项的校验
         const current_show_el_content = $('.container .content_onlySign');
 
@@ -143,24 +142,26 @@ $(function () {
                         }
                     })
                 })
-
             }
         })
         
         if(!elvalue_isNull){
             alert('请填写必填项')
             return
-        }
-
-
-
-
-        // console.log($('.container div').length)
+        }        // console.log($('.container div').length)
         num += 1;
         if (num >= 10  ) num = 10;
         chage_num(num)
         $('.pagination_content li').eq(num-1).find('b').show();
         $('.pagination_content li').eq(num).find('span').css({'background':'#a19062'});
+        var formdata = new FormData($('#formdata_one')[0]);
+        var formdata_two = new FormData($('#formdata_two')[0]);
+        var formdata_three = new FormData($('#formdata_three')[0]);
+
+        console.log(formdata.getAll('content_one'))
+        console.log(formdata_two.getAll('content_two'))
+        console.log(formdata_three.getAll('content_three'))
+        
     })
     // 点击上一步事件
     $('.prev').on('click', function () {
@@ -176,17 +177,15 @@ $(function () {
         url:"/zh-hant/getParam",
         type:"GET",
         success: function (data) {
-            console.log('aaaa',data.choice_id)
             var Str_region = '';
             // 地区选择
             for (var i = 0; i < data.working_region.length; i++) {
-                Str_region += `<option id='${data.working_region[i].id}'>${data.working_region[i].chinese_name}</option>`
+                Str_region += `<option id='${data.working_region[i].key}' value='${data.working_region[i].key}'>${data.working_region[i].chinese_name}</option>`
             }
             var change_first_str = '', first_change = '', second_str = '';
             // 第一选择
             data.choice_id.forEach((item, index) => {
                 change_first_str += `<option id='${item.id}'>${item.chinese_name}</option>`;
-                console.log(item.jobs)
             });
            var arr_change = [];
            data.choice_id.filter(item => {
@@ -233,7 +232,7 @@ $(function () {
             data.choice_id.forEach((item, index) => {
                 deparment += `<option id='${item.id}'>${item.chinese_name}</option>`;
             });
-            $('.region').empty().append(Str_region);
+            $('.region').append(Str_region);
             $('.change_first').append(change_first_str);
             $('.first_change').append(first_change);
             $('.second_str').append(second_str);
@@ -250,4 +249,87 @@ $(function () {
             console.log('error', error)
         }
     })
+    // // 獲取頁面表單內容，進行驗證提交
+    // var SubmitArr = [];
+    // // 地區
+    // SubmitArr.region_one = $('.region_one').val();
+    // $('.region_one').on('change', function () {
+    //     SubmitArr.region_one = $(this).val();
+    // })
+    // // 部門第一選擇
+    // SubmitArr.first_change_one = $('.first_change_one').val();
+    // $('.first_change_one').on('change', function () {
+    //     SubmitArr.first_change_one = $(this).val();
+    // })
+    // // 部門第二選擇
+    // SubmitArr.change_first_one = $('.change_first_one').val();
+    // $('.change_first_one').on('change', function () {
+    //     SubmitArr.change_first_one = $(this).val();
+    // })
+    // // 職位第一選擇
+    // SubmitArr.second_change_one = $('.second_change_one').val();
+    // $('.second_change_one').on('change', function () {
+    //     SubmitArr.second_change_one = $(this).val();
+    // })
+    //  // 職位第一選擇
+    //  SubmitArr.change_second_one = $('.change_second_one').val();
+    //  $('.change_second_one').on('change', function () {
+    //       SubmitArr.change_second_one = $(this).val();
+    //  })
+    //  //薪資需求
+    //  SubmitArr.money_one = $('#money_one').val();
+    //  $('#money_one').on('change', function () {
+    //       SubmitArr.money_one = $(this).val();
+    //  })
+    //  // 離職通知期
+    //  SubmitArr.work_back_one = $('#work_back_one').val();
+    //  $('#work_back_one').on('change', function () {
+    //       SubmitArr.work_back_one = $(this).val();
+    //        console.log($(this).val())
+    //  })
+    //  ////////////////    1
+    //  // 介紹人姓名
+    //  SubmitArr.name_second = $('#name_second').val();
+    //  $('#name_second').on('change', function () {
+    //       SubmitArr.name_second = $(this).val();
+    //        console.log($(this).val())
+    //  })
+    // // 介紹人員工編號
+    // SubmitArr.number_second = $('#number_second').val();
+    // $('#number_second').on('change', function () {
+    //     SubmitArr.number_second = $(this).val();
+    //     console.log($(this).val())
+    // })
+    // // 联络电话：
+    // SubmitArr.phone_second = $('#phone_second').val();
+    // $('#phone_second').on('change', function () {
+    //     SubmitArr.phone_second = $(this).val();
+    //     console.log($(this).val())
+    // })
+    // // 介绍人关系：
+    // SubmitArr.introd_second = $('#introd_second').val();
+    // $('#introd_second').on('change', function () {
+    //     SubmitArr.introd_second = $(this).val();
+    //     console.log($(this).val())
+    // })
+    //  // 介绍人场馆/职位
+    //  SubmitArr.introd_deparment_second = $('#introd_deparment_second').val();
+    //  $('#introd_deparment_second').on('change', function () {
+    //      SubmitArr.introd_deparment_second = $(this).val();
+    //      console.log($(this).val())
+    //  })
+    //  // 職位選擇
+    //  SubmitArr.introd_job_second = $('#introd_job_second').val();
+    //  $('#introd_job_second').on('change', function () {
+    //      SubmitArr.introd_job_second = $(this).val();
+    //      console.log($(this).val())
+    //  })
+    //  ///////////////// 2
+    //  // 職位選擇
+    //  SubmitArr.introd_job_second = $('#introd_job_second').val();
+    //  $('#introd_job_second').on('change', function () {
+    //      SubmitArr.introd_job_second = $(this).val();
+    //      console.log($(this).val())
+    //  })
+     
 });

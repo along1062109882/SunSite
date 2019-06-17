@@ -229,14 +229,19 @@ $(function () {
                     </a>
                     </div>`;
                 });
-                var Pagination_str = `
+                var Pagination_str = '';
+                var pages_str = '';
+                    res.Paging.Pages.forEach((item, index) => {
+                        pages_str += `<a class="news-page" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${item.No}">${item.No}</a>`;
+                    })
+                    Pagination_str = `
                     <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=1">
                         <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
                     </a>
                     <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.PreviousPage}">
                         <img src="/static/imgs/next-page.svg" class="first-page">
                     </a>
-                    <a class="news-page" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.Pages[0].No}">${res.Paging.Pages[0].No}</a>
+                    ${pages_str}
                     <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.NextPage}">
                         <img src="/static/imgs/next-page.svg" class="next-page">
                     </a>
