@@ -356,25 +356,27 @@ class Index extends Controller
     public function getNews($where,$in_lang){
         $aws = new Aws();
         $datas = Posts::where($where)->where('publish_time','<=',date('Y-m-d H:i:s'))->with('detail,coverLink,squareLink')->order('publish_time','desc')->select()->toArray();
-        foreach ($datas as $k=>$v){
-            $datas[$k]['title'] = '';
-            $datas[$k]['excerpt'] = '';
-            $datas[$k]['content'] = '';
-            $datas[$k]['keywords'] = '';
-            $datas[$k]['description'] = '';
-            $datas[$k]['date'] = date("F j, Y",strtotime($datas[$k]['publish_time']));
-            $datas[$k]['year'] = date("Y",strtotime($datas[$k]['publish_time']));
-            if(isset($datas[$k]['detail'][$in_lang])){
-                $datas[$k]['title'] = $datas[$k]['detail'][$in_lang]['title'];
-                $datas[$k]['excerpt'] = $datas[$k]['detail'][$in_lang]['excerpt'];
-                $datas[$k]['content'] = $datas[$k]['detail'][$in_lang]['content'];
-                $datas[$k]['keywords'] = $datas[$k]['detail'][$in_lang]['keywords'];
-                $datas[$k]['description'] = $datas[$k]['detail'][$in_lang]['description'];
-            }
-            unset($datas[$k]['detail']);
+        if($datas){
+            foreach ($datas as $k=>$v){
+                $datas[$k]['title'] = '';
+                $datas[$k]['excerpt'] = '';
+                $datas[$k]['content'] = '';
+                $datas[$k]['keywords'] = '';
+                $datas[$k]['description'] = '';
+                $datas[$k]['date'] = date("F j, Y",strtotime($datas[$k]['publish_time']));
+                $datas[$k]['year'] = date("Y",strtotime($datas[$k]['publish_time']));
+                if(isset($datas[$k]['detail'][$in_lang])){
+                    $datas[$k]['title'] = $datas[$k]['detail'][$in_lang]['title'];
+                    $datas[$k]['excerpt'] = $datas[$k]['detail'][$in_lang]['excerpt'];
+                    $datas[$k]['content'] = $datas[$k]['detail'][$in_lang]['content'];
+                    $datas[$k]['keywords'] = $datas[$k]['detail'][$in_lang]['keywords'];
+                    $datas[$k]['description'] = $datas[$k]['detail'][$in_lang]['description'];
+                }
+                unset($datas[$k]['detail']);
 
-            if(isset($datas[$k]['cover_link']) && $datas[$k]['cover_link']){
-                $datas[$k]['cover_link']['url'] = $datas[$k]['cover_link']['url']?$aws->getUrl($datas[$k]['cover_link']['url']):'';
+                if(isset($datas[$k]['cover_link']) && $datas[$k]['cover_link']){
+                    $datas[$k]['cover_link']['url'] = $datas[$k]['cover_link']['url']?$aws->getUrl($datas[$k]['cover_link']['url']):'';
+                }
             }
         }
         return $datas;
@@ -519,24 +521,25 @@ class Index extends Controller
             }
         }
         $datas = $this->getNews($where,$in_lang);
-        if($datas){
-            $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
-            array_unshift($all_year,'全部');
 
-            $cate = Categories::where(['slug'=>'publish','parent_id'=>0])->field('id,slug')->with('detail')->find();
-            $cate = $cate?$cate->toArray():[];
-            if(isset($cate['detail']) && $cate['detail']){
-                $cate['language'] = '';
-                $cate['name'] = '';
-                foreach ($cate['detail'] as $ck=>$cv){
-                    if($cate['detail'][$ck]['language']==$in_lang){
-                        $cate['language'] = $in_lang;
-                        $cate['name'] = $cate['detail'][$ck]['name'];
-                    }
+        $all_year = $all_datas?array_values(array_unique(array_column($all_datas,'year'))):[];
+        array_unshift($all_year,'全部');
+
+        $cate = Categories::where(['slug'=>'publish','parent_id'=>0])->field('id,slug')->with('detail')->find();
+        $cate = $cate?$cate->toArray():[];
+        if(isset($cate['detail']) && $cate['detail']){
+            $cate['language'] = '';
+            $cate['name'] = '';
+            foreach ($cate['detail'] as $ck=>$cv){
+                if($cate['detail'][$ck]['language']==$in_lang){
+                    $cate['language'] = $in_lang;
+                    $cate['name'] = $cate['detail'][$ck]['name'];
                 }
-                unset($cate['detail']);
             }
-            $year = $get_year?$get_year:($in_lang==0?'全部':($in_lang==1?'全部':'All'));
+            unset($cate['detail']);
+        }
+        $year = $get_year?$get_year:($in_lang==0?'全部':($in_lang==1?'全部':'All'));
+        if($datas){
             foreach ($datas as $dk=>$dv){
                 if($keyword){
                     if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
@@ -545,40 +548,39 @@ class Index extends Controller
                     }
                 }
             }
-            if($keyword && $datas){
-                $this->order($datas,'date');
-            }
-
-            $count = count($datas);
-            $all_page = ceil($count/9);
-            $all_page = $all_page?$all_page:1;
-            for ($i=1;$i<=$all_page;$i++){
-                $p['No'] = $i;
-                $Paging['Pages'][] = $p;
-            }
-            $Paging['PageCount'] = $all_page;
-            $Paging['CurrentPage'] = $get_page;
-            $Paging['FirstPage'] = 1;
-            $Paging['LastPage'] = $all_page;
-            $Paging['PreviousPage'] = ($get_page-1 <= 0)? 1 : $get_page-1;
-            $Paging['NextPage'] = ($get_page+1>$all_page) ?$all_page : $get_page+1;
-
-
-            $result['LanguageDisplay'] = $language;
-            $result['CurrentRootCategory'] = $cate;
-            $result['CurrentCategorySlug'] = $cate?$cate['slug']:'';
-            $result['PostPreviews'] = array_slice($datas,$offset,$limit);
-            $result['Year'] = $year;
-            $result['Years'] = $all_year;
-            $result['Paging'] = $Paging;
-
-            $mustache = Mustache::mustache($this->lang);
-            $tpl = $mustache->loadTemplate('release');
-            return $tpl->render($result);
+        }
+        if($keyword && $datas){
+            $this->order($datas,'date');
         }
 
+        $count = count($datas);
+        $all_page = ceil($count/9);
+        $all_page = $all_page?$all_page:1;
+        for ($i=1;$i<=$all_page;$i++){
+            $p['No'] = $i;
+            $Paging['Pages'][] = $p;
+        }
+        $Paging['PageCount'] = $all_page;
+        $Paging['CurrentPage'] = $get_page;
+        $Paging['FirstPage'] = 1;
+        $Paging['LastPage'] = $all_page;
+        $Paging['PreviousPage'] = ($get_page-1 <= 0)? 1 : $get_page-1;
+        $Paging['NextPage'] = ($get_page+1>$all_page) ?$all_page : $get_page+1;
+
+
+        $result['LanguageDisplay'] = $language;
+        $result['CurrentRootCategory'] = $cate;
+        $result['CurrentCategorySlug'] = $cate?$cate['slug']:'';
+        $result['PostPreviews'] = array_slice($datas,$offset,$limit);
+        $result['Year'] = $year;
+        $result['Years'] = $all_year;
+        $result['Paging'] = $Paging;
+
         $mustache = Mustache::mustache($this->lang);
-        $tpl = $mustache->loadTemplate('404');
+        $tpl = $mustache->loadTemplate('release');
+        return $tpl->render($result);
+        $mustache = Mustache::mustache($this->lang);
+        $tpl = $mustache->loadTemplate('release');
         return $tpl->render(array('LanguageDisplay' => $language));
     }
     public function post_release()
