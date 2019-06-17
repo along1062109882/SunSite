@@ -1,0 +1,7 @@
+#!/bin/sh
+
+## ./create sunpeople/cms
+rm -rf docker/html
+cp -r SunSite docker/html
+docker build -t $1 docker
+
