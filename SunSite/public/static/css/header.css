@@ -140,7 +140,7 @@
     position: absolute;
     right: 40px;
   }
-
+ 
   .header-nav-item-group a {
     padding-left: 0px !important;
   }
@@ -205,10 +205,10 @@
   height: 60px;
   background-color: #e1dbcf;
 }
-.header-nav-group a {
+/* .header-nav-group a { */
   /* padding-top: 16px;
   padding-bottom: 20px; */
-}
+/* } */
 
 .header-nav-group li {
   /* padding-left: 50px; */
@@ -229,7 +229,12 @@
   color: #49443d;
   position: relative;
 }
-
+@media(max-width: 1439px) {
+  .header-nav-title a {
+    display: inline-block;
+    width: 100%;
+  }
+}
 .header-nav-title:not(:first-of-type) {
   /* margin-left: 42px; */
 }

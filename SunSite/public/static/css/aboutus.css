@@ -872,9 +872,9 @@ p {
   .bossword-wrapper {
     line-height: 0;;
   }
-  /* .bossword-wrapper h2 {
+  .bossword-wrapper h2 {
     line-height: 2.5;
-  } */
+  }
 }
 @media(min-width: 801px) and (max-width: 1024px) {
   .about-us-section {

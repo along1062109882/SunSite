@@ -36,7 +36,8 @@ setToggleLanguageHref();
 function headerUpdateSize() {
   headerScreenW = $(window).width();
   headerScreenH = $(window).height();
-  if (headerScreenW > 1424) headerISWideScreen = true;
+  console.log()
+  if (headerScreenW > 1440) headerISWideScreen = true;
   else headerISWideScreen = false;
 }
 function headerHandleButton() {
@@ -591,7 +592,7 @@ setToggleLanguageHref();
 function headerUpdateSize() {
     headerScreenW = $(window).width();
     headerScreenH = $(window).height();
-    if (headerScreenW > 1424) headerISWideScreen = true;
+    if (headerScreenW > 1440) headerISWideScreen = true;
     else headerISWideScreen = false;
 }
 function headerHandleButton() {
@@ -1096,12 +1097,6 @@ function setToggleLanguageHref() {
 
 }
 
-// down: 'mousedown',
-//   move: 'mousemove',
-//   up: 'mouseup',
-//   over: 'mouseover',
-//   out: 'mouseout'
-// }
 
 $(document).ready(function () {
   $(window).resize(headerUpdateSize);
@@ -1116,7 +1111,7 @@ setToggleLanguageHref();
 function headerUpdateSize() {
   headerScreenW = $(window).width();
   headerScreenH = $(window).height();
-  if (headerScreenW > 1424) headerISWideScreen = true;
+  if (headerScreenW > 1440) headerISWideScreen = true;
   else headerISWideScreen = false;
 }
 function headerHandleButton() {

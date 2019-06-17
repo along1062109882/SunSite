@@ -199,8 +199,11 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
     overflow: hidden;
+    color: #fff;
 }
-
+.grand_p .content p  span {
+    color: #fff;
+}
 @media(max-width: 1600px) {
     /*.grand_container ul li div p .title {*/
         /*font-size: 18px;*/
@@ -404,7 +407,7 @@
         margin-left: 5%;
     }
     .grand_container ul li span  {
-        width: 55%;
+        /* width: 55%; */
     }
     .grand_container ul li div p .title {
         font-size: 14px;
