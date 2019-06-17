@@ -90,10 +90,14 @@ $(function () {
             return
         }
         if (location.pathname.indexOf('/zh-hans') != -1) {
-            window.location.href = "/zh-hans/news?year=" + newYear;
+            filter_search()
+            $('#drop-down-year').val(newYear) 
+            // window.location.href = "/zh-hans/news?year=" + newYear;
         }
         else if (location.pathname.indexOf('/zh-hant') != -1) {
-            window.location.href = "/zh-hant/news?year=" + newYear;
+            // window.location.href = "/zh-hant/news?year=" + newYear;
+            filter_search();
+            $('#drop-down-year').val(newYear)
         }
     })
     // 判断当前时间小于或等于当前集团新闻中心的最低年份，该按钮则显示禁用状态
@@ -118,11 +122,16 @@ $(function () {
         if (!newYear) {
             return
         }
+
         if (location.pathname.indexOf('/zh-hans') != -1) {
-            window.location.href = "/zh-hans/news?year=" + newYear;
+            // window.location.href = "/zh-hans/news?year=" + newYear;
+            filter_search();
+            $('#drop-down-year').val(newYear) 
         }
         else if (location.pathname.indexOf('/zh-hant') != -1) {
-            window.location.href = "/zh-hant/news?year=" + newYear;
+            // window.location.href = "/zh-hant/news?year=" + newYear;
+            filter_search();
+            $('#drop-down-year').val(newYear) 
         }
     })
     // 判断当前时间大于或等于最新年份，则显示禁用状态
@@ -133,7 +142,11 @@ $(function () {
         $('.yearNext img').css({"opacity": 1, 'cursor':'pointer'});
         $('.yearNext').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
     }
-
+    // 點擊下拉列表選中進行篩選
+    $('.filter-list li').on('click', function () {
+        $('#drop-down-year').val($(this).text())
+        filter_search();
+    })
     $('.drop-down').click(function () {
         var $filter = $('.filter-list');
         var $icon = $('.icon');
@@ -165,7 +178,6 @@ $(function () {
             url: '/' + lan + '/post_news' ,
             data: {year: years, key: keyword},
             success: function (data) {
-                alert(1)
                 console.log(data)
                 // var must = new Mustache();
                 Mustache.render('.news-container',data);

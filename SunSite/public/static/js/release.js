@@ -53,10 +53,14 @@ $(function () {
             return
         }
         if (location.pathname.indexOf('/zh-hans') != -1) {
-            window.location.href = "/zh-hans/release?year=" + newYear;
+            // window.location.href = "/zh-hans/release?year=" + newYear;
+            filter_search()
+            $('#drop-down-year').val(newYear) 
         }
         else if (location.pathname.indexOf('/zh-hant') != -1) {
-            window.location.href = "/zh-hant/release?year=" + newYear;
+            // window.location.href = "/zh-hant/release?year=" + newYear;
+            filter_search()
+            $('#drop-down-year').val(newYear) 
         }
     })
     // 判断当前时间小于或等于当前集团新闻中心的最低年份，该按钮则显示禁用状态
@@ -82,10 +86,14 @@ $(function () {
             return
         }
         if (location.pathname.indexOf('/zh-hans') != -1) {
-            window.location.href = "/zh-hans/release?year=" + newYear;
+            // window.location.href = "/zh-hans/release?year=" + newYear;
+            filter_search()
+            $('#drop-down-year').val(newYear) 
         }
         else if (location.pathname.indexOf('/zh-hant') != -1) {
-            window.location.href = "/zh-hant/release?year=" + newYear;
+            // window.location.href = "/zh-hant/release?year=" + newYear;
+            filter_search()
+            $('#drop-down-year').val(newYear) 
         }
     })
     // 判断当前时间大于或等于最新年份，则显示禁用状态
@@ -140,7 +148,7 @@ $(function () {
                 res.PostPreviews.forEach(item => {
                    item.cover_link === null ? str+= '':
                    str+= `
-                      <p><a href="/news?year=/${item.cover_link === null ? '' :item.cover_link.url}">${item.title}</a></p>
+                      <p><a href="${item.cover_link === null ? '' :item.cover_link.url}" target='_blank'>${item.title}</a></p>
                    `
                 })
                 $('.release_content').empty().append(str)

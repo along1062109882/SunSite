@@ -784,14 +784,12 @@ class Index extends Controller
             if(isset($api['data']) && !empty($api['data'])){
                 $token = $api['data']['token'];
                 $data = Api::uploadCurl('attachments',$token,$tmp);
-                return $data;
                 if(isset($data['state']) && $data['state'] == 'success'){
-                    return ['code'=>0,'msg'=>'success'];
+                    return ['code'=>0,'msg'=>'success','id'=>$data['data']['id']];
                 }
             }
         }
-
-
+        return ['code'=>101,'msg'=>'fail'];
     }
 
     public function jobCommit(){
