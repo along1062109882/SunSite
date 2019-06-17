@@ -223,7 +223,7 @@ p {
   }
 
 
-@media (max-width: 1080px) {
+@media (max-width: 1120px) {
   .bossword {
     background-image: url('/static/imgs/about-us-boss-1000.jpg');
     background-color: #a19062;
@@ -868,6 +868,14 @@ p {
     max-height: 353px;
   }
 } */
+@media(min-width: 801px) and (max-width: 900px) {
+  .bossword-wrapper {
+    line-height: 0;;
+  }
+  /* .bossword-wrapper h2 {
+    line-height: 2.5;
+  } */
+}
 @media(min-width: 801px) and (max-width: 1024px) {
   .about-us-section {
     height: 500px;

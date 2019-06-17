@@ -89,7 +89,7 @@ img {
   overflow: hidden;
   float: left;
   background-size: cover; 
-  -webkit-transition: width 0.5s;
+  /* -webkit-transition: width 0.5s; */
   position: relative;
 }
 .ts-ul li.on  img {
@@ -172,6 +172,9 @@ img {
 .ts-ul li.on b{
   opacity: 0;
   filter: Alpha(opacity=0);
+  opacity: 1;
+  width: 10%;
+  padding-right: 7px;
 }
 @media(max-width: 1440px) {
   .ts-ul {
