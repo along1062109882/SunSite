@@ -16,7 +16,7 @@ use app\index\model\PostDetails;
 use app\index\model\PostLinks;
 use app\index\model\Posts;
 use app\index\model\Links;
-use aws\Aws;
+use Aws\Aws;
 use Aws\S3\S3Client;
 
 class Link extends Common
