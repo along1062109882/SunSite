@@ -265,19 +265,29 @@ class Category extends Common
 
         $grouplist=[];
         $datas = Posts::where(['post_type'=>'news','deleted'=>0])->order('publish_time','desc')->with('getCategory,detail')->select()->toArray();
+
         if($datas){
             foreach ($datas as $k=>$v){
-                if($datas[$k]['get_category'] && $datas[$k]['get_category']['category']['deleted']==0){
-                    if($datas[$k]['detail']){
+                if($datas[$k]['get_category']){
+                    if($datas[$k]['get_category']['category']['deleted']==0 && $datas[$k]['detail']){
                         $join['id'] = $datas[$k]['detail'][0]['post_id'];
                         $join['parent_slug'] = isset($datas[$k]['get_category']['category']['detail'])&&!empty($datas[$k]['get_category']['category']['detail'])?$datas[$k]['get_category']['category']['detail'][0]['name']:'';
-                        $join['category_id'] = $datas[$k]['get_category']['category_id'];
+                        $join['category_id'] = isset($datas[$k]['get_category']['category_id'])?$datas[$k]['get_category']['category_id']:'';
                         $join['slug'] = $datas[$k]['slug'];
                         $join['status'] = $datas[$k]['status'];
                         $join['created'] = $datas[$k]['publish_time'];
                         $join['name'] = $datas[$k]['detail'][0]['title'];
                         $grouplist[] = $join;
                     }
+                }else{
+                    $join['id'] = $datas[$k]['detail'][0]['post_id'];
+                    $join['parent_slug'] = isset($datas[$k]['get_category']['category']['detail'])&&!empty($datas[$k]['get_category']['category']['detail'])?$datas[$k]['get_category']['category']['detail'][0]['name']:'';
+                    $join['category_id'] = isset($datas[$k]['get_category']['category_id'])?$datas[$k]['get_category']['category_id']:'';
+                    $join['slug'] = $datas[$k]['slug'];
+                    $join['status'] = $datas[$k]['status'];
+                    $join['created'] = $datas[$k]['publish_time'];
+                    $join['name'] = $datas[$k]['detail'][0]['title'];
+                    $grouplist[] = $join;
                 }
             }
         }
@@ -373,7 +383,7 @@ class Category extends Common
             $id = $data['id'];
 
             if (isset($id) && !empty($id)) {
-                $check = Posts::find(['slug'=>$data['slug']]);
+                $check = Posts::where(['slug'=>$data['slug']])->find();
                 if($check && $check['id'] != $data['id']){
                     return Result::error('當前slug已存在');
                 }
@@ -386,11 +396,17 @@ class Category extends Common
                 if($posts->save()){
 
                     $category = PostCategories::where(['post_id'=>$id])->find();
-                    if($category && $category['category_id'] == intval($data['type'])){
-
+                    if($category){
+                        if($category['category_id'] == intval($data['type'])){
+                        }else{
+                            $category->category_id = intval($data['type']);
+                            $category->save();
+                        }
                     }else{
-                        $category->category_id = intval($data['type']);
-                        $category->save();
+                        $p_cate = new PostCategories();
+                        $p_cate->post_id = $id;
+                        $p_cate->category_id = intval($data['type']);
+                        $p_cate->save();
                     }
 //                    return $category;
                     $hk_detail = PostDetails::where(['post_id'=>$id,'language'=>0])->find();
@@ -421,7 +437,7 @@ class Category extends Common
                     return Result::error('失敗');
                 }
             } else {
-                $check = Posts::find(['slug'=>$data['slug']]);
+                $check = Posts::where(['slug'=>$data['slug']])->find();
                 if($check){
                     return Result::error('當前slug已存在');
                 }
@@ -1064,14 +1080,20 @@ class Category extends Common
                 $posts->status = intval($data['status']);
                 $posts->publish_time = $data['time'];
                 if($posts->save()){
-
                     $category = PostCategories::where(['post_id'=>$id])->find();
-                    if($category && $category['category_id'] == intval($data['type'])){
-
+                    if($category){
+                        if($category['category_id'] == intval($data['type'])){
+                        }else{
+                            $category->category_id = intval($data['type']);
+                            $category->save();
+                        }
                     }else{
-                        $category->category_id = intval($data['type']);
-                        $category->save();
+                        $p_cate = new PostCategories();
+                        $p_cate->post_id = $id;
+                        $p_cate->category_id = intval($data['type']);
+                        $p_cate->save();
                     }
+
 //                    return $category;
                     $hk_detail = PostDetails::where(['post_id'=>$id,'language'=>0])->find();
                     $hk_detail->keywords = $data['keyword_hk'];
