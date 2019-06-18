@@ -490,7 +490,7 @@ class Manage extends Common
         $count = Food::where($map)->count();
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = isset($datas[$k]['links']['url'])?$aws->getUrl($datas[$k]['links']['url']):'';
+                $datas[$k]['img_url'] = isset($datas[$k]['links']['url'])?$aws->getUrl($datas[$k]['links']['url']):'';
                 $datas[$k]['name'] = isset($datas[$k]['links']['name'])?$datas[$k]['links']['name']:'';
                 if($datas[$k]['get_content']){
                     foreach ($datas[$k]['get_content'] as $ck=>$cv){
