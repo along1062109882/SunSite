@@ -73,11 +73,13 @@ class Concerts extends Common
      * 添加、编辑集團動態
      */
     public function concertEdit(){
+        $aws = new Aws();
+
         $id = $this->request->get('id');
         $where= $this->request->get('where','');
 
         if($id){
-            $llist = Concert::where(['id'=>$id])->with('getContent')->find()->toArray();
+            $llist = Concert::where(['id'=>$id])->with('getContent,getLink')->find()->toArray();
             $list=[];
             if($llist){
                 $list['id'] = $llist['id'];
@@ -91,6 +93,7 @@ class Concerts extends Common
                 $list['content_cn'] = '';
                 $list['title_en'] = '';
                 $list['content_en'] = '';
+                $list['img_url'] = isset($llist['get_link']['get_link']['url'])?$aws->getUrl($llist['get_link']['get_link']['url']):'';
 
                 if($llist['get_content']){
                     foreach ($llist['get_content'] as $ck=>$cv){

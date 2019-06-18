@@ -83,6 +83,7 @@ class Manage extends Common
 
     public function sun_entertainment_edit()
     {
+        $aws = new Aws();
         $id = $this->request->get('id');
         $type = $this->request->get('type',0,'intval');
         $where= $this->request->get('where','');
@@ -126,6 +127,7 @@ class Manage extends Common
                         }
                     }
                 }
+                $list['img_url'] = isset($datas['links']['url'])?$aws->getUrl($datas['links']['url']):'';
             }
             $this->assign('list', $list);
         }
