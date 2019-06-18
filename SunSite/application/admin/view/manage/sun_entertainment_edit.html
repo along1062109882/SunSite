@@ -1,6 +1,9 @@
 {extend name="base/base" /}
 {block name="main"}
 <form id="form" method="post" class="layui-form layui-form-pane" enctype="multipart/form-data" action="#">
+    <div class="btnShow_viewLoading">
+        <img src="/images/loading.gif" alt="">
+    </div>
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>繁體標題</label>
         <div class="layui-input-inline">
@@ -150,6 +153,12 @@
                 } else {
                     parent.layer.msg('失败', { icon: 2,time:2000 });
                 }
+            },
+            beforeSend: function () {
+                $('.btnShow_viewLoading').css('display','flex');
+            },
+            complete: function () {
+                $('.btnShow_viewLoading').css('display','none');
             }
         });
     });

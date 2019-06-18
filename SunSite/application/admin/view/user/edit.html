@@ -1,6 +1,9 @@
 {extend name="base/base" /}
 {block name="main"}
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/edit')}">
+    <div class="btnShow_viewLoading">
+        <img src="/images/loading.gif" alt="">
+    </div>
     <div class="layui-form-item">
         <label class="layui-form-label">賬號</label>
         <div class="layui-input-block">
@@ -73,20 +76,26 @@
             username: function (value, item) { //value：表单的值、item：表单的DOM对象
                 var msg;
                 $.ajax({
-                    async: false,
+                    // async: false,
                     url: "{:url('/admin/check')}",
-                    data: {username: value},
+                    data: { username: value },
                     success: function (data) {
                         if (data.code) {
                             msg = data.msg;
                         }
+                    },
+                    beforeSend: function () {
+                        $('.btnShow_viewLoading').css('display','flex');
+                    },
+                    complete: function () {
+                        $('.btnShow_viewLoading').css('display','none');
                     }
                 });
                 return msg;
             },
-            password:function(value, item){
-                if(value){
-                    if(!(/^[\w\W]{6,25}$/.test(value))){
+            password: function (value, item) {
+                if (value) {
+                    if (!(/^[\w\W]{6,25}$/.test(value))) {
                         return '用戶名不能全為數字';
                     }
                 }

@@ -1,6 +1,9 @@
 {extend name="base/base" /}
 {block name="main"}
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/photoEdit')}">
+    <div class="btnShow_viewLoading">
+        <img src="/images/loading.gif" alt="">
+    </div>
     <div class="layui-form-item flex-column">
         <label class="labels">標題</label>
         <div class="layui-input-inline">
@@ -54,21 +57,30 @@
                 data:data.field,
                 dataType: "json",
                 success: function(data){
-                    console.log(data)
                     if(data.code===200){
                         //关闭当前iframe页面
                         parent.layer.msg('成功',{icon:1});
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
-                        parent.location.reload();
+                        setTimeout(reload,1000);
                     }else{
                         parent.layer.msg('失败',{icon:2});
                     }
+                },
+                beforeSend: function () {
+                    $('.btnShow_viewLoading').css('display','flex');
+                },
+                complete: function () {
+                    $('.btnShow_viewLoading').css('display','none');
                 }
             });
 
             return false;
         });
+
+        function reload() {
+            var index=parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+            window.parent.location.reload();//刷新父页面
+            parent.layer.close(index);//关闭弹出层
+        }
     });
 
 </script>

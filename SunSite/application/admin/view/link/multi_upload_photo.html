@@ -73,11 +73,14 @@
 	}
 	#imgLabelsTitle{
 		color: red;
-    margin-left: 10px;
-    font-size: 14px;
+		margin-left: 10px;
+		font-size: 14px;
 	}
 </style>
 <form id="form" method="post" enctype="multipart/form-data" class="layui-form layui-form-pane" action="#">
+	<div class="btnShow_viewLoading">
+		<img src="/images/loading.gif" alt="">
+	</div>
 	<div class="layui-form-item flex-column">
 		<label class="labels">圖片<span id="imgLabelsTitle"></span></label>
 		<div id="multiple_uploadImgBox">
@@ -203,6 +206,12 @@
 				} else {
 					parent.layer.msg('失败', { icon: 2 });
 				}
+			},
+			beforeSend: function () {
+				$('.btnShow_viewLoading').css('display', 'flex');
+			},
+			complete: function () {
+				$('.btnShow_viewLoading').css('display', 'none');
 			}
 		});
 	});

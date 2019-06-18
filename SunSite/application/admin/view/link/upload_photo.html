@@ -1,4 +1,4 @@
-{extend name="base/base" /}
+<link rel="stylesheet" href="../../../../public/css/public.css">{extend name="base/base" /}
 {block name="main"}
 <style>
     .thumb {
@@ -39,6 +39,7 @@
     #myImg {
         width: 100%;
         height: 100%;
+        object-fit: contain;
     }
 
     .promptHide {
@@ -46,6 +47,9 @@
     }
 </style>
 <form id="form" method="post" enctype="multipart/form-data" class="layui-form layui-form-pane" action="#">
+    <div class="btnShow_viewLoading">
+        <img src="/images/loading.gif" alt="">
+    </div>
     <div class="layui-form-item flex-column">
         <label class="labels">圖片</label>
         <div class="uploadImgBox">
@@ -133,6 +137,12 @@
                 } else {
                     parent.layer.msg('失败', { icon: 2 });
                 }
+            },
+            beforeSend: function () {
+                $('.btnShow_viewLoading').css('display', 'flex');
+            },
+            complete: function () {
+                $('.btnShow_viewLoading').css('display', 'none');
             }
         });
     });

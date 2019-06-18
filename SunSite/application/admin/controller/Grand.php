@@ -67,7 +67,7 @@ class Grand extends Common
         $id = $this->request->get('id');
         $where= $this->request->get('where','');
         if($id){
-            $llist = GrandPrix::where(['id'=>$id])->with('getContent')->find()->toArray();
+            $llist = GrandPrix::where(['id'=>$id])->with('getContent,getLink')->find()->toArray();
             $list=[];
             if($llist){
                 $list['id'] = $llist['id'];

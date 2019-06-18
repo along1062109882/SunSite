@@ -3,6 +3,9 @@
 <link href="/textarea/umeditor.min.css" type="text/css" rel="stylesheet">
 
 <form id="form" method="post" class="layui-form layui-form-pane" action="#" enctype="multipart/form-data">
+    <div class="btnShow_viewLoading">
+        <img src="/images/loading.gif" alt="">
+    </div>
     <div class="layui-form-item flex-column">
         <label class="labels"><span class='Important'>*</span>slug：</label>
         <div class="layui-input-inline">
@@ -90,7 +93,7 @@
                     <p class="add_title">上傳圖片</p>
                 </span>
             </span>
-            <img src="" alt="" id="myImg">
+            <img src="{:isset($list.img_url)?$list.img_url:''}" alt="" id="myImg">
             <input type="file" name="file" accept="image/*" id="uploadImage">
         </span>
         </div>
@@ -250,6 +253,12 @@
                     } else {
                         parent.layer.msg('失败', { icon: 2 });
                     }
+                },
+                beforeSend: function () {
+                    $('.btnShow_viewLoading').css('display','flex');
+                },
+                complete: function () {
+                    $('.btnShow_viewLoading').css('display','none');
                 }
             });
 
