@@ -220,6 +220,7 @@ p {
     margin:0;
     padding: 4% 0;
     padding-left:6%;
+    background-position: 90%;
   }
 
 
@@ -234,6 +235,7 @@ p {
     vertical-align:bottom;
     display:block;
     margin:0;
+    background-position: 87%;
   }
 }
 .bossword-wrapper {

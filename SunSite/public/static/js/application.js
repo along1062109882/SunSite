@@ -145,12 +145,13 @@ $(function () {
             }
         })
         
-        if(!elvalue_isNull){
-            alert('请填写必填项')
-            return
-        }        // console.log($('.container div').length)
+        // if(!elvalue_isNull){
+        //     alert('请填写必填项')
+        //     return
+        // }        // console.log($('.container div').length)
         num += 1;
         if (num >= 10  ) num = 10;
+        console.log(num)
         chage_num(num)
         $('.pagination_content li').eq(num-1).find('b').show();
         $('.pagination_content li').eq(num).find('span').css({'background':'#a19062'});

@@ -232,8 +232,14 @@ $(function () {
                 var Pagination_str = '';
                 var pages_str = '';
                     res.Paging.Pages.forEach((item, index) => {
-                        pages_str += `<a class="news-page" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${item.No}">${item.No}</a>`;
+                        // console.log(item[0])
+                        console.log(index)
+                        // if () {
+                            
+                        // }
+                        pages_str += `<a class="news-page ${index === 0 ?  'active' :''}" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${item.No}">${item.No}</a>`;
                     })
+                    
                     Pagination_str = `
                     <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=1">
                         <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
