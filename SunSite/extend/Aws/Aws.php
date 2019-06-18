@@ -34,13 +34,26 @@ class Aws
     }
 
     public function getUrl($key){
+        $config = Spyc::YAMLLoad(__DIR__ . '/../../config.yml');
+
+        $down = new S3Client([
+            'version' => 'latest',
+            'region'  => 'us-east-1',
+            'endpoint' => $config['url'],
+            'use_path_style_endpoint' => true,
+            'credentials' => [
+                'key'    => $config['minio']['key'],
+                'secret' => $config['minio']['secret'],
+            ],
+        ]);
+
         $key = pathinfo($key)['filename'];
-        $cmd = $this->S3->getCommand('GetObject', [
+        $cmd = $down->getCommand('GetObject', [
             'Bucket' => $this->bucket,
             'Key' => $key
         ]);
 
-        $request = $this->S3->createPresignedRequest($cmd, '+7200 minutes');
+        $request = $down->createPresignedRequest($cmd, '+7200 minutes');
         $presignedUrl = (string)$request->getUri();
         return $presignedUrl;
     }

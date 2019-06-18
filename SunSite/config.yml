@@ -23,5 +23,5 @@ minio:
 app_debug: true
 
 
-
+url: http://172.21.77.72:81
 
