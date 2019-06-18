@@ -61,7 +61,7 @@
         </div>
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>url：</label>
+            <label class="labels"><span class='Important'>*</span>url：<span style='color: red'>(URL 填寫需加 http)</span></label>
         <div class="layui-input-inline">
             <input type="text" name="url" placeholder="請輸入" autocomplete="off" class="layui-input" lay-verify="required"
                 value="{:isset($list.url)?$list.url:''}">
