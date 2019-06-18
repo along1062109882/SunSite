@@ -542,7 +542,7 @@ class Index extends Controller
         if($datas){
             foreach ($datas as $dk=>$dv){
                 if($keyword){
-                    if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
+                    if(stristr($datas[$dk]['title'],$keyword)){
                     }else{
                         unset($datas[$dk]);
                     }
@@ -627,7 +627,7 @@ class Index extends Controller
             $year = $get_year?$get_year:($in_lang==0?'全部':($in_lang==1?'全部':'All'));
             foreach ($datas as $dk=>$dv){
                 if($keyword){
-                    if(stristr($datas[$dk]['title'],$keyword) || stristr($datas[$dk]['publish_time'],$keyword)){
+                    if(stristr($datas[$dk]['title'],$keyword)){
                     }else{
                         unset($datas[$dk]);
                     }
