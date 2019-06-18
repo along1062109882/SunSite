@@ -53,7 +53,7 @@ class Aws
             'Key' => $key
         ]);
 
-        $request = $down->createPresignedRequest($cmd, '+7200 minutes');
+        $request = $down->createPresignedRequest($cmd, '+120 minutes');
         $presignedUrl = (string)$request->getUri();
         return $presignedUrl;
     }
