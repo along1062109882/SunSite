@@ -119,7 +119,7 @@
             active[types] ? active[types].call(this) : '';
         });
         $(".adduser_btn").click(function(){
-            edit("{:url('/admin/grandEdit')}");
+            edit("{:url('/admin/grandEdit')}"+'?where=add');
         });
         //编辑用户
         function edit(url){
@@ -161,7 +161,7 @@
             //     edit("{:url('/admin/grand_tricks')}"+'?id='+data.id);
             // }
             if(layEvent === 'edit'){ //编辑
-                edit("{:url('/admin/grandEdit')}"+'?id='+data.id);
+                edit("{:url('/admin/grandEdit')}"+'?id='+data.id+'&where=edit');
             }else if(layEvent === 'edit_pic'){
                 edit("{:url('/admin/event_album')}"+'?id='+data.id+'&type=3');
             }

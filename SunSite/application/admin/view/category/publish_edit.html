@@ -129,6 +129,8 @@
         var text_cn = $("input[ name='text_cn']").val();
         var status = $("#status option:selected").val();
         var time = $("input[ name='test1']").val();
+        var file = $("input[ name='file']").val();
+
         if(!title_hk){
             msg('繁體標題不能為空');
             return false;
@@ -162,7 +164,7 @@
             return false;
         }
         if(where==='add' && !file){
-            msg('請選擇上傳圖片');
+            msg('請選擇上傳文件');
             return false;
         }
         var form = new FormData($('#form')[0]);

@@ -81,7 +81,7 @@
         </div>
     </div>
     <span class="layui-form-item flex-column">
-        <label class="labels">圖片</label>
+        <label class="labels">{if $where==='add'}<span class='Important'>*</span>{/if}圖片</label>
         <span class="uploadImgBox">
             <!-- 没有图片显示这个 -->
             <span id="noImg" class="add_img">
@@ -171,6 +171,7 @@
             dome2_el.setContent(`{:isset($list.content_en)?$list.content_en:''}`);
         })
 
+        var where = "<?php echo $where; ?>";
 
         $("#commit").on("click", function (){
             const content_hk = dome_el.getContent();
@@ -183,6 +184,8 @@
             var url = $("input[ name='url']").val();
             var status = $("#status option:selected").val();
             var time = $("input[ name='time']").val();
+            var file = $("input[ name='file']").val();
+
             if(!slug){
                 msg('slug不能為空');
                 return false;
@@ -222,6 +225,11 @@
                 msg('發佈時間不能為空');
                 return false;
             }
+            if(where==='add' && !file){
+                msg('請選擇上傳圖片');
+                return false;
+            }
+
             var form = new FormData($('#form')[0]);
             form.append("content_hk", content_hk);
             form.append("content_cn", content_cn);

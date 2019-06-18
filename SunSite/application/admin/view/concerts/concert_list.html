@@ -119,7 +119,7 @@
 
 
         $(".adduser_btn").click(function(){
-            edit("{:url('/admin/concertEdit')}");
+            edit("{:url('/admin/concertEdit')}"+'?where=add');
         });
 
         //编辑用户
@@ -162,7 +162,7 @@
             //     edit("{:url('/admin/concert_pic')}"+'?id='+data.id);
             // }
             if(layEvent === 'edit'){ //编辑
-                edit("{:url('/admin/concertEdit')}"+'?id='+data.id);
+                edit("{:url('/admin/concertEdit')}"+'?id='+data.id+'&where=edit');
             }else if(layEvent === 'edit_pic'){
                 edit("{:url('/admin/event_album')}"+'?id='+data.id+'&type=1');
             }

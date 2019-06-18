@@ -515,6 +515,7 @@ class Manage extends Common
 
     public function sun_food_edit()
     {
+        $aws = new Aws();
         $id = $this->request->get('id');
         $where= $this->request->get('where','');
 
@@ -525,6 +526,7 @@ class Manage extends Common
             if($datas){
                 $list['id'] = $datas['id'];
                 $list['url'] = $datas['url'];
+                $list['img_url'] = '';
                 $list['title_hk'] = '';
                 $list['meta_hk'] = '';
                 $list['text_hk'] = '';
@@ -569,6 +571,7 @@ class Manage extends Common
                         }
                     }
                 }
+                $list['img_url'] = isset($datas['links']['url'])?$aws->getUrl($datas['links']['url']):'';
             }
             $this->assign('list', $list);
         }

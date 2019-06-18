@@ -113,7 +113,7 @@
             active[types] ? active[types].call(this) : '';
         });
         $(".adduser_btn").click(function(){
-            edit("{:url('/admin/annualEdit')}");
+            edit("{:url('/admin/annualEdit')}"+'?where=add');
         });
         //编辑用户
         function edit(url){
@@ -144,7 +144,7 @@
         table.on('tool(usersList)', function(obj){
             var layEvent = obj.event, data = obj.data;
             if(layEvent === 'edit'){ //编辑
-                edit("{:url('/admin/annualEdit')}"+'?id='+data.id);
+                edit("{:url('/admin/annualEdit')}"+'?id='+data.id+'&where=edit');
             }else if(layEvent === 'edit_pic'){
                 edit("{:url('/admin/event_album')}"+'?id='+data.id+'&type=2');
             }

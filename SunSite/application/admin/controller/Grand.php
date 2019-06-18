@@ -65,6 +65,7 @@ class Grand extends Common
      */
     public function grandEdit(){
         $id = $this->request->get('id');
+        $where= $this->request->get('where','');
         if($id){
             $llist = GrandPrix::where(['id'=>$id])->with('getContent')->find()->toArray();
             $list=[];
@@ -111,6 +112,7 @@ class Grand extends Common
             }
             $this->assign('list', $list);
         }
+        $this->assign('where', $where);
         return $this->fetch();
     }
 

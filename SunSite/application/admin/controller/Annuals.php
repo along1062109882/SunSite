@@ -66,6 +66,8 @@ class Annuals extends Common
      */
     public function annualEdit(){
         $id = $this->request->get('id');
+        $where= $this->request->get('where','');
+
         if($id){
             $llist = Annual::where(['id'=>$id])->with('getContent')->find()->toArray();
             $list=[];
@@ -113,6 +115,7 @@ class Annuals extends Common
 
             $this->assign('list', $list);
         }
+        $this->assign('where', $where);
 
         return $this->fetch();
     }
