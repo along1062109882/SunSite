@@ -81,13 +81,15 @@
         <label class="labels">{if $where==='add'}<span class='Important'>*</span>{/if}圖片</label>
         <div class="uploadImgBox">
             <!-- 没有图片显示这个 -->
-            <div id="noImg" class="add_img">
+            {if(!isset($list.img_url) || empty($list.img_url))}
+            <span id="noImg" class="add_img">
                 <span>
-                    <p class="add">+</p>
-                    <p class="add_title">上傳圖片</p>
+                <p class="add">+</p>
+                <p class="add_title">上傳圖片</p>
                 </span>
-            </div>
-            <img src="" alt="" id="myImg">
+            </span>
+            {/if}
+            <img src="{:isset($list.img_url)?$list.img_url:''}" alt="" id="myImg">
             <input type="file" name="file" accept="image/*" id="uploadImage">
         </div>
 
