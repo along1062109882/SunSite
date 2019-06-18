@@ -53,7 +53,8 @@ class Manage extends Common
         $count = Entertainment::where($map)->count();
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = $datas[$k]['links']?$aws->getUrl($datas[$k]['links']['url']):'';
+                $datas[$k]['url'] = isset($datas[$k]['links']['url'])?$aws->getUrl($datas[$k]['links']['url']):'';
+                $datas[$k]['name'] = isset($datas[$k]['links']['name'])?$datas[$k]['links']['name']:'';
                 if($datas[$k]['get_content']){
                     foreach ($datas[$k]['get_content'] as $ck=>$cv){
                         if($datas[$k]['get_content'][$ck]['language']==0){
@@ -349,7 +350,8 @@ class Manage extends Common
         $count = LinkTarget::where(['owner_type'=>$owner_type])->count();
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = $datas[$k]['get_link']['url']?$aws->getUrl($datas[$k]['get_link']['url']):'';
+                $datas[$k]['url'] = isset($datas[$k]['get_link']['url'])?$aws->getUrl($datas[$k]['get_link']['url']):'';
+                $datas[$k]['name'] = isset($datas[$k]['get_link']['name'])?$datas[$k]['get_link']['name']:'';
                 unset($datas[$k]['get_link']);
             }
         }
@@ -387,6 +389,7 @@ class Manage extends Common
     }
 
     public function sun_travel_data(){
+        $aws = new Aws();
         $limit = $this->request->post('limit', 10,'intval');
         $page = $this->request->post('page', 0,'intval');
         $offset = ($page - 1) * $limit;
@@ -395,7 +398,8 @@ class Manage extends Common
         $count = LinkTarget::where(['owner_type'=>'travel'])->count();
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = $datas[$k]['get_link']?$datas[$k]['get_link']['url']:'';
+                $datas[$k]['url'] = isset($datas[$k]['get_link']['url'])?$aws->getUrl($datas[$k]['get_link']['url']):'';
+                $datas[$k]['name'] = isset($datas[$k]['get_link']['name'])?$datas[$k]['get_link']['name']:'';
                 unset($datas[$k]['get_link']);
             }
         }
@@ -486,7 +490,8 @@ class Manage extends Common
         $count = Food::where($map)->count();
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['img_url'] = $datas[$k]['links']?$aws->getUrl($datas[$k]['links']['url']):'';
+                $datas[$k]['url'] = isset($datas[$k]['links']['url'])?$aws->getUrl($datas[$k]['links']['url']):'';
+                $datas[$k]['name'] = isset($datas[$k]['links']['name'])?$datas[$k]['links']['name']:'';
                 if($datas[$k]['get_content']){
                     foreach ($datas[$k]['get_content'] as $ck=>$cv){
                         if($datas[$k]['get_content'][$ck]['language']==0){
@@ -721,6 +726,8 @@ class Manage extends Common
     }
 
     public function sun_luxe_data(){
+        $aws = new Aws();
+
         $limit = $this->request->post('limit', 10,'intval');
         $page = $this->request->post('page', 0,'intval');
         $offset = ($page - 1) * $limit;
@@ -729,7 +736,8 @@ class Manage extends Common
         $count = LinkTarget::where(['owner_type'=>'luxe'])->count();
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = $datas[$k]['get_link']?$datas[$k]['get_link']['url']:'';
+                $datas[$k]['url'] = isset($datas[$k]['links']['url'])?$aws->getUrl($datas[$k]['links']['url']):'';
+                $datas[$k]['name'] = isset($datas[$k]['links']['name'])?$datas[$k]['links']['name']:'';
                 unset($datas[$k]['get_link']);
             }
         }
@@ -808,6 +816,8 @@ class Manage extends Common
     }
 
     public function sun_resort_data(){
+        $aws = new Aws();
+
         $limit = $this->request->post('limit', 10,'intval');
         $page = $this->request->post('page', 0,'intval');
         $offset = ($page - 1) * $limit;
@@ -816,7 +826,8 @@ class Manage extends Common
         $count = LinkTarget::where(['owner_type'=>'resort'])->count();
         if($datas){
             foreach ($datas as $k=>$v){
-                $datas[$k]['url'] = $datas[$k]['get_link']?$datas[$k]['get_link']['url']:'';
+                $datas[$k]['url'] = isset($datas[$k]['links']['url'])?$aws->getUrl($datas[$k]['links']['url']):'';
+                $datas[$k]['name'] = isset($datas[$k]['links']['name'])?$datas[$k]['links']['name']:'';
                 unset($datas[$k]['get_link']);
             }
         }
