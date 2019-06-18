@@ -154,6 +154,10 @@ $(function () {
         console.log(num)
         chage_num(num)
         $('.pagination_content li').eq(num-1).find('b').show();
+       if (num === 10 ) {
+        $('.pagination_content li').find('b').show();
+        $('.pagination_content li').eq(num +2).find('b').hide();
+       }
         $('.pagination_content li').eq(num).find('span').css({'background':'#a19062'});
         var formdata = new FormData($('#formdata_one')[0]);
         var formdata_two = new FormData($('#formdata_two')[0]);

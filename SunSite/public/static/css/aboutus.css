@@ -354,7 +354,13 @@ p {
     line-height: 1.08;
   }
 }
-@media(max-width: 830px) {
+@media(min-width: 801px) and (max-width: 830px){ 
+  .bossword-wrapper p {
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 800px) {
   /*.bossword-wrapper {
     max-width: 768px;
     line-height: 1.57;

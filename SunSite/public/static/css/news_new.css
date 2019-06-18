@@ -332,7 +332,7 @@
   margin: 28px auto 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
 }
 .news-item{
   width: 306px;
