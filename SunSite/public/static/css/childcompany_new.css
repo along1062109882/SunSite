@@ -776,7 +776,7 @@ img {
   cursor: pointer;
 }
 .show_type_food ul li img {
-  padding: 10px 0;
+  /* padding: 10px 0; */
 }
 .show_type_food ul li p {
   height: 60px;
