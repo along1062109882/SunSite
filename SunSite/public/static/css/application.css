@@ -79,10 +79,14 @@
     background-color: #a19062;
 }
 
+.multi-template{
+    display: none;
+}
+
 .footer_line {
     background: #a19062;
     width: 100%;
-    height: 2px;
+    height: 1px;
     margin-top: 4%;
 }
 
@@ -110,7 +114,8 @@
 }
 
 label {
-    display: inline-block;
+    display: inline-flex;
+    align-content: center;
     width: 130px;
     text-align: right;
     font-size: 14px;
@@ -123,6 +128,17 @@ label {
     color: #a19062;
     line-height: 40px;
     padding-right: 10px;
+}
+
+label span {
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    color: #a19062;
 }
 
 input,
@@ -139,6 +155,7 @@ select {
     padding-left: 10px;
     font-size: 14px;
     /*font-weight: 600;*/
+    box-sizing: border-box;
 }
 input::-webkit-input-placeholder {
       color: #b5b5b6;
@@ -248,9 +265,8 @@ input::-webkit-input-placeholder {
     font-weight: 700;
 }
 
-#content_seven .radioBtn {
+.radioBtn {
     position: relative;
-
 }
 
 input[type="radio"] {
@@ -259,9 +275,16 @@ input[type="radio"] {
     opacity: 0;
 }
 
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
 .radioLabel {
     position: absolute;
     /* left: 25px; */
+    right: 0;
     top: 0;
     width: 20px;
     height: 20px;
@@ -313,6 +336,7 @@ input:checked+.radioLabel::after {
     padding: 0 5px; 
     background-position: 85%;
 }
+
 textarea {
     vertical-align: top;
     width: 40%;
@@ -322,8 +346,7 @@ textarea {
     border-radius: 4px;
     border: solid 1px #e5dcc9;
     background-color: #ffffff;
-    color: #b5b5b6;
-    padding-left: 10px;
+    padding: 10px 10px;
     max-height: 200px;
     min-height: 80px;
     max-height: 100px;
@@ -337,8 +360,6 @@ textarea {
     width: 60%;
 }
 .selectBoxRadioBtnBox{
-    width: 41%;
-    height: 40px;
     border-radius: 4px;
     border: solid 1px #e5dcc9;
     /* 这个样式就是清楚他的下拉按钮的默认样式 */
@@ -349,8 +370,33 @@ textarea {
     background: url("/static/imgs/job-arrow-down.svg") no-repeat scroll right #ffffff;
     background-position: 90% 15px;
     /*为下拉小箭头留出一点位置，避免被文字覆盖*/
-    padding: 0 5px;
+    padding: 0 10px;
 }
+
+.selectBoxRadioBtnBoxValue{
+    width: 100%;
+    background: url(/static/imgs/fill-1.svg) no-repeat scroll right #ffffff;
+    background-position: 90% 15px;
+}
+
+.selectBoxRadioBtnBoxFileWrap {
+    vertical-align: top;
+    width: 40%;
+    height: 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.selectBoxRadioBtnBoxFile{
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
 @media (min-width: 1440px) and (max-width: 1650px){
     .important {
         left: 80%;
@@ -381,23 +427,28 @@ textarea {
     }
     .block {
         margin: 5px 0;
-        /* text-align: center; */
+        text-align: left;
         display: flex;
         position: relative;
         justify-content: left;
         margin-top: 20px;
         display: flex;
-        /* flex-direction: column; */
+        flex-direction: column;
         justify-content: flex-start;
+        align-items: flex-start;
         width: 100%;        
     }
+
     .important {
         color: #d74153;
         font-size: 28px;
         position: absolute;
         left: -15px;
-        top: -3%;
+        top: -10px;
         line-height: 50px;
+    }
+    .selectBoxRadioBtnBoxFileWrap {
+        width: 100%;
     }
     .selectBoxRadioBtnBox {
         width: 100%;
