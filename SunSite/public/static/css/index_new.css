@@ -221,14 +221,14 @@ img {
 }
 @media(max-width: 640px) {
   .ts-ul {
-    height: 160px;
+    height: 150px;
   }
   .ts-ul li b p {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 19px;
   }
   .ts-ul li.on {
-    height: 160px;;
+    height: 150px;;
   }
 }
 @media(max-width: 414px) {
@@ -333,7 +333,7 @@ img {
 .banner-title-img {
   display: block;
   width: 100%;
-  padding-bottom: 3.34%;
+  padding-bottom: 3.38%;
   background-image: url(/static/imgs/group-4.svg);
   /* background-size: contain; */
   background-size: cover;

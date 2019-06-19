@@ -199,9 +199,7 @@ $(function () {
     });
 
        // 點擊下拉列表選中進行篩選
-       console.log('filter-list li')
        $('.filter-list li').on('click', function () {
-        alert((1))
         var newYears = $(this).text();
         var keyword = $('#filter_search').val()
         $('#drop-down-year').val($(this).text())
@@ -209,17 +207,14 @@ $(function () {
          if ($('#drop-down-year').val() == $('.filter-list li').last().text()) {
             $('.yearPrev img').css({"opacity": 0.5, 'cursor':'not-allowed'});
             $('.yearPrev').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'})
-            alert(1);
          } else if ($('#drop-down-year').val() == $('.filter-list li').eq(0).text()){ 
             $('.yearNext img').css({"opacity": 0.5, 'cursor':'not-allowed'});
             $('.yearNext').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'});
-            alert(2)
          } else {
             $('.yearPrev img').css({"opacity": 1, 'cursor':'pointer'});
             $('.yearPrev').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
             $('.yearNext img').css({"opacity": 1, 'cursor':'pointer'});
             $('.yearNext').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
-            alert(3)
          }
     })
     if ($('html').width() < 1080) {
