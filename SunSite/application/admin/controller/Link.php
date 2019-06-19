@@ -473,13 +473,15 @@ class Link extends Common
         $post_id = $this->request->post('post_id');
         if($type==1){
             $owner_type = 'concert';
+            LinkTarget::destroy(['owner_type'=>$owner_type,'owner_id'=>$post_id,'link_id'=>$id]);
         }elseif($type==2){
             $owner_type = 'annual';
+            LinkTarget::destroy(['owner_type'=>$owner_type,'owner_id'=>$post_id,'link_id'=>$id]);
         }elseif($type==3){
             $owner_type = 'grand';
+            LinkTarget::destroy(['owner_type'=>$owner_type,'owner_id'=>$post_id,'link_id'=>$id]);
         }
 
-        LinkTarget::destroy(['owner_type'=>$owner_type,'owner_id'=>$post_id,'link_id'=>$id]);
 
         return Result::success('成功');
     }

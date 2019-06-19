@@ -131,12 +131,80 @@ class Grand extends Common
             $posts->publish_time = $data['time'];
             $posts->updated_at = date('Y-m-d H:i:s');
             if($posts->save()){
-                Content::update(['data'=>$data['title_hk']],['owner_id'=>$data['id'],'language'=>0,'owner_type'=>'grand','owner_field'=>'Name']);
-                Content::update(['data'=>$data['title_cn']],['owner_id'=>$data['id'],'language'=>1,'owner_type'=>'grand','owner_field'=>'Name']);
-                Content::update(['data'=>$data['title_en']],['owner_id'=>$data['id'],'language'=>2,'owner_type'=>'grand','owner_field'=>'Name']);
-                Content::update(['data'=>$data['content_hk']],['owner_id'=>$data['id'],'language'=>0,'owner_type'=>'grand','owner_field'=>'Content']);
-                Content::update(['data'=>$data['content_cn']],['owner_id'=>$data['id'],'language'=>1,'owner_type'=>'grand','owner_field'=>'Content']);
-                Content::update(['data'=>$data['content_en']],['owner_id'=>$data['id'],'language'=>2,'owner_type'=>'grand','owner_field'=>'Content']);
+                $check_hk_name = Content::where(['owner_id'=>$id,'language'=>0,'owner_type'=>'grand','owner_field'=>'Name'])->find();
+                $check_cn_name = Content::where(['owner_id'=>$id,'language'=>1,'owner_type'=>'grand','owner_field'=>'Name'])->find();
+                $check_en_name = Content::where(['owner_id'=>$id,'language'=>2,'owner_type'=>'grand','owner_field'=>'Name'])->find();
+                $check_hk_content = Content::where(['owner_id'=>$id,'language'=>0,'owner_type'=>'grand','owner_field'=>'Content'])->find();
+                $check_cn_content = Content::where(['owner_id'=>$id,'language'=>1,'owner_type'=>'grand','owner_field'=>'Content'])->find();
+                $check_en_content = Content::where(['owner_id'=>$id,'language'=>2,'owner_type'=>'grand','owner_field'=>'Content'])->find();
+                if($check_hk_name){
+                    Content::update(['data'=>$data['title_hk']],['owner_id'=>$id,'language'=>0,'owner_type'=>'grand','owner_field'=>'Name']);
+                }else{
+                    $content = new Content();
+                    $content->data = $data['title_hk'];
+                    $content->language = 0;
+                    $content->owner_id = $id;
+                    $content->owner_type = 'grand';
+                    $content->owner_field = 'Name';
+                    $content->save();
+                }
+                if($check_cn_name){
+                    Content::update(['data'=>$data['title_cn']],['owner_id'=>$id,'language'=>1,'owner_type'=>'grand','owner_field'=>'Name']);
+                }else{
+                    $content = new Content();
+                    $content->data = $data['title_cn'];
+                    $content->language = 1;
+                    $content->owner_id = $id;
+                    $content->owner_type = 'grand';
+                    $content->owner_field = 'Name';
+                    $content->save();
+                }
+                if($check_en_name){
+                    Content::update(['data'=>$data['title_en']],['owner_id'=>$id,'language'=>2,'owner_type'=>'grand','owner_field'=>'Name']);
+                }else{
+                    $content = new Content();
+                    $content->data = $data['title_en'];
+                    $content->language = 2;
+                    $content->owner_id = $id;
+                    $content->owner_type = 'grand';
+                    $content->owner_field = 'Name';
+                    $content->save();
+                }
+
+                if($check_hk_content){
+                    Content::update(['data'=>$data['content_hk']],['owner_id'=>$id,'language'=>0,'owner_type'=>'grand','owner_field'=>'Content']);
+                }else{
+                    $content = new Content();
+                    $content->data = $data['content_hk'];
+                    $content->language = 0;
+                    $content->owner_id = $id;
+                    $content->owner_type = 'grand';
+                    $content->owner_field = 'Content';
+                    $content->save();
+                }
+                if($check_cn_content){
+                    Content::update(['data'=>$data['content_cn']],['owner_id'=>$id,'language'=>1,'owner_type'=>'grand','owner_field'=>'Content']);
+                }else{
+                    $content = new Content();
+                    $content->data = $data['content_cn'];
+                    $content->language = 1;
+                    $content->owner_id = $id;
+                    $content->owner_type = 'grand';
+                    $content->owner_field = 'Content';
+                    $content->save();
+                }
+                if($check_en_content){
+                    Content::update(['data'=>$data['content_en']],['owner_id'=>$id,'language'=>2,'owner_type'=>'grand','owner_field'=>'Content']);
+                }else{
+                    $content = new Content();
+                    $content->data = $data['content_en'];
+                    $content->language = 2;
+                    $content->owner_id = $id;
+                    $content->owner_type = 'grand';
+                    $content->owner_field = 'Content';
+                    $content->save();
+                }
+
                 if($_FILES['file']['name']){
                     $file_name = $_FILES['file']['name'];
                     $ext = pathinfo($file_name)['extension'];

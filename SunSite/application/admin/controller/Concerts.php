@@ -135,35 +135,6 @@ class Concerts extends Common
     public function concert_commit(){
         $data = $this->request->post();
         $id = $data['id'];
-        if($_FILES['file']['name']){
-            $file_name = $_FILES['file']['name'];
-            $ext = pathinfo($file_name)['extension'];
-            $type = isset($data['type'])?$data['type']:0;
-
-            $aws = new Aws();
-            $url = $aws->Upload($_FILES['file']['tmp_name'],$ext,$type);
-
-            $list = new Links();
-            $list->name = isset($data['name']) && !empty($data['name'])?$data['name']:$file_name;
-            $list->description = isset($data['description'])?$data['description']:'';
-            $list->url = $url;
-            $list->author_id = 0;
-            $list->type = 0;
-            if($list->save()){
-                $check = LinkTarget::where(['owner_type'=>'concert','owner_id'=>$id,'link_id'=>$list->id])->find();
-                if(!$check){
-                    $new = new LinkTarget();
-                    $new->owner_id = $id;
-                    $new->owner_type = 'concert';
-                    $new->link_id = $list->id;
-                    $new->owner_field = 'all';
-                    $new->type = 0;
-                    $new->save();
-                }else{
-                    LinkTarget::update(['link_id'=>$list->id],['owner_type'=>'concert','owner_id'=>$id]);
-                }
-            }
-        }
         if (isset($id) && !empty($id)) {
             //编辑
             $posts = Concert::find(['id'=>$data['id']]);

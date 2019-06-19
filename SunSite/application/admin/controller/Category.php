@@ -280,13 +280,13 @@ class Category extends Common
                         $grouplist[] = $join;
                     }
                 }else{
-                    $join['id'] = $datas[$k]['detail'][0]['post_id'];
+                    $join['id'] = $datas[$k]['detail']?$datas[$k]['detail'][0]['post_id']:'';
                     $join['parent_slug'] = isset($datas[$k]['get_category']['category']['detail'])&&!empty($datas[$k]['get_category']['category']['detail'])?$datas[$k]['get_category']['category']['detail'][0]['name']:'';
                     $join['category_id'] = isset($datas[$k]['get_category']['category_id'])?$datas[$k]['get_category']['category_id']:'';
                     $join['slug'] = $datas[$k]['slug'];
                     $join['status'] = $datas[$k]['status'];
                     $join['created'] = $datas[$k]['publish_time'];
-                    $join['name'] = $datas[$k]['detail'][0]['title'];
+                    $join['name'] = $datas[$k]['detail']?$datas[$k]['detail'][0]['title']:'';
                     $grouplist[] = $join;
                 }
             }
@@ -410,6 +410,9 @@ class Category extends Common
                     }
 //                    return $category;
                     $hk_detail = PostDetails::where(['post_id'=>$id,'language'=>0])->find();
+                    if(!$hk_detail){
+                        $hk_detail = new PostDetails();
+                    }
                     $hk_detail->keywords = $data['keyword_hk'];
                     $hk_detail->description = $data['desc_hk'];
                     $hk_detail->title = $data['title_hk'];
@@ -418,6 +421,9 @@ class Category extends Common
                     $hk_detail->save();
 
                     $cn_detail = PostDetails::where(['post_id'=>$id,'language'=>1])->find();
+                    if(!$cn_detail){
+                        $cn_detail = new PostDetails();
+                    }
                     $cn_detail->keywords = $data['keyword_cn'];
                     $cn_detail->description = $data['desc_cn'];
                     $cn_detail->title = $data['title_cn'];
@@ -426,6 +432,9 @@ class Category extends Common
                     $cn_detail->save();
 
                     $en_detail = PostDetails::where(['post_id'=>$id,'language'=>2])->find();
+                    if(!$en_detail){
+                        $en_detail = new PostDetails();
+                    }
                     $en_detail->keywords = $data['keyword_en'];
                     $en_detail->description = $data['desc_en'];
                     $en_detail->title = $data['title_en'];
