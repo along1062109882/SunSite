@@ -2,14 +2,14 @@
 {block name="main"}
 <form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/photoEdit')}">
     <div class="layui-form-item flex-column">
-        <label class="labels">標題</label>
+        <label class="labels">標題:</label>
         <div class="layui-input-inline">
             <input type="text" name="name" placeholder="请输入" autocomplete="off" class="layui-input" required
                    value="{:isset($list.name)?$list.name:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels">描述</label>
+        <label class="labels">描述:</label>
         <div class="layui-input-inline">
             <textarea class="layui-textarea" name="description" value="{:isset($list.description)?$list.description:''}">{:isset($list.description)?$list.description:''}</textarea>
         </div>

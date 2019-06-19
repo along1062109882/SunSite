@@ -5,14 +5,14 @@
         <img src="/images/loading.gif" alt="">
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>繁體標題</label>
+        <label class="labels"><span class='Important'>*</span>繁體標題:</label>
         <div class="layui-input-inline">
             <input type="text" name="title_hk" id="title_hk" placeholder="請輸入" autocomplete="off" class="layui-input"
                 lay-verify="required" value="{:isset($list.title_hk)?$list.title_hk:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>繁體metaData</label>
+        <label class="labels"><span class='Important'>*</span>繁體metaData:</label>
         <div class="layui-input-inline">
             <input type="text" name="meta_hk" id="meta_hk" placeholder="請輸入" autocomplete="off" class="layui-input"
                 lay-verify="required" value="{:isset($list.meta_hk)?$list.meta_hk:''}">
@@ -20,14 +20,14 @@
     </div>
 
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>簡體標題</label>
+        <label class="labels"><span class='Important'>*</span>簡體標題:</label>
         <div class="layui-input-inline">
             <input type="text" name="title_cn" id="title_cn" placeholder="請輸入" autocomplete="off" class="layui-input"
                 lay-verify="required" value="{:isset($list.title_cn)?$list.title_cn:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels"><span class='Important'>*</span>簡體metaData</label>
+        <label class="labels"><span class='Important'>*</span>簡體metaData:</label>
         <div class="layui-input-inline">
             <input type="text" name="meta_cn" id="meta_cn" placeholder="請輸入" autocomplete="off" class="layui-input"
                 lay-verify="required" value="{:isset($list.meta_cn)?$list.meta_cn:''}">
@@ -35,14 +35,14 @@
     </div>
 
     <div class="layui-form-item flex-column">
-        <label class="labels">英文標題</label>
+        <label class="labels">英文標題:</label>
         <div class="layui-input-inline">
             <input type="text" name="title_en" id="title_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                 value="{:isset($list.title_en)?$list.title_en:''}">
         </div>
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels">英文metaData</label>
+        <label class="labels">英文metaData:</label>
         <div class="layui-input-inline">
             <input type="text" name="meta_en" id="meta_en" placeholder="請輸入" autocomplete="off" class="layui-input"
                 value="{:isset($list.meta_en)?$list.meta_en:''}">
@@ -50,7 +50,7 @@
     </div>
 
     <div class="layui-form-item flex-column">
-        <label class="labels">{if $where==='add'}<span class='Important'>*</span>{/if}圖片</label>
+        <label class="labels">{if $where==='add'}<span class='Important'>*</span>{/if}圖片:</label>
         <div class="uploadImgBox">
             <!-- 没有图片显示这个 -->
             {if(!isset($list.img_url) || empty($list.img_url))}
@@ -151,7 +151,7 @@
             success: function (data) {
                 if (data.code === 200) {
                     parent.layer.msg('成功', { icon: 1,time:2000 });
-                    setTimeout(reload,1000);
+                    setTimeout(reload,0);
                 } else {
                     parent.layer.msg('失败', { icon: 2,time:2000 });
                 }

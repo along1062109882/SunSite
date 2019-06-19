@@ -78,7 +78,7 @@
     </div>
 
     <div class="layui-form-item flex-column">
-        <label class="labels">{if $where==='add'}<span class='Important'>*</span>{/if}圖片</label>
+        <label class="labels">{if $where==='add'}<span class='Important'>*</span>{/if}圖片:</label>
         <div class="uploadImgBox">
             <!-- 没有图片显示这个 -->
             {if(!isset($list.img_url) || empty($list.img_url))}
@@ -196,7 +196,7 @@
             success: function (data) {
                 if (data.code === 200) {
                     parent.layer.msg('成功',{icon:1});
-                    setTimeout(reload,1000);
+                    setTimeout(reload,0);
                 } else {
                     parent.layer.msg('失败', { icon: 2 });
                 }

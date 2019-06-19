@@ -6,7 +6,7 @@
     </div>
     <?php if(empty($list)): ?>
     <div class="layui-form-item flex-column">
-        <label class="labels">選擇分類</label>
+        <label class="labels">選擇分類:</label>
         <div class="layui-input-inline">
             <select name="parent_id" id="parent_id">
                 <option value="0">請選擇</option>
@@ -185,10 +185,9 @@
                 data:data.field,
                 dataType: "json",
                 success: function(data){
-                    console.log(data)
-                    if(data.code==200){
+                    if(data.code===200){
                         parent.layer.msg('成功',{icon:1});
-                        setTimeout(reload,1000);
+                        setTimeout(reload,0);
                     }else{
                         parent.layer.msg('失败',{icon:2});
                     }

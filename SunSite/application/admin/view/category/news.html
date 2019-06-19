@@ -8,6 +8,8 @@
             <div class="layui-inline">
                 <label class="labels">最早發佈時間</label>
                 <div class="layui-input-inline">
+                    <!--<input type="text" class="layui-input" id="test10" placeholder=" - ">-->
+
                     <input type="text" class="layui-input searchVal" id="test1" placeholder="請選擇日期" name="start_time" autocomplete="off"/>
                 </div>
             </div>
@@ -77,13 +79,61 @@
             ,type: 'datetime'
             ,trigger: 'click'
             ,max: 0
+            ,change: function (value, date, endDate) {
+                var startDate = new Date(value).getTime();
+                var endTime = new Date($('#test2').val()).getTime();
+                console.log('change1:'+startDate)
+                console.log('change1:'+endTime)
+                if (endTime < startDate) {
+                    $('#test2').val(' ');
+                    layer.msg('结束时间不能小于开始时间');
+                }
+            }
+            ,done: function (value, date, endDate) {
+                var startDate = new Date(value).getTime();
+                var endTime = new Date($('#test2').val()).getTime();
+                console.log('done1:'+startDate)
+                console.log('done1:'+endTime)
+                if (endTime < startDate) {
+                    $('#test2').val(' ');
+                    layer.msg('结束时间不能小于开始时间');
+                }
+            }
         });
+
         laydate.render({
             elem: '#test2' //指定元素
             ,type: 'datetime'
             ,trigger: 'click'
             ,max: 0
+            ,change: function (value, date, endDate) {
+                var startDate = new Date($('#test1').val()).getTime();
+                var endTime = new Date(value).getTime();
+                console.log('change2:'+startDate)
+                console.log('change2:'+endTime)
+                if (endTime < startDate) {
+                    $('#test2').val(' ');
+                    layer.msg('结束时间不能小于开始时间');
+                }
+            }
+            ,done: function (value, date, endDate) {
+                var startDate = new Date($('#test1').val()).getTime();
+                var endTime = new Date(value).getTime();
+                console.log('done2:'+startDate)
+                console.log('done2:'+endTime)
+                if (endTime < startDate) {
+                    $('#test2').val(' ');
+                    layer.msg('结束时间不能小于开始时间');
+                }
+            }
         });
+        // laydate.render({
+        //     elem: '#test10'
+        //     ,type: 'datetime'
+        //     ,range: true
+        //     ,trigger: 'click'
+        //     ,max: 0
+        // });
         //用户列表
         var tableIns = {
             // id:'id',
@@ -109,6 +159,10 @@
                 layer.closeAll();
             }
         };
+
+
+
+
 
 
         //方法级渲染-默认显示入金记录

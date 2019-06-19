@@ -5,19 +5,21 @@
         <img src="/images/loading.gif" alt="">
     </div>
     <div class="layui-form-item flex-column">
-        <label class="labels">圖片</label>
+        <label class="labels">圖片:</label>
         <div class="uploadImgBox">
             <!-- 没有图片显示这个 -->
-            <div id="noImg" class="add_img">
+            {if(!isset($url) || empty($url))}
+            <span id="noImg" class="add_img">
                 <span>
-                    <p class="add">+</p>
-                    <p class="add_title">上傳圖片</p>
+                <p class="add">+</p>
+                <p class="add_title">上傳圖片</p>
                 </span>
-            </div>
-            <img src="" alt="" id="myImg">
+            </span>
+            {/if}
+            <img src="{:isset($url)?$url:''}" alt="" id="myImg">
             <input type="file" name="file" accept="image/*" id="uploadImage">
         </div>
-        <p class="showImgSize"></p>
+        <p class="showImgSize">1920 X 1076</p>
 
     </div>
     <div class="layui-form-item flex-column">
@@ -50,12 +52,12 @@
         let reader = new FileReader();
         reader.onload = function (e) {
             const data = e.target.result;
-            const image = new Image();
-            image.src = data;
-            image.onload = function (){
-                // 显示图片 width*height
-                $('.showImgSize').text("1920 X 1076");
-            }
+            // const image = new Image();
+            // image.src = data;
+            // image.onload = function (){
+            //     // 显示图片 width*height
+            //     // $('.showImgSize').text("1920 X 1076");
+            // }
 
             $('#myImg').attr('src', data);
             // 预览图片
@@ -72,7 +74,7 @@
     $("#commit").on("click", function () {
         var slug = $("input[ name='file']").val();
         if(!slug){
-            msg('請選擇上傳圖片');
+            reload();
             return false;
         }
         var form = new FormData($('#form')[0]);
@@ -88,7 +90,7 @@
                 // location.reload();
                 if (data.code === 200) {
                     parent.layer.msg('成功',{icon:1});
-                    setTimeout(reload,1000);
+                    setTimeout(reload,0);
                 } else {
                     parent.layer.msg('失败', { icon: 2 });
                 }

@@ -259,7 +259,16 @@ class Manage extends Common
 
     public function sun_banner_edit()
     {
+        $aws = new Aws();
         $data = $this->request->get();
+        if($data['id']){
+            $datas = LinkTarget::where(['id'=>$data['id']])->field('id,link_id')->with('getLink')->find();
+            if($datas){
+                $datas = $datas->toArray();
+                $datas['url'] = isset($datas['get_link']['url'])?$aws->getUrl($datas['get_link']['url']):'';
+                $this->assign('url', $datas['url']);//banner_id--->link_id
+            }
+        }
         $this->assign('id', $data['id']);//banner_id--->link_id
         $this->assign('type', $data['type']); //1影视娱乐，2环球旅游，3餐饮体验，4奢华购物，5度假村
 
