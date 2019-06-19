@@ -74,66 +74,51 @@
             laydate = layui.laydate,
             laytpl = layui.laytpl,
             table = layui.table;
-        laydate.render({
-            elem: '#test1' //指定元素
-            ,type: 'datetime'
-            ,trigger: 'click'
-            ,max: 0
-            ,change: function (value, date, endDate) {
-                var startDate = new Date(value).getTime();
-                var endTime = new Date($('#test2').val()).getTime();
-                console.log('change1:'+startDate)
-                console.log('change1:'+endTime)
-                if (endTime < startDate) {
-                    $('#test2').val(' ');
-                    layer.msg('结束时间不能小于开始时间');
-                }
+        //日期   
+        var nowTime=new Date();    
+        var startTime=laydate.render({
+            elem:'#test1',
+            type:'datetime',
+            btns: ['confirm'],
+            max:'nowTime',//默认最大值为当前日期
+            done:function(value,date){
+                endTime.config.min={    	    		
+                    year:date.year,
+                    month:date.month-1,//关键
+                    date:date.date,
+                    hours:date.hours,
+                    minutes:date.minutes,
+                    seconds:date.seconds
+                };
+                
             }
-            ,done: function (value, date, endDate) {
-                var startDate = new Date(value).getTime();
-                var endTime = new Date($('#test2').val()).getTime();
-                console.log('done1:'+startDate)
-                console.log('done1:'+endTime)
-                if (endTime < startDate) {
-                    $('#test2').val(' ');
-                    layer.msg('结束时间不能小于开始时间');
+        })
+        var endTime=laydate.render({
+            elem:'#test2',
+            type:'datetime',
+            btns: ['confirm'],
+            max:'nowTime',
+            done:function(value,date){	   
+                startTime.config.max={
+                        year:date.year,
+                        month:date.month-1,//关键
+                        date:date.date,
+                        hours:date.hours,
+                        minutes:date.minutes,
+                        seconds:date.seconds
                 }
+                
             }
-        });
+        })
 
-        laydate.render({
-            elem: '#test2' //指定元素
-            ,type: 'datetime'
-            ,trigger: 'click'
-            ,max: 0
-            ,change: function (value, date, endDate) {
-                var startDate = new Date($('#test1').val()).getTime();
-                var endTime = new Date(value).getTime();
-                console.log('change2:'+startDate)
-                console.log('change2:'+endTime)
-                if (endTime < startDate) {
-                    $('#test2').val(' ');
-                    layer.msg('结束时间不能小于开始时间');
-                }
-            }
-            ,done: function (value, date, endDate) {
-                var startDate = new Date($('#test1').val()).getTime();
-                var endTime = new Date(value).getTime();
-                console.log('done2:'+startDate)
-                console.log('done2:'+endTime)
-                if (endTime < startDate) {
-                    $('#test2').val(' ');
-                    layer.msg('结束时间不能小于开始时间');
-                }
-            }
-        });
-        // laydate.render({
-        //     elem: '#test10'
-        //     ,type: 'datetime'
-        //     ,range: true
-        //     ,trigger: 'click'
-        //     ,max: 0
-        // });
+        //重置
+        $("#btn-resert").on("click",function(){
+            $("#sch-form")[0].reset(); 
+            endTime.config.min='1900-1-1';
+            startTime.config.max=endTime.config.max;
+        })
+
+
         //用户列表
         var tableIns = {
             // id:'id',

@@ -59,18 +59,50 @@
             laydate = layui.laydate,
             laytpl = layui.laytpl,
             table = layui.table;
-        laydate.render({
-            elem: '#test1' //指定元素
-            ,type: 'datetime'
-            ,trigger: 'click'
-            ,max: 0
-        });
-        laydate.render({
-            elem: '#test2' //指定元素
-            ,type: 'datetime'
-            ,trigger: 'click'
-            ,max: 0
-        });
+        //日期   
+        var nowTime=new Date();    
+        var startTime=laydate.render({
+            elem:'#test1',
+            type:'datetime',
+            btns: ['confirm'],
+            max:'nowTime',//默认最大值为当前日期
+            done:function(value,date){
+                endTime.config.min={    	    		
+                    year:date.year,
+                    month:date.month-1,//关键
+                    date:date.date,
+                    hours:date.hours,
+                    minutes:date.minutes,
+                    seconds:date.seconds
+                };
+                
+            }
+        })
+        var endTime=laydate.render({
+            elem:'#test2',
+            type:'datetime',
+            btns: ['confirm'],
+            max:'nowTime',
+            done:function(value,date){	   
+                startTime.config.max={
+                        year:date.year,
+                        month:date.month-1,//关键
+                        date:date.date,
+                        hours:date.hours,
+                        minutes:date.minutes,
+                        seconds:date.seconds
+                }
+                
+            }
+        })
+
+        //重置
+        $("#btn-resert").on("click",function(){
+            $("#sch-form")[0].reset(); 
+            endTime.config.min='1900-1-1';
+            startTime.config.max=endTime.config.max;
+        })
+
         //用户列表
         var tableIns = {
             // id:'id',
