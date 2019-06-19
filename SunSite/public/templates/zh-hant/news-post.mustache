@@ -137,12 +137,12 @@
             <li class="event-list-item">
               <a href="/{{LanguageDisplay}}/{{CurrentRootCategory.slug}}/category/{{slug}}">
                 <div class="event-list-img-box">
-                  {{#SquareLink}}
+                  {{#square_link}}
                     <img src="{{url}}" title="{{description}}" alt="{{name}}" srcset="{{url}} 2x, {{url}} 3x">
-                  {{/SquareLink}}
-                  {{^SquareLink}}
+                  {{/square_link}}
+                  {{^square_link}}
                     <img src="/static/imgs/group.svg" title="{{description}}" alt="{{name}}" srcset="/static/imgs/latest-news-1@2x.jpg 2x, /static/imgs/latest-news-1@3x.jpg 3x">
-                  {{/SquareLink}}
+                  {{/square_link}}
                 </div>
                 <div class="event-list-detail-box">
                   <p>{{title}}</p>
