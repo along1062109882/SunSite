@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="description" content="太阳城集团{{CurrentRootCategory.Name}}{{CurrentCategoryName}}" />
-    <meta name="keywords" content="太阳城集团,{{CurrentRootCategory.Name}},{{CurrentCategoryName}}" />
+    <meta name="description" content="太阳城集团{{CurrentRootCategory.name}}{{CurrentCategoryName}}" />
+    <meta name="keywords" content="太阳城集团,{{CurrentRootCategory.name}},{{CurrentCategoryName}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html"; charset="uft-8">
+    <meta http-equiv="Content-Type" content="application/pdf"; charset="uft-8">
     <meta http-equiv="Content-Language" content="zh-HK">
     <title>{{Year}} 年 - 集团动态 - 太阳城集团 SUNCITYGROUP</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/css/base.css" />
     <link rel="stylesheet" href="/static/css/animate.css" />
     <link rel="stylesheet" href="/static/css/swiper.min.css" />
-        <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
     <link rel="stylesheet" href="/static/css/news_new.css" />
     <link rel="stylesheet" href="/static/css/footer.css" />
     <!-- Google Tag Manager -->
@@ -48,7 +48,7 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             {{#Categories}}
-            <a class="swiper-slide" href="/{{LanguageDisplay}}/{{CurrentRootCategory.Slug}}/category/{{Slug}}">
+            <a class="swiper-slide" href="/{{LanguageDisplay}}/{{CurrentRootCategory.slug}}/category/{{Slug}}">
               <span>{{Name}}</span>
             </a>
             {{/Categories}}
@@ -85,11 +85,11 @@
         </div>
         <div class="news-container">
            <div class='release_content'>
-           {{#PostPreviews}}
-                {{#cover_link}}
-                    <p><a href='{{url}}' target="_blank">{{title}}</a></p>
-                {{/cover_link}}
-           {{/PostPreviews}}
+              {{#PostPreviews}}
+                   {{#cover_link}}
+                       <p><a href='{{url}}' target="_blank">{{title}}</a></p>
+                   {{/cover_link}}
+              {{/PostPreviews}}
             </div>
         <div class="news-page-wrapper">
           {{#Paging}}
@@ -111,12 +111,11 @@
           </a>
           {{/Paging}}
         </div>
-        </div>
       </div>
     </div>
     {{> footer}}
     <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
-     <script src="/static/js/jquery.media.js"></script>
+    <script src="/static/js/jquery.media.js"></script>
     <script src="/static/js/vender/wow.min.js"></script>
     <script src="/static/js/vender/swiper.min.js"></script>
     <script src="/static/js/vender/pagination.js"></script>

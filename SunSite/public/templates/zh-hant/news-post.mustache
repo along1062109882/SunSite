@@ -59,7 +59,7 @@
               <h1>{{title}}</h1>
               <div class="photo-viewpager">
                 <div class="photo-wrapper">
-                  <ul>
+                  <ul class='photo-wrapper-li'>
                     {{#Links}}
                     <li><div class="ratio-16-9"><img src="{{url}}" title="{{description}}" alt="{{name}}"></div></li>
                     {{/Links}}
@@ -169,6 +169,7 @@
       <img src=""/>
     </div>
     <script src="/static/js/vender/jquery-1.8.3.min.js"></script>
+    <script src="/static/js/swiper.min.js"></script>
     <script src="/static/js/vender/wow.min.js"></script>
     <script src="/static/js/vender/bpopup.min.js"></script>
     <script src="/static/js/latest.js"></script>
@@ -177,5 +178,6 @@
     <script src="/static/js/header.js"></script>
     <script src="/static/js/vender/utility.js"></script>
     <script src="/static/js/hreflang.js"></script>
+    {{! <script src="/static/js/news.js"></script> }}
   </body>
 </html>

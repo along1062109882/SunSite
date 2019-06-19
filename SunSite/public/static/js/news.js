@@ -176,27 +176,8 @@ $(function () {
             $('#drop-down-year').val(newYear) 
         }
     })
-    // 判断当前时间大于或等于最新年份，则显示禁用状态
 
-    // 點擊下拉列表選中進行篩選
-    $('.filter-list li').on('click', function () {
-        var newYears = $(this).text();
-        var keyword = $('#filter_search').val()
-        $('#drop-down-year').val($(this).text())
-         filter_search(newYears, keyword, 1);
-         if ($('#drop-down-year').val() == $('.filter-list li').last().text()) {
-            $('.yearPrev img').css({"opacity": 0.5, 'cursor':'not-allowed'});
-            $('.yearPrev').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'});
-         } else if ($('#drop-down-year').val() == $('.filter-list li').eq(0).text()){ 
-            $('.yearNext img').css({"opacity": 0.5, 'cursor':'not-allowed'});
-            $('.yearNext').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'});
-         } else {
-            $('.yearPrev img').css({"opacity": 1, 'cursor':'pointer'});
-            $('.yearPrev').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
-            $('.yearNext img').css({"opacity": 1, 'cursor':'pointer'});
-            $('.yearNext').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
-         }
-    })
+ 
     $('.drop-down').click(function () {
         var $filter = $('.filter-list');
         var $icon = $('.icon');
@@ -217,6 +198,30 @@ $(function () {
         }
     });
 
+       // 點擊下拉列表選中進行篩選
+       console.log('filter-list li')
+       $('.filter-list li').on('click', function () {
+        alert((1))
+        var newYears = $(this).text();
+        var keyword = $('#filter_search').val()
+        $('#drop-down-year').val($(this).text())
+         filter_search(newYears, keyword, 1);
+         if ($('#drop-down-year').val() == $('.filter-list li').last().text()) {
+            $('.yearPrev img').css({"opacity": 0.5, 'cursor':'not-allowed'});
+            $('.yearPrev').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'})
+            alert(1);
+         } else if ($('#drop-down-year').val() == $('.filter-list li').eq(0).text()){ 
+            $('.yearNext img').css({"opacity": 0.5, 'cursor':'not-allowed'});
+            $('.yearNext').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'});
+            alert(2)
+         } else {
+            $('.yearPrev img').css({"opacity": 1, 'cursor':'pointer'});
+            $('.yearPrev').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
+            $('.yearNext img').css({"opacity": 1, 'cursor':'pointer'});
+            $('.yearNext').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
+            alert(3)
+         }
+    })
     if ($('html').width() < 1080) {
         $('.navigator li').click(function () {
             $(this).children('a')[0].click();
@@ -342,48 +347,78 @@ $(function () {
             $(this).attr('src', '/static/imgs/news-toggle-row.svg');
         }
     });
-
-    var width = document.body.clientWidth
     var number = 1
-    var initialSlide = window.__initialSlide__ || 0
-    if (width <= 1024) {
-        if (width <= 414) {
-            number = 3
-        }
-        if (width > 414 && width < 640) {
-            number = 4
-        }
-        if (width >= 640) {
-            number = 5
-        }
-        if (width >= 768) {
-            number = 6
-        }
-        if (width == 1024) {
-            number = 8
-        }
-        var swiper = new Swiper('.swiper-container', {
-            initialSlide: initialSlide,
-            slidesPerView: number,
-            spaceBetween: 0,
-            slidesPerGroup: 3,
+    window.onresize=function(){  
+        // if ($(window).width() >= 1425) {
+        //   $('.header-nav-title-news').css({'background-color': '#fff'})
+        //   $('.header-nav-title-childcompany').css({'background-color': '#fff'})
+        //   $('.header-nav-title-news a').css({'background-color': '#fff',color:"#49443d"})
+        //   $('.header-nav-title-childcompany a').css({'background-color': '#fff',color:"#49443d"})
+        //   // // headerISTouch = false;
+        //   // headerNavTitleChildcompany.find('a').css({'background':'#fff', color:' rgb(73, 68, 61)'})
+        //   // headerNavTitleChildnews.find('a').css({'background':'#fff', color:' rgb(73, 68, 61)'})
+        //   headerISWideScreen = true;
+        //   group_item_childcompany.hide();
+        //   group_item_news.hide();
+        // }
+        var width = $(window).width();
+        var initialSlide = window.__initialSlide__ || 0
+        // if (width <= 1024) { 
+            if (width <= 414) {
+                number = 3
+            }
+            if (width > 414 && width < 640) {
+                number = 4
+            }
+            if (width >= 640) {
+                number = 5
+            }
+            if (width >= 768) {
+                number = 6
+            }
+            if (width >= 1024) {
+                number = 1
+            }
+            var swiper = new Swiper('.swiper-container', {
+                // initialSlide: initialSlide,
+                slidesPerView: number,
+                spaceBetween: 0,
+                slidesPerGroup: 3,
+            });
+    
+            $('.news-swiper-button-prev').click(function () {
+                swiper.slidePrev();
+            })
+            $('.news-swiper-button-next').click(function () {
+                swiper.slideNext();
+            })
+            // $('.swiper-slide').eq(initialSlide).addClass('news-swiper-slide-active')
+        // } 
+        
+        // else {
+        //     number = 1
+        //     var swiper = new Swiper('.swiper-container', {
+        //         // initialSlide: initialSlide,
+        //         slidesPerView: number,
+        //         spaceBetween: 0,
+        //         slidesPerGroup: 5,
+        //     });
+        //     $('.news-swiper-button-prev').click(function () {
+        //         swiper.slidePrev();
+        //     })
+        //     $('.news-swiper-button-next').click(function () {
+        //         swiper.slideNext();
+        //     })
+        //     $('.swiper-slide').eq(initialSlide).addClass('news-swiper-slide-active')
+        // }
+        // highlight current item in wide screen
+        $('.event-name-item').eq(initialSlide).addClass('event-name-item-active');
+        // 图片加载有误
+        $(".news-item .ratio-16-9 img").on("error", function () {
+            $(this).attr("src", "/static/imgs/group.svg");
         });
+      }  
 
-        $('.news-swiper-button-prev').click(function () {
-            swiper.slidePrev();
-        })
-        $('.news-swiper-button-next').click(function () {
-            swiper.slideNext();
-        })
-        $('.swiper-slide').eq(initialSlide).addClass('news-swiper-slide-active')
-    }
-
-    // highlight current item in wide screen
-    $('.event-name-item').eq(initialSlide).addClass('event-name-item-active');
-    // 图片加载有误
-    $(".news-item .ratio-16-9 img").on("error", function () {
-        $(this).attr("src", "/static/imgs/group.svg");
-    });
 });
 
 // set2CellMode();

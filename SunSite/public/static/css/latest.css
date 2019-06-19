@@ -771,4 +771,9 @@ body{
     margin-top: 141px;
   }
 }
-
+.photo-wrapper-li {
+  display: flex;
+}
+.photo-wrapper-li li {
+  width: 100%;
+}
