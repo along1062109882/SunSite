@@ -255,7 +255,6 @@ $(function () {
                         <div>
                         <div class="ratio-16-9">
                             <img src="${item.cover_link === null ? '' :item.cover_link.url}" title="${item.cover_link === null ? '' :item.cover_link.description}" alt="${item.cover_link === null ? '' :item.cover_link.name}" srcset="${item.cover_link === null ? '' :item.cover_link.url} 2x, ${item.cover_link === null ? '' :item.cover_link.url} 3x">
-                            <img src="/static/imgs/group.svg" title="${item.cover_link === null ? '' :item.cover_link.description}" alt="${item.cover_link === null ? '' :item.cover_link.name}" srcset="/static/imgs/group.svg 2x, /static/imgs/group.svg 3x">
                         </div>
                         <div class="news-info">
                             <h2 class="news-title">${item.title}</h2>

@@ -763,12 +763,13 @@ img {
 .show_type_food ul {
   max-width: 74%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
 }
 .show_type_food ul li {
   /* width: 26%; */
-  flex: 1;
+  /* flex: 1; */
+  width: 32%;
   background-color: #ffffff;
   margin: 1% 0.5%;
   text-align: center;
