@@ -804,7 +804,7 @@ class Index extends Controller
 
         if(isset($api['data']) && !empty($api['data'])){
             $token = $api['data']['token'];
-            $data = Api::postCurl('applicant_profiles/import_options',$token,$jsonData);
+            $data = Api::postCurl('applicant_profiles',$token,$jsonData);
             if(isset($data['state']) && $data['state'] == 'success'){
                 return ['code'=>0,'msg'=>'success'];
             }
