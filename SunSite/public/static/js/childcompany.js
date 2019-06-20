@@ -148,7 +148,6 @@ var mySwiper = new Swiper('.swiper-container', {//初始化Swiper
 })
 // childcompany latest-news slide
 // item max:3
-window.onresize = function () {
   var slideLength = $(".childCompany-slide .slide-item").length;
   $(".childCompany-slide").length > 0 && $(".childCompany-slide").owlCarousel({
     rewind: true,
@@ -170,4 +169,3 @@ window.onresize = function () {
       }
     }
   });
-}

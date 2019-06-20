@@ -333,9 +333,9 @@ body{
 @media(max-width: 1440px) {
   .element_to_pop_up {
     display: none;
-    top: 80px !important;
-    left: 10% !important;
-    right: 10% !important;
+    top: 13% !important;
+    left: 9% !important;
+    right: -11% !important;
     overflow: hidden;
     object-fit: contain;
   }
@@ -355,7 +355,7 @@ body{
   }
 }
 .element_to_pop_up > img {
-  width: 80.7%;
+  width: 80%;
   object-fit: contain;
 }
 
@@ -363,11 +363,15 @@ body{
   width: 80%;
   height: 46px;
   line-height: 46px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
   text-align: right;
-	background-color: #a19062;
+  background-color: #a19062;
+  position: relative;
 }
-
+.bigpic-header-wrapper span {
+  position: absolute;
+  right: 10px;
+}
 @media(max-width: 1080px) {
   .content-container {
     width: 800px;
