@@ -10,7 +10,7 @@ namespace Aws;
 
 
 class Api {
-    const API = 'http://hrisapi.suncity-group.com/';
+    const API = 'http://uat-hrisapi.suncity-group.com/';
 
     /**
      * @param $func_id
