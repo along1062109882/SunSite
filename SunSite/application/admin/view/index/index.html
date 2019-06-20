@@ -31,7 +31,7 @@
                     <!--<a href="javascript:;"><i class="seraph icon-lock"></i><cite>锁屏</cite></a>-->
                 <!--</li>-->
                 <li class="layui-nav-item" id="userInfo">
-                    <a href="javascript:;"><img src="{$info.head}" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">{$info.name}</cite></a>
+                    <a href="javascript:;"><img src="{$info.head=='/images/face.jpg'?'/images/logo-1027.jpg':$info.head}" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">{$info.name}</cite></a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" data-url="{:url('/admin/userInfo')}"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>個人資料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="{:url('/admin/editPassword')}"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密碼</cite></a></dd>
@@ -47,7 +47,7 @@
     <!-- 左侧导航 -->
     <div class="layui-side layui-bg-black">
         <div class="user-photo">
-            <a class="img" title="我的頭像"><img src="{$info.head}" class="userAvatar"></a>
+            <a class="img" title="我的頭像"><img src="{$info.head=='/images/face.jpg'?'/images/logo-1027.jpg':$info.head}" class="userAvatar"></a>
             <p>你好！<span class="userName">{$info.name}</span>, 歡迎登錄</p>
         </div>
 
