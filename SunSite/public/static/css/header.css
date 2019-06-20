@@ -314,6 +314,16 @@
   width: 100%;
 }
 
+.header-nav-item-group-mouse {
+  position: absolute;
+  height: 29px;
+  top: -29px;
+  width: 100%;
+  background: transparent !important;
+  cursor: default;
+  display: none;
+}
+
 @media (min-width: 1440px) {
   .header-nav-button {
     display: none;
@@ -377,6 +387,10 @@
 
   .header-nav-item-group li a {
     padding-left: 0px !important;
+  }
+
+  .header-nav-item-group .header-nav-item-group-mouse {
+    display: block;
   }
 
 }
