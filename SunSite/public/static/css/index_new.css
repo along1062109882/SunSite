@@ -219,19 +219,38 @@ img {
     height: 263px;;
   }
 }
-@media(max-width: 640px) {
-  .ts-ul {
+/* @media(max-width: 640px) { */
+  /* .ts-ul {
     height: 150px;
+  }
+ 
+  .ts-ul li.on {
+    height: 150px;;
+  }
+} */
+@media (min-width: 415px) and (max-width: 640px) {
+  .ts-ul li b p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .ts-ul {
+    height: 180px;
   }
   .ts-ul li b p {
     font-size: 16px;
     line-height: 19px;
   }
   .ts-ul li.on {
-    height: 150px;;
+    height: 180px;;
   }
 }
 @media(max-width: 414px) {
+  .ts-ul {
+    height: 150px;
+  }
+  .ts-ul li.on {
+    height: 150px;;
+  }
   .ts-ul li b p {
     font-size: 12px;
     line-height: 17px;
