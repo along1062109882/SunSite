@@ -183,9 +183,9 @@ function headerHandleNav() {
         // $('#header-nav-item-group-news').css({ 'display': 'none' });
       }
       else {
-        $(this).css({ 'background-color': '#a19062'})
+        $(this).find('a').css({ 'background-color': '#a19062'})
         $(this).find('a').css({'color': '#fff'})
-        headerNavTitleChildnews.css({'background-color': '#fff',color:'#a19062' })
+        headerNavTitleChildnews.find('a').css({'background-color': '#fff',color:'#a19062' })
         headerNavTitleChildnews.find('a').css({'color': '#333'})
         if (headerNavTitleChildcompanyOpen) $(this).find('img').attr('src', '/static/imgs/nav-arrow-up-white.svg');
         else $(this).find('img').attr('src', '/static/imgs/nav-arrow-down-white.svg');
@@ -282,9 +282,9 @@ function headerHandleNav() {
         group_item_news.css({ 'display': 'block' });
       }
       else {
-        $(this).css({ 'background-color': '#a19062'})
+        $(this).find('a').css({ 'background-color': '#a19062'})
         $(this).find('a').css({'color': '#fff'})
-        headerNavTitleChildcompany.css({'background-color': '#fff',color:'#a19062' })
+        headerNavTitleChildcompany.find('a').css({'background-color': '#fff',color:'#a19062' })
         headerNavTitleChildcompany.find('a').css({'color': '#333'})
         if (headerNavTitleChildnewsOpen) $(this).find('img').attr('src', '/static/imgs/nav-arrow-up-white.svg');
         else $(this).find('img').attr('src', '/static/imgs/nav-arrow-down-white.svg');
