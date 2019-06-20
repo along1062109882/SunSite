@@ -31,12 +31,12 @@ reSize();
 $(window).resize(function() {
   reSize();
 });
-
 var index = 0;
 var endIndex = 0;
 
 for(var i = 0;i < $cNails.length;i++) {
   clearInterval();
+  $cNails.eq(0).addClass('selected').siblings().removeClass('selected');
   var updater = function() {
     var _i = $(this).index();
 
