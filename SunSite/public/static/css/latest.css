@@ -605,7 +605,7 @@ body{
   /* margin-bottom: 20px; */
 }
 .event-list-img-box {
-  width: 115px;
+  width: 165px;
   height: 100%;
   /* display: inline-block; */
   overflow: hidden;
@@ -661,7 +661,7 @@ body{
     margin-top: 9px;
   }
   .event-list-img-box {
-    width: 122px;
+    width: 165px;
   }
   .event-list-detail-box {
     margin-left: 122px;
@@ -704,7 +704,7 @@ body{
     margin-top: 10px;
   }
   .event-list-img-box {
-    width: 142px;
+    width: 165px;
   }
   .event-list-detail-box {
     margin-left: 142px;
@@ -745,7 +745,7 @@ body{
     /* margin-bottom: 20px; */
   }
   .event-list-img-box {
-    width: 115px;
+    width: 165px;
     height: 100%;
     /* display: inline-block; */
     overflow: hidden;
