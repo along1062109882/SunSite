@@ -323,9 +323,9 @@ body{
 } */
 .element_to_pop_up {
   display: none;
-  top: 60px !important;
-  left: 10% !important;
-  right: 10% !important;
+  top: 7% !important;
+  left: 19% !important;
+  right: 5% !important;
   overflow: hidden;
   object-fit: contain;
 }
@@ -333,9 +333,9 @@ body{
 @media(max-width: 1440px) {
   .element_to_pop_up {
     display: none;
-    top: 80px !important;
-    left: 10% !important;
-    right: 10% !important;
+    top: 13% !important;
+    left: 9% !important;
+    right: -11% !important;
     overflow: hidden;
     object-fit: contain;
   }
@@ -344,26 +344,34 @@ body{
 @media (max-width: 1024px) {
   .element_to_pop_up {
     display: none;
-    top: 200px !important;
+    top: 25%!important;
+    left: 4% !important;
+    right: -17% !important;
+    /* top: 200px !important;
     left: 10% !important;
-    right: 10% !important;
+    right: 10% !important; */
     overflow: hidden;
     object-fit: contain;
   }
 }
 .element_to_pop_up > img {
-  width: 100%;
+  width: 80%;
   object-fit: contain;
 }
 
 .bigpic-header-wrapper {
+  width: 80%;
   height: 46px;
   line-height: 46px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
   text-align: right;
-	background-color: #a19062;
+  background-color: #a19062;
+  position: relative;
 }
-
+.bigpic-header-wrapper span {
+  position: absolute;
+  right: 10px;
+}
 @media(max-width: 1080px) {
   .content-container {
     width: 800px;
@@ -597,7 +605,7 @@ body{
   /* margin-bottom: 20px; */
 }
 .event-list-img-box {
-  width: 115px;
+  width: 165px;
   height: 100%;
   /* display: inline-block; */
   overflow: hidden;
@@ -653,7 +661,7 @@ body{
     margin-top: 9px;
   }
   .event-list-img-box {
-    width: 122px;
+    width: 165px;
   }
   .event-list-detail-box {
     margin-left: 122px;
@@ -696,7 +704,7 @@ body{
     margin-top: 10px;
   }
   .event-list-img-box {
-    width: 142px;
+    width: 165px;
   }
   .event-list-detail-box {
     margin-left: 142px;
@@ -737,7 +745,7 @@ body{
     /* margin-bottom: 20px; */
   }
   .event-list-img-box {
-    width: 115px;
+    width: 165px;
     height: 100%;
     /* display: inline-block; */
     overflow: hidden;
@@ -773,6 +781,8 @@ body{
 }
 .photo-wrapper-li {
   display: flex;
+  width: 2397px;
+  left: 0px;
 }
 .photo-wrapper-li li {
   width: 100%;

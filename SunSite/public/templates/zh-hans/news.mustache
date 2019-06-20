@@ -110,19 +110,19 @@
         <div class="news-page-wrapper">
           {{#Paging}}
           <!--a href="/{{LanguageDisplay}}/{{CurrentRootCategory.slug}}/category/{{CurrentCategorySlug}}?page={{FirstPage}}"-->
-          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page=1">
+          <a href="#">
             <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
           </a>
-          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page={{PreviousPage}}">
+          <a href="#">
             <img src="/static/imgs/next-page.svg" class="first-page">
           </a>
           {{#Pages}}
           <a class="news-page">{{No}}</a>
           {{/Pages}}
-          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page={{NextPage}}">
+          <a href="#">
             <img src="/static/imgs/next-page.svg" class="next-page">
           </a>
-          <a href="/{{LanguageDisplay}}/news?year={{Year}}&page={{LastPage}}">
+          <a href="#">
             <img src="/static/imgs/last-page-botton.svg" class="last-page-button">
           </a>
           {{/Paging}}

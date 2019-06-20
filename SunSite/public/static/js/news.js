@@ -291,12 +291,19 @@ $(function () {
             }
         })
     }
+    // 分页按钮筛选
     $('.news-page-wrapper').on('click', '.news-page' ,function () {
         console.log($(this).text())
         var newYears = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
         $(this).addClass('active').siblings().removeClass('active');
         filter_search(newYears, keyword, Number($(this).text()));
+    })
+    // 首页
+    $('.first-page-button').on('click', function () {
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, 1);
     })
     // 输入框内容匹配进行模糊搜索
     $('.search_btn').on('click', function() {

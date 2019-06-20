@@ -2,15 +2,22 @@ var $oView = $(".photo-viewpager"),
     $oBox = $(".photo-wrapper"),
     $oUl = $(".photo-wrapper ul"),
     $aImg = $(".photo-wrapper img"),
-    $oLis = $(".photo-wrapper li"),
-    imgWidth = Math.ceil(2550 / ( 1278 / ($('html').width() < 640 ? 200 : 400) ));
-
+    $oLis = $(".photo-wrapper li");
+ var imgWidth = $(window).width();
+ imgWidth = imgWidth > 660 ? 660 : imgWidth;
+//  Math.ceil(2550 / ( 1278 / ($('html').width() < 640 ? 200 : 400) ))
 var $cUl = $(".viewpager ul"),
     $cImg = $(".viewpager img"),
     $cNails = $(".viewpager li");
 
 $oUl.css({ width: imgWidth * $aImg.length + "px"});
 $cUl.css({ width: 90 * $cImg.length + "px"});
+
+$(window).on('resize', function(){ 
+  imgWidth =  $(window).width();
+  imgWidth = imgWidth > 660 ? 660 : imgWidth;
+  $oUl.css({ width: imgWidth * $aImg.length + "px"});
+})
 
 function reSize(){
   for(var i=0;i < $aImg.length;i++) {
@@ -24,12 +31,12 @@ reSize();
 $(window).resize(function() {
   reSize();
 });
-
 var index = 0;
 var endIndex = 0;
 
 for(var i = 0;i < $cNails.length;i++) {
   clearInterval();
+  $cNails.eq(0).addClass('selected').siblings().removeClass('selected');
   var updater = function() {
     var _i = $(this).index();
 
