@@ -226,7 +226,7 @@ $(function () {
                 var Pagination_str = '';
                 var pages_str = '';
                     res.Paging.Pages.forEach((item, index) => {
-                        pages_str += `<a class="news-page ${index === page ?  'active' :''}" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${item.No}">${item.No}</a>`;
+                        pages_str += `<a class="news-page ${index === page ?  'active' :''}">${item.No}</a>`;
                     })
                     
                     Pagination_str = `
@@ -263,7 +263,6 @@ $(function () {
     })
     // 上一页
     $('.news-page-wrapper').on('click','.first-page' ,function () {
-        console.log($('.active').text())
         var page = Number($('.active').text());
         page <= 1 ? page = 1 : page -= 1
         // $()
@@ -273,11 +272,8 @@ $(function () {
     })
      // 下一页
      $('.news-page-wrapper').on('click','.next-page' ,function () {
-        console.log($('.active').text())
         var page = Number($('.active').text());
-        // page += 1;
         page >= $('.news-page-wrapper .news-page').length ? page = $('.news-page-wrapper .news-page').length : page += 1
-        // $()
         var newYears = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
         filter_search(newYears, keyword, page);

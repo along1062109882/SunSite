@@ -207,9 +207,13 @@ $(function () {
          if ($('#drop-down-year').val() == $('.filter-list li').last().text()) {
             $('.yearPrev img').css({"opacity": 0.5, 'cursor':'not-allowed'});
             $('.yearPrev').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'})
+            $('.yearNext img').css({"opacity": 1, 'cursor':'pointer'});
+            $('.yearNext').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
          } else if ($('#drop-down-year').val() == $('.filter-list li').eq(0).text()){ 
             $('.yearNext img').css({"opacity": 0.5, 'cursor':'not-allowed'});
             $('.yearNext').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'});
+            $('.yearPrev img').css({"opacity": 1, 'cursor':'pointer'});
+            $('.yearPrev').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
          } else {
             $('.yearPrev img').css({"opacity": 1, 'cursor':'pointer'});
             $('.yearPrev').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
