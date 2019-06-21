@@ -7,24 +7,89 @@
     background: #f5f5f5;
 }
 
-.apliaction_content {
-    /*background: red;*/
-    max-width: 70%;
-    height: 100%;
-    margin-left: 15%;
+.content_onlySign {
+    margin: 0 auto;
+}
+
+.placeholder{
+    color: #b5b5b6 !important;
+}
+
+#content_two .block > label {
+    width: 120px;
+}
+
+#content_for .block > label {
+    width: 107px;
+    margin-right: 26px;
+}
+
+#content_three .block > label,
+#content_six .block > label {
+    width: 107px;
+    margin-right: 19px;
+}
+
+#content_nine .block > label {
+    width: 187px;
+    margin-right: 11px;
+}
+
+#content_five .block > label,
+#content_seven .block > label,
+#content_eight .block > label,
+#content_ten .block > label ,
+#content_eleven .block > label {
+    width: 116px;
+    margin-right: 10px;
+}
+
+#content_ten .change_btn,
+#content_five .change_btn,
+#content_six .change_btn,
+#content_eight .change_btn {
+    padding-bottom: 0;
+}
+
+#content_seven .change_btn {
+    padding: 29px 0 30px;
+}
+
+#content_seven .footer_line {
+    margin-bottom: 50px;
+}
+
+#content_seven .footer_line_bottom {
+    margin-top: 0;
+}
+
+#content_seven .multi-li:last-child .footer_line{
+    margin-bottom: 0;
+}
+
+#content_eleven .drop-down {
+    width: 250px;
+}
+
+.content_onlySign {
+    display: none;
 }
 
 .top_box {
-    padding: 4% 0;
+    padding: 46px 0 30px;
+    max-width: 1080px;
+    margin: 0 auto;
+    width: 94.4%;
 }
 
 .top_title {
     width: 100%;
     text-align: center;
-    padding: 10px 0;
     color: #614a0b;
     font-size: 24px;
-    padding-bottom: 30px;
+    line-height: 33px;
+    padding-bottom: 22px;
+    font-weight: 700;
 }
 
 .top_pagination {
@@ -85,58 +150,72 @@
 
 .footer_line {
     background: #a19062;
-    width: 100%;
+    max-width: 1000px;
+    min-width: 300px;
+    width: 86%;
     height: 1px;
-    margin-top: 4%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.multi-main .multi-li {
+    margin-top: 50px;
+}
+.multi-main .multi-li:first-child {
+    margin-top: 0;
+}
+.filed-required {
+    position: relative;
 }
 
 .important {
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    right: -17px;
+    width: 14px;
     color: #d74153;
     font-size: 28px;
-    position: absolute;
-    left: 77%;
-    line-height: 50px;
+    text-align: center;
 }
 
 .block {
     margin: 5px 0;
     text-align: center;
-    display: flex;
     position: relative;
-    justify-content: center;
     margin-top: 20px;
-    align-items: center;
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.block > label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 80px;
     font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.16px;
+    color: #a19062;
+    text-align: left;
+    line-height: 40px;
+    height: 40px;
+    cursor: default;
+    margin-right: 10px;
 }
 
 .center {
     text-align: center;
 }
 
-label {
-    display: inline-flex;
-    align-content: center;
-    width: 130px;
-    text-align: right;
+label > span {
+    display: inline-block;
     font-size: 14px;
     font-weight: 700;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
-    letter-spacing: 0.2px;
-    text-align: justify;
-    color: #a19062;
-    line-height: 40px;
-    padding-right: 10px;
-}
-
-label span {
-    font-size: 14px;
-    font-weight: 700;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.16px;
     line-height: 20px;
     color: #a19062;
 }
@@ -145,7 +224,7 @@ input,
 textarea,
 select {
     vertical-align: top;
-    width: 40%;
+    width: 300px;
     height: 40px;
     position: relative;
     border-radius: 4px;
@@ -157,12 +236,33 @@ select {
     /*font-weight: 600;*/
     box-sizing: border-box;
 }
+.field-important{
+    display: inline-block;
+    width: 300px;
+    position: relative;
+}
+textarea::-webkit-input-placeholder,
 input::-webkit-input-placeholder {
       color: #b5b5b6;
+      font-size: 14px;
 }
+textarea::-moz-placeholder,
+input::-moz-placeholder {
+      color: #b5b5b6;
+      font-size: 14px;
+}
+textarea::-ms-input-placeholder,
+input::-ms-input-placeholder {
+      color: #b5b5b6;
+      font-size: 14px;
+}
+
+select {
+    color: #b5b5b6;
+}
+
 .content_box {
     text-align: center;
-    padding-bottom: 5%;
 }
 
 .icon {
@@ -178,7 +278,7 @@ input::-webkit-input-placeholder {
 
 .change_btn {
     width: 100%;
-    height: 80px;
+    padding: 29px 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -195,11 +295,16 @@ input::-webkit-input-placeholder {
 }
 
 .change_btn p {
-    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 118px;
+    height: 40px;
     border-radius: 4px;
     border: solid 1px #a19062;
     background-color: #ffffff;
-    margin: 0 20px;
+    margin: 0 10px;
     font-size: 16px;
     font-weight: 700;
     font-style: normal;
@@ -216,11 +321,16 @@ input::-webkit-input-placeholder {
 }
 
 .footer p {
-    padding: 10px 20px;
+    box-sizing: border-box;
+    width: 118px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 4px;
     border: solid 1px #a19062;
     background-color: #ffffff;
-    margin: 0 20px;
+    margin: 0 10px;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
@@ -267,6 +377,8 @@ input::-webkit-input-placeholder {
 
 .radioBtn {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 input[type="radio"] {
@@ -275,19 +387,26 @@ input[type="radio"] {
     opacity: 0;
 }
 
+.radioBtn input[type="radio"] {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+}
+
 input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     opacity: 0;
 }
 
 .radioLabel {
+    box-sizing: border-box;
     position: absolute;
-    /* left: 25px; */
     right: 0;
     top: 0;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border: solid 1px #e5dcc9;
     background-color: #ffffff;
     border-radius: 100%;
@@ -301,10 +420,10 @@ input[type="checkbox"] {
 input:checked+.radioLabel::after {
     position: absolute;
     content: "";
-    width: 16px;
-    height: 16px;
-    top: 2px;
-    left: 2px;
+    width: 20px;
+    height: 20px;
+    top: 4px;
+    left: 4px;
     background-color: #a19062;
     border-top: none;
     border-left: none;
@@ -315,9 +434,8 @@ input:checked+.radioLabel::after {
     display: flex;
     justify-content: space-between;
     vertical-align: top;
-    width: 42%;
+    width: 300px;
     height: 40px;
-    /* padding-left: 10px; */
     align-items: center;
 }
 
@@ -339,8 +457,6 @@ input:checked+.radioLabel::after {
 
 textarea {
     vertical-align: top;
-    width: 40%;
-    max-width: 40%;
     height: 40px;
     position: relative;
     border-radius: 4px;
@@ -367,21 +483,21 @@ textarea {
     -moz-appearance: none;
     -webkit-appearance: none;
     /*替换选择框的最右侧显示小箭头图片*/
-    background: url("/static/imgs/job-arrow-down.svg") no-repeat scroll right #ffffff;
-    background-position: 90% 15px;
+    background: url("/static/imgs/job-arrow-down.svg") no-repeat scroll #ffffff;
+    background-position: right 14px center;
     /*为下拉小箭头留出一点位置，避免被文字覆盖*/
-    padding: 0 10px;
+    padding: 0 42px 0 10px;
 }
 
 .selectBoxRadioBtnBoxValue{
     width: 100%;
-    background: url(/static/imgs/fill-1.svg) no-repeat scroll right #ffffff;
-    background-position: 90% 15px;
+    background: url(/static/imgs/fill-1.svg) no-repeat scroll #ffffff;
+    background-position: right 14px center;
 }
 
 .selectBoxRadioBtnBoxFileWrap {
     vertical-align: top;
-    width: 40%;
+    width: 300px;
     height: 40px;
     box-sizing: border-box;
     position: relative;
@@ -397,70 +513,126 @@ textarea {
     top: 0;
 }
 
-@media (min-width: 1440px) and (max-width: 1650px){
-    .important {
-        left: 80%;
-    }
+.region_one  {
+    box-sizing: border-box;
+    padding: 0;
 }
-@media (min-width: 1020px) and (max-width: 1439px){
-    .important {
-        left: 82%;
-    }
+.region_one .ms-choice{
+    width: 100%;
+    height: 38px;
+    padding: 0;
+    margin: 0;
+    border:none;
+    line-height: 38px;
+    font-size: 14px;
+    background: transparent;
 }
-@media (min-width: 769px) and (max-width: 1019px){
-    .important {
-        left: 85%;
-    }
+
+.region_one .ms-choice>span.placeholder, .region_one label span {
+    color: #49443d;
+    font-weight: normal;
 }
-@media (min-width: 641px) and (max-width: 768px){
-    .important {
-        left: 89%;
-    }
+
+.region_one .ms-choice>span{
+    padding-left: 10px;
+}
+
+.region_one .ms-choice>div{
+    display: none;
+}
+.region_one input[type="checkbox"]{
+    opacity: inherit;
+}
+.ms-drop label {
+    text-align: left;
+}
+
+.ms-drop input[type=radio], .ms-drop input[type=checkbox] {
+    width: auto;
+    height: auto;
+    margin: 0 5px;
+    vertical-align: inherit !important;
 }
 
 @media(max-width: 640px){
+    .multi-main .multi-li {
+        margin-top: 34px;
+    }
+
+    #content_seven .footer_line {
+        margin-bottom: 34px;
+    }
+    /*
+    .change_btn {
+        padding-top: 0px;
+        padding-bottom: 0;
+    }
+    .footer_line {
+        margin: 20px auto;
+    }*/
+    .radioBtnBox:empty {
+        display: none;
+    }
+    label > span:empty {
+        display: none;
+    }
+    .top_box {
+        padding-top: 38px;
+    }
+    .top_title{
+        line-height: 25px;
+    }
+    .block {
+        width: 300px;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .block > label {
+        box-sizing: border-box;
+        padding: 16px 0 4px 2px;
+        line-height: 20px;
+        height: auto;
+        font-size: 14px;
+        width: 300px !important;
+        margin: 0 auto;
+    }
+
+    .footer {
+        margin-top: 50px;
+    }
+
+    .important {
+
+    }
+    /*
+    .selectBoxRadioBtnBoxFileWrap {
+        width: 100%;
+    }
     .radioBtnBox {
         width: 100%;
     }
     textarea {
         max-width: 100%;
     }
-    .block {
-        margin: 5px 0;
-        text-align: left;
-        display: flex;
-        position: relative;
-        justify-content: left;
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        width: 100%;        
+    .selectBoxRadioBtnBox {
+        width: 100% !important;
+    }
+    .filed-required{
+        width: 100%;
     }
 
-    .important {
-        color: #d74153;
-        font-size: 28px;
-        position: absolute;
-        left: -15px;
-        top: -10px;
-        line-height: 50px;
-    }
-    .selectBoxRadioBtnBoxFileWrap {
-        width: 100%;
-    }
-    .selectBoxRadioBtnBox {
-        width: 100%;
-        padding-right: 50px;
-    }
     input,textarea {
         width: 100%;
     }
-    .apliaction_content {
-        /* background: red; */
-        max-width: 80%;
-        height: 100%;
-        margin-left: 10%;
+    */
+}
+
+
+@media(max-width: 360px){
+    .important{
+        right: -10px;
+        text-align: right;
     }
 }
