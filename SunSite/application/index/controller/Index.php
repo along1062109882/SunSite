@@ -836,14 +836,8 @@ class Index extends Controller
     {
         $cache = cache('data');
         if(!$cache){
-            $json = [
-                "identity"=>"90000002",
-                "password"=>"123456"
-            ];
-            $api = Api::postCurl('json_web_token','',$json);
-
-            if(isset($api['data']) && !empty($api['data'])){
-                $token = $api['data']['token'];
+            $token = $this->getToken();
+            if($token){
                 $data = Api::getCurl('jobs/enabled_without_pending',$token);
                 if(isset($data['state']) && $data['state'] == 'success'){
                     cache('data',$data['data'],['expire'=>600]);
@@ -856,9 +850,7 @@ class Index extends Controller
             foreach ($cache as $cache_k=>$cache_v){
                 $arr[$cache[$cache_k]['department']['chinese_name']][] = $cache[$cache_k];
             }
-
         }
-
 
         $this->getLang();
         $uri = array_filter(explode('/',$_SERVER['REQUEST_URI']));
