@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html" ; charset="uft-8">
   <meta http-equiv="Content-Language" content="zh-HK">
-  <title>就业机会 - 太阳城集团 SUNCITYGROUP</title>
+  <title>就業機會 - 太陽城集團 SUNCITYGROUP</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/static/css/base.css" />
   <link rel="stylesheet" href="/static/css/animate.css" />
-  <link rel="stylesheet" href="/static/css/application.css" />
+  <link rel="stylesheet" href="/static/css/application.css?v19062101" />
   <link rel="stylesheet" href="/static/css/footer.css" />
   <link rel="stylesheet" href="/static/css/header.css" />
+  <link rel="stylesheet" href="/static/js/vender/multiple-select/multiple-select.min.css" />
   <!-- Google Tag Manager -->
   <script>
     (function (w, d, s, l, i) {
@@ -37,13 +38,13 @@
   <div class="common-banner">
     <div class="common-banner-content">
       <img src="/static/imgs/common/sun-logo.svg" class="common-banner-logo" alt="sun-logo" />
-      <h1 class="common-banner-title">申请职位</h1>
+      <h1 class="common-banner-title">申請職位</h1>
     </div>
   </div>
   <div class="container">
     <div class="apliaction_content">
       <div class="top_box">
-        <h3 class="top_title">申请职位</h3>
+        <h3 class="top_title">申請職位</h3>
         <div class="top_pagination">
           <ul class="pagination_content">
             <li><span></span><b></b></li>
@@ -66,166 +67,186 @@
         
        <div id="content_one" class="content_box content_onlySign">
           <div class="block">
-            <label for=""><span>地区：</span></label>
-            <select class="selectBoxRadioBtnBox region region_one" name='working_region'>
-              <option value="" selected="selected">请选择</option>
-            </select>
+            <label for=""><span>地區：</span></label>
+            <div class="field-important">
+              <select class="selectBoxRadioBtnBox region region_one" style="overflow: hidden;" name='working_region' multiple>
+              </select>
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
-            <label for=""><span>第一选择：</span></label>
+            <label for=""><span>第一選擇：</span></label>
             <select class="selectBoxRadioBtnBox change_first first_change_one">
-              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">請選擇部門</option>
             </select>
             </span>
           </div>
           <div class="block">
             <label for=""><span></span></label>
-            <select class="selectBoxRadioBtnBox change_first_one" name='first_choice_id'>
-              <option value="" selected="selected">请选择</option>
-            </select>
-            <span class="important">*</span>
+            <div class="field-important">
+              <select class="selectBoxRadioBtnBox change_first_one" name='first_choice_id'>
+                <option value="" selected="selected">請選擇職位</option>
+              </select>
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block ">
-            <label for=""><span>第二选择：</span></label>
+            <label for=""><span>第二選擇：</span></label>
             <select class="selectBoxRadioBtnBox second_str second_change_one">
-              <option value="" selected="selected">请选择部门</option>
+              <option value="" selected="selected">請選擇部門</option>
             </select>
           </div>
           <div class="block">
             <label for=""><span></span></label>
-           <select class="selectBoxRadioBtnBox change_second_one" name='second_choice_id'>
-              <option value="" selected="selected">请选择职位</option>
+           <select class="selectBoxRadioBtnBox change_second_one" name='second_choice_id~int'>
+              <option value="" selected="selected">請選擇職位</option>
             </select>
           </div>
           <div class="block">
-            <label for=""><span>薪资要求：</span></label>
-            <input type="text"  placeholder="请输入金额" id='money_one' name='salary_request'>
+            <label for=""><span>薪資要求：</span></label>
+            <input type="text"  placeholder="請輸入金额" id='money_one' name='salary_request'>
           </div>
           <div class="block">
-            <label for=""><span>离职通知期：</span></label>
-            <select class="selectBoxRadioBtnBox work_back" id='work_back_one' name='applicant_notice_date'>
-              <option value="" selected="selected">请选择</option>
+            <label for=""><span>離職通知期：</span></label>
+            <div class="field-important">
+              <select class="selectBoxRadioBtnBox work_back" id='work_back_one' name='applicant_notice_date'>
+                <option value="" selected="selected">請選擇</option>
+              </select>
               <span class="important">*</span>
-            </select>
+            </div>
           </div>
       </div>
       <div id="content_two" class="content_box content_onlySign">
           <div class="block">
             <label for=""><span>介绍人姓名：</span></label>
-            <input class="drop-down" type="text" placeholder="请输入" id='name_second' name='referrals'>
+            <input class="drop-down" type="text" placeholder="請輸入" id='name_second' name='referrals'>
           </div>
           <div class="block">
-            <label for=""><span>介绍人员工编号：</span></label>
-            <input class="drop-down" type="text" name="referrals_employee_id" placeholder="请输入" id='number_second'>
+            <label for=""><span>介绍人員工編號：</span></label>
+            <input class="drop-down input-number" type="text" name="referrals_employee_id" placeholder="請輸入" id='number_second'>
           </div>
           <div class="block">
             <label for=""><span>联络电话：</span></label>
-              <input class="drop-down" type="text" name="referrals_contact_number" placeholder="请输入" id='referrals_employee_id'>
+              <input class="drop-down" type="text" name="referrals_contact_number" placeholder="請輸入" id='referrals_employee_id'>
           </div>
           <div class="block">
             <label for=""><span>介绍人关系：</span></label>
-            <input class="drop-down" type="text" name="referrals_relationship" placeholder="请输入" id='introd_second'>
+            <input class="drop-down" type="text" name="referrals_relationship" placeholder="請輸入" id='introd_second'>
           </div>
           <div class="block">
-            <label for=""><span>介绍人场馆/职位:</span></label>
+            <label for=""><span>介绍人场馆/职位：</span></label>
             <select class="selectBoxRadioBtnBox jieshao first_change_one" id='introd_deparment_second'>
-              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">請選擇部門</option>
             </select>
           </div>
           <div class="block">
             <label for=""><span></span></label>
            <select class="selectBoxRadioBtnBox change_first_one" id='introd_job_second' name='referrals_location_and_position'>
-              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">請選擇職位</option>
             </select>
           </div>
       </div>
       <div id="content_three" class="content_box content_onlySign">
           <div class="block">
             <label for=""><span>中文姓名：</span></label>
-            <input class="drop-down" type="text" placeholder="请输入" name='chinese_name'>
-            <span class="important">*</span>
+            <div class="field-important">
+              <input class="drop-down" type="text" placeholder="請輸入" name='chinese_name'>
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
             <label for=""><span>外文姓名：</span></label>
-            <input class="drop-down" type="text" name="english_name" placeholder="请输入">
-            <span class="important">*</span>
+            <div class="field-important">
+              <input class="drop-down" type="text" name="english_name" placeholder="請輸入">
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
-            <label for=""><span>昵称：</span></label>
-            <input class="drop-down" type="text" name="nick_name" placeholder="请输入">
+            <label for=""><span>暱稱：</span></label>
+            <input class="drop-down" type="text" name="nick_name" placeholder="請輸入">
           </div>
           <div class="block">
-            <label for=""><span>性别:</span></label>
-            <select class="selectBoxRadioBtnBox gender" name='gender'>
-              <option value="" selected="selected">请选择</option>
-            </select>
-            <span class="important">*</span>
+            <label for=""><span>性别：</span></label>
+            <div class="field-important">
+              <select class="selectBoxRadioBtnBox gender" name='gender'>
+                <option value="" selected="selected">請選擇</option>
+              </select>
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
-            <label for=""><span>婚宴状况:</span></label>
+            <label for=""><span>婚姻状况：</span></label>
             <select class="selectBoxRadioBtnBox applicat" name='applicant_profile_marital_status_key'>
-              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">請選擇</option>
             </select>
           </div>
           <div class="block">
             <label for=""><span>出生日期：</span></label>
-            <input class="drop-down" type="text" placeholder="请输入" name='date_of_birth'>
-            <span class="important">*</span>
+            <div class="field-important">
+              <input class="drop-down" type="text" placeholder="請輸入(DD/MM/YYYY)" name='date_of_birth'>
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
-            <label for=""><span>出生地点：</span></label>
-            <input class="drop-down" type="text" placeholder="请输入" name='place_of_birth'>
+            <label for=""><span>出生地點：</span></label>
+            <input class="drop-down" type="text" placeholder="請輸入" name='place_of_birth'>
           </div>
           <div class="block">
             <label for=""><span>国籍：</span></label>
-            <input class="drop-down" type="text" placeholder="请输入" name='nationality_setting_id'>
+            <input class="drop-down" type="text" placeholder="請輸入" name='nationality_setting_id'>
           </div>
           <div class="block">
-            <label for=""><span>证件类型：</span></label>
-            <input class="drop-down" type="text" placeholder="请输入" name='type_of_id'>
-            <span class="important">*</span>
+            <label for=""><span>證件類型：</span></label>
+            <div class="field-important">
+              <input class="drop-down" type="text" placeholder="請輸入" name='type_of_id'>
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
-            <label for=""><span>证件号码：</span></label>
-            <input class="drop-down" type="text" placeholder="请输入" name='id_number' >
-            <span class="important">*</span>
+            <label for=""><span>證件號碼：</span></label>
+            <div class="field-important">
+              <input class="drop-down" type="text" placeholder="請輸入" name='id_number' >
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
-            <label for="description"><span>住宅/通讯地址：</span></label>
-            <textarea name="applicant_address" cols="30" rows="10" placeholder="请输入"></textarea>
+            <label for="description"><span>住宅/通訊地址：</span></label>
+            <textarea name="applicant_address" cols="30" rows="10" placeholder="請輸入"></textarea>
           </div>
           <div class="block">
-            <label for=""><span>电话号码(住宅):</span></label>
-              <input class="drop-down" name='home_number' name="text" placeholder="请输入" >
+            <label for=""><span>電話號碼(住宅)：</span></label>
+              <input class="drop-down" name='home_number' placeholder="請輸入" >
           </div>
           <div class="block">
-            <label for=""><span>流动电话:</span></label>
-            <input class="drop-down" name='applicant_profile_mobile_number' name="text" placeholder="请输入">
-            <span class="important">*</span>
+            <label for=""><span>流動電話：</span></label>
+            <div class="field-important">
+              <input class="drop-down" name='applicant_profile_mobile_number' placeholder="請輸入">
+              <span class="important">*</span>
+            </div>
           </div>
           <div class="block">
             <label for=""><span>其他电话：</span></label>
-            <input class="drop-down" name='other_phone_number' name="text" placeholder="请输入">
+            <input class="drop-down" name='other_phone_number' placeholder="請輸入">
           </div>
           <div class="block">
-            <label for=""><span>电邮地址：</span></label>
-              <input class="drop-down" name='applicant_profile_email_personal' name="text" placeholder="请输入">
+            <label for=""><span>電郵地址：</span></label>
+              <input class="drop-down" name='applicant_profile_email_personal' placeholder="請輸入">
           </div>
           <div class="block">
-            <label for=""><span>是否申请签证才可在澳门工作：</span></label>
+            <label for=""><span>是否申請簽證才可在澳門工作：</span></label>
             <select class="selectBoxRadioBtnBox" id='' name='required_to_hold_a_working_visa_in_order_to_work_in_the_macau~boolean'>
-              <option value="" selected="selected">请选择</option>
+              <option value="" selected="selected">請選擇</option>
               <option value="1">是</option>
               <option value="0">否</option>
             </select>
           </div>
           <div class="block">
-            <label for="description"><span>录用备注：</span></label>
-            <textarea name="description" cols="30" rows="10" placeholder="请输入" name='recruitment_note'></textarea>
+            <label for="description"><span>錄用備註：</span></label>
+            <textarea cols="30" rows="10" placeholder="請輸入" name='recruitment_note'></textarea>
           </div>
           <div class="block">
-            <label for="description"><span>备注：</span></label>
-            <textarea name="description" cols="30" rows="10" placeholder="请输入" name='comment'></textarea>
+            <label for="description"><span>備註：</span></label>
+            <textarea cols="30" rows="10" placeholder="請輸入" name='comment'></textarea>
           </div>
       </div>
       <!-- 学历信息 -->
@@ -261,10 +282,10 @@
             <div class="radioBtnBox"></div>
           </div>
           <div class="block">
-            <label for=""><span>写：</span></label>
+            <label for=""><span>寫：</span></label>
             <div class="radioBtnBox">
               <span class="radioBtn">
-                <span class="fontstyle">优：</span>
+                <span class="fontstyle">優：</span>
                 <input type="radio" name="chinese|writing" value="excellent" id="chineseWriteOptimal" checked>
                 <label for="chineseWriteOptimal" class="radioLabel"></label>
               </span>
@@ -283,14 +304,14 @@
 
         <!-- 广东话 -->
         <div class="block">
-          <label for=""><span>广东话</span></label>
+          <label for=""><span>廣東話</span></label>
           <div class="radioBtnBox"></div>
         </div>
         <div class="block">
-          <label for=""><span>讲：</span></label>
+          <label for=""><span>講：</span></label>
           <div class="radioBtnBox">
             <span class="radioBtn">
-              <span class="fontstyle">优：</span>
+              <span class="fontstyle">優：</span>
               <input type="radio" name="contanese|speaking" value="excellent" id="cantoneseWriteRadio1" checked>
               <label for="cantoneseWriteRadio1" class="radioLabel"></label>
             </span>
@@ -307,10 +328,10 @@
           </div>
         </div>
         <div class="block">
-          <label for=""><span>听：</span></label>
+          <label for=""><span>聽：</span></label>
           <div class="radioBtnBox">
             <span class="radioBtn">
-              <span class="fontstyle">优：</span>
+              <span class="fontstyle">優：</span>
               <input type="radio" name="contanese|listening" value="excellent" id="chineseListenRadio1" checked>
               <label for="chineseListenRadio1" class="radioLabel"></label>
             </span>
@@ -333,10 +354,10 @@
           <div class="radioBtnBox"></div>
         </div>
         <div class="block">
-          <label for=""><span>讲：</span></label>
+          <label for=""><span>講：</span></label>
           <div class="radioBtnBox">
             <span class="radioBtn">
-              <span class="fontstyle">优：</span>
+              <span class="fontstyle">優：</span>
               <input type="radio" name="mandarin|speaking" value="excellent" id="mandarinWriteRadio1" checked>
               <label for="mandarinWriteRadio1" class="radioLabel"></label>
             </span>
@@ -353,10 +374,10 @@
           </div>
         </div>
         <div class="block">
-          <label for=""><span>听：</span></label>
+          <label for=""><span>聽：</span></label>
           <div class="radioBtnBox">
             <span class="radioBtn">
-              <span class="fontstyle">优：</span>
+              <span class="fontstyle">優：</span>
               <input type="radio" name="mandarin|listening" value="excellent" id="mandarinListenRadio1" checked>
               <label for="mandarinListenRadio1" class="radioLabel"></label>
             </span>
@@ -380,10 +401,10 @@
           <div class="radioBtnBox"></div>
         </div>
         <div class="block">
-          <label for=""><span>讲：</span></label>
+          <label for=""><span>講：</span></label>
           <div class="radioBtnBox">
             <span class="radioBtn">
-              <span class="fontstyle">优：</span>
+              <span class="fontstyle">優：</span>
               <input type="radio" name="english|speaking" value="excellent" id="EnglishWriteRadio1" checked>
               <label for="EnglishWriteRadio1" class="radioLabel"></label>
             </span>
@@ -400,10 +421,10 @@
           </div>
         </div>
         <div class="block">
-          <label for=""><span>听：</span></label>
+          <label for=""><span>聽：</span></label>
           <div class="radioBtnBox">
             <span class="radioBtn">
-              <span class="fontstyle">优：</span>
+              <span class="fontstyle">優：</span>
               <input type="radio" name="english|listening" value="excellent" id="EnglishListenRadio1" checked>
               <label for="EnglishListenRadio1" class="radioLabel"></label>
             </span>
@@ -420,10 +441,10 @@
           </div>
         </div>
         <div class="block">
-          <label for=""><span>写：</span></label>
+          <label for=""><span>寫：</span></label>
           <div class="radioBtnBox">
             <span class="radioBtn">
-              <span class="fontstyle">优：</span>
+              <span class="fontstyle">優：</span>
               <input type="radio" name="english|writing" value="excellent" id="EnglishsWriteOptimal" checked>
               <label for="EnglishsWriteOptimal" class="radioLabel"></label>
             </span>
@@ -446,16 +467,15 @@
           <p class="remove"> - 移除</p>
           <p class="add">+ 添加</p>
         </div>
-        <p class="footer_line"></p>
+        <p class="footer_line footer_line_bottom"></p>
         <div class="block">
           <label for=""><span>电脑技能：</span></label>
-          <textarea name="applicant_language_skill|computer_skill" cols="30" rows="10" placeholder="请输入"></textarea>
+          <textarea name="applicant_language_skill|computer_skill" cols="30" rows="10" placeholder="請輸入"></textarea>
         </div>
         <div class="block">
           <label for=""><span>其他技能：</span></label>
-          <textarea name="applicant_language_skill|language_skill" cols="30" rows="10" placeholder="请输入"></textarea>
+          <textarea name="applicant_language_skill|language_skill" cols="30" rows="10" placeholder="請輸入"></textarea>
         </div>
-        <p class="footer_line"></p>
       </div>
         <!-- 家庭成员信息 -->
       <div class="multi-ul content_eight content_onlySign content_box" style="padding-bottom:0" id="content_eight" data-id="content_eight_ul">
@@ -467,35 +487,33 @@
         <!-- 背景申报 -->
        <div class="content_nine content_onlySign" id="content_nine">
            <div class="block">
-          <label for="" style="line-height: 20px"><span>刑事记录，是否曾因刑事案件被定罪：</span></label>
+          <label for=""><span>刑事紀錄，是否曾因刑事案件被定罪：</span></label>
           <select class="selectBoxRadioBtnBox" name="relative_criminal_record~boolean">
-            <option value="" selected="selected">请选择</option>
+            <option value="" selected="selected">請選擇</option>
             <option value="1" >是</option>
             <option value="0" >否</option>
           </select>
         </div>
         <div class="block">
           <label for=""><span>请列明：</span></label>
-          <textarea name="relative_criminal_record_detail" cols="30" rows="10" placeholder="请输入"></textarea>
+          <textarea name="relative_criminal_record_detail" cols="30" rows="10" placeholder="請輸入"></textarea>
         </div>
         <div class="block">
-          <label for="" style="line-height: 20px"><span>閣下或閣下親屬是否擁有公司與太陽城有生意往來的關係：</span></label>
+          <label for=""><span>閣下或閣下親屬是否擁有公司與太陽城有生意往來的關係：</span></label>
           <select class="selectBoxRadioBtnBox" name="relative_business_relationship_with_suncity~boolean">
-            <option value="" selected="selected">请选择</option>
+            <option value="" selected="selected">請選擇</option>
             <option value="1" >是</option>
             <option value="0" >否</option>
           </select>
         </div>
         <div class="block">
-          <label for="" style="line-height: 20px"><span>閣下或閣下親屬是否擁有太陽城集團所屬各貴賓廳之戶口：</span></label>
+          <label for=""><span>閣下或閣下親屬是否擁有太陽城集團所屬各貴賓廳之戶口：</span></label>
           <select class="selectBoxRadioBtnBox" name="has_suncity_role~boolean">
-            <option value="" selected="selected">请选择</option>
+            <option value="" selected="selected">請選擇</option>
             <option value="1" >是</option>
             <option value="0" >否</option>
           </select>
         </div>
-        <p class="footer_line"></p>
-
        </div>
         <!-- 相关文件 -->
         <div id="content_ten" class="multi-ul content_ten content_onlySign" data-id="content_onlySign_ul">
@@ -559,7 +577,7 @@
                 <input type="checkbox" name="recruitment_route|recruitment_route" id="sunHttp6">
                 <label for="sunHttp6" class="radioLabel"></label>
               </span>
-              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|paper_detail" style="width: 60%">
+              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|paper_detail">
             </div>
           </div>
           <div class="block">
@@ -569,7 +587,7 @@
                 <input type="checkbox" name="recruitment_route|recruitment_route" id="sunHttp7">
                 <label for="sunHttp7" class="radioLabel"></label>
               </span>
-              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|recruitment_web_detail" style="width: 60%">
+              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|recruitment_web_detail">
             </div>
           </div>
           <div class="block">
@@ -579,7 +597,7 @@
                 <input type="checkbox" name="recruitment_route|recruitment_route" id="sunHttp8">
                 <label for="sunHttp8" class="radioLabel"></label>
               </span>
-              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|social_networking_platform_detail" style="width: 60%">
+              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|social_networking_platform_detail">
             </div>
           </div>
           <div class="block">
@@ -589,7 +607,7 @@
                 <input type="checkbox" name="recruitment_route|recruitment_route" id="sunHttp9">
                 <label for="sunHttp9" class="radioLabel"></label>
               </span>
-              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|school_web_detail" style="width: 60%">
+              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|school_web_detail">
             </div>
           </div>
           <div class="block">
@@ -599,7 +617,7 @@
                 <input type="checkbox" name="sunHttp" id="sunHttp10">
                 <label for="sunHttp10" class="radioLabel"></label>
               </span>
-              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|others_detail" style="width: 60%">
+              <input class="drop-down" type="text" placeholder="请列明" name="recruitment_route|others_detail">
             </div>
           </div>
         </div>
@@ -615,23 +633,29 @@
   <div class="multi-template" id="content_five_ul">
     <div class="multi-li content_box">
         <div class="block">
-          <label for=""><span>读书、文凭及专业机构会员资格：</span></label>
-          <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_professional_items.professional_certificate">
-          <span class="important">*</span>
+          <label for=""><span>讀書、文憑及專業機構會員資格：</span></label>
+          <div class="field-important">
+            <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_professional_items.professional_certificate">
+            <span class="important">*</span>
+          </div>
         </div>
         <div class="block">
-          <label for=""><span>颁发机构：</span></label>
-          <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_professional_items.organization">
-          <span class="important">*</span>
+          <label for=""><span>頒發機構：</span></label>
+          <div class="field-important">
+            <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_professional_items.organization">
+            <span class="important">*</span>
+          </div>
         </div>
         <div class="block">
-          <label for=""><span>颁发日期：</span></label>
-          <input class="drop-down" type="text" placeholder="请输入(DD/MM/YYYY)" name="applicant_profile_section_v2_professional_items.issue_date">
-          <span class="important">*</span>
+          <label for=""><span>頒發日期：</span></label>
+          <div class="field-important">
+            <input class="drop-down" type="text" placeholder="請輸入(DD/MM/YYYY)" name="applicant_profile_section_v2_professional_items.issue_date">
+            <span class="important">*</span>
+          </div>
         </div>
         <div class="block">
-          <label for="description"><span>备注：</span></label>
-          <textarea name="applicant_profile_section_v2_professional_items.comment" cols="30" rows="10" placeholder="请输入"></textarea>
+          <label for="description"><span>備註：</span></label>
+          <textarea name="applicant_profile_section_v2_professional_items.comment" cols="30" rows="10" placeholder="請輸入"></textarea>
         </div>
         <p class="footer_line"></p>
     </div>
@@ -640,26 +664,26 @@
   <div class="multi-template" id="content_onlySign_ul">
     <div class="multi-li">
       <div class="block">
-        <label for="" style="line-height: 20px"><span>文件類型：</span></label>
+        <label for=""><span>文件類型：</span></label>
         <select class="selectBoxRadioBtnBox attachment_type_id" name="attachments.applicant_attachment_type_id">
-          <option value="" selected="selected">请选择</option>
+          <option value="" selected="selected">請選擇</option>
         </select>
       </div>
       <div class="block">
-        <label for="" style="line-height: 20px"><span>上傳文件：</span></label>
+        <label for=""><span>上傳文件：</span></label>
         <div class="selectBoxRadioBtnBoxFileWrap">
-          <input class="selectBoxRadioBtnBoxValue" placeholder="请选择" />
+          <input class="selectBoxRadioBtnBoxValue" placeholder="請選擇" />
           <input class="selectBoxRadioBtnBoxFile" type="file" placeholder='请上传'/>
           <input type="hidden" class="selectBoxRadioBtnBoxFileId" name="attachments.attachment_id"/>
         </div>
       </div>
       <div class="block">
         <label for=""><span>文件名稱：</span></label>
-        <input class="drop-down" name="attachments.file_name" type="text" placeholder="请输入">
+        <input class="drop-down" name="attachments.file_name" type="text" placeholder="請輸入">
       </div>
       <div class="block">
-        <label for="" style="line-height: 20px"><span>備註：</span></label>
-        <textarea name="attachments.description" cols="30" rows="10" placeholder="请输入"></textarea>
+        <label for=""><span>備註：</span></label>
+        <textarea name="attachments.description" cols="30" rows="10" placeholder="請輸入"></textarea>
       </div>
       <p class="footer_line"></p>
     </div>
@@ -668,58 +692,64 @@
   <div class="multi-template" id="content_eight_ul">
     <div class="multi-li">
       <div class="block">
-        <label for=""><span>关系：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_family_member_items.relation_ship">
-        <span class="important">*</span>
+        <label for=""><span>關係：</span></label>
+        <div class="field-important">
+          <select class="selectBoxRadioBtnBox relation_ship" name="applicant_profile_section_v2_family_member_items.relation_ship">
+            <option value="" selected="selected">請選擇</option>
+          </select>
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
         <label for=""><span>中文名字：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_family_member_items.chinese_name">
+        <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_family_member_items.chinese_name">
       </div>
       <div class="block">
         <label for=""><span>外文名字：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_family_member_items.english_name">
+        <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_family_member_items.english_name">
       </div>
       <div class="block">
         <label for=""><span>性别：</span></label>
         <select class="selectBoxRadioBtnBox gender" name="applicant_profile_section_v2_family_member_items.gender">
-          <option value="" selected="selected">请选择</option>
+          <option value="" selected="selected">請選擇</option>
         </select>
       </div>
       <div class="block">
         <label for=""><span>出生日期：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入(DD/MM/YYYY)" name="applicant_profile_section_v2_family_member_items.birth_date">
+        <input class="drop-down" type="text" placeholder="請輸入(DD/MM/YYYY)" name="applicant_profile_section_v2_family_member_items.birth_date">
       </div>
       <div class="block">
-        <label for=""><span>联络电话：</span></label>
-                      <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_family_member_items.phone_number">
+        <label for=""><span>聯絡電話：</span></label>
+                      <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_family_member_items.phone_number">
 
       </div>
       <div class="block">
-        <label for=""><span>是否现职本公司</span></label>
-          <select class="selectBoxRadioBtnBox " name="applicant_profile_section_v2_family_member_items.in_service~boolean">
-          <option value="" selected="selected">请选择</option>
-          <option value="1" >是</option>
-          <option value="0" >否</option>
-        </select>
-        <span class="important">*</span>
+        <label for=""><span>是否現職本公司：</span></label>
+        <div class="field-important">
+          <select class="selectBoxRadioBtnBox in-service-select" name="applicant_profile_section_v2_family_member_items.in_service~boolean">
+            <option value="" selected="selected">請選擇</option>
+            <option value="1" >是</option>
+            <option value="0" >否</option>
+          </select>
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for=""><span>部门：</span></label>
+        <label for=""><span>部門：</span></label>
         <select class="selectBoxRadioBtnBox deparment first_change_one" name="applicant_profile_section_v2_family_member_items.department">
-          <option value="" selected="selected">请选择</option>
+          <option value="" selected="selected">請選擇部門</option>
         </select>
       </div>
       <div class="block">
-        <label for=""><span>职位：</span></label>
+        <label for=""><span>職位：</span></label>
         <select class="selectBoxRadioBtnBox jobs change_first_one" name="applicant_profile_section_v2_family_member_items.position">
-          <option value="" selected="selected">请选择</option>
+          <option value="" selected="selected">請選擇職位</option>
         </select>
       </div>
       <div class="block">
-        <label for=""><span>是否紧急联系人</span></label>
+        <label for=""><span>是否緊急聯絡人：</span></label>
         <select class="selectBoxRadioBtnBox" name="applicant_profile_section_v2_family_member_items.emergency_contact~boolean">
-          <option value="" selected="selected">请选择</option>
+          <option value="" selected="selected">請選擇</option>
           <option value="1" >是</option>
           <option value="0" >否</option>
         </select>
@@ -732,13 +762,13 @@
     <div class="multi-li">
       <div class="block">
         <label for=""><span>其他：</span></label>
-        <input class="drop-down" type="text" name="other|name" placeholder="请输入">
+        <input class="drop-down" type="text" name="other|name" placeholder="請輸入">
       </div>
       <div class="block">
-        <label for=""><span>讲：</span></label>
+        <label for=""><span>講：</span></label>
         <div class="radioBtnBox">
           <span class="radioBtn">
-            <span class="fontstyle">优：</span>
+            <span class="fontstyle">優：</span>
             <input type="radio" name="other|speaking" value="excellent" id="otherWriteRadio1" checked>
             <label for="otherWriteRadio1" class="radioLabel"></label>
           </span>
@@ -755,10 +785,10 @@
         </div>
       </div>
       <div class="block">
-        <label for=""><span>听：</span></label>
+        <label for=""><span>聽：</span></label>
         <div class="radioBtnBox">
           <span class="radioBtn">
-            <span class="fontstyle">优：</span>
+            <span class="fontstyle">優：</span>
             <input type="radio" name="other|listening" value="excellent" id="otherListenRadio1" checked>
             <label for="otherListenRadio1" class="radioLabel"></label>
           </span>
@@ -775,10 +805,10 @@
         </div>
       </div>
       <div class="block">
-        <label for=""><span>写：</span></label>
+        <label for=""><span>寫：</span></label>
         <div class="radioBtnBox">
           <span class="radioBtn">
-            <span class="fontstyle">优：</span>
+            <span class="fontstyle">優：</span>
             <input type="radio" name="other|writing" value="excellent" id="othersWriteOptimal" checked>
             <label for="othersWriteOptimal" class="radioLabel"></label>
           </span>
@@ -801,48 +831,59 @@
   <div class="multi-template" id="content_six_ul">
     <div class="multi-li content_box">
       <div class="block">
-        <label for=""><span>任职公司：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.company_organization">
-        <span class="important">*</span>
+        <label for=""><span>任職公司：</span></label>
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.company_organization">
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for=""><span>职位：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.work_experience_position">
-        <span class="important">*</span>
+        <label for=""><span>職位：</span></label>
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_position">
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
         <label for=""><span>由(月/年)：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入(DD/MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_from">
-        <span class="important">*</span>
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_from">
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
         <label for=""><span>至(月/年)：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入(DD/MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_to_text">
-        <span class="important">*</span>
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_to_text">
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
         <label for="description"><span>工作概要：</span></label>
-        <textarea name="description" cols="30" rows="10" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.job_description"></textarea>
+        <textarea cols="30" rows="10" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.job_description"></textarea>
       </div>
       <div class="block">
         <label for=""><span>現時/離職時每月薪金(元/月)：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.work_experience_salary" />
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_salary" />
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for="description"><span>离职原因：</span></label>
-        <textarea name="applicant_profile_section_v2_work_experience_items.work_experience_reason_for_leaving" cols="30" rows="10" placeholder="请输入"></textarea>
+        <label for="description"><span>離職原因：</span></label>
+        <textarea name="applicant_profile_section_v2_work_experience_items.work_experience_reason_for_leaving" cols="30" rows="10" placeholder="請輸入"></textarea>
       </div>
       <div class="block">
-        <label for=""><span>公司电话：</span></label>
-          <input class="drop-down" type="text" name="text" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.work_experience_company_phone_number" />
+        <label for=""><span>公司電話：</span></label>
+          <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_company_phone_number" />
       </div>
       <div class="block">
         <label for=""><span>前負責人/上司姓名：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.former_head">
+        <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.former_head">
       </div>
       <div class="block">
-        <label for=""><span>个人电子邮件：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.work_experience_email">
+        <label for=""><span>個人電子郵件：</span></label>
+        <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_email">
       </div>
       <p class="footer_line"></p>
     </div>
@@ -851,64 +892,86 @@
   <div class="multi-template" id="content_for_ul">
     <div class="multi-li content_box">
       <div class="block">
-        <label for=""><span>由(月/年)入学：</span></label>
-        <input class="drop-down" type="text" placeholder="请输入(MM/YYYY)" name="applicant_profile_section_v2_education_items.from_mm_yyyy[]">
-        <span class="important">*</span>
+        <label for=""><span>由(月/年)入學：</span></label>
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_education_items.from_mm_yyyy">
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for=""><span>至(月/年)毕业：</span></label>
-        <input class="drop-down" type="text" name="text" placeholder="请输入(MM/YYYY)" name="applicant_profile_section_v2_education_items.to_mm_yyyy">
-        <span class="important">*</span>
+        <label for=""><span>至(月/年)畢業：</span></label>
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_education_items.to_mm_yyyy">
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for=""><span>毕业学校：</span></label>
-        <input class="drop-down" type="text" name="text" placeholder="请输入" name="applicant_profile_section_v2_education_items.graduated_school">
-        <span class="important">*</span>
+        <label for=""><span>畢業學校：</span></label>
+        <div class="field-important">
+          <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_education_items.graduated_school">
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for=""><span>学历程度:</span></label>
-        <select class="selectBoxRadioBtnBox study" name="applicant_profile_section_v2_education_items.diploma_degree_attained_key">
-        <option value="" selected="selected">请选择</option>
-      </select>
-        <span class="important">*</span>
+        <label for=""><span>學歷程度：</span></label>
+        <div class="field-important">
+          <select class="selectBoxRadioBtnBox study" name="applicant_profile_section_v2_education_items.diploma_degree_attained_key">
+            <option value="" selected="selected">請選擇</option>
+          </select>
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for=""><span>颁发年份：</span></label>
-        <input class="drop-down" type="text" name="applicant_profile_section_v2_education_items.certificate_issue_year" placeholder="请输入">
+        <label for=""><span>頒發年份：</span></label>
+        <input class="drop-down" type="text" name="applicant_profile_section_v2_education_items.certificate_issue_year" placeholder="請輸入(YYYY)">
       </div>
       <div class="block">
-        <label for=""><span>学位及专业：</span></label>
-        <input class="drop-down" type="text" name="applicant_profile_section_v2_education_items.educational_department_text" placeholder="请输入">
+        <label for=""><span>學位及專業：</span></label>
+        <input class="drop-down" type="text" name="applicant_profile_section_v2_education_items.educational_department_text" placeholder="請輸入">
       </div>
       <div class="block">
-        <label for=""><span>是否毕业:</span></label>
-        <select class="selectBoxRadioBtnBox" name="applicant_profile_section_v2_education_items.graduated~boolean">
-          <option value="" selected="selected">请选择</option>
-          <option value="1" >是</option>
-          <option value="0" >否</option>
-        </select>
-        <span class="important">*</span>
+        <label for=""><span>是否畢業：</span></label>
+        <div class="field-important">
+          <select class="selectBoxRadioBtnBox" name="applicant_profile_section_v2_education_items.graduated~boolean">
+            <option value="" selected="selected">請選擇</option>
+            <option value="1" >是</option>
+            <option value="0" >否</option>
+          </select>
+          <span class="important">*</span>
+        </div>
       </div>
       <div class="block">
-        <label for=""><span>是否最高学历：</span></label>
-        <select class="selectBoxRadioBtnBox " name="applicant_profile_section_v2_education_items.highest~boolean">
-        <option value="" selected="selected">请选择</option>
-        <option value="1" >是</option>
-        <option value="0" >否</option>
-      </select>
-        <span class="important">*</span>
+        <label for=""><span>是否最高學歷：</span></label>
+        <div class="field-important">
+          <select class="selectBoxRadioBtnBox " name="applicant_profile_section_v2_education_items.highest~boolean">
+            <option value="" selected="selected">請選擇</option>
+            <option value="1" >是</option>
+            <option value="0" >否</option>
+          </select>
+          <span class="important">*</span>
+        </div>
       </div>
       <p class="footer_line"></p>
     </div>
   </div>
+  <div class="multi-template" id="relate-user-id">
+    <div class="block relate-user-id-block">
+        <label for=""><span>員工編號：</span></label>
+        <div class="field-important">
+            <input class="drop-down input-number" type="text" placeholder="請輸入" name="applicant_profile_section_v2_family_member_items.relate_user_id">
+          <span class="important">*</span>
+        </div>
+      </div>
+  </div>
   {{> footer}}
   <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
+  <script src="/static/js/vender/multiple-select/multiple-select.min.js"></script>
   <script src="/static/js/vender/wow.min.js"></script>
   <script src="/static/js/footer.js"></script>
   <script src="/static/js/header.js"></script>
   <script src="/static/js/vender/utility.js"></script>
   {{! <script src="/static/js/hreflang.js"></script> }}
-  <script src="/static/js/application.js"></script>
+  <script src="/static/js/application.js?v19062101"></script>
 </body>
 
 </html>

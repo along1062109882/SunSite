@@ -4,6 +4,31 @@ $(function () {
     var isHans = location.pathname.indexOf('/zh-hans') != -1;
     var paramDatas = {};
 
+    $('body').on('change', 'select', function(){
+        if ($(this).val() === '') {
+            $(this).css('color', '#b5b5b6')
+            return;
+        } else {
+            $(this).css('color', '#49443d')
+        }
+    })
+
+    $('body').on('input', '.input-number',function(){
+        var c=$(this);
+        if(/[^\d]/.test(c.val())){
+         var temp_amount=c.val().replace(/[^\d]/g,'');
+         $(this).val(temp_amount);
+        }
+    })
+
+    $('body').on('change', '.in-service-select',function(){
+        if (String($(this).val()) === '1') {
+            $(this).closest('.block').after($('#relate-user-id').html());
+        } else {
+            $('.relate-user-id-block', $(this).closest('.multi-ul')).remove();
+        }
+    })
+
     // 初始化多列表
     $('.multi-ul').each(function() {
         $multiUl = $(this);
@@ -44,7 +69,6 @@ $(function () {
         $('.multi-main', $multiUl).append($multiLi)
     })
 
-
     // 多列表删除
     $('.remove').on('click', function() {
 
@@ -69,7 +93,7 @@ $(function () {
             $('.success').show();
             $('.next').hide();
         } else {
-            $('.success').show()
+            $('.success').hide()
             $('.next').show();
         }
         switch(num) {
@@ -186,32 +210,47 @@ $(function () {
                     }
                     
                     //判断下拉框是否选择
-                    const current_el_select_is_null = $(el_item).siblings('.selectBoxRadioBtnBox').children();
-                    current_el_select_is_null.each( (inde_key,op_elItem) =>{
+                    const current_el_select_is_null = $(el_item).siblings('.selectBoxRadioBtnBox').val();
+                    
+                    console.log(Object.prototype.toString.call(current_el_select_is_null));
+                    if(
+                        current_el_select_is_null === '' ||
+                         (
+                             Object.prototype.toString.call(current_el_select_is_null) == '[object Array]' && 
+                             current_el_select_is_null.length === 0
+                         )
+                        ){
+                            
+                        elvalue_isNull = false;
+                        return
+                    }
+                    /*current_el_select_is_null.each( (inde_key,op_elItem) =>{
                         if($(op_elItem).prop('selected')){
                             if($(op_elItem).html()  === '请选择' || $(op_elItem).html()  === '请選擇' ){
                                 elvalue_isNull = false;
                                 return
                             }
                         }
-                    })
+                    })*/
                 })
             }
         })
 
+        /*
         if(!elvalue_isNull){
-            alert('请填写必填项')
+            alert(isHans ? '请填写必填项' : '請輸入必填項')
             return
-        }        // console.log($('.container div').length)
-
+        }
+*/
         num += 1;
         if (num >= 10  ) num = 10;
-        console.log(num)
+
         chage_num(num)
         $('.pagination_content li').eq(num-1).find('b').show();
         $('.pagination_content li').eq(num).find('span').css({'background':'#a19062'});
         
     })
+
     // 点击上一步事件
     $('.prev').on('click', function () {
         num -= 1;
@@ -227,9 +266,14 @@ $(function () {
             case 'boolean':
                 value = value === '' || value === '0' ? false : true;
                 break;
+            case 'int':
+                value = Number(value);
+                break;
         }
         return value;
     }
+
+    var submiting = false;
 
     $('.success').on('click', function() {
         var submitFormObject = {};
@@ -254,10 +298,7 @@ $(function () {
                 if (name === 'working_region') {
                     submitFormObject[name] = submitFormData.getAll(name)
                 } else {
-                    
-                    if (value) {
-                        submitFormObject[name] = value
-                    }
+                    submitFormObject[name] = value
                 }
 
             } else if (isArr) {
@@ -291,9 +332,15 @@ $(function () {
                         value = tranType(names[1], value);
                     }
 
-                    if (value) {
-                        itemObj[name] = value;
-                    }
+                    itemObj[name] = value;
+                }
+
+                // 工作经验写死至xx的值
+                if (item == 'applicant_profile_section_v2_work_experience_items') {
+                    itemObj['work_experience_to_key'] = 'left'
+                } else if (item == 'applicant_profile_section_v2_family_member_items') {
+
+                    itemObj['input_type'] = 'manual_input';
                 }
 
                 arr.push(itemObj);
@@ -336,12 +383,14 @@ $(function () {
         for(var i=0; i<multiLiLen; i++) {
             var stuff = i === 0 ? '' : '|'+i;
 
-            applicant_language_skill_items.push({
-                name: submitFormData.get('other|name'+stuff),
-                listening: submitFormData.get('other|listening'+stuff),
-                speaking: submitFormData.get('other|speaking'+stuff),
-                writing: submitFormData.get('other|writing'+stuff),
-            })
+            if(submitFormData.get('other|name'+stuff)) {
+                applicant_language_skill_items.push({
+                    name: submitFormData.get('other|name'+stuff),
+                    listening: submitFormData.get('other|listening'+stuff),
+                    speaking: submitFormData.get('other|speaking'+stuff),
+                    writing: submitFormData.get('other|writing'+stuff),
+                })
+            }
         }
 
         submitFormObject['applicant_language_skill'] = {
@@ -360,9 +409,10 @@ $(function () {
             others_detail: submitFormData.get('recruitment_route|others_detail'),
         }
 
-        console.log(submitFormObject);
 
-        
+        if (submiting) return
+        submiting = true;
+
         $.ajax({
             url:"/zh-hant/jobCommit",
             type: "POST",
@@ -371,9 +421,14 @@ $(function () {
                 data: submitFormObject
             },
             success: function (data) {
-                
+                if (data.msg == 'success') {
+                    alert(isHans ? '提交成功！': '提交成功！')
+                    window.location.reload();
+                }
+                submiting = false;
             },
             error: function () {
+                submiting = false;
                 console.log('error', error)
             }
         })
@@ -411,11 +466,15 @@ $(function () {
         url:"/zh-hant/getParam",
         type:"GET",
         success: function (data) {
+            var allRegio = [];
+
             paramDatas = data;
             
             var Str_region = '';
             // 地区选择
             for (var i = 0; i < data.working_region.length; i++) {
+                allRegio.push(data.working_region[i].chinese_name);
+
                 Str_region += `<option id='${data.working_region[i].key}' value='${data.working_region[i].key}'>${data.working_region[i].chinese_name}</option>`
             }
             var change_first_str = '', second_str = '';
@@ -459,6 +518,11 @@ $(function () {
                 attachment_type += `<option value='${item.id}'>${(isHans ? item.simple_chinese_name : item.chinese_name)}</option>`;
             });
 
+            var relation_ship = ''
+            data.relation_ship.forEach((item, index) => {
+                relation_ship += `<option value='${item.key}'>${(isHans ? item.simple_chinese_name : item.chinese_name)}</option>`;
+            });
+
             $('.region').append(Str_region);
             $('.change_first').append(change_first_str);
             $('.second_str').append(second_str);
@@ -469,6 +533,17 @@ $(function () {
             $('.study').append(study);
             $('.deparment').append(change_first_str);
             $('.attachment_type_id').append(attachment_type);
+            $('.relation_ship').append(relation_ship);
+            
+            $('.region_one').multipleSelect({
+                minimumCountSelected: 100,
+                selectAll: false,
+                formatAllSelected () {
+                    return allRegio.join(', ');
+                },
+                placeholder: isHans ? '请选择' : '请選擇',
+                width: '300px'
+            });
         },
         error: function () {
             console.log('error', error)
@@ -478,7 +553,7 @@ $(function () {
     $('body').on('change', '.first_change_one', function() {
         var firstChangeOneId = $(this).val();
         var choiceIdLen = paramDatas.choice_id.length;
-        var firstTwoStr = '<option value="" selected="selected">请选择</option>';
+        var firstTwoStr = '<option value="" selected="selected">'+(isHans ? '请选择职位' : '请選擇職位')+'</option>';
 
         for (var i=choiceIdLen-1; i>=0; i--) {
             if(paramDatas.choice_id[i].id == firstChangeOneId) {
@@ -488,13 +563,13 @@ $(function () {
             }
         }
 
-        $('.change_first_one', $(this).closest('.content_box')).html(firstTwoStr);
+        $('.change_first_one', $(this).closest('.content_box')).html(firstTwoStr).css('color', '#b5b5b6');
     })
 
     $('.second_change_one').on('change', function() {
         var firstChangeId = $(this).val();
         var choiceIdLen = paramDatas.choice_id_v2.length;
-        var firstTwoStr = '<option value="" selected="selected">请选择</option>';
+        var firstTwoStr = '<option value="" selected="selected">'+(isHans ? '请选择职位' : '请選擇職位')+'</option>';
 
         for (var i=choiceIdLen-1; i>=0; i--) {
             if(paramDatas.choice_id_v2[i].id == firstChangeId) {
@@ -504,7 +579,7 @@ $(function () {
             }
         }
 
-        $('.change_second_one', $(this).closest('.content_box')).html(firstTwoStr);
+        $('.change_second_one', $(this).closest('.content_box')).html(firstTwoStr).css('color', '#b5b5b6');
     })
 
 });
