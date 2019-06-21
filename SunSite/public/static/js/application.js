@@ -56,7 +56,6 @@ $(function () {
             var multiLiLen = $('.multi-main .multi-li', $multiUl).length;
             
             $('input[name^="other|"]', $multiLi).each(function() {
-                console.log($(this).attr('name')+'|'+multiLiLen);
                 $(this).attr('name', $(this).attr('name')+'|'+multiLiLen);
                 $(this).attr('id', $(this).attr('id')+'|'+multiLiLen);
             })
@@ -212,7 +211,6 @@ $(function () {
                     //判断下拉框是否选择
                     const current_el_select_is_null = $(el_item).siblings('.selectBoxRadioBtnBox').val();
                     
-                    console.log(Object.prototype.toString.call(current_el_select_is_null));
                     if(
                         current_el_select_is_null === '' ||
                          (
@@ -236,12 +234,11 @@ $(function () {
             }
         })
 
-        /*
         if(!elvalue_isNull){
             alert(isHans ? '请填写必填项' : '請輸入必填項')
             return
         }
-*/
+
         num += 1;
         if (num >= 10  ) num = 10;
 
