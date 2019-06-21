@@ -9,6 +9,7 @@ use app\index\model\GrandPrix;
 use app\index\model\LinkTarget;
 use app\index\model\PostCategories;
 use app\index\model\Posts;
+use app\index\model\Token;
 use Aws\Api;
 use Aws\Aws;
 use think\Controller;
@@ -27,6 +28,43 @@ class Index extends Controller
         'zh-hans'=>1,
         'en'=>2
     ];
+
+    public function getToken(){
+        $token='';
+        $token_data = Token::field('id,access_key,update_time')->find();
+        if(!$token_data){
+            $json = [
+                "identity"=>"90000002",
+                "password"=>"123456"
+            ];
+            $api = Api::postCurl('json_web_token','',$json);
+            if(isset($api['data']) && !empty($api['data'])){
+                $token = $api['data']['token'];
+                $new = new Token();
+                $new->access_key = $token;
+                $new->save();
+            }
+        }else{
+            if(strtotime($token_data['update_time']) + 3600*24*10 <= time()){
+                $json = [
+                    "identity"=>"90000002",
+                    "password"=>"123456"
+                ];
+                $api = Api::postCurl('json_web_token','',$json);
+                if(isset($api['data']) && !empty($api['data'])){
+                    $token = $api['data']['token'];
+                    $new = Token::find(['id'=>$token_data['id']]);
+                    $new->access_key = $token;
+                    $new->save();
+                }
+            }else{
+                $token = $token_data['access_key'];
+            }
+        }
+        return $token;
+    }
+
+
     //排序二维数组
     public function order($arrUsers,$field,$order='SORT_DESC'){
         $sort = array(
@@ -755,16 +793,9 @@ class Index extends Controller
 
     public function getParam(){
         $cache = cache('params');
-
         if(!$cache){
-            $json = [
-                "identity"=>"90000002",
-                "password"=>"123456"
-            ];
-            $api = Api::postCurl('json_web_token','',$json);
-
-            if(isset($api['data']) && !empty($api['data'])){
-                $token = $api['data']['token'];
+            $token = $this->getToken();
+            if($token){
                 $data = Api::getCurl('applicant_profiles/import_options',$token);
                 if($data){
                     $cache = $data;
@@ -777,14 +808,9 @@ class Index extends Controller
 
     public function jobUpload(){
         if($_FILES){
-            $json = [
-                "identity"=>"90000002",
-                "password"=>"123456"
-            ];
             $tmp = $_FILES['file']['tmp_name'];
-            $api = Api::postCurl('json_web_token','',$json);
-            if(isset($api['data']) && !empty($api['data'])){
-                $token = $api['data']['token'];
+            $token = $this->getToken();
+            if($token){
                 $data = Api::uploadCurl('attachments',$token,$tmp);
                 if(isset($data['state']) && $data['state'] == 'success'){
                     return ['code'=>0,'msg'=>'success','id'=>$data['data']['id']];
@@ -796,14 +822,8 @@ class Index extends Controller
 
     public function jobCommit(){
         $jsonData = isset($_REQUEST['data'])?$_REQUEST['data']:[];
-        $json = [
-            "identity"=>"90000002",
-            "password"=>"123456"
-        ];
-        $api = Api::postCurl('json_web_token','',$json);
-
-        if(isset($api['data']) && !empty($api['data'])){
-            $token = $api['data']['token'];
+        $token = $this->getToken();
+        if($token){
             $data = Api::postCurl('applicant_profiles',$token,$jsonData);
             if(isset($data['state']) && $data['state'] == 'success'){
                 return ['code'=>0,'msg'=>'success'];
