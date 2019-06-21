@@ -2,6 +2,7 @@
 
 ## ./create sunpeople/cms
 rm -rf docker/html
+chmod -R 777 ./SunSite/runtime/
 cp -rp SunSite docker/html
 docker build -t $1 docker
 

@@ -219,28 +219,28 @@ $(function () {
                 res.PostPreviews.forEach(item => {
                    item.cover_link === null ? str+= '':
                    str+= `
-                      <p><a href="${item.cover_link === null ? '' :item.cover_link.url}" target='_blank'>${item.title}</a></p>
+                      <p><a target='_blank'>${item.title}</a></p>
                    `
                 })
                 $('.release_content').empty().append(str)
                 var Pagination_str = '';
                 var pages_str = '';
                     res.Paging.Pages.forEach((item, index) => {
-                        pages_str += `<a class="news-page ${index === 0 ?  'active' :''}" href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${item.No}">${item.No}</a>`;
+                        pages_str += `<a class="news-page ${index === page ?  'active' :''}">${item.No}</a>`;
                     })
                     
                     Pagination_str = `
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=1">
+                    <a>
                         <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
                     </a>
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.PreviousPage}">
+                    <a>
                         <img src="/static/imgs/next-page.svg" class="first-page">
                     </a>
                     ${pages_str}
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.NextPage}">
+                    <a>
                         <img src="/static/imgs/next-page.svg" class="next-page">
                     </a>
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.LastPage}">
+                    <a>
                         <img src="/static/imgs/last-page-botton.svg" class="last-page-button">
                     </a>`
                 $('.release_content').empty().append(str);
@@ -248,6 +248,42 @@ $(function () {
             }
         })
     }
+     // 分页按钮筛选
+     $('.news-page-wrapper').on('click', '.news-page' ,function () {
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        $(this).addClass('active').siblings().removeClass('active');
+        filter_search(newYears, keyword, Number($(this).text()));
+    })
+    // 首页
+    $('.news-page-wrapper').on('click','.first-page-button' ,function () {
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, 1);
+    })
+    // 上一页
+    $('.news-page-wrapper').on('click','.first-page' ,function () {
+        var page = Number($('.active').text());
+        page <= 1 ? page = 1 : page -= 1
+        // $()
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, page);
+    })
+     // 下一页
+     $('.news-page-wrapper').on('click','.next-page' ,function () {
+        var page = Number($('.active').text());
+        page >= $('.news-page-wrapper .news-page').length ? page = $('.news-page-wrapper .news-page').length : page += 1
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, page);
+    })
+    // 尾页
+    $('.news-page-wrapper').on('click','.last-page-button' ,function () {
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, $('.news-page').length);
+    })
     // 输入框内容匹配进行模糊搜索   
     $('.search_btn').on('click', function() {
         filter_search();

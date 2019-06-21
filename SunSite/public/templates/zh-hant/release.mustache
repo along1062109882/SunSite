@@ -67,7 +67,7 @@
                 </span>
                 <ol class='filter-list'>
                   {{#Years}}
-                    <li><a href="#">{{.}}</a></li>
+                    <li><a>{{.}}</a></li>
                   {{/Years}}
                 </ol>
               </li>
@@ -94,19 +94,19 @@
         <div class="news-page-wrapper">
           {{#Paging}}
           <!--a href="/{{LanguageDisplay}}/{{CurrentRootCategory.slug}}/category/{{CurrentCategorySlug}}?page={{FirstPage}}"-->
-          <a href="/{{LanguageDisplay}}/release?year={{Year}}&page=1">
+          <a>
             <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
           </a>
-          <a href="/{{LanguageDisplay}}/release?year={{Year}}&page={{PreviousPage}}">
+          <a>
             <img src="/static/imgs/next-page.svg" class="first-page">
           </a>
           {{#Pages}}
           <a class="news-page" href="/{{LanguageDisplay}}/release?year={{Year}}&page={{No}}">{{No}}</a>
           {{/Pages}}
-          <a href="/{{LanguageDisplay}}/release?year={{Year}}&page={{NextPage}}">
+          <a>
             <img src="/static/imgs/next-page.svg" class="next-page">
           </a>
-          <a href="/{{LanguageDisplay}}/release?year={{Year}}&page={{LastPage}}">
+          <a>
             <img src="/static/imgs/last-page-botton.svg" class="last-page-button">
           </a>
           {{/Paging}}

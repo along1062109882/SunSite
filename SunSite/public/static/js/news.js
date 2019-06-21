@@ -207,9 +207,13 @@ $(function () {
          if ($('#drop-down-year').val() == $('.filter-list li').last().text()) {
             $('.yearPrev img').css({"opacity": 0.5, 'cursor':'not-allowed'});
             $('.yearPrev').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'})
+            $('.yearNext img').css({"opacity": 1, 'cursor':'pointer'});
+            $('.yearNext').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
          } else if ($('#drop-down-year').val() == $('.filter-list li').eq(0).text()){ 
             $('.yearNext img').css({"opacity": 0.5, 'cursor':'not-allowed'});
             $('.yearNext').css({'border':'solid 1px #a1906282', 'cursor':'not-allowed'});
+            $('.yearPrev img').css({"opacity": 1, 'cursor':'pointer'});
+            $('.yearPrev').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
          } else {
             $('.yearPrev img').css({"opacity": 1, 'cursor':'pointer'});
             $('.yearPrev').css({'border':'solid 1px  #a19062', 'cursor':'pointer'});
@@ -222,6 +226,7 @@ $(function () {
             $(this).children('a')[0].click();
         });
     }
+    var num = 1;
     function search(lan, years, keyword){
         $.ajax({
             type: 'POST',
@@ -229,6 +234,7 @@ $(function () {
             data: {year: years, key: keyword},
             success: function (data) {
                 console.log(data)
+                num = data.Paging.PageCount
                 // var must = new Mustache();
                 Mustache.render('.news-container',data);
                 $('.news-container').html(Mustache.render('.news-container',data))
@@ -273,37 +279,64 @@ $(function () {
                     })
                     
                     Pagination_str = `
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=1">
+                    <a>
                         <img src="/static/imgs/last-page-botton.svg" class="first-page-button">
                     </a>
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.PreviousPage}">
+                    <a>
                         <img src="/static/imgs/next-page.svg" class="first-page">
                     </a>
                     ${pages_str}
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.NextPage}">
+                    <a>
                         <img src="/static/imgs/next-page.svg" class="next-page">
                     </a>
-                    <a href="/${res.LanguageDisplay}/news?year=${res.Year}&page=${res.Paging.LastPage}">
+                    <a>
                         <img src="/static/imgs/last-page-botton.svg" class="last-page-button">
                     </a>`
                 $('.news-container').empty().append(str);
                 $('.news-page-wrapper').empty().append(Pagination_str);
+                // return false;
             }
         })
     }
     // 分页按钮筛选
     $('.news-page-wrapper').on('click', '.news-page' ,function () {
-        console.log($(this).text())
         var newYears = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
         $(this).addClass('active').siblings().removeClass('active');
         filter_search(newYears, keyword, Number($(this).text()));
     })
     // 首页
-    $('.first-page-button').on('click', function () {
+    $('.news-page-wrapper').on('click','.first-page-button' ,function () {
         var newYears = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
         filter_search(newYears, keyword, 1);
+    })
+    // 上一页
+    $('.news-page-wrapper').on('click','.first-page' ,function () {
+        console.log($('.active').text())
+        var page = Number($('.active').text());
+        page <= 1 ? page = 1 : page -= 1
+        // $()
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, page);
+    })
+     // 下一页
+     $('.news-page-wrapper').on('click','.next-page' ,function () {
+        console.log($('.active').text())
+        var page = Number($('.active').text());
+        // page += 1;
+        page >= $('.news-page-wrapper .news-page').length ? page = $('.news-page-wrapper .news-page').length : page += 1
+        // $()
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, page);
+    })
+    // 尾页
+    $('.news-page-wrapper').on('click','.last-page-button' ,function () {
+        var newYears = $('.drop-down input').val();
+        var keyword = $('#filter_search').val()
+        filter_search(newYears, keyword, $('.news-page').length);
     })
     // 输入框内容匹配进行模糊搜索
     $('.search_btn').on('click', function() {
