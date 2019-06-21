@@ -20,14 +20,14 @@ $(function () {
          $(this).val(temp_amount);
         }
     })
-
-    $('body').on('change', '.in-service-select',function(){
-        if (String($(this).val()) === '1') {
-            $(this).closest('.block').after($('#relate-user-id').html());
-        } else {
-            $('.relate-user-id-block', $(this).closest('.multi-ul')).remove();
-        }
-    })
+    // 這段代碼是用於 測試
+    // $('body').on('change', '.in-service-select',function(){
+    //     if (String($(this).val()) === '1') {
+    //         $(this).closest('.block').after($('#relate-user-id').html());
+    //     } else {
+    //         $('.relate-user-id-block', $(this).closest('.multi-ul')).remove();
+    //     }
+    // })
 
     // 初始化多列表
     $('.multi-ul').each(function() {
@@ -87,6 +87,8 @@ $(function () {
     var mar_left = 0;
     // 点击下一步执行事件
     function chage_num(num) {
+        // 為了每次點擊頁面，頁面重新回到初始位置‘
+        $("html,body").animate({scrollTop:0},10);
         num === 0 ? $('.prev').hide() : $('.prev').show();
         if (num === 10) {
             $('.success').show();
@@ -234,10 +236,10 @@ $(function () {
             }
         })
 
-        if(!elvalue_isNull){
-            alert(isHans ? '请填写必填项' : '請輸入必填項')
-            return
-        }
+        // if(!elvalue_isNull){
+        //     alert(isHans ? '请填写必填项' : '請輸入必填項')
+        //     return
+        // }
 
         num += 1;
         if (num >= 10  ) num = 10;
