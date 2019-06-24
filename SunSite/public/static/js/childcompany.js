@@ -144,7 +144,7 @@ var mySwiper = new Swiper('.swiper-container', {//初始化Swiper
     el: '.swiper-pagination',
     clickable: true,
   },
-  loop: true,//循环
+  loop: $('.swiper-container .swiper-slide').length > 1,//循环
 })
 // childcompany latest-news slide
 // item max:3
