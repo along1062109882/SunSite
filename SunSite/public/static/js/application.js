@@ -38,14 +38,28 @@ $(function () {
             } else {
                 $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
             }
-            
             $(this).siblings('.phone_text').show();
         } else {
             $(this).siblings('.phone_text').hide()
         }
-
     })
-   
+    $(function(){
+        
+    console.log($('.input-phone-move')[0]);
+    })
+    // 流動電話：
+    $('body').on('input','.input-phone-move' ,function () {
+        if ($(this).val().indexOf('-') == -1 || $(this).val().indexOf('+') == -1){
+            if (isHans) {
+                $(this).siblings('.phone_text').text('请输入正确的电话格式！')
+            } else {
+                $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
+            }
+            $(this).siblings('.phone_text').show();
+        } else {
+            $(this).siblings('.phone_text').hide()
+        }
+    })
     // 電郵地址
     $('body').on('input','.input-email', function () {
         var regexp= /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
@@ -64,7 +78,7 @@ $(function () {
     // 日期格式
     $('body').on('input', '.format_date', function () {
         var c= $(this);
-        var regexp= /\d{4}\/\d{2}\/\d{2}/;
+        var regexp= /\d{2}\/\d{2}\/\d{4}/;
         if(regexp.test($(this).val()) === false){
             if (isHans) {
                 $(this).siblings('.birth_text').text('请输入正确的日期格式！')
@@ -153,6 +167,7 @@ $(function () {
         }
     })
 
+   
     // 初次进入页面显示第一张页面
     $('#content_one').show().siblings().hide();
     $('.pagination_content li').eq(0).find('span').css({'background':'#a19062'});
@@ -262,6 +277,11 @@ $(function () {
         }
     }
     chage_num(0);
+     // 列表略過
+     $('.skip').click(function () {
+        $('#content_six').hide();
+        chage_num(num+1)
+    })
     // 点击下一步事件
     $('.next').on('click', function () {
         // 頁面中所有 content_onlySign class 名的元素 用来做必填项的校验
@@ -309,14 +329,14 @@ $(function () {
             }
         })
 
-        if ($('.phone_text').is(":visible")) {
-            alert(isHans ? '请输入正確的格式！' : '请输入正确的格式！');
-            return;
-        } 
-        if(!elvalue_isNull){
-            alert(isHans ? '请填写必填项' : '請輸入必填項')
-            return
-        }
+        // if ($('.phone_text').is(":visible")) {
+        //     alert(isHans ? '请输入正確的格式！' : '请输入正确的格式！');
+        //     return;
+        // } 
+        // if(!elvalue_isNull){
+        //     alert(isHans ? '请填写必填项' : '請輸入必填項')
+        //     return
+        // }
 
         num += 1;
         if (num >= 10  ) num = 10;
@@ -483,8 +503,8 @@ $(function () {
             school_web_detail: submitFormData.get('recruitment_route|school_web_detail'),
             others_detail: submitFormData.get('recruitment_route|others_detail'),
         }
-        console.log(JSON.stringify(submitFormObject))
-        console.log(submitFormObject)
+        // console.log(JSON.stringify(submitFormObject))
+        // console.log(submitFormObject)
         if (submiting) return
         submiting = true;
 
@@ -498,7 +518,7 @@ $(function () {
             success: function (data) {
                 if (data.msg == 'success') {
                     alert(isHans ? '提交成功！': '提交成功！')
-                    // window.location.reload();
+                    window.location.reload();
                 }
                 submiting = false;
             },
