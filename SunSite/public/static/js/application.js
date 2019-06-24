@@ -12,13 +12,86 @@ $(function () {
             $(this).css('color', '#49443d')
         }
     })
-
+    // 點擊表單驗證
+    // 介绍人员工编号：
     $('body').on('input', '.input-number',function(){
         var c=$(this);
-        if(/[^\d]/.test(c.val())){
-         var temp_amount=c.val().replace(/[^\d]/g,'');
-         $(this).val(temp_amount);
+        var reg = /^[\d()\-\s]*$/;
+         if(reg.test(c.val()) === false){
+           if (isHans) {
+             $('.write_text').text('介绍人员工编号只能输入数字！')
+           } else {
+             $('.write_text').text('介紹人員工編號只能輸入數字！')
+           }
+            $('.input_number span').show();
+            return;
+        } else {
+            $('.input_number span').hide()
         }
+    })
+    // 电话号码(住宅)：
+    $('body').on('input','.input-phone' ,function () {
+        var regexp= /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+        if(regexp.test($(this).val()) === false){
+            if (isHans) {
+                $(this).siblings('.phone_text').text('请输入正确的电话格式！')
+            } else {
+                $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
+            }
+            
+            $(this).siblings('.phone_text').show();
+        } else {
+            $(this).siblings('.phone_text').hide()
+        }
+
+    })
+   
+    // 電郵地址
+    $('body').on('input','.input-email', function () {
+        var regexp= /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        if(regexp.test($(this).val()) === false){
+            if (isHans) {
+                $(this).siblings('.email_text').text('请输入正确的电邮格式！')
+            } else {
+                $(this).siblings('.email_text').text('請輸入正確的電郵格式！')
+            }
+            $(this).siblings('.input_email span').show();
+             c.val('')
+         } else {
+            $(this).siblings('.input_email span').hide()
+         }
+    })
+    // 日期格式
+    $('body').on('input', '.format_date', function () {
+        var c= $(this);
+        var regexp= /\d{4}\/\d{2}\/\d{2}/;
+        if(regexp.test($(this).val()) === false){
+            if (isHans) {
+                $(this).siblings('.birth_text').text('请输入正确的日期格式！')
+            } else {
+                $(this).siblings('.birth_text').text('請輸入正確的日期格式！')
+            }
+            
+            $(this).siblings('.birth_text').show();
+            //c.val('')
+        } else {
+            $(this).siblings('.birth_text').hide()
+        }
+    })
+     // 證件號碼
+     $('body').on('input', '.format_card_number', function () {
+        var regexp= /^\w+$/;
+        if(regexp.test($(this).val()) === false){
+            if (isHans) {
+                $('.card_number_text').text('请输入正确的证件号码！')
+            } else {
+                $('.card_number_text').text('請輸入正確的證件號碼！')
+            }
+                $('.format-card-number span').show();
+                c.val('')
+            } else {
+                $('.format-card-number span').hide()
+            }
     })
     // 這段代碼是用於 測試
     // $('body').on('change', '.in-service-select',function(){
@@ -236,10 +309,14 @@ $(function () {
             }
         })
 
-        // if(!elvalue_isNull){
-        //     alert(isHans ? '请填写必填项' : '請輸入必填項')
-        //     return
-        // }
+        if ($('.phone_text').is(":visible")) {
+            alert(isHans ? '请输入正確的格式！' : '请输入正确的格式！');
+            return;
+        } 
+        if(!elvalue_isNull){
+            alert(isHans ? '请填写必填项' : '請輸入必填項')
+            return
+        }
 
         num += 1;
         if (num >= 10  ) num = 10;
@@ -249,7 +326,6 @@ $(function () {
         $('.pagination_content li').eq(num).find('span').css({'background':'#a19062'});
         
     })
-
     // 点击上一步事件
     $('.prev').on('click', function () {
         num -= 1;
@@ -407,8 +483,8 @@ $(function () {
             school_web_detail: submitFormData.get('recruitment_route|school_web_detail'),
             others_detail: submitFormData.get('recruitment_route|others_detail'),
         }
-
-
+        console.log(JSON.stringify(submitFormObject))
+        console.log(submitFormObject)
         if (submiting) return
         submiting = true;
 
@@ -422,7 +498,7 @@ $(function () {
             success: function (data) {
                 if (data.msg == 'success') {
                     alert(isHans ? '提交成功！': '提交成功！')
-                    window.location.reload();
+                    // window.location.reload();
                 }
                 submiting = false;
             },

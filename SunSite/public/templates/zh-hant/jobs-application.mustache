@@ -123,11 +123,17 @@
           </div>
           <div class="block">
             <label for=""><span>介绍人員工編號：</span></label>
-            <input class="drop-down input-number" type="text" name="referrals_employee_id" placeholder="請輸入" id='number_second'>
+            <p class='input_format input_number'>
+                <input class="drop-down input-number" type="text" name="referrals_employee_id" placeholder="請輸入" id='number_second'>
+                <span class='write_text'>輸入的格式有誤！</span>
+            </p>
           </div>
           <div class="block">
             <label for=""><span>联络电话：</span></label>
-              <input class="drop-down" type="text" name="referrals_contact_number" placeholder="請輸入" id='referrals_employee_id'>
+             <p class='input_format format-iphone'>
+                <input class="drop-down input-phone" type="text" name="referrals_contact_number" placeholder="請輸入" id='referrals_employee_id'>
+                <span class='phone_text'>輸入的格式有誤！</span>
+             </p>
           </div>
           <div class="block">
             <label for=""><span>介绍人关系：</span></label>
@@ -183,8 +189,11 @@
           <div class="block">
             <label for=""><span>出生日期：</span></label>
             <div class="field-important">
-              <input class="drop-down" type="text" placeholder="請輸入(DD/MM/YYYY)" name='date_of_birth'>
-              <span class="important">*</span>
+            <p class='input_format format-birth'>
+              <input class="drop-down format_date" type="text" placeholder="請輸入(DD/MM/YYYY)" name='date_of_birth'>
+              <span class='birth_text'>輸入的格式有誤！</span>
+            </p>
+             <span class="important">*</span>
             </div>
           </div>
           <div class="block">
@@ -207,8 +216,11 @@
           <div class="block">
             <label for=""><span>證件號碼：</span></label>
             <div class="field-important">
-              <input class="drop-down" type="text" placeholder="請輸入" name='id_number' >
-              <span class="important">*</span>
+             <p class='input_format format-card-number'>
+                <input class="drop-down" type="text" placeholder="請輸入" name='id_number' >
+                <span class='card_number_text'>輸入的格式有誤！</span>
+             </p>
+             <span class="important">*</span>
             </div>
           </div>
           <div class="block">
@@ -217,22 +229,34 @@
           </div>
           <div class="block">
             <label for=""><span>電話號碼(住宅)：</span></label>
-              <input class="drop-down" name='home_number' placeholder="請輸入" >
+            <p class='input_format format-iphone1'>
+              <input class="drop-down input-phone" name='home_number' placeholder="請輸入" >
+              <span class='phone_text'>輸入的格式有誤！</span>
+            </p>
           </div>
           <div class="block">
             <label for=""><span>流動電話：</span></label>
             <div class="field-important">
-              <input class="drop-down" name='applicant_profile_mobile_number' placeholder="請輸入">
+             <p class='input_format format-iphone'>
+                <input class="drop-down input-phone" name='applicant_profile_mobile_number' placeholder="請輸入">
+                <span class='phone_text'>輸入的格式有誤！</span>
+             </p>
               <span class="important">*</span>
             </div>
           </div>
           <div class="block">
             <label for=""><span>其他电话：</span></label>
-            <input class="drop-down" name='other_phone_number' placeholder="請輸入">
+            <p class='input_format format-iphone3'>
+              <input class="drop-down input-phone" name='other_phone_number' placeholder="請輸入">
+              <span class='phone_text'>輸入的格式有誤！</span>
+            </p>
           </div>
           <div class="block">
             <label for=""><span>電郵地址：</span></label>
-              <input class="drop-down" name='applicant_profile_email_personal' placeholder="請輸入">
+             <p class='input_format input_email'>
+                 <input class="drop-down input-email" name='applicant_profile_email_personal' placeholder="請輸入">
+                <span class='email_text'>輸入的格式有誤！</span>
+            </p>
           </div>
           <div class="block">
             <label for=""><span>是否申請簽證才可在澳門工作：</span></label>
@@ -651,7 +675,10 @@
         <div class="block">
           <label for=""><span>頒發日期：</span></label>
           <div class="field-important">
-            <input class="drop-down" type="text" placeholder="請輸入(DD/MM/YYYY)" name="applicant_profile_section_v2_professional_items.issue_date">
+            <p class='input_format'>
+              <input class="drop-down format_date" type="text" placeholder="請輸入(DD/MM/YYYY)" name="applicant_profile_section_v2_professional_items.issue_date">
+              <span class='birth_text'>輸入的格式有誤！</span>
+           </p>
             <span class="important">*</span>
           </div>
         </div>
@@ -718,12 +745,14 @@
       </div>
       <div class="block">
         <label for=""><span>出生日期：</span></label>
-        <input class="drop-down" type="text" placeholder="請輸入(DD/MM/YYYY)" name="applicant_profile_section_v2_family_member_items.birth_date">
+        <p class='input_format'>
+          <input class="drop-down format_date" type="text" placeholder="請輸入(DD/MM/YYYY)" name="applicant_profile_section_v2_family_member_items.birth_date">
+          <span class='birth_text'>輸入的格式有誤！</span>
+         </p>
       </div>
       <div class="block">
         <label for=""><span>聯絡電話：</span></label>
                       <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_family_member_items.phone_number">
-
       </div>
       <div class="block">
         <label for=""><span>是否現職本公司：</span></label>
@@ -849,14 +878,20 @@
       <div class="block">
         <label for=""><span>由(月/年)：</span></label>
         <div class="field-important">
-          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_from">
+          <p class='input_format'>
+            <input class="drop-down format_date" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_from">
+            <span class='birth_text'>輸入的格式有誤！</span>
+          </p>
           <span class="important">*</span>
         </div>
       </div>
       <div class="block">
         <label for=""><span>至(月/年)：</span></label>
         <div class="field-important">
-          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_to_text">
+          <p class='input_format'>
+              <input class="drop-down format_date" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_to_text">
+              <span class='birth_text'>輸入的格式有誤！</span>
+          </p>
           <span class="important">*</span>
         </div>
       </div>
@@ -877,7 +912,10 @@
       </div>
       <div class="block">
         <label for=""><span>公司電話：</span></label>
-          <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_company_phone_number" />
+           <p class='input_format format-iphone1'>
+             <input class="drop-down input-phone" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_company_phone_number" />
+              <span class='phone_text'>輸入的格式有誤！</span>
+           </p>
       </div>
       <div class="block">
         <label for=""><span>前負責人/上司姓名：</span></label>
@@ -885,7 +923,10 @@
       </div>
       <div class="block">
         <label for=""><span>個人電子郵件：</span></label>
-        <input class="drop-down" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_email">
+         <p class='input_format input_email'>
+            <input class="drop-down input_email" type="text" placeholder="請輸入" name="applicant_profile_section_v2_work_experience_items.work_experience_email">
+            <span class='email_text'>輸入的格式有誤！</span>
+        </p>
       </div>
       <p class="footer_line"></p>
     </div>
@@ -896,14 +937,20 @@
       <div class="block">
         <label for=""><span>由(月/年)入學：</span></label>
         <div class="field-important">
-          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_education_items.from_mm_yyyy">
+          <p class='input_format'>
+            <input class="drop-down format_date" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_education_items.from_mm_yyyy">             
+            <span class='birth_text'>輸入的格式有誤！</span>
+          </p>
           <span class="important">*</span>
         </div>
       </div>
       <div class="block">
         <label for=""><span>至(月/年)畢業：</span></label>
         <div class="field-important">
-          <input class="drop-down" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_education_items.to_mm_yyyy">
+          <p class='input_format'>
+            <input class="drop-down format_date" type="text" placeholder="請輸入(MM/YYYY)" name="applicant_profile_section_v2_education_items.to_mm_yyyy">
+            <span class='birth_text'>輸入的格式有誤！</span>
+          </p>
           <span class="important">*</span>
         </div>
       </div>
@@ -929,7 +976,10 @@
       </div>
       <div class="block">
         <label for=""><span>頒發年份：</span></label>
-        <input class="drop-down" type="text" name="applicant_profile_section_v2_education_items.certificate_issue_year" placeholder="請輸入(YYYY)">
+         <p class='input_format'>
+             <input class="drop-down format_date" type="text" name="applicant_profile_section_v2_education_items.certificate_issue_year" placeholder="請輸入(YYYY)">
+            <span class='birth_text'>輸入的格式有誤！</span>
+          </p>
       </div>
       <div class="block">
         <label for=""><span>是否畢業：</span></label>
