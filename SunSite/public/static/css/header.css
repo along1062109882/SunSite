@@ -104,9 +104,9 @@
   .header-nav-button {
     /* max-height: 36px; */
     /* padding-left: 15% !important; */
-    margin-top: 4px;
-    /*left: 50%;*/
-    right: 40%;
+    /* margin-top: 4px; */
+    left: 46.933333%;
+    /* right: 40%; */
   }
 
   /* .header-nav-button img {
@@ -274,8 +274,15 @@
 }
 @media (max-width: 414px) {
   .header-nav-logo {
-    /* width: 110px; */
+    width: 110px;
     margin-left: 11px;
+  }
+
+  .header-nav-logo img {
+    vertical-align: top;
+    width: 110px;
+    height: 44px;
+    margin-top: 9px;
   }
 }
 
@@ -419,9 +426,12 @@
   box-sizing: border-box;
 }
 .common-banner-content {
-  margin-left: 25.98%;
+  max-width: 950px;
+  margin: auto;
   display: flex;
+  flex: 1;
   align-items: center;
+  justify-items: left;
 }
 
 .grand_logo .common-banner-content {
@@ -456,12 +466,11 @@
     height: 150px;
     padding-top: 6px;
   }
-  .common-banner-content {
-    margin-left: 17.26%;
-  }
+
   .common-banner-logo {
     width: 100px;
   }
+
   .common-banner-title {
     margin-left: 29px;
   }
@@ -471,12 +480,16 @@
     height: 108px;
     padding-top: 0;
   }
-  .common-banner-content {
-    margin-left: 16.95%;
+
+  .common-banner-content {    
+    padding-left: 70px;
+    box-sizing: border-box;
   }
+
   .grand_logo .common-banner-content {
     margin-left: 0%;
   }
+
   .common-banner-logo {
     width: 70px;
   }
@@ -491,11 +504,8 @@
     background-image: url('/static/imgs/banner-bg-768.jpg');
   }
   .common-banner-content {
-    /* margin-left: 17.06%; */
-    width: 100%;
-    display: flex;
+    padding-left: 0;
     justify-content: center;
-    margin-left: 0;
   }
 }
 @media(max-width: 640px) {
@@ -503,13 +513,7 @@
     height: 106px;
     background-image: url('/static/imgs/banner-bg-640.jpg');
   }
-  .common-banner-content {
-    /* margin-left: 26.9%; */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-left: 0;
-  }
+
   .header-nav-group {
     /* width: 250px; */
     /* height: 100%; */
@@ -548,6 +552,19 @@
   .common-banner-title {
     margin-left: 16px;
     font-size: 24px;
+  }
+}
+@media(max-width: 375px) {
+  .common-banner {
+    height: 87px;
+  }
+
+  .common-banner-title {
+    font-size: 24px;
+  }
+
+  .common-banner-logo {
+    width: 50px;
   }
 }
 /* banner end */

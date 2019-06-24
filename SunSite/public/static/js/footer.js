@@ -11,11 +11,11 @@ footerIconLinkFM.on('mouseout', function () {
 });
 
 footerIconLinkSC.on('mouseover', function () {
-  footerToggleQR('#footer-links-sns-text-wechat-sc', '#footer-links-sns-icons-pop-img', 'block', 16, '/static/imgs/footer-links-sns-wechat-sc.png');
+  footerToggleQR('#footer-links-sns-text-wechat-sc', '#footer-links-sns-icons-pop-img', 'block', 0, '/static/imgs/footer-links-sns-wechat-sc.png');
 });
 
 footerIconLinkSC.on('mouseout', function () {
-  footerToggleQR('#footer-links-sns-text-wechat-sc', '#footer-links-sns-icons-pop-img', 'none', 16, '');
+  footerToggleQR('#footer-links-sns-text-wechat-sc', '#footer-links-sns-icons-pop-img', 'none', 0, '');
 });
 
 
@@ -32,20 +32,26 @@ footerFoldIconLinkFM.on('mouseout', function () {
 });
 
 footerFoldIconLinkSC.on('mouseover', function () {
-  footerToggleQR('#footer-fold-links-sns-text-wechat-sc', '#footer-fold-links-sns-icons-pop-img', 'block', 16, '/static/imgs/footer-links-sns-wechat-sc.png');
+  footerToggleQR('#footer-fold-links-sns-text-wechat-sc', '#footer-fold-links-sns-icons-pop-img', 'block', 0, '/static/imgs/footer-links-sns-wechat-sc.png');
 });
 
 footerFoldIconLinkSC.on('mouseout', function () {
-  footerToggleQR('#footer-fold-links-sns-text-wechat-sc', '#footer-fold-links-sns-icons-pop-img', 'none', 16, '');
+  footerToggleQR('#footer-fold-links-sns-text-wechat-sc', '#footer-fold-links-sns-icons-pop-img', 'none', 0, '');
 });
 
 
 
 function footerToggleQR(node, pop, style, offset, src) {
   var snsPopImg = $(pop);
-  snsPopImg.css({'display': style, 'width': '120px', 'height': '130px'});
+  console.log($(node).offset(), $(node).width(), $(node).height(),);
+  snsPopImg.css({
+    'display': style, 
+    'width': '120px', 
+    'height': '130px', 
+    'left': $(node).offset().left + $(node).width() / 2 - 62, 
+    'top': $(node).offset().top + $(node).height() + offset
+  });
   snsPopImg.attr('src', src);
-  snsPopImg.offset({'left': $(node).offset().left + $(node).width() / 2 - 60, 'top': $(node).offset().top + $(node).height() + offset});
 }
 
 

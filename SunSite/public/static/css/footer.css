@@ -100,6 +100,11 @@ footer {
   color: #614a0b;
   width: 135px;
 }
+
+.footer-links-childcompany-text a {
+  color: #49443d;
+}
+
 /* .footer-links-childcompany-text .footer-link:nth-of-type(2n) {
   margin-left: 10px;
 } */
@@ -163,10 +168,11 @@ footer {
   height: 41px;
 }
 
-.footer-links-sns-icons-pop {
-  display: block;
+#footer-links-sns-icons-pop-img {
   position: absolute;
   display: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Contact */
@@ -192,6 +198,10 @@ footer {
   font-size: 14px;
   font-weight: normal;
   line-height: 24px;
+  color: #614a0b;
+}
+
+.footer-contact-text a {
   color: #614a0b;
 }
 
