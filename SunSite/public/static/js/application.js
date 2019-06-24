@@ -472,6 +472,11 @@ $(function () {
             var Str_region = '';
             // 地区选择
             for (var i = 0; i < data.working_region.length; i++) {
+                // 去掉全选
+                if (data.working_region[i].key == 'all') {
+                    continue
+                }
+                
                 allRegio.push(data.working_region[i].chinese_name);
 
                 Str_region += `<option id='${data.working_region[i].key}' value='${data.working_region[i].key}'>${data.working_region[i].chinese_name}</option>`
@@ -522,6 +527,11 @@ $(function () {
                 relation_ship += `<option value='${item.key}'>${(isHans ? item.simple_chinese_name : item.chinese_name)}</option>`;
             });
 
+            var type_of_id = '';
+            data.type_of_id.forEach((item, index) => {
+                type_of_id += `<option value='${item.key}'>${(isHans ? item.simple_chinese_name : item.chinese_name)}</option>`;
+            });
+
             $('.region').append(Str_region);
             $('.change_first').append(change_first_str);
             $('.second_str').append(second_str);
@@ -533,6 +543,7 @@ $(function () {
             $('.deparment').append(change_first_str);
             $('.attachment_type_id').append(attachment_type);
             $('.relation_ship').append(relation_ship);
+            $('.type_of_id').append(type_of_id);
             
             $('.region_one').multipleSelect({
                 minimumCountSelected: 100,
