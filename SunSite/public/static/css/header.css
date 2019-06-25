@@ -483,27 +483,20 @@
 }
 
 .common-banner-entertainment .common-banner-content {
-  max-width: 1020px;
-  padding-left: 55px;
-  box-sizing: border-box;
+  max-width: 1000px;
 
 }
 
 /* 跟页面主题内容统一 */
-@media (max-width: 1200px) {
-  .common-banner-entertainment .common-banner-content {
-    max-width: 770px;
-  }
-}
 @media (max-width: 1024px) {
   .common-banner-entertainment .common-banner-content {
-    max-width: 770px;
-    margin: 0 15.3% 0 9.47%;
+    max-width: 720px;
+    padding-left:0;
   }
 }
-@media (max-width: 880px) {
+@media (max-width: 760px) {
   .common-banner-entertainment .common-banner-content {
-    max-width: 78.125%;
+    max-width: 640px;
     padding-left:0;
   }
 }
