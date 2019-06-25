@@ -203,6 +203,7 @@
 }
 .grand_p .content p  span {
     color: #fff;
+    white-space: normal;
 }
 @media(max-width: 1600px) {
     /*.grand_container ul li div p .title {*/
@@ -451,11 +452,16 @@
 }
 @media (max-width: 1024px) {
     .common-banner-content {
-        /* margin-left: 25.98%; */
+        width: 100%;
+        margin-left: 10.98%;
+    }
+}
+@media (max-width: 768px) {
+    .common-banner-content {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
-        margin: 0;
+        margin-left: 0
     }
 }

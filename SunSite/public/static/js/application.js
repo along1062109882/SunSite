@@ -4,7 +4,7 @@ $(function () {
     var isHans = location.pathname.indexOf('/zh-hans') != -1;
     var paramDatas = {};
 
-    $('body').on('change', 'select', function(){
+    $('body').on('change', 'select', function () {
         if ($(this).val() === '') {
             $(this).css('color', '#b5b5b6')
             return;
@@ -14,84 +14,129 @@ $(function () {
     })
     // 點擊表單驗證
     // 介绍人员工编号：
-    $('body').on('input', '.input-number',function(){
-        var c=$(this);
+    $('body').on('input', '.input-number', function () {
+        var c = $(this);
         var reg = /^[\d()\-\s]*$/;
-         if(reg.test(c.val()) === false){
-           if (isHans) {
-             $('.write_text').text('介绍人员工编号只能输入数字！')
-           } else {
-             $('.write_text').text('介紹人員工編號只能輸入數字！')
-           }
-            $('.input_number span').show();
-            return;
+        if ($(this).val() === '') {
+            $('.input_number span').hide();
         } else {
-            $('.input_number span').hide()
+            if (reg.test(c.val()) === false) {
+                if (isHans) {
+                    $('.write_text').text('介绍人员工编号只能输入数字！')
+                } else {
+                    $('.write_text').text('介紹人員工編號只能輸入數字！')
+                }
+                $('.input_number span').show();
+                return;
+            } else {
+                $('.input_number span').hide()
+            }
         }
     })
-    // 电话号码(住宅)：
-    $('body').on('input','.input-phone' ,function () {
-        var regexp= /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
-        if(regexp.test($(this).val()) === false){
+    // 电话号码(住宅) 
+    $('body').on('input', '.input-phone', function () {
+        var regexp = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+        if ($(this).val() === '') {
+            $(this).siblings('.phone_text').hide()
+        } else {
+            if (regexp.test($(this).val()) === false) {
+                if (isHans) {
+                    $(this).siblings('.phone_text').text('请输入正确的电话格式！')
+                } else {
+                    $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
+                }
+                $(this).siblings('.phone_text').show();
+            } else {
+                $(this).siblings('.phone_text').hide()
+            }
+        }
+    })
+    // 流動電話：
+    $('body').on('input', '.input-phone-move', function () {
+        var regexp = /^\+\d{2,3}-\d{7,20}$/g;
+        if (regexp.test($(this).val()) === false) {
             if (isHans) {
                 $(this).siblings('.phone_text').text('请输入正确的电话格式！')
             } else {
                 $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
             }
-            
             $(this).siblings('.phone_text').show();
         } else {
             $(this).siblings('.phone_text').hide()
         }
-
+        // if ($(this).val().indexOf('-') == -1 || $(this).val().indexOf('+') == -1){
+        //     if (isHans) {
+        //         $(this).siblings('.phone_text').text('请输入正确的电话格式！')
+        //     } else {
+        //         $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
+        //     }
+        //     $(this).siblings('.phone_text').show();
+        // } else {
+        //     $(this).siblings('.phone_text').hide()
+        // }
     })
-   
     // 電郵地址
-    $('body').on('input','.input-email', function () {
-        var regexp= /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-        if(regexp.test($(this).val()) === false){
+    $('body').on('input', '.input-email', function () {
+        var regexp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+       if ($(this).val() === '') {
+            $(this).siblings('.email_text').hide()
+       } else {
+        if (regexp.test($(this).val()) === false) {
             if (isHans) {
                 $(this).siblings('.email_text').text('请输入正确的电邮格式！')
             } else {
                 $(this).siblings('.email_text').text('請輸入正確的電郵格式！')
             }
-            $(this).siblings('.input_email span').show();
-             c.val('')
-         } else {
-            $(this).siblings('.input_email span').hide()
-         }
-    })
+            $(this).siblings('.email_text').show();
+        }{
+            $(this).siblings('.email_text').hide()
+        }
+       }
+    }) 
     // 日期格式
     $('body').on('input', '.format_date', function () {
-        var c= $(this);
-        var regexp= /\d{4}\/\d{2}\/\d{2}/;
-        if(regexp.test($(this).val()) === false){
-            if (isHans) {
-                $(this).siblings('.birth_text').text('请输入正确的日期格式！')
-            } else {
-                $(this).siblings('.birth_text').text('請輸入正確的日期格式！')
-            }
-            
-            $(this).siblings('.birth_text').show();
-            //c.val('')
-        } else {
+        var text_name = $(this).parent().parent().siblings('label').text()
+        var regexp = /\d{2}\/\d{2}\/\d{4}/;
+        if ($(this).val() == '') {
             $(this).siblings('.birth_text').hide()
+        } else {
+            if (regexp.test($(this).val()) === false) {
+                if (text_name.match('出生日期')) {
+                    if (isHans) {
+                        $(this).siblings('.birth_text').text('请输入正确的出生日期！')
+                    } else {
+                        $(this).siblings('.birth_text').text('請輸入正確的出生日期！')
+                    }
+                } else {
+                    if (isHans) {
+                        $(this).siblings('.birth_text').text('请输入正确的日期格式！')
+                    } else {
+                        $(this).siblings('.birth_text').text('請輸入正確的日期格式！')
+                    }
+                }
+                $(this).siblings('.birth_text').show();
+            } else {
+                $(this).siblings('.birth_text').hide()
+            }
         }
     })
-     // 證件號碼
-     $('body').on('input', '.format_card_number', function () {
-        var regexp= /^\w+$/;
-        if(regexp.test($(this).val()) === false){
-            if (isHans) {
-                $('.card_number_text').text('请输入正确的证件号码！')
-            } else {
-                $('.card_number_text').text('請輸入正確的證件號碼！')
-            }
+    // 證件號碼
+    $('body').on('input', '.format_card_number', function () {
+        var regexp = /^\w+$/;
+        if ($(this).val() === '') {
+            $('.format-card-number span').hide()
+        } else {
+            if (regexp.test($(this).val()) === false) {
+                if (isHans) {
+                    $('.card_number_text').text('请输入正确的证件号码！')
+                } else {
+                    $('.card_number_text').text('請輸入正確的證件號碼！')
+                }
                 $('.format-card-number span').show();
-                c.val('')
             } else {
                 $('.format-card-number span').hide()
             }
+        }
     })
     // 這段代碼是用於 測試
     // $('body').on('change', '.in-service-select',function(){
@@ -103,10 +148,10 @@ $(function () {
     // })
 
     // 初始化多列表
-    $('.multi-ul').each(function() {
+    $('.multi-ul').each(function () {
         $multiUl = $(this);
         var ulId = $multiUl.data('id');
-        var $multiTemplate = $('#'+ulId).html();
+        var $multiTemplate = $('#' + ulId).html();
         var minNum = $multiUl.data('minNum') || 1;
         var $multiTemplates = ""
 
@@ -119,22 +164,22 @@ $(function () {
     });
 
     // 多列表添加
-    $('.add').on('click', function() {
+    $('.add').on('click', function () {
         var $multiUl = $(this).closest('.multi-ul');
         var ulId = $multiUl.data('id');
-        var $multiLi = $('#'+ulId+' .multi-li').clone();
+        var $multiLi = $('#' + ulId + ' .multi-li').clone();
 
         // 语言能力及技能因为是单选按钮所以要单独处理
         if (ulId === 'content_seven_ul') {
             var multiLiLen = $('.multi-main .multi-li', $multiUl).length;
-            
-            $('input[name^="other|"]', $multiLi).each(function() {
-                $(this).attr('name', $(this).attr('name')+'|'+multiLiLen);
-                $(this).attr('id', $(this).attr('id')+'|'+multiLiLen);
+
+            $('input[name^="other|"]', $multiLi).each(function () {
+                $(this).attr('name', $(this).attr('name') + '|' + multiLiLen);
+                $(this).attr('id', $(this).attr('id') + '|' + multiLiLen);
             })
-            
-            $('.radioLabel', $multiLi).each(function() {
-                $(this).attr('for', $(this).attr('for')+'|'+multiLiLen);
+
+            $('.radioLabel', $multiLi).each(function () {
+                $(this).attr('for', $(this).attr('for') + '|' + multiLiLen);
             })
         }
 
@@ -142,7 +187,7 @@ $(function () {
     })
 
     // 多列表删除
-    $('.remove').on('click', function() {
+    $('.remove').on('click', function () {
 
         var $multiUl = $(this).closest('.multi-ul');
         var minNum = $multiUl.data('minNum') || 1;
@@ -153,15 +198,16 @@ $(function () {
         }
     })
 
+
     // 初次进入页面显示第一张页面
     $('#content_one').show().siblings().hide();
-    $('.pagination_content li').eq(0).find('span').css({'background':'#a19062'});
+    $('.pagination_content li').eq(0).find('span').css({ 'background': '#a19062' });
     var num = 0;
     var mar_left = 0;
     // 点击下一步执行事件
     function chage_num(num) {
         // 為了每次點擊頁面，頁面重新回到初始位置‘
-        $("html,body").animate({scrollTop:0},10);
+        $("html,body").animate({ scrollTop: 0 }, 10);
         num === 0 ? $('.prev').hide() : $('.prev').show();
         if (num === 10) {
             $('.success').show();
@@ -170,98 +216,113 @@ $(function () {
             $('.success').hide()
             $('.next').show();
         }
-        switch(num) {
+        switch (num) {
             case 0:
-            $('#content_one').show().siblings().hide();
-            if (isHans) {
-                $('.top_title').text('申请职位');
-            } else {
-                $('.top_title').text('申請職位');
-            }
-            break;
+                $('#content_one').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('申请职位');
+                } else {
+                    $('.top_title').text('申請職位');
+                }
+                break;
             case 1:
-            $('#content_two').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('介绍人资料');
-            } else {
-                $('.top_title').text('介紹人資料');
-            }
-            break;
+                $('#content_two').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('介绍人资料');
+                } else {
+                    $('.top_title').text('介紹人資料');
+                }
+                break;
             case 2:
-            $('#content_three').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('个人资料');
-            } else {
-                $('.top_title').text('個人資料');
-            }
-            break;
+                $('#content_three').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('个人资料');
+                } else {
+                    $('.top_title').text('個人資料');
+                }
+                break;
             case 3:
-            $('#content_for').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('学历信息');
-            } else {
-                $('.top_title').text('學歷信息');
-            }
-            break;
+                $('#content_for').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('学历信息');
+                } else {
+                    $('.top_title').text('學歷信息');
+                }
+                break;
             case 4:
-            $('#content_five').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('专业资格');
-            } else {
-                $('.top_title').text('專業資格');
-            }
-            break;
+                $('#content_five').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('专业资格');
+                } else {
+                    $('.top_title').text('專業資格');
+                }
+                break;
             case 5:
-            $('#content_six').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('工作经验');
-            } else {
-                $('.top_title').text('工作經驗');
-            }
-            break;
+                $('#content_six').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('工作经验');
+                } else {
+                    $('.top_title').text('工作經驗');
+                }
+                break;
             case 6:
-            $('#content_seven').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('语言能力及技能');
-            } else {
-                $('.top_title').text('語言能力及技能');
-            }
-            break;
+                $('#content_seven').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('语言能力及技能');
+                } else {
+                    $('.top_title').text('語言能力及技能');
+                }
+                break;
             case 7:
-            $('#content_eight').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('家庭成员信息');
-            } else {
-                $('.top_title').text('家庭成員訊息');
-            }
-            break;
+                $('#content_eight').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('家庭成员信息');
+                } else {
+                    $('.top_title').text('家庭成員訊息');
+                }
+                break;
             case 8:
-            $('#content_nine').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('背景申报');
-            } else {
-                $('.top_title').text('背景申报');
-            }
-            break;
+                $('#content_nine').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('背景申报');
+                } else {
+                    $('.top_title').text('背景申报');
+                }
+                break;
             case 9:
-            $('#content_ten').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('相关文件');
-            } else {
-                $('.top_title').text('相關文件');
-            }
-            break;
+                $('#content_ten').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('相关文件');
+                } else {
+                    $('.top_title').text('相關文件');
+                }
+                break;
             case 10:
-            $('#content_eleven').show().siblings().hide();
-             if (isHans) {
-                $('.top_title').text('得知招聘途径');
-            } else {
-                $('.top_title').text('得知招聘途径');
-            }
-            break;
+                $('#content_eleven').show().siblings().hide();
+                if (isHans) {
+                    $('.top_title').text('得知招聘途径');
+                } else {
+                    $('.top_title').text('得知招聘途径');
+                }
+                break;
         }
     }
     chage_num(0);
+    // 列表略過
+    $('.skip_five').click(function () {
+        num = num + 1
+        $('#content_five').hide();
+        $('.pagination_content li').eq(num - 1).find('b').show();
+        $('.pagination_content li').eq(num).find('span').css({ 'background': '#a19062' });
+        chage_num(num)
+    })
+    $('.skip_six').click(function () {
+        num = num + 1
+        $('#content_six').hide();
+        $('.pagination_content li').eq(num - 1).find('b').show();
+        $('.pagination_content li').eq(num).find('span').css({ 'background': '#a19062' });
+        chage_num(num)
+    })
     // 点击下一步事件
     $('.next').on('click', function () {
         // 頁面中所有 content_onlySign class 名的元素 用来做必填项的校验
@@ -270,30 +331,30 @@ $(function () {
         let elvalue_isNull = true;
 
         // 判斷哪個 有這個 content_onlySign class 名的元素是顯示的
-        current_show_el_content.each((index ,item) => {
+        current_show_el_content.each((index, item) => {
             // 判断 当前 item 元素 是否隐藏
-            if($(item).is(':visible')) {
+            if ($(item).is(':visible')) {
                 //获取当前页面的必填项
                 const important_el = $(item).find('.important');
-                important_el.each((key,el_item)=>{
+                important_el.each((key, el_item) => {
                     //判断 input value 是否为空
                     const current_el_val_is_null = $(el_item).siblings('.drop-down').val();
-                    if(current_el_val_is_null === ''){
+                    if (current_el_val_is_null === '') {
                         elvalue_isNull = false;
                         return
                     }
-                    
+
                     //判断下拉框是否选择
                     const current_el_select_is_null = $(el_item).siblings('.selectBoxRadioBtnBox').val();
-                    
-                    if(
+
+                    if (
                         current_el_select_is_null === '' ||
-                         (
-                             Object.prototype.toString.call(current_el_select_is_null) == '[object Array]' && 
-                             current_el_select_is_null.length === 0
-                         )
-                        ){
-                            
+                        (
+                            Object.prototype.toString.call(current_el_select_is_null) == '[object Array]' &&
+                            current_el_select_is_null.length === 0
+                        )
+                    ) {
+
                         elvalue_isNull = false;
                         return
                     }
@@ -319,25 +380,25 @@ $(function () {
         }
 
         num += 1;
-        if (num >= 10  ) num = 10;
+        if (num >= 10) num = 10;
 
         chage_num(num)
-        $('.pagination_content li').eq(num-1).find('b').show();
-        $('.pagination_content li').eq(num).find('span').css({'background':'#a19062'});
-        
+        $('.pagination_content li').eq(num - 1).find('b').show();
+        $('.pagination_content li').eq(num).find('span').css({ 'background': '#a19062' });
+
     })
     // 点击上一步事件
     $('.prev').on('click', function () {
         num -= 1;
-        if (num <= 0 ) num = 0;
+        if (num <= 0) num = 0;
         chage_num(num)
         $('.pagination_content li').eq(num).find('b').hide();
-        $('.pagination_content li').eq(num + 1).find('span').css({'background':'#b5b5b6'});
+        $('.pagination_content li').eq(num + 1).find('span').css({ 'background': '#b5b5b6' });
     })
     // 页面数据请求
 
     function tranType(type, value) {
-        switch(type) {
+        switch (type) {
             case 'boolean':
                 value = value === '' || value === '0' ? false : true;
                 break;
@@ -350,12 +411,12 @@ $(function () {
 
     var submiting = false;
 
-    $('.success').on('click', function() {
+    $('.success').on('click', function () {
         var submitFormObject = {};
         var submitFormData = new FormData($('#submitForm')[0]);
         var multiple = {};
 
-        for(var pair of submitFormData.entries()) {
+        for (var pair of submitFormData.entries()) {
             var name = pair[0];
             var value = pair[1]
             var isArr = name.indexOf('.') !== -1;
@@ -369,7 +430,7 @@ $(function () {
 
                     value = tranType(names[1], value);
                 }
-                
+
                 if (name === 'working_region') {
                     submitFormObject[name] = submitFormData.getAll(name)
                 } else {
@@ -387,18 +448,18 @@ $(function () {
         }
 
         // 数组对象
-        for(var item in multiple) {
+        for (var item in multiple) {
             var arr = [];
             var keys = Object.keys(multiple[item]);
 
-            for (var i=0; i<multiple[item][keys[0]].length; i++) {
+            for (var i = 0; i < multiple[item][keys[0]].length; i++) {
                 var itemObj = {};
 
-                for (var key=0; key<keys.length; key++) {
+                for (var key = 0; key < keys.length; key++) {
                     var name = keys[key];
                     var value = multiple[item][keys[key]][i];
 
-                    
+
                     // 需要强转类型
                     if (name.indexOf('~') !== -1) {
                         var names = name.split('~');
@@ -455,15 +516,15 @@ $(function () {
         // 語言能力 其他
         var multiLiLen = $('.multi-ul[data-id="content_seven_ul"] .multi-li').length;
 
-        for(var i=0; i<multiLiLen; i++) {
-            var stuff = i === 0 ? '' : '|'+i;
+        for (var i = 0; i < multiLiLen; i++) {
+            var stuff = i === 0 ? '' : '|' + i;
 
-            if(submitFormData.get('other|name'+stuff)) {
+            if (submitFormData.get('other|name' + stuff)) {
                 applicant_language_skill_items.push({
-                    name: submitFormData.get('other|name'+stuff),
-                    listening: submitFormData.get('other|listening'+stuff),
-                    speaking: submitFormData.get('other|speaking'+stuff),
-                    writing: submitFormData.get('other|writing'+stuff),
+                    name: submitFormData.get('other|name' + stuff),
+                    listening: submitFormData.get('other|listening' + stuff),
+                    speaking: submitFormData.get('other|speaking' + stuff),
+                    writing: submitFormData.get('other|writing' + stuff),
                 })
             }
         }
@@ -483,13 +544,13 @@ $(function () {
             school_web_detail: submitFormData.get('recruitment_route|school_web_detail'),
             others_detail: submitFormData.get('recruitment_route|others_detail'),
         }
-        console.log(JSON.stringify(submitFormObject))
-        console.log(submitFormObject)
+        // console.log(JSON.stringify(submitFormObject))
+        // console.log(submitFormObject)
         if (submiting) return
         submiting = true;
 
         $.ajax({
-            url:"/zh-hant/jobCommit",
+            url: "/zh-hant/jobCommit",
             type: "POST",
             dataType: "json",
             data: {
@@ -497,8 +558,8 @@ $(function () {
             },
             success: function (data) {
                 if (data.msg == 'success') {
-                    alert(isHans ? '提交成功！': '提交成功！')
-                    // window.location.reload();
+                    alert(isHans ? '提交成功！' : '提交成功！')
+                    window.location.reload();
                 }
                 submiting = false;
             },
@@ -509,7 +570,7 @@ $(function () {
         })
     })
 
-    $('#submitForm').on("change",".selectBoxRadioBtnBoxFile",function(e){
+    $('#submitForm').on("change", ".selectBoxRadioBtnBoxFile", function (e) {
         var $fileParent = $(this).closest('.selectBoxRadioBtnBoxFileWrap');
         var file = e.target.files[0];
 
@@ -519,8 +580,8 @@ $(function () {
         $('.selectBoxRadioBtnBoxValue', $fileParent).val(file.name);
 
         $.ajax({
-            url:"/zh-hant/jobUpload",
-            type:"post",
+            url: "/zh-hant/jobUpload",
+            type: "post",
             data: formData,
             contentType: false, // 注意这里应设为false
             processData: false,
@@ -538,13 +599,13 @@ $(function () {
     });
 
     $.ajax({
-        url:"/zh-hant/getParam",
-        type:"GET",
+        url: "/zh-hant/getParam",
+        type: "GET",
         success: function (data) {
             var allRegio = [];
 
             paramDatas = data;
-            
+
             var Str_region = '';
             // 地区选择
             for (var i = 0; i < data.working_region.length; i++) {
@@ -552,7 +613,7 @@ $(function () {
                 if (data.working_region[i].key == 'all') {
                     continue
                 }
-                
+
                 allRegio.push(data.working_region[i].chinese_name);
 
                 Str_region += `<option id='${data.working_region[i].key}' value='${data.working_region[i].key}'>${data.working_region[i].chinese_name}</option>`
@@ -620,11 +681,11 @@ $(function () {
             $('.attachment_type_id').append(attachment_type);
             $('.relation_ship').append(relation_ship);
             $('.type_of_id').append(type_of_id);
-            
+
             $('.region_one').multipleSelect({
                 minimumCountSelected: 100,
                 selectAll: false,
-                formatAllSelected () {
+                formatAllSelected() {
                     return allRegio.join(', ');
                 },
                 placeholder: isHans ? '请选择' : '请選擇',
@@ -636,15 +697,15 @@ $(function () {
         }
     })
 
-    $('body').on('change', '.first_change_one', function() {
+    $('body').on('change', '.first_change_one', function () {
         var firstChangeOneId = $(this).val();
         var choiceIdLen = paramDatas.choice_id.length;
-        var firstTwoStr = '<option value="" selected="selected">'+(isHans ? '请选择职位' : '请選擇職位')+'</option>';
+        var firstTwoStr = '<option value="" selected="selected">' + (isHans ? '请选择职位' : '请選擇職位') + '</option>';
 
-        for (var i=choiceIdLen-1; i>=0; i--) {
-            if(paramDatas.choice_id[i].id == firstChangeOneId) {
-                paramDatas.choice_id[i].jobs.forEach(function(item) {
-                    firstTwoStr += '<option value="'+item.id+'">'+ (isHans ? item.simple_chinese_name : item.chinese_name) +'</option>'
+        for (var i = choiceIdLen - 1; i >= 0; i--) {
+            if (paramDatas.choice_id[i].id == firstChangeOneId) {
+                paramDatas.choice_id[i].jobs.forEach(function (item) {
+                    firstTwoStr += '<option value="' + item.id + '">' + (isHans ? item.simple_chinese_name : item.chinese_name) + '</option>'
                 });
             }
         }
@@ -652,15 +713,15 @@ $(function () {
         $('.change_first_one', $(this).closest('.content_box')).html(firstTwoStr).css('color', '#b5b5b6');
     })
 
-    $('.second_change_one').on('change', function() {
+    $('.second_change_one').on('change', function () {
         var firstChangeId = $(this).val();
         var choiceIdLen = paramDatas.choice_id_v2.length;
-        var firstTwoStr = '<option value="" selected="selected">'+(isHans ? '请选择职位' : '请選擇職位')+'</option>';
+        var firstTwoStr = '<option value="" selected="selected">' + (isHans ? '请选择职位' : '请選擇職位') + '</option>';
 
-        for (var i=choiceIdLen-1; i>=0; i--) {
-            if(paramDatas.choice_id_v2[i].id == firstChangeId) {
-                paramDatas.choice_id_v2[i].jobs.forEach(function(item) {
-                    firstTwoStr += '<option value="'+item.id+'">'+ (isHans ? item.simple_chinese_name : item.chinese_name) +'</option>'
+        for (var i = choiceIdLen - 1; i >= 0; i--) {
+            if (paramDatas.choice_id_v2[i].id == firstChangeId) {
+                paramDatas.choice_id_v2[i].jobs.forEach(function (item) {
+                    firstTwoStr += '<option value="' + item.id + '">' + (isHans ? item.simple_chinese_name : item.chinese_name) + '</option>'
                 });
             }
         }

@@ -54,7 +54,6 @@ function toggleDeviceBindEvent($object, eventCode, fun) {
       } else {
         if (headerISTouch) return;
       }
-
       fun.apply(this, arguments)
     })
   });
@@ -75,7 +74,7 @@ function headerUpdateSize(e) {
   lastHeaderScreenW = headerScreenW
   
   headerScreenH = $(window).height();
-  if (headerScreenW > 1424) headerISWideScreen = true;
+  if (headerScreenW > 1439) headerISWideScreen = true;
   else headerISWideScreen = false;
 
   if (isToggleDevice) {

@@ -344,15 +344,24 @@ $(function () {
         var keyword = $('#filter_search').val()
         filter_search(newYears, keyword, 1);
     })
-    $('#filter_search').change(function () {
+    document.onkeydown = function (e) { // 回车提交表单
         var newYears = $('.drop-down input').val();
         var keyword = $('#filter_search').val()
-        document.onkeydown = (function(e) {
-            if(e.keyCode == 13){
-                 filter_search(newYears, keyword, 1);
-            }
-        })
-    })
+        var theEvent = window.event || e;
+        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        if (code == 13) {
+            filter_search(newYears, keyword, 1);
+        }
+    }
+    // $('#filter_search').change(function () {
+    //     var newYears = $('.drop-down input').val();
+    //     var keyword = $('#filter_search').val()
+    //     document.onkeydown = (function(e) {
+    //         if(e.keyCode == 13){
+    //              filter_search(newYears, keyword, 1);
+    //         }
+    //     })
+    // })
     var listTemp = null;
     var cellTemp = null;
 

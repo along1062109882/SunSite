@@ -3,14 +3,16 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-  font-family: "Segoe UI",
+  font-family: "PingFang HK",
+  "PingFang SC",
+  "Segoe UI",
   "Helvetica Neue",
   "Helvetica",
   "微軟正黑體", 
   "Microsoft YaHei", 
   "微软雅黑", STXihei,
   "华文细黑", 
-  "Lucida Grande",
+  "Lucida Grande", 
   Arial,"Ubuntu",
   "Cantarell",
   "Fira Sans",
@@ -22,6 +24,10 @@ a, img {
   border: none;
   text-decoration: none;
   cursor: pointer;
+}
+
+a, ol {
+  -webkit-tap-highlight-color: transparent;
 }
 
 :focus {
