@@ -26,6 +26,10 @@ a, img {
   cursor: pointer;
 }
 
+a, ol {
+  -webkit-tap-highlight-color: transparent;
+}
+
 :focus {
   outline: 0;
 }
