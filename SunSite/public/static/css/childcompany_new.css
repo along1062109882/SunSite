@@ -667,6 +667,60 @@ img {
   margin: 0 auto;
 }
 
+.entertainment-body .show_type_img ul { 
+  margin-top: 12px;
+  box-sizing: border-box;
+  width: 52.5%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 55px;
+  display: flex;
+  margin-bottom: 65px;
+}
+
+.entertainment-body .show_type_img ul li {
+  box-sizing: border-box;
+  width: 25%;
+  margin: 0;
+  margin-top: 14px
+}
+
+.entertainment-body .show_type_img ul li {
+  padding-right: 13px;
+}
+
+.entertainment-body .show_type_img ul li:nth-child(4n+4) {
+  padding-right: 0;
+}
+
+.entertainment-body .show_type_content1 {
+  padding-bottom: 59px;
+}
+
+@media (max-width: 1800px) {
+  .entertainment-body .show_type_img ul { 
+    width: 58%;
+  }
+}
+
+@media (max-width: 1120px) {
+  .entertainment-body .show_type_img ul { 
+    width: 82%;
+    margin-bottom: 44px;
+  }
+  
+}
+
+@media (max-width: 880px) {
+  .entertainment-body .show_type_img ul { 
+    padding-left: 0;
+    margin-bottom: 12px;
+  }
+
+  .entertainment-body .show_type_content1 {
+    padding-bottom: 30px;
+  }
+}
 
 @media(max-width: 640px) {
   .entertainment-body  .tab_type {
@@ -701,41 +755,49 @@ img {
     box-sizing: border-box;
     width: 50%;
     margin: 0;
-    margin-top: 12px
-  }
-  
-  .entertainment-body .show_type_img ul li:nth-child(odd) {
-    padding-right: 6px;
+    margin-top: 12px;
+    padding-right: 12px;
   }
   
   .entertainment-body .show_type_img ul li:nth-child(even) {
-    padding-left: 6px;
+    padding-right: 0;
   }
 
   .entertainment-body .show_type_img ul li:nth-child(1),
   .entertainment-body .show_type_img ul li:nth-child(2) {
     margin-top: 0;
   }
+  
+  .entertainment-body .show_type_content1 {
+    padding-bottom: 50px;
+  }
 }
 
 @media(max-width: 375px) {
   .entertainment-body .show_type_img ul {
     margin-top: 0px;
+    margin-bottom: 0;
   }
 
-  .entertainment-body .show_type_img ul li:nth-child(odd) {
-    padding-right: 4px;
-  }
-  
   .entertainment-body .show_type_img ul li:nth-child(even) {
-    padding-left: 4px;
+    padding-right: 0;
+  }
+
+  .entertainment-body .show_type_img ul li:nth-child(1),
+  .entertainment-body .show_type_img ul li:nth-child(2) {
+    margin-top: 0;
   }
 
   .entertainment-body .show_type_img ul li {
     box-sizing: border-box;
     width: 50%;
     margin: 0;
-    margin-top: 10px
+    margin-top: 10px;
+    padding-right: 9px;
+  }
+
+  .entertainment-body .show_type_content1 {
+    padding-bottom: 27px;
   }
 }
 
