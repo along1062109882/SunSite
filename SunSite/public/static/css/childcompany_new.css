@@ -762,7 +762,7 @@ img {
   padding-bottom: 120px;
 }
 .food-logo-header {
-  font-family: "PingFang TC";
+  font-family: "PingFang TC", "PingFang-Regular";
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 0.12px;
@@ -799,16 +799,18 @@ img {
 .food-title {
   height: 60px;
   background-color: #a19062;
-  line-height: 60px;
-  font-family: PingFangTC;
+  font-family: "PingFang TC", "PingFang-Regular";
   font-size: 18px;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  /* line-height: 1.25; */
-  letter-spacing: 0px;
-  text-align: center;
+  line-height: 1.11;
+  letter-spacing: -0.05px;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
 }
 @media (max-width: 1440px) {
   .show_type_food {
@@ -816,9 +818,6 @@ img {
   }
   .food-logo-header {
     padding: 67px 0 47px;
-  }
-  .food-title {
-    font-size: 16px;
   }
 }
 @media (max-width: 1080px) {
@@ -845,6 +844,11 @@ img {
     width: 180px;
     height: 96px;
     margin: 18px auto;
+  }
+  .food-title {
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.04px;
   }
 }
 @media (max-width: 800px) {
@@ -895,9 +899,6 @@ img {
     height: 81px;
     margin: 14px auto;
   }
-  .food-title {
-    font-size: 12px;
-  }
 }
 @media (max-width: 440px) {
   .show_type_food {
@@ -923,6 +924,9 @@ img {
     width: 123px;
     height: 65px;
     margin: 11px auto 12px;
+  }
+  .food-title {
+    line-height: 1.13;
   }
 }
 
