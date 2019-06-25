@@ -26,7 +26,7 @@
     </script>
     <!-- End Google Tag Manager -->
   </head>
-  <body>
+  <body class="entertainment-body">
   <!-- Google Tag Manager (noscript) -->
       <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MH9NFH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -66,37 +66,39 @@
         <div class="swiper-button-next"></div><!--右箭头-->
         <div class="swiper-pagination"></div><!--分页器（就是4个点点）-->
     </div>
-    <div class='tab_type'>
-      <p class='tab_one'>
-          <img class="banner-logo" src="/static/imgs/logo-sun-travel-02.png" srcset="/static/imgs/logo-sun-travel-02@2x.png 2x, /static/imgs/logo-sun-travel-02@3x.png 3x" alt="sun-travel">
-      </p>
-    </div>
-    <div class='show_type_content1 type_one' >
-        <div>
-          <p class='banner-text'>
-            太陽旅遊提供一站式旅遊預訂服務，客戶可預訂海陸空交通運輸、奢華住宿，輕鬆遊覽世界各地；本公司更可為客戶預訂全球大型演唱會及娛樂節目門票，同時提供特色餐廳訂座服務，讓客戶享受隨心所欲的旅遊體驗。強大的服務團隊將提供旅遊建議服務以至各項旅程安排，讓尊貴客戶盡顯非凡氣派，展現顯赫身份。
-          </p>
-        </div>
-    </div>
-    <section class="latest-news diamond-bg">
-      <h1 class="latest-news-title"><a href="/{{LanguageDisplay}}/news">最新消息<i class="more-button"></i></a></h1>
-      <div class="slide-wrapper">
-        <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-slide" id="carousel">
-          {{#News}}
-          <div class="slide-item">
-            <a href="/{{LanguageDisplay}}/news/category/{{slug}}">
-              <div class="ratio-16-9"><img src="{{square_link.url}}" class='onerror'  ></div>
-              <div class="item-info">
-                <p class="item-info-text">{{title}}</p>
-                <div class="item-date">{{date}}</div>
-                <span class="go-more">繼續閱讀</span>
-              </div>
-            </a>
-          </div>
-          {{/News}}
-        </div>
+    <div class="show_type">
+      <div class='tab_type'>
+        <p class='tab_one'>
+            <img class="banner-logo" src="/static/imgs/logo-sun-travel-02.png" srcset="/static/imgs/logo-sun-travel-02@2x.png 2x, /static/imgs/logo-sun-travel-02@3x.png 3x" alt="sun-travel">
+        </p>
       </div>
-    </section>
+      <div class='show_type_content1 type_one' >
+          <div>
+            <p class='banner-text'>
+              太陽旅遊提供一站式旅遊預訂服務，客戶可預訂海陸空交通運輸、奢華住宿，輕鬆遊覽世界各地；本公司更可為客戶預訂全球大型演唱會及娛樂節目門票，同時提供特色餐廳訂座服務，讓客戶享受隨心所欲的旅遊體驗。強大的服務團隊將提供旅遊建議服務以至各項旅程安排，讓尊貴客戶盡顯非凡氣派，展現顯赫身份。
+            </p>
+          </div>
+      </div>
+      <section class="latest-news diamond-bg">
+        <h1 class="latest-news-title"><a href="/{{LanguageDisplay}}/news">最新消息<i class="more-button"></i></a></h1>
+        <div class="slide-wrapper">
+          <div class="owl-carousel owl-theme owl-loaded owl-drag childCompany-slide" id="carousel">
+            {{#News}}
+            <div class="slide-item">
+              <a href="/{{LanguageDisplay}}/news/category/{{slug}}">
+                <div class="ratio-16-9"><img src="{{square_link.url}}" class='onerror'  ></div>
+                <div class="item-info">
+                  <p class="item-info-text">{{title}}</p>
+                  <div class="item-date">{{date}}</div>
+                  <span class="go-more">繼續閱讀</span>
+                </div>
+              </a>
+            </div>
+            {{/News}}
+          </div>
+        </div>
+      </section>
+    </div>
     {{> footer}}
     <script src="/static/js/vender/jquery-3.2.1.min.js"></script>
     <script src="/static/js/swiper.min.js"></script>
