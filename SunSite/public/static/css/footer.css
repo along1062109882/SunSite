@@ -280,6 +280,7 @@ footer {
   padding-left: 30px;
   color: #614a0b;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .footer-fold-links-childcompany-title img, .footer-fold-links-childcompany-news img {

@@ -67,7 +67,7 @@
         <div class="swiper-pagination"></div><!--分页器（就是4个点点）-->
     </div>
      <!-- Tab切换 -->
-    <div class='show_type'>
+    <div class='show_type entertainment-concert-type'>
         <div class='tab_type'>
           <p class='tab_one concert'>
              <img class="banner-logo" src="/static/imgs/logo-sun-entertainment-concert-02.png" srcset="/static/imgs/logo-sun-entertainment-concert-02@2x.png 2x, /static/imgs/logo-sun-entertainment-concert-02@3x.png 3x" alt="sun-enterainment-concert">
@@ -79,22 +79,26 @@
           </p>
         </div>
         <div class='show_type_img type_one'>
-          <ul>
-          {{#Concert}}
-            <li>
-               <img src="{{url}}"  alt="{{title}}">
-            </li>
-          {{/Concert}}
-          </ul>
+          <div class="entertainment-concert-ul-box">
+            <ul>
+            {{#Concert}}
+              <li>
+                <img src="{{url}}"  alt="{{title}}">
+              </li>
+            {{/Concert}}
+            </ul>
+          </div>
         </div>
         <div class='show_type_img type_two'>
-          <ul>
-          {{#Culture}}
-            <li>
-               <img src="{{url}}"  alt="{{title}}">
-            </li>
-          {{/Culture}}
-          </ul>
+          <div class="entertainment-concert-ul-box">
+            <ul>
+            {{#Culture}}
+              <li>
+                <img src="{{url}}"  alt="{{title}}">
+              </li>
+            {{/Culture}}
+            </ul>
+          </div>
         </div>
         <div class='show_type_content1 type_one' >
            <div>
