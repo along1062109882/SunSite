@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="/static/css/owl.theme.default.css" />
     <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/font-hant.css" />
     <link rel="stylesheet" href="/static/css/animate.css">
     <link rel="stylesheet" href="/static/css/childcompany_new.css">
     <link rel="stylesheet" href="/static/css/footer.css" />
@@ -64,23 +65,19 @@
         <div class="swiper-button-next"></div><!--右箭头-->
         <div class="swiper-pagination"></div><!--分页器（就是4个点点）-->
     </div>
-    <div class='tab_type tab_types'>
-      <p class='tab_one'>
-         各式餐飲
-      </p>
+    <div class='show_type_food'>
+      <header class="food-logo-header">各式餐飲</header>
+      <ul class='food-logo-wrapper'>
+      {{#Data}}
+        <li class='food-logo-item'>
+          <a href="{{url}}" target="_blank">
+            <img class="food-logo-img" src="{{img_url}}"  alt="{{title}}">
+            <p class="food-title">{{title}}</p>
+          </a>
+        </li>
+      {{/Data}}
+      </ul>
     </div>
-     <div class='show_type_food'>
-          <ul class='slide-wrapper'>
-          {{#Data}}
-            <li>
-            <a href="{{url}}" target="_blank">
-                <img src="{{img_url}}"  alt="{{title}}">
-                <p>{{title}}</p>
-            </a>
-            </li>
-          {{/Data}}
-          </ul>
-     </div>
 
     <section class="latest-news diamond-bg">
       <h1 class="latest-news-title"><a href="/{{LanguageDisplay}}/news">最新消息<i class="more-button"></i></a></h1>      
