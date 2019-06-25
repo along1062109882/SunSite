@@ -509,8 +509,6 @@
 }
 /* 跟页面主题内容统一 */
 
-
-
 @media(min-width: 1025px) and (max-width: 1440px) {
   .common-banner {
     height: 150px;

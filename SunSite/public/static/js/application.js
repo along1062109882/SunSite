@@ -41,9 +41,9 @@ $(function () {
         } else {
             if (regexp.test($(this).val()) === false) {
                 if (isHans) {
-                    $(this).siblings('.phone_text').text('请输入正确的电话格式！')
+                    $(this).siblings('.phone_text').text('请输入正确的电话格式（0934-3483888/ 15703448888)！')
                 } else {
-                    $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
+                    $(this).siblings('.phone_text').text('請輸入正確的電話格式（0934-3483888/ 15703448888）！')
                 }
                 $(this).siblings('.phone_text').show();
             } else {
@@ -79,24 +79,24 @@ $(function () {
     $('body').on('input', '.input-email', function () {
         var regexp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
        if ($(this).val() === '') {
-            $(this).siblings('.email_text').hide()
+            $(this).siblings('.email_text').hide();
        } else {
         if (regexp.test($(this).val()) === false) {
             if (isHans) {
-                $(this).siblings('.email_text').text('请输入正确的电邮格式！')
+                $(this).siblings('.email_text').text('请输入正确的电邮格式！');
             } else {
-                $(this).siblings('.email_text').text('請輸入正確的電郵格式！')
+                $(this).siblings('.email_text').text('請輸入正確的電郵格式！');
             }
             $(this).siblings('.email_text').show();
-        }{
-            $(this).siblings('.email_text').hide()
+        }else{
+            $(this).siblings('.email_text').hide();
         }
        }
     }) 
     // 日期格式
     $('body').on('input', '.format_date', function () {
         var text_name = $(this).parent().parent().siblings('label').text()
-        var regexp = /\d{2}\/\d{2}\/\d{4}/;
+        var regexp = /^(\d{2}\/)?(\d{2}\/)?\d{4}$/g;
         if ($(this).val() == '') {
             $(this).siblings('.birth_text').hide()
         } else {
@@ -197,7 +197,6 @@ $(function () {
             $('.multi-main .multi-li', $multiUl).last().remove();
         }
     })
-
 
     // 初次进入页面显示第一张页面
     $('#content_one').show().siblings().hide();
@@ -309,7 +308,9 @@ $(function () {
     }
     chage_num(0);
     // 列表略過
+    var flag = false , isflag = false;
     $('.skip_five').click(function () {
+        isflag = true;
         num = num + 1
         $('#content_five').hide();
         $('.pagination_content li').eq(num - 1).find('b').show();
@@ -317,6 +318,7 @@ $(function () {
         chage_num(num)
     })
     $('.skip_six').click(function () {
+        flag = true;
         num = num + 1
         $('#content_six').hide();
         $('.pagination_content li').eq(num - 1).find('b').show();
@@ -392,6 +394,13 @@ $(function () {
         num -= 1;
         if (num <= 0) num = 0;
         chage_num(num)
+        console.log(num)
+        if (num === 5) {
+           flag = false
+        }
+        if (num === 4) {
+            isflag = false
+         }
         $('.pagination_content li').eq(num).find('b').hide();
         $('.pagination_content li').eq(num + 1).find('span').css({ 'background': '#b5b5b6' });
     })
@@ -451,7 +460,18 @@ $(function () {
         for (var item in multiple) {
             var arr = [];
             var keys = Object.keys(multiple[item]);
-
+            if (item == 'applicant_profile_section_v2_work_experience_items') {
+                if (flag) {
+                    submitFormObject[item] = [];
+                    continue;
+                }
+            }
+            if (item == 'applicant_profile_section_v2_professional_items') {
+                if (isflag) {
+                    submitFormObject[item] = [];
+                    continue;
+                }
+            }
             for (var i = 0; i < multiple[item][keys[0]].length; i++) {
                 var itemObj = {};
 
@@ -474,6 +494,7 @@ $(function () {
                 // 工作经验写死至xx的值
                 if (item == 'applicant_profile_section_v2_work_experience_items') {
                     itemObj['work_experience_to_key'] = 'left'
+                    
                 } else if (item == 'applicant_profile_section_v2_family_member_items') {
 
                     itemObj['input_type'] = 'manual_input';
@@ -554,12 +575,15 @@ $(function () {
             type: "POST",
             dataType: "json",
             data: {
-                data: submitFormObject
+                data: JSON.stringify(submitFormObject)
+                // console.log(submitFormObject)
             },
             success: function (data) {
                 if (data.msg == 'success') {
                     alert(isHans ? '提交成功！' : '提交成功！')
-                    window.location.reload();
+                    // window.location.reload();
+                } else {
+                     alert(isHans ? '提交失败，请稍后重试！' : '提交失敗，請稍後重試！');
                 }
                 submiting = false;
             },

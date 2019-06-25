@@ -65,7 +65,7 @@ class Api {
         curl_setopt($ch, CURLOPT_URL, self::API.$url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($param));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, ($param));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
