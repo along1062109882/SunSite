@@ -860,7 +860,7 @@ p {
 
 .about-us-section-title {
 	font-size: 24px;
-	font-weight: 500;
+	font-weight: 600;
 	color: #614a0b;
 	margin-bottom: 27px;
 }
@@ -904,16 +904,20 @@ p {
   .about-us-section-content {
     /* max-width: 950px; */
     margin: auto;
-    padding-top: 40px;
+    padding-top: 48px;
     padding-bottom: 65px;
     display: flex;
     flex-direction: row;
   }
   .about-us-section-title {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     color: #614a0b;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+ }
+
+ .about-us-section-detail {
+   font-size: 14px;
  }
 }
 /* @media (max-width: 1080px) {
@@ -930,19 +934,25 @@ p {
 
 @media (max-width: 800px) {
 	.about-us-section-content {
-		padding: 36px 0px 36px 0px;
+		padding: 41px 0px 36px 0px;
 		width: 82%;
 		margin: 0 auto;
     display: block;
   }
+
+  .about-us-section-detail p {
+    font-size: 14px;
+  }
+
   .about-us-section-title {
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 11px;
   }
   .about-us-section-detail {
     color: #49443d;
     font-size: 14px;
-    line-height: 1.63;
+    line-height: 22px;
     text-align: justify;
   }
   
@@ -970,12 +980,11 @@ p {
   }
   .about-us-section-title {
     font-size: 18px;
-    font-weight: 500;
-}
-.about-us-section-img img {
-  max-width: 240px;
-  max-height: 247px;
- } 
+  }
+  .about-us-section-img img {
+    max-width: 240px;
+    max-height: 247px;
+  } 
 }
 /* V3 */
 .about-us-childcompany-section {
