@@ -60,7 +60,8 @@ function toggleDeviceBindEvent($object, eventCode, fun) {
 }
 
 function headerUpdateSize(e) {
-  headerScreenW = $(window).width();
+  // headerScreenW = $(window).width();
+  headerScreenW = window.innerWidth;
   var isToggleDevice = false;
 
   // start 为了兼容chrome下调试工具切换手机切电脑，电脑切手机 
