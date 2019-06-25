@@ -198,7 +198,7 @@ img {
     height: 400px;
   }
   .ts-ul li {
-    width: 9.7%;
+    width: 8.2%;
     list-style-type: none;
     overflow: hidden;
     float: left;
@@ -252,20 +252,20 @@ img {
     height: 150px;;
   }
   .ts-ul li b p {
-    font-size: 12px;
-    line-height: 17px;
+    font-size: 11px;
+    line-height: 16px;
   }
 }
 @media(max-width: 375px) {
   .ts-ul {
-    height: 132px;
+    height: 130px;
   }
   .ts-ul li b p {
     font-size: 11px;
     line-height: 14px;
   }
   .ts-ul li.on {
-    height: 132px;;
+    height: 130px;;
   }
 }
 .index-banner-wrapper {

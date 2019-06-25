@@ -226,8 +226,6 @@ select {
     vertical-align: top;
     width: 300px;
     height: 40px;
-    max-width: 300px;
-    min-width: 300px;
     position: relative;
     border-radius: 4px;
     border: solid 1px #e5dcc9;
@@ -237,6 +235,10 @@ select {
     font-size: 14px;
     /*font-weight: 600;*/
     box-sizing: border-box;
+}
+textarea {
+    max-width: 300px;
+    min-width: 300px;
 }
 .field-important{
     display: inline-block;

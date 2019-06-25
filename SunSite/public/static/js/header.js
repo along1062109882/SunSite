@@ -54,7 +54,6 @@ function toggleDeviceBindEvent($object, eventCode, fun) {
       } else {
         if (headerISTouch) return;
       }
-
       fun.apply(this, arguments)
     })
   });

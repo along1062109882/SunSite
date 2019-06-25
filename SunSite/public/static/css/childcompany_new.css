@@ -567,6 +567,9 @@ img {
   position: relative;
   cursor: default;
 }
+.tab_type .concert {
+  cursor: pointer;
+}
 .tab_type p span{
   width: 100%;
   display: block;
@@ -590,7 +593,7 @@ img {
     height: 100px;
   }
   .tab_type p img {
-    width: 80%;
+    width: 100%;
   }
   .tab_type p span{
     width: 100%;
@@ -718,7 +721,9 @@ img {
 .hotal_img li img {
   /* max-width: none; */
 }
-.tab_one {
+. {
+  cursor: pointer;
+} {
   font-family: PingFangTC;
   font-size: 24px;
   font-weight: 500;
@@ -729,12 +734,16 @@ img {
   color: #614a0b;
 }
 @media(max-width: 1024px) {
-  .tab_one {
+  . {
+    cursor: pointer;
+  } {
     font-size: 18px
   }
 }
 /* @media(max-width: 1439px) {
-  .tab_one {
+  . {
+    cursor: pointer;
+  } {
     font-size: 18px;
   }
 } */
