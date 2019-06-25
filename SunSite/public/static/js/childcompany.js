@@ -128,24 +128,25 @@ $(function () {
 });
 // 中间大图区域添加轮播效果
 //轮播图函数
-console.log($('.swiper-container .swiper-slide').length)
+if ($('.swiper-container .swiper-slide').length > 1) {
+  var mySwiper = new Swiper('.swiper-container', {//初始化Swiper
+    autoplay: $('.swiper-container .swiper-slide').length > 1 ? {//自动切换
+      delay: 3000,
+      stopOnLastSlide: false,
+      disableOnInteraction: false,
+    } : false,
+    navigation: {//前进后退
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {//分页器
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    loop: true,//循环
+  })
+}
 
-var mySwiper = new Swiper('.swiper-container', {//初始化Swiper
-  autoplay: $('.swiper-container .swiper-slide').length > 1 ? {//自动切换
-    delay: 3000,
-    stopOnLastSlide: false,
-    disableOnInteraction: false,
-  } : false,
-  navigation: {//前进后退
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  pagination: {//分页器
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  loop: $('.swiper-container .swiper-slide').length > 1,//循环
-})
 // childcompany latest-news slide
 // item max:3
   var slideLength = $(".childCompany-slide .slide-item").length;

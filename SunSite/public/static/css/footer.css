@@ -401,9 +401,15 @@ footer {
   margin-right: 5px;
 }
 
-.footer-fold-links-sns-icons-pop {
-  display: block;
+#footer-fold-links-sns-icons-pop-img {
   position: absolute;
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-fold-links-sns a, .footer-fold-links-sns a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Contact */
@@ -425,6 +431,10 @@ footer {
   font-size: 14px;
   font-weight: bold;
   line-height: 24px;
+  color: #614a0b;
+}
+
+.footer-fold-contact-text a {
   color: #614a0b;
 }
 

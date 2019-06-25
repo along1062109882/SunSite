@@ -43,7 +43,7 @@ headerHandleNav();
 
 setToggleLanguageHref();
 
-// start 为了兼容chrome下调试工具切换手机切电脑，电脑切手机的无理要求
+// start 为了兼容chrome下调试工具切换手机切电脑，电脑切手机
 function toggleDeviceBindEvent($object, eventCode, fun) {
   headerDragEvents[eventCode].forEach((eventName, index) => {
     $object.on(eventName, function() {
@@ -63,7 +63,7 @@ function headerUpdateSize(e) {
   headerScreenW = $(window).width();
   var isToggleDevice = false;
 
-  // start 为了兼容chrome下调试工具切换手机切电脑，电脑切手机的无理要求 
+  // start 为了兼容chrome下调试工具切换手机切电脑，电脑切手机 
   if (headerScreenW - lastHeaderScreenW >= 200) {
     isToggleDevice = true;
     headerISTouch = false;
@@ -222,7 +222,7 @@ function headerHandleNav() {
   //   else $(this).find('img').attr('src', '/static/imgs/nav-arrow-down-white.svg');
   // });
 
-  // start 为了兼容chrome下调试工具切换手机切电脑，电脑切手机的无理要求
+  // start 为了兼容chrome下调试工具切换手机切电脑，电脑切手机
   headerNavTitleChildcompany.on("click", function (event) {
 
     if (!headerISTouch) return;

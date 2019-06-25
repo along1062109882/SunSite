@@ -65,6 +65,7 @@
 @media(max-width: 640px) {
   .header-nav-button {
     left: 50%;
+    right: auto;
   }
 }
 @media (max-width: 414px) {
@@ -425,6 +426,7 @@
   padding-top: 7px;
   box-sizing: border-box;
 }
+
 .common-banner-content {
   max-width: 950px;
   margin: auto;
@@ -461,6 +463,36 @@
   -webkit-box-orient: vertical;
   cursor: default;
 }
+
+.common-banner-entertainment .common-banner-content {
+  max-width: 1020px;
+  padding-left: 55px;
+  box-sizing: border-box;
+
+}
+
+/* 跟页面主题内容统一 */
+@media (max-width: 1200px) {
+  .common-banner-entertainment .common-banner-content {
+    max-width: 770px;
+  }
+}
+@media (max-width: 1024px) {
+  .common-banner-entertainment .common-banner-content {
+    max-width: 770px;
+    margin: 0 15.3% 0 9.47%;
+  }
+}
+@media (max-width: 880px) {
+  .common-banner-entertainment .common-banner-content {
+    max-width: 78.125%;
+    padding-left:0;
+  }
+}
+/* 跟页面主题内容统一 */
+
+
+
 @media(min-width: 1025px) and (max-width: 1440px) {
   .common-banner {
     height: 150px;
@@ -512,6 +544,10 @@
   .common-banner {
     height: 106px;
     background-image: url('/static/imgs/banner-bg-640.jpg');
+  }
+
+  .common-banner-title {
+    padding-right: 0;
   }
 
   .header-nav-group {
