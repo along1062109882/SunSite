@@ -53,7 +53,7 @@ $(function () {
     })
     // 流動電話：
     $('body').on('input', '.input-phone-move', function () {
-        var regexp = /^\+\d{2,3}-\d{7,20}$/g;
+        var regexp = /^\+\d{2,3}-\d{6,20}$/g;
         if (regexp.test($(this).val()) === false) {
             if (isHans) {
                 $(this).siblings('.phone_text').text('请输入正确的电话格式！')
@@ -581,7 +581,7 @@ $(function () {
             success: function (data) {
                 if (data.msg == 'success') {
                     alert(isHans ? '提交成功！' : '提交成功！')
-                    // window.location.reload();
+                    window.location.reload();
                 } else {
                      alert(isHans ? '提交失败，请稍后重试！' : '提交失敗，請稍後重試！');
                 }
