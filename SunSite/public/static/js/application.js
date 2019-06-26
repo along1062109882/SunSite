@@ -41,9 +41,9 @@ $(function () {
         } else {
             if (regexp.test($(this).val()) === false) {
                 if (isHans) {
-                    $(this).siblings('.phone_text').text('请输入正确的电话格式（0934-3483888/15703448888)!')
+                    $(this).siblings('.phone_text').text('请输入正确的电话格式( +853-66666666)!')
                 } else {
-                    $(this).siblings('.phone_text').text('請輸入正確的電話格式（0934-3483888/15703448888)!')
+                    $(this).siblings('.phone_text').text('請輸入正確的電話格式( +853-66666666)!')
                 }
                 $(this).siblings('.phone_text').show();
             } else {
@@ -377,7 +377,7 @@ $(function () {
             return;
         } 
         if(!elvalue_isNull){
-            alert(isHans ? '请填写必填项！' : '請輸入必填項！')
+            alert(isHans ? '请填写必填项！' : '請填寫必填項！')
             return
         }
 
