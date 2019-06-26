@@ -1455,7 +1455,7 @@ img {
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 414px) {
   .entertainment-body  .tab_type,
   .entertainment-body .show_type_img .entertainment-concert-ul-box,
   .entertainment-body .show_type_content1 div {
@@ -1550,7 +1550,7 @@ img {
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 414px) {
   .entertainment-body .banner-wrapper {
     max-width: 320px;
     width: 85.3%;
@@ -1559,5 +1559,67 @@ img {
 
   .entertainment-body .banner-box {
     padding: 34px 0 32px;
+  }
+}
+
+.travl-show-type .show_type_content1 {
+  padding-top: 0;
+}
+
+.travl-content-header {
+  overflow: hidden;
+}
+
+.travl-content-header img {
+  display: block;
+  margin: 64px auto 42px;
+  width: 250px;
+}
+
+@media (max-width: 1440px) {
+  .travl-content-header img {
+    margin-bottom: 39px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .travl-show-type .show_type_content1 {
+    padding-bottom: 53px;
+  }
+
+  .travl-content-header img {
+    margin-top: 45px;
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .travl-content-header img {
+    margin-top: 49px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 680px) {
+  .travl-content-header img {
+    width: 180px;
+    margin-top: 44px;
+    margin-bottom: 20px;
+  }
+  
+  .travl-show-type .show_type_content1 {
+    padding-bottom: 49px;
+  }
+}
+
+@media (max-width: 414px) {
+  .travl-show-type .show_type_content1 {
+    padding-bottom: 38px;
+  }
+
+  .travl-content-header img {
+    width: 140px;
+    margin-top: 34px;
+    margin-bottom: 12px;
   }
 }

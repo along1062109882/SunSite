@@ -80,7 +80,6 @@
                       <h3 class="department">{{Name}}</h3>
                     </div>
                     <img class="job-arrow-down" src="/static/imgs/job-arrow-down.svg" />
-                  <!-- </a> -->
                 </div>
                 <div class="divider"></div>
                 <ul class="submenu-box">
@@ -120,7 +119,7 @@
           <div class="swiper-wrapper">
             {{#AllPostsBelongToCategory}}
               <li class="swiper-slide js-swiper-slide js-item">
-                <a href="/{{LanguageDisplay}}/jobs-vip/{{slug}}">{{title}}</a>
+                <a href="/{{LanguageDisplay}}/jobs-vip/{{slug}}"><span>{{title}}</span></a>
               </li>
             {{/AllPostsBelongToCategory}}
           </div>
@@ -135,8 +134,17 @@
                 <img src="/static/imgs/job-category-logo.svg" />
                 <span>{{CurrentCategory.Name}}-{{CurrentPost.title}}</span>
               </h2>
+              {{#CurrentPost.scope}}
+              <div class="des-title">工作職能</div>
+              <div class="des-block">{{{CurrentPost.scope}}}</div>
+              {{/CurrentPost.scope}}
+              {{#CurrentPost.content}}
+              <div class="des-title">職位要求</div>
               <div class="des-block">{{{CurrentPost.content}}}</div>
-              <a href="/{{LanguageDisplay}}/jobs-application" ><img src="/static/imgs/job-apply.svg" /></a>
+              {{/CurrentPost.content}}
+              <div class="des-button-box">
+                <a class="des-button" href="/{{LanguageDisplay}}/jobs-application"><img src="/static/imgs/job-apply.svg" /></a>
+              </div>
             </div>
             <div class="welfare">
               <i class="welfare-title">员工福利</i>
@@ -198,7 +206,7 @@
     <script src="/static/js/footer.js"></script>
     <script src="/static/js/header.js"></script>
     <script src="/static/js/vender/utility.js"></script>
-    <script>
+    <!-- <script>
       var str = '{{#Jobs}}"{{Slug}}":"{{Name}}",{{#Posts}}"{{slug}}":"{{name}}",{{/Posts}}{{/Jobs}}';
       var json = JSON.parse('{' + str.slice(0, -1) + '}');
       var slug = "";
@@ -211,6 +219,6 @@
       } else {
         $('.defaultName').text(json[slug]);
       }
-    </script>
+    </script> -->
   </body>
 </html>
