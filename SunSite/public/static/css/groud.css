@@ -473,20 +473,3 @@
     background-color: #a19062;
     color: #fff;
 }
-
-@media (max-width: 1024px) {
-    .common-banner-content {
-        width: 100%;
-        margin-left: 10.98%;
-    }
-}
-
-@media (max-width: 768px) {
-    .common-banner-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-left: 0
-    }
-}
