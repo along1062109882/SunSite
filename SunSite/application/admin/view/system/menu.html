@@ -50,7 +50,7 @@
             id: tableId,
             elem: '#' + tableId,
             idField: 'id',
-            url: "{:url('/admin/menu')}",
+            url: "{:url('/menu')}",
             cellMinWidth: 100,
             treeId: 'id',//树形id字段名称
             treeUpId: 'pid',//树形父id字段名称
@@ -76,7 +76,7 @@
             var data = obj.data;
             if (obj.event === 'del') {
                 layer.confirm('確定删除操作？', {icon: 3, title: '提示信息'}, function (index) {
-                    $.post("{:url('/admin/deleteMenu')}", {id: data.id}, function (data) {
+                    $.post("{:url('/deleteMenu')}", {id: data.id}, function (data) {
                         var icon = 5;
                         if (data.code) {
                             icon = 6;
@@ -102,7 +102,7 @@
         var index = layui.layer.open({
             type: 2,
             title: '添加菜單',
-            content: "{:url('/admin/editMenu')}",
+            content: "{:url('/editMenu')}",
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {
@@ -128,7 +128,7 @@
         var index = layui.layer.open({
             type: 2,
             title: '編輯菜單',
-            content: "{:url('/admin/editMenu')}" + '?id=' + id,
+            content: "{:url('/editMenu')}" + '?id=' + id,
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {

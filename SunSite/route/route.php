@@ -104,7 +104,7 @@ Route::get('/', 'index/index');
 /**
  * 后台管理路由
  */
-//Route::get('/admin/login', 'admin/login/login');
+//Route::get('/login', 'admin/login/login');
 
 ///**
 // * 免权限验证路由

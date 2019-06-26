@@ -64,7 +64,7 @@
         var tableIns = {
             id:'id',
             elem: '#usersList',
-            url : "/admin/sun_banner_data",
+            url : "/sun_banner_data",
             where:{type:2},
             cellMinWidth : 95,
             page : true,
@@ -97,7 +97,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/sun_banner_edit')}"+'?id='+id+'&type=2',
+                content : "{:url('/sun_banner_edit')}"+'?id='+id+'&type=2',
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -121,7 +121,7 @@
                 edit(data.id);
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/sun_banner_delete')}",{id:data.id},function(data){
+                    $.post("{:url('/sun_banner_delete')}",{id:data.id},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;

@@ -23,7 +23,7 @@
 a, img {
   border: none;
   text-decoration: none;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 a, ol {

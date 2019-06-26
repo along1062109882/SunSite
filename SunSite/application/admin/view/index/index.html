@@ -33,8 +33,8 @@
                 <li class="layui-nav-item" id="userInfo">
                     <a href="javascript:;"><img src="{$info.head=='/images/face.jpg'?'/images/logo-1027.jpg':$info.head}" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">{$info.name}</cite></a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="{:url('/admin/userInfo')}"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>個人資料</cite></a></dd>
-                        <dd><a href="javascript:;" data-url="{:url('/admin/editPassword')}"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密碼</cite></a></dd>
+                        <dd><a href="javascript:;" data-url="{:url('/userInfo')}"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>個人資料</cite></a></dd>
+                        <dd><a href="javascript:;" data-url="{:url('/editPassword')}"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密碼</cite></a></dd>
                         <!--<dd pc><a href="javascript:;" class="functionSetting"><i class="layui-icon">&#xe620;</i><cite>功能設定</cite><span class="layui-badge-dot"></span></a></dd>-->
                         <!--<dd><a href="javascript:;" class="showNotice"><i class="layui-icon">&#xe645;</i><cite>系统公告</cite><span class="layui-badge-dot"></span></a></dd>-->
                         <dd pc><a href="javascript:;" class="changeSkin"><i class="layui-icon">&#xe61b;</i><cite>更換皮膚</cite></a></dd>
@@ -88,7 +88,7 @@
             </ul>
             <div class="layui-tab-content clildFrame">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="{:url('/admin/home')}"></iframe>
+                    <iframe src="{:url('/home')}"></iframe>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
                 layer.msg("请输入解锁密码！");
                 $(this).siblings(".admin-header-lock-input").focus();
             } else {
-                $.post("{:url('/admin/unlock')}", {password: password}, function (data) {
+                $.post("{:url('/unlock')}", {password: password}, function (data) {
                     if (data.code) {
                         window.sessionStorage.setItem("lockcms", false);
                         $(this).siblings(".admin-header-lock-input").val('');
@@ -175,7 +175,7 @@
     })
 
     function loginout() {
-        $.post("{:url('/admin/logout')}", '', function (data) {
+        $.post("{:url('/logout')}", '', function (data) {
             layer.msg(data.msg, {time: 1500}, function () {
                 location.href = data.url;
             });

@@ -46,7 +46,7 @@ class UserService
             $msg = Result::error('密碼錯誤');
         } else {
             self::autoSession($list['uid']);
-            $msg = Result::success('登錄成功', url('/admin/index'));
+            $msg = Result::success('登錄成功', url('/index'));
         }
         return $msg;
     }
@@ -130,7 +130,7 @@ class UserService
             //清除当前登录信息
             session('user_auth', null);
             session('user_auth_sign', null);
-            $msg = Result::success('重置成功,請重新登錄', url('/admin/login'));
+            $msg = Result::success('重置成功,請重新登錄', url('/login'));
         } else {
             $msg = Result::error('修改失败');
         }
@@ -176,7 +176,7 @@ class UserService
             $AuthGroupAccess = new AuthGroupAccess;
             $res2 = $AuthGroupAccess->saveAll($save, false);
             if ($res2) {
-                $msg = Result::success('添加成功', url('/admin/userList'));
+                $msg = Result::success('添加成功', url('/userList'));
             } else {
                 $msg = Result::error('添加失败', null, ['token' => Request::token()]);
             }
@@ -218,7 +218,7 @@ class UserService
             $AuthGroupAccess = new AuthGroupAccess;
             $res2 = $AuthGroupAccess->saveAll($save, false);
             if ($res2) {
-                $msg = Result::success('編輯成功', url('/admin/userlist'));
+                $msg = Result::success('編輯成功', url('/userlist'));
             } else {
                 $msg = Result::error('編輯失敗');
             }
