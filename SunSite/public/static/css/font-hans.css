@@ -1,11 +1,9 @@
-@font-face {
-  font-family: "PingFang-Regular";
-  src: url("../font/PingFang-Regular.woff2");
-}
-
 * {
-  font-family: "PingFang-Regular", "Segoe UI", "Helvetica Neue", "Helvetica",
-    "微軟正黑體", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑",
+  font-family: "PingFang SC", "Source Han Sans CN", "noto sans", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑",
     "Lucida Grande", Arial, "Ubuntu", "Cantarell", "Fira Sans", sans-serif,
     serif;
+  /* font-family: "PingFang SC", "Segoe UI", "Helvetica Neue", "Helvetica",
+    "微軟正黑體", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑",
+    "Lucida Grande", Arial, "Ubuntu", "Cantarell", "Fira Sans", sans-serif,
+    serif; */
 }
