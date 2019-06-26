@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/static/css/news_new.css" />
     <link rel="stylesheet" href="/static/css/footer.css" />
     <link rel="stylesheet" href="/static/css/swiper.min.css" />
-    <link rel="stylesheet" href="/static/css/disclaimer.css" />
+    <link rel="stylesheet" href="/static/css/groud.css" />
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
@@ -70,6 +70,9 @@
                 {{#Grand}}
                     <li class="grand-item">
                       <a href="{{url}}" target='_blank' class="grand-box">
+                        {{#img_url}}
+                          <img class="grand-banner" src="{{img_url}}" alt="{{alt}}" />
+                        {{/img_url}}
                         <div class="grand-detail">
                           <div class="grand_p">
                             <div class='title'>{{name}}</div>
@@ -79,9 +82,6 @@
                             <b>进入专页</b>
                           </span>
                         </div>
-                        {{#img_url}}
-                          <span class="grand-banner"><img src="{{img_url}}" alt="{{alt}}" /></span>
-                        {{/img_url}}
                       </a>
                     </li>
                 {{/Grand}}
@@ -93,7 +93,7 @@
                    <li class="grand-item">
                       <a href="{{url}}" target='_blank' class="grand-box">
                         {{#img_url}}
-                          <span class="grand-banner"><img src="{{img_url}}" alt="{{alt}}" /></span>
+                          <img class="grand-banner" src="{{img_url}}" alt="{{alt}}" />
                         {{/img_url}}
                         <div class="grand-detail">
                           <div class="grand_p">
@@ -116,7 +116,7 @@
                     <li class="grand-item">
                       <a href="{{url}}" target='_blank' class="grand-box">
                         {{#img_url}}
-                          <span class="grand-banner"><img src="{{img_url}}" alt="{{alt}}" /></span>
+                          <img class="grand-banner" src="{{img_url}}" alt="{{alt}}" />
                         {{/img_url}}
                         <div class="grand-detail">
                           <div class="grand_p">
