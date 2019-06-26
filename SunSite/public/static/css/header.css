@@ -330,7 +330,7 @@
 }
 
 .header-nav-item-group, .header-nav-item-group-news li {
-  line-height: 43px;
+  line-height: 50px;
   cursor: pointer;
   text-align: center;
   /* padding-left: 30px; */
@@ -406,7 +406,7 @@
   }
 
   .header-nav-item-group li {
-    line-height: 38px;
+    line-height: 50px;
     text-align: center;
     padding-left: 0px !important;
   }
