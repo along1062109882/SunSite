@@ -1,6 +1,6 @@
 {extend name="base/base" /}
 {block name="main"}
-<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/edit')}">
+<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/edit')}">
     <div class="btnShow_viewLoading">
         <img src="/images/loading.gif" alt="">
     </div>
@@ -77,7 +77,7 @@
                 var msg;
                 $.ajax({
                     // async: false,
-                    url: "{:url('/admin/check')}",
+                    url: "{:url('/check')}",
                     data: { username: value },
                     success: function (data) {
                         if (data.code) {

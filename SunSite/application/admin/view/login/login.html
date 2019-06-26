@@ -55,7 +55,7 @@
             var data = data.field;
             obj.text("登錄中...").attr("disabled", "disabled").addClass("layui-disabled");
             $.ajax({
-                url: "{:url('/admin/login/login')}",
+                url: "{:url('/login/login')}",
                 type: 'post',
                 dataType: 'json',
                 data: data,

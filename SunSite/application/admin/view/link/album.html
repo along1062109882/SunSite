@@ -104,7 +104,7 @@
         var tableIns1 = {
             // id:'id',
             elem: '#usersList1',
-            url : "/admin/get_choice_data",
+            url : "/get_choice_data",
             cellMinWidth : 95,
             page : true,
             limit:10,
@@ -127,7 +127,7 @@
         var tableIns2 = {
             // id:'id',
             elem: '#usersList2',
-            url : "/admin/get_photo_data",
+            url : "/get_photo_data",
             cellMinWidth : 95,
             page : true,
             limit:10,
@@ -150,7 +150,7 @@
         var tableIns3 = {
             // id:'id',
             elem: '#usersList3',
-            url : "/admin/get_unchoice_data",
+            url : "/get_unchoice_data",
             cellMinWidth : 95,
             page : true,
             limit:10,
@@ -178,7 +178,7 @@
 
         //编辑用户
         function edit(id){
-            $.post("{:url('/admin/choiceCommit')}",{id:id,type:type,post_id:post_id},function(data){
+            $.post("{:url('/choiceCommit')}",{id:id,type:type,post_id:post_id},function(data){
                 var icon=5;
                 if(data.code){
                     icon=6;
@@ -195,7 +195,7 @@
                 edit(data.id);
             } else if(layEvent === 'del1'){ //删除
                 layer.confirm('確定刪除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/news_album_delete')}",{id:data.id,type:type,post_id:post_id},function(data){
+                    $.post("{:url('/news_album_delete')}",{id:data.id,type:type,post_id:post_id},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;
@@ -218,7 +218,7 @@
                 edit(data.id);
             } else if(layEvent === 'del2'){ //删除
                 layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/sun_entertainment_delete')}",{id:data.id,type:type},function(data){
+                    $.post("{:url('/sun_entertainment_delete')}",{id:data.id,type:type},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;
@@ -241,7 +241,7 @@
                 edit(data.id);
             } else if(layEvent === 'del3'){ //删除
                 layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/sun_entertainment_delete')}",{id:data.id,type:type},function(data){
+                    $.post("{:url('/sun_entertainment_delete')}",{id:data.id,type:type},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;

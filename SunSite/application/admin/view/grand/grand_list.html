@@ -59,7 +59,7 @@
         var tableIns = {
             id:'id',
             elem: '#usersList',
-            url : "/admin/get_grand_data",
+            url : "/get_grand_data",
             cellMinWidth : 95,
             page : true,
             limit:10,
@@ -119,7 +119,7 @@
             active[types] ? active[types].call(this) : '';
         });
         $(".adduser_btn").click(function(){
-            edit("{:url('/admin/grandEdit')}"+'?where=add');
+            edit("{:url('/grandEdit')}"+'?where=add');
         });
         //编辑用户
         function edit(url){
@@ -150,24 +150,24 @@
         table.on('tool(usersList)', function(obj){
             var layEvent = obj.event, data = obj.data;
             // if(layEvent === 'edit_basic'){ //编辑
-            //     edit("{:url('/admin/grand_basic')}"+'?id='+data.id);
+            //     edit("{:url('/grand_basic')}"+'?id='+data.id);
             // } else if(layEvent === 'edit_cover'){
-            //     edit("{:url('/admin/grand_cover')}"+'?id='+data.id);
+            //     edit("{:url('/grand_cover')}"+'?id='+data.id);
             // }else if(layEvent === 'edit_video'){
-            //     edit("{:url('/admin/grand_video')}"+'?id='+data.id);
+            //     edit("{:url('/grand_video')}"+'?id='+data.id);
             // }else if(layEvent === 'edit_ticket'){
-            //     edit("{:url('/admin/grand_ticket')}"+'?id='+data.id);
+            //     edit("{:url('/grand_ticket')}"+'?id='+data.id);
             // }else if(layEvent === 'edit_tricks'){
-            //     edit("{:url('/admin/grand_tricks')}"+'?id='+data.id);
+            //     edit("{:url('/grand_tricks')}"+'?id='+data.id);
             // }
             if(layEvent === 'edit'){ //编辑
-                edit("{:url('/admin/grandEdit')}"+'?id='+data.id+'&where=edit');
+                edit("{:url('/grandEdit')}"+'?id='+data.id+'&where=edit');
             }else if(layEvent === 'edit_pic'){
-                edit("{:url('/admin/event_album')}"+'?id='+data.id+'&type=3');
+                edit("{:url('/event_album')}"+'?id='+data.id+'&type=3');
             }
             else if(layEvent === 'del'){ //删除
                 layer.confirm('確定刪除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/grandDelete')}",{id:data.id},function(data){
+                    $.post("{:url('/grandDelete')}",{id:data.id},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;
