@@ -270,6 +270,24 @@
     height: 64px;
     margin-top: 14px;
   }
+  .header-nav-group {
+    /* width: 250px; */
+    /* height: 100%; */
+    max-width: 700px;
+    /* float: left; */
+    /* position: absolute; */
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+    /* margin-left: -20px; */
+    /* margin-top: 12px; */
+    /* margin-left: 47px; */
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 100%;
+  }
 }
 @media (max-width: 768px) {
   .header-nav-logo {
@@ -429,7 +447,7 @@
   }
 } */
 
-/* banner start */
+/* banner start -- Unify all pages common banner style*/
 
 .common-banner {
   /* background: url('/static/imgs/common/common-banner-1920.jpg'); */
@@ -446,35 +464,29 @@
 }
 
 .common-banner-content {
-  max-width: 950px;
-  margin: auto;
+  /* max-width: 950px; */
+  /* margin: auto; */
+  margin-left: 23.95%;
   display: flex;
   flex: 1;
   align-items: center;
   justify-items: left;
 }
 
-.grand_logo .common-banner-content {
-  margin-left: 19.98%;
-  display: flex;
-  align-items: center;
-}
-@media(max-width: 1024px) {
-  .grand_logo .common-banner-content {
-    margin: 0;
-  }
-}
 .common-banner-logo {
   width: 133px;
+  height: 133px;
+  object-fit: cover;
 }
+
 .common-banner-title {
   display: inline;
-  margin-left: 40px;
+  margin-left: 41px;
 	font-size: 36px;
   font-weight: 600;
   vertical-align: middle;
   color: #614a0b;
-  padding-right: 30px;
+  /* padding-right: 30px; */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -482,34 +494,19 @@
   cursor: default;
 }
 
-.common-banner-entertainment .common-banner-content {
-  max-width: 1000px;
-
-}
-
-/* 跟页面主题内容统一 */
-@media (max-width: 1024px) {
-  .common-banner-entertainment .common-banner-content {
-    max-width: 720px;
-    padding-left:0;
-  }
-}
-@media (max-width: 760px) {
-  .common-banner-entertainment .common-banner-content {
-    max-width: 640px;
-    padding-left:0;
-  }
-}
-/* 跟页面主题内容统一 */
-
 @media(min-width: 1025px) and (max-width: 1440px) {
   .common-banner {
     height: 150px;
     padding-top: 6px;
   }
 
+  .common-banner-content {
+    margin-left: 17.08%;
+  }
+
   .common-banner-logo {
     width: 100px;
+    height: 100px;
   }
 
   .common-banner-title {
@@ -518,21 +515,18 @@
 }
 @media(max-width: 1024px) {
   .common-banner {
-    height: 108px;
+    height: 109px;
     padding-top: 0;
+    padding-bottom: 2px;
   }
 
   .common-banner-content {    
-    padding-left: 70px;
-    box-sizing: border-box;
-  }
-
-  .grand_logo .common-banner-content {
-    margin-left: 0%;
+    margin-left: 16.699%;
   }
 
   .common-banner-logo {
     width: 70px;
+    height: 71px;
   }
   .common-banner-title {
     margin-left: 25px;
@@ -542,10 +536,12 @@
 @media(max-width: 768px) {
   .common-banner {
     height: 106px;
+    padding-bottom: 0;
     background-image: url('/static/imgs/banner-bg-768.jpg');
   }
   .common-banner-content {
     padding-left: 0;
+    margin-left: 0;
     justify-content: center;
   }
 }
@@ -559,24 +555,7 @@
     padding-right: 0;
   }
 
-  .header-nav-group {
-    /* width: 250px; */
-    /* height: 100%; */
-    max-width: 700px;
-    /* float: left; */
-    /* position: absolute; */
-    z-index: 999;
-    background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
-    /* margin-left: -20px; */
-    /* margin-top: 12px; */
-    /* margin-left: 47px; */
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    width: 100%;
-  }
+  
 }
 @media(max-width: 460px) {
   .common-banner {
@@ -593,23 +572,11 @@
   }
   .common-banner-logo {
     width: 50px;
+    height: 51px;
   }
   .common-banner-title {
     margin-left: 16px;
     font-size: 24px;
-  }
-}
-@media(max-width: 375px) {
-  .common-banner {
-    height: 87px;
-  }
-
-  .common-banner-title {
-    font-size: 24px;
-  }
-
-  .common-banner-logo {
-    width: 50px;
   }
 }
 /* banner end */
