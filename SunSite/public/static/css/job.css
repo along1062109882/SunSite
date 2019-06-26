@@ -341,6 +341,16 @@
   display: none;
 }
 
+.jobs-swiper-wrapper .swiper-slide a span {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 16px;
+  padding: 0 16px 0 23px;
+  text-align: left;
+}
+
 @media(max-width: 1080px) {
   #googleMap {
     width: 180px;
@@ -551,7 +561,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 20px;
+    padding: 15px;
     font-size: initial;
     background-image: linear-gradient(266deg, #e3ddc8, #faf7e7 49%, #e3ddc8);
   }
@@ -559,7 +569,7 @@
   .menu-375 > span {
     flex-shrink: 0;
     color: #a19062;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .job-dropdown {
@@ -916,6 +926,14 @@
   color: #a19062;
   line-height: 28px;
 }
+
+.des-wrapper {
+  background: #f5f5f5;
+}
+.category-wrapper {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .requirement {
   /* 1200/1555 */
   box-sizing: border-box;
@@ -950,9 +968,40 @@
   color: #614a0b;
 }
 
-.des-block {
-  
+.des-title {
+  font-size: 16px;
+  line-height: 26px;
+  color: #a19062;
+  margin-top: 20px;
+  font-weight: 600;
 }
+
+.des-block {
+  padding-top: 6px;
+  font-size: 14px;
+  color: #49443d;
+  line-height: 26px;
+}
+
+.des-button-box {
+  margin-top: 47px;
+  padding-left: 29%;
+  font-size: 0;
+}
+
+.des-button {
+  display: inline-block;
+}
+
+
+@media(max-width: 1440px) {
+  .des-button-box {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+
 
 .des-block>h1, .des-block>h2, .des-block>h3, .des-block>h4 {
   margin-bottom: 7px;
@@ -990,9 +1039,16 @@
   width: 97px;
   height: 106px;
   font-size: 0;
-  background-image: url("/static/imgs/welfare-icon.png");
+  background: url("/static/imgs/welfare-title-icon.svg") no-repeat center;
   background-size: contain;
 }
+
+.welfare-title.welfare-title-hans {
+  background-image: url("/static/imgs/welfare-title-icon-hans.svg");
+}
+
+
+
 .welfare-detail {
   width: 400px;
   margin-left: 40px;
@@ -1067,6 +1123,17 @@
     background-position: center;
     background-size: 312px 309px;
   }
+  .des-title {
+    margin-top: 23px;
+  }
+  .des-block {
+    padding-top: 9px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  .des-button-box {
+    margin-top: 27px;
+  }
   .welfare {
     max-width: 78.125%;
     margin: 0 9.9% 0 7.5%;
@@ -1121,6 +1188,9 @@
     padding: 34px 45px 43px 10px;
     background-position: center;
     background-size: 312px 309px;
+  }
+  .des-button-box {
+    margin-top: 37px;
   }
   .welfare {
     max-width: 85.94%;
@@ -1197,6 +1267,19 @@
     margin-bottom: 21px;
     font-size: 18px;
   }
+
+  .des-title {
+    margin-top: 28px;
+  }
+
+  .des-block {
+    padding-top: 9px;
+  }
+
+  .des-button-box {
+    margin-top: 32px;
+  }
+
   .des-block>h1, .des-block>h2, .des-block>h3, .des-block>h4 {
     margin-bottom: 10px;
   }
@@ -1212,10 +1295,15 @@
     width: 155px;
     height: 39px;
     font-size: 0;
-    background-image: url("/static/imgs/welfare-icon-640@2x.png");
-    background-size: contain;
+    background-image: url("/static/imgs/welfare-title-icon-640.svg");
     margin-bottom: 20px;
   }
+
+  .welfare-title.welfare-title-hans {
+    background-image: url("/static/imgs/welfare-title-icon-hans-640.svg");
+  }
+
+
   .welfare-detail {
     font-size: 14px;
     width: auto;
@@ -1267,6 +1355,17 @@
   .jop-title {
     margin-bottom: 27px;
     font-size: 18px;
+  }
+  
+  .des-title {
+    margin-top: 18px;
+  }
+  .des-button-box {
+    margin-top: 23px;
+  }
+  .welfare-detail {
+    max-width: none;
+    margin: 0 16px;
   }
   .des-block>ul, .des-block>p{
     margin-bottom: 18px;

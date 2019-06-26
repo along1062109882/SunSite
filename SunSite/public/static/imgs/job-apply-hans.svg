@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="48" viewBox="0 0 168 48">
+    <defs>
+        <filter id="a" width="108.8%" height="135%" x="-3.1%" y="-12.5%" filterUnits="objectBoundingBox">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.262745098 0 0 0 0 0.247058824 0 0 0 0 0.203921569 0 0 0 0.3 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <linearGradient id="b" x1="92.32%" x2="7.144%" y1="93.634%" y2="7.265%">
+            <stop offset="0%" stop-color="#D9CDA9"/>
+            <stop offset="20.572%" stop-color="#F6EFD6"/>
+            <stop offset="44.443%" stop-color="#D9CDA9"/>
+            <stop offset="65.073%" stop-color="#F6EFD6"/>
+            <stop offset="82.727%" stop-color="#D9CDA9"/>
+            <stop offset="100%" stop-color="#ECE4C8"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd" filter="url(#a)" transform="translate(2 2)">
+        <path fill="url(#b)" fill-opacity=".95" d="M0 0h160v40H0z"/>
+        <text fill="#A19062" font-family="PingFangTC-Semibold, PingFang TC" font-size="18" font-weight="500" letter-spacing="-.045">
+            <tspan x="44.09" y="27">申请职位</tspan>
+        </text>
+    </g>
+</svg>

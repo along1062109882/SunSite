@@ -13,9 +13,8 @@ $(function () {
 
   /* 应用 swiper */
   var initialSlide = $('.job-item-link a[href="' + location.pathname + '"]').parent().index() || 0;
-  var itemCount = 5;
-  if (htmlWidth >= 375 && htmlWidth < 768) itemCount = 3;
-  if (htmlWidth < 375) itemCount = 2;
+  var itemCount = 3;
+  if (htmlWidth <= 660) itemCount = 2;
   var swiper = new Swiper('.swiper-container', {
     initialSlide: initialSlide,
     slidesPerView: itemCount,

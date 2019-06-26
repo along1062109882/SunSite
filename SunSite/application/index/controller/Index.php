@@ -889,8 +889,8 @@ class Index extends Controller
                                 $joins['status'] = 1;
                                 $joins['title'] = $in_lang==0?$arr[$arr_k][$a_k_k]['position']['chinese_name']:($in_lang==1?$arr[$arr_k][$a_k_k]['position']['simple_chinese_name']:$arr[$arr_k][$a_k_k]['position']['english_name']);
                                 $joins['excerpt'] = '';
-                                $joins['content'] = $in_lang==0?$arr[$arr_k][$a_k_k]['scope_of_work_in_chinese']:($in_lang==1?$arr[$arr_k][$a_k_k]['scope_of_work_in_simple_chinese']:$arr[$arr_k][$a_k_k]['scope_of_work_in_english']);
-                                $joins['scope'] = $in_lang==0?$arr[$arr_k][$a_k_k]['job_requirements_in_chinese']:($in_lang==1?$arr[$arr_k][$a_k_k]['job_requirements_in_simple_chinese']:$arr[$arr_k][$a_k_k]['job_requirements_in_english']);
+                                $joins['scope'] = $in_lang==0?$arr[$arr_k][$a_k_k]['scope_of_work_in_chinese']:($in_lang==1?$arr[$arr_k][$a_k_k]['scope_of_work_in_simple_chinese']:$arr[$arr_k][$a_k_k]['scope_of_work_in_english']);
+                                $joins['content'] = $in_lang==0?$arr[$arr_k][$a_k_k]['job_requirements_in_chinese']:($in_lang==1?$arr[$arr_k][$a_k_k]['job_requirements_in_simple_chinese']:$arr[$arr_k][$a_k_k]['job_requirements_in_english']);
                                 $joins['keywords'] = '';
                                 $joins['description'] = '';
                                 $joins['date'] = '';

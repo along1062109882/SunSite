@@ -75,14 +75,11 @@
             <li id="{{FirstSubSlug}}" class="category-item">
               <div class="category-wrapper">
                 <div class="category">
-                  <!-- <a href="/{{LanguageDisplay}}/jobs-vip/{{FirstSubSlug}}#content" class="first-class-menu"> -->
-                  <!-- <a href="/{{LanguageDisplay}}/jobs-vip/{{FirstSubSlug}}" class="first-class-menu"> -->
                     <div class="category-title">
                       <img src="/static/imgs/job-category-logo.svg" />
                       <h3 class="department">{{Name}}</h3>
                     </div>
                     <img class="job-arrow-down" src="/static/imgs/job-arrow-down.svg" />
-                  <!-- </a> -->
                 </div>
                 <div class="divider"></div>
                 <ul class="submenu-box">
@@ -100,19 +97,19 @@
         </ul>
       </div>
       <div class="menu-375">
-          <span>职位空缺</span>
-          <div class="job-dropdown unfold">
-              <span class="defaultName">{{CurrentCategory.Name}}</span>
-            <span class="icon">
-              <img src="/static/imgs/job-arrow-down.svg" />
-            </span>
-            <ul>
-              {{#Jobs}}
-                <li class="category-wrapper">
-                  <span><a href="/{{LanguageDisplay}}/jobs-vip/{{FirstSubSlug}}">{{name}}</a></span>
-                </li>
-              {{/Jobs}}
-            </ul>
+        <span>职位空缺</span>
+        <div class="job-dropdown unfold">
+          <span class="defaultName">{{CurrentCategory.Name}}</span>
+          <span class="icon">
+            <img src="/static/imgs/job-arrow-down.svg" />
+          </span>
+          <ul>
+            {{#Jobs}}
+              <li class="category-wrapper">
+                <span><a href="/{{LanguageDisplay}}/jobs-vip/{{FirstSubSlug}}">{{Name}}</a></span>
+              </li>
+            {{/Jobs}}
+          </ul>
         </div>
         <div class="clear"></div>
       </div>
@@ -122,7 +119,7 @@
           <div class="swiper-wrapper">
             {{#AllPostsBelongToCategory}}
               <li class="swiper-slide js-swiper-slide js-item">
-                <a href="/{{LanguageDisplay}}/jobs-vip/{{slug}}">{{title}}</a>
+                <a href="/{{LanguageDisplay}}/jobs-vip/{{slug}}"><span>{{title}}</span></a>
               </li>
             {{/AllPostsBelongToCategory}}
           </div>
@@ -137,18 +134,27 @@
                 <img src="/static/imgs/job-category-logo.svg" />
                 <span>{{CurrentCategory.Name}}-{{CurrentPost.title}}</span>
               </h2>
+              {{#CurrentPost.scope}}
+              <div class="des-title">工作职能</div>
+              <div class="des-block">{{{CurrentPost.scope}}}</div>
+              {{/CurrentPost.scope}}
+              {{#CurrentPost.content}}
+              <div class="des-title">职位要求</div>
               <div class="des-block">{{{CurrentPost.content}}}</div>
-              <a href="/{{LanguageDisplay}}/jobs-application"><img src="/static/imgs/job-apply.svg" /></a>
+              {{/CurrentPost.content}}
+              <div class="des-button-box">
+                <a class="des-button" href="/{{LanguageDisplay}}/jobs-application"><img src="/static/imgs/job-apply-hans.svg" /></a>
+              </div>
             </div>
             <div class="welfare">
-              <i class="welfare-title">员工福利</i>
+              <i class="welfare-title welfare-title-hans">员工福利</i>
               <div class="welfare-detail">
                 <ul>
                   <li><img src="/static/imgs/holiday-icon.svg" alt="">有薪年假、生日假</li>
-                  <li><img src="/static/imgs/pension-icon.svg" alt="">退休保障計劃、醫療保障</li>
+                  <li><img src="/static/imgs/pension-icon.svg" alt="">退休保障计划，医疗保障</li>
                   <li><img src="/static/imgs/mea-icon.svg" alt="">膳食、洗衣福利</li>
-                  <li><img src="/static/imgs/training-icon.svg" alt="">在職培訓、良好晉升機會</li>
-                  <li><img src="/static/imgs/allowance-icon.svg" alt="">花紅、津貼、勤工獎  (福利組合視乎部門職位而定) </li>
+                  <li><img src="/static/imgs/training-icon.svg" alt="">在职培训、良好晋升机会</li>
+                  <li><img src="/static/imgs/allowance-icon.svg" alt="">花红、津贴、勤工奖  (福利组合视乎部门职位而定) </li>
                 </ul>
               </div>
             </div>
@@ -201,7 +207,7 @@
     <script src="/static/js/header.js"></script>
     <script src="/static/js/vender/utility.js"></script>
     <script src="/static/js/hreflang.js"></script>
-    <script>
+    <!-- <script>
         var  str = '{{#Jobs}}"{{Slug}}":"{{Name}}",{{#Posts}}"{{slug}}":"{{name}}",{{/Posts}}{{/Jobs}}';
         var json = JSON.parse('{' + str.slice(0,-1) + '}');
         var slug = "";
@@ -215,6 +221,6 @@
             $('.defaultName').text(json[slug]);
           } 
 
-    </script>
+    </script> -->
   </body>
 </html>
