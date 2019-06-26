@@ -35,15 +35,15 @@ $(function () {
     })
     // 电话号码(住宅) 
     $('body').on('input', '.input-phone', function () {
-        var regexp = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+        var regexp = /(^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))|(^\+\d{2,3}-\d{6,20}$))$/;
         if ($(this).val() === '') {
             $(this).siblings('.phone_text').hide()
         } else {
             if (regexp.test($(this).val()) === false) {
                 if (isHans) {
-                    $(this).siblings('.phone_text').text('请输入正确的电话格式（0934-3483888/ 15703448888)！')
+                    $(this).siblings('.phone_text').text('请输入正确的电话格式（0934-3483888/15703448888)!')
                 } else {
-                    $(this).siblings('.phone_text').text('請輸入正確的電話格式（0934-3483888/ 15703448888）！')
+                    $(this).siblings('.phone_text').text('請輸入正確的電話格式（0934-3483888/15703448888)!')
                 }
                 $(this).siblings('.phone_text').show();
             } else {
@@ -285,7 +285,7 @@ $(function () {
                 if (isHans) {
                     $('.top_title').text('背景申报');
                 } else {
-                    $('.top_title').text('背景申报');
+                    $('.top_title').text('背景申報');
                 }
                 break;
             case 9:
@@ -340,7 +340,7 @@ $(function () {
                 const important_el = $(item).find('.important');
                 important_el.each((key, el_item) => {
                     //判断 input value 是否为空
-                    const current_el_val_is_null = $(el_item).siblings('.drop-down').val();
+                    const current_el_val_is_null = $(el_item).closest('.field-important').find('.drop-down').val();
                     if (current_el_val_is_null === '') {
                         elvalue_isNull = false;
                         return
@@ -373,11 +373,11 @@ $(function () {
         })
 
         if ($('.phone_text').is(":visible")) {
-            alert(isHans ? '请输入正確的格式！' : '请输入正确的格式！');
+            alert(isHans ? '请输入正确的格式！' : '請輸入正確的格式！');
             return;
         } 
         if(!elvalue_isNull){
-            alert(isHans ? '请填写必填项' : '請輸入必填項')
+            alert(isHans ? '请填写必填项！' : '請輸入必填項！')
             return
         }
 
