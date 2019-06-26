@@ -70,7 +70,7 @@ class Mustache_Loader_FilesystemLoader implements Mustache_Loader
      * Load a Template by name.
      *
      *     $loader = new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views');
-     *     $loader->load('admin/dashboard'); // loads "./views/admin/dashboard.mustache";
+     *     $loader->load('admin/dashboard'); // loads "./views/dashboard.mustache";
      *
      * @param string $name
      *

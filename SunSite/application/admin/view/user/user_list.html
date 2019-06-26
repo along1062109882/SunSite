@@ -35,7 +35,7 @@
         //用户列表
         var tableIns = table.render({
             elem: '#usersList',
-            url : "{:url('/admin/userList')}",
+            url : "{:url('/userList')}",
             cellMinWidth : 95,
             page : true,
             limit:10,
@@ -78,7 +78,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/edit')}",
+                content : "{:url('/edit')}",
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -103,7 +103,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/edit')}"+'?uid='+uid,
+                content : "{:url('/edit')}"+'?uid='+uid,
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -132,7 +132,7 @@
                 edit(data.uid);
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('確定删除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/delete')}",{uid:data.uid},function(data){
+                    $.post("{:url('/delete')}",{uid:data.uid},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;

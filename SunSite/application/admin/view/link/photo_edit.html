@@ -1,6 +1,6 @@
 {extend name="base/base" /}
 {block name="main"}
-<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/photoEdit')}">
+<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/photoEdit')}">
     <div class="btnShow_viewLoading">
         <img src="/images/loading.gif" alt="">
     </div>
@@ -53,7 +53,7 @@
             //ajax执行
             $.ajax({
                 type: "post",
-                url: '/admin/photoEdit',
+                url: '/photoEdit',
                 data:data.field,
                 dataType: "json",
                 success: function(data){

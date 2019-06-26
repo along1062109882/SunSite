@@ -52,7 +52,7 @@
         //新闻列表
         var tableIns = table.render({
             elem: '#usersList',
-            url: "{:url('/admin/log')}",
+            url: "{:url('/log')}",
             cellMinWidth: 95,
             page: true,
             limit: 10,
@@ -86,7 +86,7 @@
             var  key = $(".searchVal").val();  //搜索的关键字
             var  starttime = $(".starttime").val();  //开始时间
             var  endtime = $(".endtime").val();  //结束时间
-            location.href= "{:url('/admin/downlog')}" + '?key=' + key + '&starttime=' + starttime + '&endtime=' + endtime;
+            location.href= "{:url('/downlog')}" + '?key=' + key + '&starttime=' + starttime + '&endtime=' + endtime;
         });
 
     })

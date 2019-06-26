@@ -139,7 +139,7 @@ class System extends Common
             }
             if ($res) {
                 Cache::clear(config('auth.cache_tag'));//清除Auth类设置的缓存
-                $this->success('保存成功', url('/admin/menu'));
+                $this->success('保存成功', url('/menu'));
             } else {
                 $this->error('保存失败');
             }
@@ -172,7 +172,7 @@ class System extends Common
         $res = AuthRule::where('id', '=', $id)->delete();
         if ($res) {
             Cache::clear(config('auth.cache_tag'));//清除Auth类设置的缓存
-            $this->success('删除成功', url('/admin/menu'));
+            $this->success('删除成功', url('/menu'));
         } else {
             $this->error('删除失败');
         }
@@ -204,7 +204,7 @@ class System extends Common
             $res = Config::update($save, ['name' => 'system_config']);
             if ($res) {
                 cache('config', null);
-                $this->success('修改成功', url('/admin/config'));
+                $this->success('修改成功', url('/config'));
             } else {
                 $this->error('修改失败');
             }
@@ -237,7 +237,7 @@ class System extends Common
             $res = Config::update($save, ['name' => 'site_config']);
             if ($res) {
                 cache('site_config', null);
-                $this->success('修改成功', url('/admin/siteConfig'));
+                $this->success('修改成功', url('/siteConfig'));
             } else {
                 $this->error('修改失败');
             }

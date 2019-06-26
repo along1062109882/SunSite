@@ -55,7 +55,7 @@
         form.on('submit(save)', function (data) {
             var obj = $(this);
             obj.attr("disabled", "disabled").addClass("layui-disabled");
-            $.post("{:url('/admin/siteConfig')}", data.field, function (data) {
+            $.post("{:url('/siteConfig')}", data.field, function (data) {
                 var icon = 5;
                 if (data.code) {
                     icon = 6;

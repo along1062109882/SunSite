@@ -454,34 +454,8 @@
     background-color: #a19062;
     color: #fff;
 }
-@media (max-width: 1440px) {
-    .common-banner-content {
-        max-width: 940px;
-        padding: 0;
-    }
-}
 @media (min-width: 1025px) and (max-width: 1220px) {
     .news-wrapper h2 {
         max-width: 720px;
-    }
-    .common-banner-content {
-        max-width: 720px;
-        padding: 0;
-    }
-}
-@media (max-width: 1024px) {
-    .common-banner-content {
-        max-width: 570px;
-        padding: 0;
-        /* margin-left: 10.98%; */
-    }
-}
-@media (max-width: 768px) {
-    .common-banner-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-left: 0
     }
 }

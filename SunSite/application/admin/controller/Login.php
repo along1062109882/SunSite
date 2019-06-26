@@ -27,7 +27,7 @@ class Login extends Controller
     public function login()
     {
         if (get_user_id()) {
-            $this->redirect(url('/admin/index'));
+            $this->redirect(url('/index'));
         } else {
             if (!request()->isPost()) {
                 $is_open_captcha = config('captcha.is_open');
@@ -51,7 +51,7 @@ class Login extends Controller
     {
         session('user_auth', null);
         session('user_auth_sign', null);
-        return ['msg' => '退出成功', 'url' => url('/admin/login')];
+        return ['msg' => '退出成功', 'url' => url('/login')];
     }
 
     /**
@@ -64,7 +64,7 @@ class Login extends Controller
         }
         $uid = get_user_id();
         if (!$uid) {
-            $this->error('登錄信息過期', url('/admin/login'));
+            $this->error('登錄信息過期', url('/login'));
         }
         $password = input('password', '', 'trim');
 

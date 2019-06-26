@@ -1,6 +1,6 @@
 {extend name="base/base" /}
 {block name="main"}
-<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/newsEdit')}">
+<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/newsEdit')}">
     <div class="btnShow_viewLoading">
         <img src="/images/loading.gif" alt="">
     </div>
@@ -181,7 +181,7 @@
             //ajax执行
             $.ajax({
                 type: "post",
-                url: '/admin/classifyEdit',
+                url: '/classifyEdit',
                 data:data.field,
                 dataType: "json",
                 success: function(data){
@@ -208,7 +208,7 @@
 
         upload.render({
             elem: '#test'
-            ,url: '/admin/classifyEdit'
+            ,url: '/classifyEdit'
 
             ,accept: 'images'
             ,acceptMime: 'image/jpg, image/png'
@@ -251,7 +251,7 @@
                     // var indexs = parent.layer.getFrameIndex(window.name);
                     // parent.layer.close(indexs);
                     parent.layer.msg('添加成功',{icon:1});
-                    // parent.location.href = '/admin/photoList';
+                    // parent.location.href = '/photoList';
                     // parent.location.reload();
                 }else{
                     parent.layer.msg('添加失败',{icon:2});
