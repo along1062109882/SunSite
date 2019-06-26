@@ -18,18 +18,18 @@ $(function () {
         var c = $(this);
         var reg = /^[\d()\-\s]*$/;
         if ($(this).val() === '') {
-            $('.input_number span').hide();
+            $(this).siblings('.err_text').hide()
         } else {
             if (reg.test(c.val()) === false) {
                 if (isHans) {
-                    $('.write_text').text('介绍人员工编号只能输入数字！')
+                    $(this).siblings('.err_text').text('介绍人员工编号只能输入数字！')
                 } else {
-                    $('.write_text').text('介紹人員工編號只能輸入數字！')
+                    $(this).siblings('.err_text').text('介紹人員工編號只能輸入數字！')
                 }
-                $('.input_number span').show();
+                $(this).siblings('.err_text').show();
                 return;
             } else {
-                $('.input_number span').hide()
+                $(this).siblings('.err_text').hide()
             }
         }
     })
@@ -37,33 +37,37 @@ $(function () {
     $('body').on('input', '.input-phone', function () {
         var regexp = /(^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))|(^\+\d{2,3}-\d{6,20}$))$/;
         if ($(this).val() === '') {
-            $(this).siblings('.phone_text').hide()
+            $(this).siblings('.err_text').hide()
         } else {
             if (regexp.test($(this).val()) === false) {
                 if (isHans) {
-                    $(this).siblings('.phone_text').text('请输入正确的电话格式( +853-66666666)!')
+                    $(this).siblings('.err_text').text('请输入正确的电话格式( +853-66666666)!')
                 } else {
-                    $(this).siblings('.phone_text').text('請輸入正確的電話格式( +853-66666666)!')
+                    $(this).siblings('.err_text').text('請輸入正確的電話格式( +853-66666666)!')
                 }
-                $(this).siblings('.phone_text').show();
+                $(this).siblings('.err_text').show();
             } else {
-                $(this).siblings('.phone_text').hide()
+                $(this).siblings('.err_text').hide()
             }
         }
     })
     // 流動電話：
     $('body').on('input', '.input-phone-move', function () {
         var regexp = /^\+\d{2,3}-\d{6,20}$/g;
+        if ($(this).val() === '') {
+            $(this).siblings('.err_text').hide()
+        } else {
         if (regexp.test($(this).val()) === false) {
             if (isHans) {
-                $(this).siblings('.phone_text').text('请输入正确的电话格式！')
+                $(this).siblings('.err_text').text('请输入正确的电话格式（+853-66666666）！')
             } else {
-                $(this).siblings('.phone_text').text('請輸入正確的電話格式！')
+                $(this).siblings('.err_text').text('請輸入正確的電話格式（+853-66666666）！')
             }
-            $(this).siblings('.phone_text').show();
+            $(this).siblings('.err_text').show();
         } else {
-            $(this).siblings('.phone_text').hide()
+            $(this).siblings('.err_text').hide()
         }
+    }
         // if ($(this).val().indexOf('-') == -1 || $(this).val().indexOf('+') == -1){
         //     if (isHans) {
         //         $(this).siblings('.phone_text').text('请输入正确的电话格式！')
@@ -79,44 +83,44 @@ $(function () {
     $('body').on('input', '.input-email', function () {
         var regexp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
        if ($(this).val() === '') {
-            $(this).siblings('.email_text').hide();
+            $(this).siblings('.err_text').hide();
        } else {
         if (regexp.test($(this).val()) === false) {
             if (isHans) {
-                $(this).siblings('.email_text').text('请输入正确的电邮格式！');
+                $(this).siblings('.err_text').text('请输入正确的电邮格式（zdd123@163.com）！');
             } else {
-                $(this).siblings('.email_text').text('請輸入正確的電郵格式！');
+                $(this).siblings('.err_text').text('請輸入正確的電郵格式（zdd123@163.com）！');
             }
-            $(this).siblings('.email_text').show();
+            $(this).siblings('.err_text').show();
         }else{
-            $(this).siblings('.email_text').hide();
+            $(this).siblings('.err_text').hide();
         }
        }
     }) 
     // 日期格式
     $('body').on('input', '.format_date', function () {
         var text_name = $(this).parent().parent().siblings('label').text()
-        var regexp = /^(\d{2}\/)?(\d{2}\/)?\d{4}$/g;
+        var regexp = /(^(\d{2}\/)?(\d{2}\/)?\d{4}$)|(\d{4}\/\d{2}(\/\d{2})?)$/g;
         if ($(this).val() == '') {
-            $(this).siblings('.birth_text').hide()
+            $(this).siblings('.err_text').hide()
         } else {
             if (regexp.test($(this).val()) === false) {
                 if (text_name.match('出生日期')) {
                     if (isHans) {
-                        $(this).siblings('.birth_text').text('请输入正确的出生日期！')
+                        $(this).siblings('.err_text').text('请输入正确的出生日期！')
                     } else {
-                        $(this).siblings('.birth_text').text('請輸入正確的出生日期！')
+                        $(this).siblings('.err_text').text('請輸入正確的出生日期！')
                     }
                 } else {
                     if (isHans) {
-                        $(this).siblings('.birth_text').text('请输入正确的日期格式！')
+                        $(this).siblings('.err_text').text('请输入正确的日期格式！')
                     } else {
-                        $(this).siblings('.birth_text').text('請輸入正確的日期格式！')
+                        $(this).siblings('.err_text').text('請輸入正確的日期格式！')
                     }
                 }
-                $(this).siblings('.birth_text').show();
+                $(this).siblings('.err_text').show();
             } else {
-                $(this).siblings('.birth_text').hide()
+                $(this).siblings('.err_text').hide()
             }
         }
     })
@@ -124,17 +128,17 @@ $(function () {
     $('body').on('input', '.format_card_number', function () {
         var regexp = /^\w+$/;
         if ($(this).val() === '') {
-            $('.format-card-number span').hide()
+           $(this).siblings('.err_text').hide()
         } else {
             if (regexp.test($(this).val()) === false) {
                 if (isHans) {
-                    $('.card_number_text').text('请输入正确的证件号码！')
+                   $(this).siblings('.err_text').text('请输入正确的证件号码！')
                 } else {
-                    $('.card_number_text').text('請輸入正確的證件號碼！')
+                   $(this).siblings('.err_text').text('請輸入正確的證件號碼！')
                 }
-                $('.format-card-number span').show();
+               $(this).siblings('.err_text').show();
             } else {
-                $('.format-card-number span').hide()
+               $(this).siblings('.err_text').hide()
             }
         }
     })
@@ -372,7 +376,7 @@ $(function () {
             }
         })
 
-        if ($('.phone_text').is(":visible")) {
+        if ($('.err_text').is(":visible")) {
             alert(isHans ? '请输入正确的格式！' : '請輸入正確的格式！');
             return;
         } 
@@ -565,7 +569,7 @@ $(function () {
             school_web_detail: submitFormData.get('recruitment_route|school_web_detail'),
             others_detail: submitFormData.get('recruitment_route|others_detail'),
         }
-        // console.log(JSON.stringify(submitFormObject))
+        console.log(JSON.stringify(submitFormObject))
         // console.log(submitFormObject)
         if (submiting) return
         submiting = true;
@@ -593,16 +597,17 @@ $(function () {
             }
         })
     })
-
+    var File_Nmae = '';
     $('#submitForm').on("change", ".selectBoxRadioBtnBoxFile", function (e) {
         var $fileParent = $(this).closest('.selectBoxRadioBtnBoxFileWrap');
         var file = e.target.files[0];
 
         var formData = new FormData();
         formData.append('file', file)
-
         $('.selectBoxRadioBtnBoxValue', $fileParent).val(file.name);
-
+        $('.file_name').val(file.name);
+        var file_index = file.name.lastIndexOf('.')
+        File_Nmae = file.name.substr(file_index);
         $.ajax({
             url: "/zh-hant/jobUpload",
             type: "post",
@@ -621,7 +626,20 @@ $(function () {
         })
 
     });
-
+    
+    $('.file_name').on('input', function () {
+        console.log(File_Nmae)
+        if ($(this).val().indexOf(File_Nmae) == -1) {
+            if (isHans) {
+                $(this).siblings('.err_text').text('文件名称后缀与上传文件后缀名不符！')
+            } else {
+                $(this).siblings('.err_text').text('文件名稱後綴與上傳文件後綴名不符！')
+            }
+            $(this).siblings('.err_text').show();
+        } else {
+            $(this).siblings('.err_text').hide()
+        }
+    })
     $.ajax({
         url: "/zh-hant/getParam",
         type: "GET",
@@ -640,20 +658,20 @@ $(function () {
 
                 allRegio.push(data.working_region[i].chinese_name);
 
-                Str_region += `<option id='${data.working_region[i].key}' value='${data.working_region[i].key}'>${data.working_region[i].chinese_name}</option>`
+                Str_region += `<option id='${data.working_region[i].key}' value='${data.working_region[i].key}'>${isHans ? data.working_region[i].simple_chinese_name : data.working_region[i].chinese_name}</option>`
             }
             var change_first_str = '', second_str = '';
             // 第一选择
             data.choice_id.forEach((item, index) => {
                 if (item.jobs) {
-                    change_first_str += `<option value='${item.id}'>${(isHans ? item.simple_chinese_name : item.chinese_name)}</option>`;
+                    change_first_str += `<option data-id='${item.id}' value='${item.chinese_name}'>${isHans ? item.simple_chinese_name : item.chinese_name}</option>`;
                 }
             });
 
             // 第二选择 选择部门
             data.choice_id_v2.forEach((item, index) => {
                 if (item.jobs) {
-                    second_str += `<option value='${item.id}'>${(isHans ? item.simple_chinese_name : item.chinese_name)}</option>`;
+                    second_str += `<option data-id='${item.id}' value='${item.chinese_name}'>${(isHans ? item.simple_chinese_name : item.chinese_name)}</option>`;
                 }
             });
             // 离职通知期
@@ -712,22 +730,25 @@ $(function () {
                 formatAllSelected() {
                     return allRegio.join(', ');
                 },
-                placeholder: isHans ? '请选择' : '请選擇',
+                placeholder: isHans ? '请选择' : '請選擇',
                 width: '300px'
             });
         },
-        error: function () {
+        error: function (error) {
             console.log('error', error)
         }
     })
 
     $('body').on('change', '.first_change_one', function () {
-        var firstChangeOneId = $(this).val();
+        var firstChangeOneName = $(this).val();
         var choiceIdLen = paramDatas.choice_id.length;
-        var firstTwoStr = '<option value="" selected="selected">' + (isHans ? '请选择职位' : '请選擇職位') + '</option>';
+        var firstTwoStr = '<option value="" selected="selected">' + (isHans ? '请选择职位' : '請選擇職位') + '</option>';
 
         for (var i = choiceIdLen - 1; i >= 0; i--) {
-            if (paramDatas.choice_id[i].id == firstChangeOneId) {
+            if (
+                (isHans && paramDatas.choice_id[i].simple_chinese_name == firstChangeOneName) ||
+                (!isHans && paramDatas.choice_id[i].chinese_name == firstChangeOneName)
+            ) {
                 paramDatas.choice_id[i].jobs.forEach(function (item) {
                     firstTwoStr += '<option value="' + item.id + '">' + (isHans ? item.simple_chinese_name : item.chinese_name) + '</option>'
                 });
@@ -740,10 +761,13 @@ $(function () {
     $('.second_change_one').on('change', function () {
         var firstChangeId = $(this).val();
         var choiceIdLen = paramDatas.choice_id_v2.length;
-        var firstTwoStr = '<option value="" selected="selected">' + (isHans ? '请选择职位' : '请選擇職位') + '</option>';
+        var firstTwoStr = '<option value="" selected="selected">' + (isHans ? '请选择职位' : '請選擇職位') + '</option>';
 
         for (var i = choiceIdLen - 1; i >= 0; i--) {
-            if (paramDatas.choice_id_v2[i].id == firstChangeId) {
+            if (
+                (isHans && paramDatas.choice_id[i].simple_chinese_name == firstChangeId) ||
+                (!isHans && paramDatas.choice_id[i].chinese_name == firstChangeId)
+            ){
                 paramDatas.choice_id_v2[i].jobs.forEach(function (item) {
                     firstTwoStr += '<option value="' + item.id + '">' + (isHans ? item.simple_chinese_name : item.chinese_name) + '</option>'
                 });

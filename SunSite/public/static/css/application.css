@@ -89,7 +89,7 @@
     font-size: 24px;
     line-height: 33px;
     padding-bottom: 22px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .top_pagination {
@@ -118,7 +118,15 @@
     border-radius: 50%;
     z-index: 1;
 }
-
+@media (max-width: 414px) {
+    .pagination_content li span{
+        width: 14px;
+        height: 14px;
+    }
+    .common-banner-title {
+        font-size: 18px;
+    }
+}
 .top_pagination p {
     width: 90%;
     margin-left: 5%;
@@ -211,7 +219,7 @@
 label > span {
     display: inline-block;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
@@ -497,6 +505,7 @@ textarea {
     width: 100%;
     background: url(/static/imgs/fill-1.svg) no-repeat scroll #ffffff;
     background-position: right 14px center;
+    padding-right: 35px;
 }
 
 .selectBoxRadioBtnBoxFileWrap {
@@ -674,11 +683,22 @@ textarea {
  }
   @media(max-width: 1024px) {
     .application-banner-content {
-     padding-left: 25px;
+     padding-left: 0;
+     margin-left: 197px;
+    }
+    .top_box {
+        max-width: 630px;
     }
   } 
   @media(min-width: 769px) and (max-width: 1000px){
     .application-banner-content {
      padding-left: 70px;
+     margin: 0;
+    }
+  } 
+  @media(max-width: 768px){
+    .application-banner-content {
+     padding-left: 0px;
+     margin: 0;
     }
   } 

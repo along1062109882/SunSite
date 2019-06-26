@@ -104,7 +104,7 @@
             </select>
           </div>
           <div class="block">
-            <label for=""><span>薪资要求：</span></label>
+            <label for=""><span>薪金要求：</span></label>
             <input type="text"  placeholder="请输入金额" id='money_one' name='salary_request'>
           </div>
           <div class="block">
@@ -126,14 +126,14 @@
             <label for=""><span>介绍人员工编号：</span></label>
             <p class='input_format input_number'>
                 <input class="drop-down input-number" type="text" name="referrals_employee_id" placeholder="请输入" id='number_second'>
-                <span class='write_text'>输入的格式有误！</span>
+                <span class='write_text err_text'>输入的格式有误！</span>
             </p>
           </div>
           <div class="block">
             <label for=""><span>联络电话：</span></label>
             <p class='input_format format-iphone'>
                 <input class="drop-down input-phone" type="text" name="referrals_contact_number" placeholder="请输入正确的格式( +853-66666666)" id='referrals_employee_id'>
-                <span class='phone_text'>输入的格式有误！</span>
+                <span class='phone_text err_text'>输入的格式有误！</span>
             </p>
           </div>
           <div class="block">
@@ -192,7 +192,7 @@
             <div class="field-important">
              <p class='input_format format-birth'>
                 <input class="drop-down format_date" type="text" placeholder="请输入(DD/MM/YYYY)" name='date_of_birth'>
-                <span class='birth_text'>输入的格式有误！</span>
+                <span class='birth_text err_text'>输入的格式有误！</span>
              </p>
               <span class="important">*</span>
             </div>
@@ -219,7 +219,7 @@
             <div class="field-important">
             <p class='input_format format-card-number'>
                 <input class="drop-down format_card_number" type="text" placeholder="请输入" name='id_number' >
-                <span class='card_number_text'>输入的格式有误！</span>
+                <span class='card_number_text err_text'>输入的格式有误！</span>
              </p>
              <span class="important">*</span>
             </div>
@@ -232,7 +232,7 @@
             <label for=""><span>电话号码(住宅)：</span></label>
             <p class='input_format format-iphone1'>
               <input class="drop-down input-phone" name='home_number' placeholder="请输入正确的格式( +853-66666666)" >
-              <span class='phone_text'>输入的格式有误！</span>
+              <span class='phone_text err_text'>输入的格式有误！</span>
             </p>
           </div>
           <div class="block">
@@ -240,7 +240,7 @@
             <div class="field-important">
              <p class='input_format'>
                 <input class="drop-down input-phone-move" name='applicant_profile_mobile_number' placeholder="请输入正确的格式：（+11-1234567）">
-                <span class='phone_text'>输入的格式有误！</span>
+                <span class='phone_text err_text'>输入的格式有误！</span>
              </p>
               <span class="important">*</span>
             </div>
@@ -249,14 +249,14 @@
             <label for=""><span>其他电话：</span></label>
           <p class='input_format'>
             <input class="drop-down input-phone" name='other_phone_number' placeholder="请输入正确的格式( +853-66666666)">
-            <span class='phone_text'>输入的格式有误！</span>
+            <span class='phone_text err_text'>输入的格式有误！</span>
           </p>
           </div>
           <div class="block">
             <label for=""><span>电邮地址：</span></label>
              <p class='input_format input_email'>
-                <input class="drop-down input-email" name='applicant_profile_email_personal' placeholder="请输入">
-                <span class='email_text'>输入的格式有误！</span>
+                <input class="drop-down input-email" name='applicant_profile_email_personal' placeholder="请输入（zdd123@163.com）">
+                <span class='email_text err_text'>输入的格式有误！</span>
             </p>
           </div>
           <div class="block">
@@ -683,7 +683,7 @@
           <div class="field-important">
           <p class='input_format'>
             <input class="drop-down format_date" type="text" placeholder="请输入(DD/MM/YYYY)" name="applicant_profile_section_v2_professional_items.issue_date">
-            <span class='birth_text'>输入的格式有误！</span>
+            <span class='birth_text err_text'>输入的格式有误！</span>
           </p>
             <span class="important">*</span>
           </div>
@@ -714,7 +714,10 @@
       </div>
       <div class="block">
         <label for=""><span>文件名称：</span></label>
-        <input class="drop-down" name="attachments.file_name" type="text" placeholder="请输入">
+         <p class='input_format'>
+          <input class="drop-down file_name" name="attachments.file_name" type="text" placeholder="请输入">
+          <span class='birth_text err_text'>输入的格式有误！</span>
+        </p>
       </div>
       <div class="block">
         <label for=""><span>备注：</span></label>
@@ -753,12 +756,15 @@
         <label for=""><span>出生日期：</span></label>
         <p class='input_format format-birth'>
           <input class="drop-down format_date" type="text" placeholder="请输入(DD/MM/YYYY)" name="applicant_profile_section_v2_family_member_items.birth_date">
-          <span class='birth_text'>输入的格式有误！</span>
+          <span class='birth_text err_text'>输入的格式有误！</span>
         </p>
       </div>
       <div class="block">
         <label for=""><span>联络电话：</span></label>
-          <input class="drop-down" type="text" placeholder="请输入正确的格式( +853-66666666)" name="applicant_profile_section_v2_family_member_items.phone_number">
+         <p class='input_format'>
+          <input class="drop-down input-phone" type="text" placeholder="请输入正确的格式( +853-66666666)" name="applicant_profile_section_v2_family_member_items.phone_number">
+          <span class='phone_text err_text'>输入的格式有误！</span>
+         </p>
       </div>
       <div class="block">
         <label for=""><span>是否现职本公司：</span></label>
@@ -886,7 +892,7 @@
         <div class="field-important">
          <p class='input_format'>
            <input class="drop-down format_date" type="text" placeholder="请输入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_from">
-           <span class='birth_text'>输入的格式有误！</span>
+           <span class='birth_text err_text'>输入的格式有误！</span>
          </p>
           <span class="important">*</span>
         </div>
@@ -896,7 +902,7 @@
         <div class="field-important">
          <p class='input_format'>
            <input class="drop-down format_date" type="text" placeholder="请输入(MM/YYYY)" name="applicant_profile_section_v2_work_experience_items.work_experience_to_text">
-           <span class='birth_text'>输入的格式有误！</span>
+           <span class='birth_text err_text'>输入的格式有误！</span>
          </p>
           <span class="important">*</span>
         </div>
@@ -920,7 +926,7 @@
         <label for=""><span>公司电话：</span></label>
          <p class='input_format format-iphone1'>
             <input class="drop-down input-phone" type="text" placeholder="请输入正确的格式( +853-66666666)" name="applicant_profile_section_v2_work_experience_items.work_experience_company_phone_number" />
-            <span class='phone_text'>输入的格式有误！</span>
+            <span class='phone_text err_text'>输入的格式有误！</span>
          </p>
       </div>
       <div class="block">
@@ -930,8 +936,8 @@
       <div class="block">
         <label for=""><span>个人电子邮件：</span></label>
          <p class='input_format input_email'>
-            <input class="drop-down input-email" type="text" placeholder="请输入" name="applicant_profile_section_v2_work_experience_items.work_experience_email">
-            <span class='email_text'>输入的格式有误！</span>
+            <input class="drop-down input-email" type="text" placeholder="请输入（zdd123@163.com）" name="applicant_profile_section_v2_work_experience_items.work_experience_email">
+            <span class='email_text err_text'>输入的格式有误！</span>
         </p>
       </div>
       <p class="footer_line"></p>
@@ -945,7 +951,7 @@
         <div class="field-important">
          <p class='input_format'>
            <input class="drop-down format_date" type="text" placeholder="请输入(MM/YYYY)" name="applicant_profile_section_v2_education_items.from_mm_yyyy">
-           <span class='birth_text'>输入的格式有误！</span>
+           <span class='birth_text err_text'>输入的格式有误！</span>
          </p>
           <span class="important">*</span>
         </div>
@@ -955,7 +961,7 @@
         <div class="field-important">
          <p class='input_format'>
           <input class="drop-down format_date" type="text" placeholder="请输入(MM/YYYY)" name="applicant_profile_section_v2_education_items.to_mm_yyyy">
-          <span class='birth_text'>输入的格式有误！</span>
+          <span class='birth_text err_text'>输入的格式有误！</span>
          </p>
           <span class="important">*</span>
         </div>
@@ -984,7 +990,7 @@
         <label for=""><span>颁发年份：</span></label>
          <p class='input_format'>
            <input class="drop-down format_date" type="text" name="applicant_profile_section_v2_education_items.certificate_issue_year" placeholder="请输入(YYYY)">
-           <span class='birth_text'>输入的格式有误！</span>
+           <span class='birth_text err_text'>输入的格式有误！</span>
          </p>
       </div>
       <div class="block">
