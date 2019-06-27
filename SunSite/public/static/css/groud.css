@@ -118,6 +118,10 @@
     padding: 0.65em 0;
 }
 
+.grand_p * {
+    color: #fff;
+}
+
 .grand_p .title {
     flex-shrink: 0;
     width: 100%;
