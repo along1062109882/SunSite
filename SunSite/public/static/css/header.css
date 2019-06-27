@@ -201,7 +201,7 @@
   .nav-submenu-open > a, .main-menu.hover > a{
     background-color: rgb(255, 255, 255);
     color: rgb(161, 144, 98);
-    padding-bottom: 4px;
+    /* padding-bottom: 4px; */
     /* box-shadow: rgb(161, 144, 98) 0px 4px 0px; */
     position: relative;
   }
