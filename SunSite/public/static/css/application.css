@@ -675,3 +675,9 @@ textarea {
     white-space: nowrap;
     font-size: 13px;
 }
+/* 申请职位 logo */
+@media(max-width: 1024px) {
+    .top_box {
+        max-width: 630px;
+    }
+} 
