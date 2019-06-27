@@ -676,29 +676,8 @@ textarea {
     font-size: 13px;
 }
 /* 申请职位 logo */
-  @media(min-width: 1700px) {
-    .application-banner-content {
-        max-width: 1000px;
-    }
- }
-  @media(max-width: 1024px) {
-    .application-banner-content {
-     padding-left: 0;
-     margin-left: 197px;
-    }
+@media(max-width: 1024px) {
     .top_box {
         max-width: 630px;
     }
-  } 
-  @media(min-width: 769px) and (max-width: 1000px){
-    .application-banner-content {
-     padding-left: 70px;
-     margin: 0;
-    }
-  } 
-  @media(max-width: 768px){
-    .application-banner-content {
-     padding-left: 0px;
-     margin: 0;
-    }
-  } 
+} 
