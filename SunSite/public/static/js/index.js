@@ -80,7 +80,7 @@ $(function () {
       $(this).addClass("on");
       // $(this).addClass('banner-item-bg').siblings().removeClass('banner-item-bg')
       index = $(this).index();
-       console.log(index);
+      //  console.log(index);
     }, function () {
       autoPlay();
     });

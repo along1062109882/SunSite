@@ -398,7 +398,6 @@ $(function () {
         num -= 1;
         if (num <= 0) num = 0;
         chage_num(num)
-        console.log(num)
         if (num === 5) {
            flag = false
         }
@@ -503,7 +502,9 @@ $(function () {
 
                     itemObj['input_type'] = 'manual_input';
                 }
-
+                if (item == 'applicant_profile_section_v2_education_items') {
+                    itemObj['educational_department_key'] = 'others'
+                }
                 arr.push(itemObj);
             }
 
@@ -569,7 +570,8 @@ $(function () {
             school_web_detail: submitFormData.get('recruitment_route|school_web_detail'),
             others_detail: submitFormData.get('recruitment_route|others_detail'),
         }
-        console.log(JSON.stringify(submitFormObject))
+        submitFormObject['source'] = 'website';
+        // console.log(JSON.stringify(submitFormObject))
         // console.log(submitFormObject)
         if (submiting) return
         submiting = true;
