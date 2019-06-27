@@ -266,7 +266,7 @@ $(function () {
                             <h2 class="news-title">${item.title}</h2>
                             <p class="news-sketch">${item.excerpt}</p>
                             <span class="item-date">${item.date}</span>
-                            <span class="go-more">${lan ==='/zh-hans' ? "继续阅读" : '繼續閱讀'}</span>
+                            <span class="go-more">${lan ==='/zh-hans/' ? "继续阅读" : '繼續閱讀'}</span>
                         </div>
                         </div>
                     </a>

@@ -1,8 +1,12 @@
 .page-header {
   height: 110px;
 }
+.header-nav-button {
+  -webkit-tap-highlight-color: transparent;
+}
 .header-nav-button img {
   width: 26px;
+  cursor: pointer;
 }
 @media (max-width: 1024px) {
   .page-header {
