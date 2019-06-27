@@ -8,52 +8,54 @@
       <!-- <img src="/static/imgs/suncity-logo.svg" alt="suncity-logo" /> -->
       <img src="/static/imgs/suncity-group-logo.png" srcset="/static/imgs/suncity-group-logo@2x.png 2x, /static/imgs/suncity-group-logo@3x.png 3x" alt="suncity-logo" />
     </a>
-    <div class="header-nav-button">
+    <div class="header-nav-button" id="header-nav-button">
       <img src="/static/imgs/news-toggle-grid.svg">
     </div>
     <ol class="header-nav-group">
-      <li class="header-nav-title" id="header-nav-title-aboutus">
+      <li class="header-nav-title main-menu" id="header-nav-title-aboutus">
         <a href="/{{ LanguageDisplay }}/about-us">集团介绍</a>
-        <!-- <img src="/static/imgs/nav-arrow-down.svg"></img> -->
       </li>
       <!-- <ol class="header-nav-item-group" id="header-nav-item-group-aboutus">
         <li><a href="/{{ LanguageDisplay }}/about-us/#about-us-overview">集团简介</a></li>
         <li><a href="/{{ LanguageDisplay }}/about-us/#about-us-bossword">行政总裁的话</a></li>
       </ol> -->
-      <li class="header-nav-title header-nav-title-childcompany">
-        <a href="javascript:void(0);">集团业务</a>
-        <img class="more-menu" src="/static/imgs/nav-arrow-down.svg"></img>
+      <li class="header-nav-title main-wrapper">
+        <div class="main-menu" id="header-nav-title-childcompany">
+          <a href="javascript:void(0);">集团业务</a>
+          <img class="more-menu" src="/static/imgs/nav-arrow-down.svg"></img>
+        </div>
+        <ol class="header-nav-item-group" id="header-nav-item-group-childcompany">
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/companies/sun-vip">贵宾服务</a></li>
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/companies/sun-entertainment-concert">影视娱乐</a></li>
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/companies/sun-travel">环球旅游</a></li>
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/companies/sun-food">餐饮体验</a></li>
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/companies/sunluxe">奢华购物</a></li>
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/companies/sun-management">娱乐及度假村管理</a></li>
+        </ol>
       </li>
-       <ol class="header-nav-item-group" id="header-nav-item-group-childcompany">
-        <li class="header-nav-item-group-mouse"><a href="javascript:;"></a></li>
-        <li><a href="/{{ LanguageDisplay }}/companies/sun-vip">贵宾服务</a></li>
-        <li><a href="/{{ LanguageDisplay }}/companies/sun-entertainment-concert">影视娱乐</a></li>
-        <li><a href="/{{ LanguageDisplay }}/companies/sun-travel">环球旅游</a></li>
-        <li><a href="/{{ LanguageDisplay }}/companies/sun-food">餐饮体验</a></li>
-        <li><a href="/{{ LanguageDisplay }}/companies/sunluxe">奢华购物</a></li>
-        <li><a href="/{{ LanguageDisplay }}/companies/sun-management">娱乐及度假村管理</a></li>
-      </ol>
-     
-      <li class="header-nav-title" id="header-nav-title-duty"><a href="/{{ LanguageDisplay }}/duty">企业社会责任</a></li>
-       <!--<li class="header-nav-title" id="header-nav-title-news"><a href="/{{ LanguageDisplay }}/news">集团新闻中心</a></li> -->
-      <li class="header-nav-title header-nav-title-news">
-        <a href="javascript:void(0);">集团新闻中心</a>
-        <img class="more-menu" src="/static/imgs/nav-arrow-down.svg"></img>
+
+      <li class="header-nav-title main-menu" id="header-nav-title-duty"><a href="/{{ LanguageDisplay }}/duty">企业社会责任</a>
       </li>
-       <ol class="header-nav-item-group" id="header-nav-item-group-news">
-        <li class="header-nav-item-group-mouse"><a href="javascript:;"></a></li>
-        <li><a href="/{{ LanguageDisplay }}/news">新闻动态</a></li>
-        <li><a href="/{{ LanguageDisplay }}/release">新闻发布</a></li>
-      </ol>
-      <!-- change events position -->
-      <li class="header-nav-title" id="header-nav-title-jobs"><a href="/{{ LanguageDisplay }}/jobs-vip">就业机会</a></li>
-      <li class="header-nav-title" id="header-nav-title-grand"><a href="/{{ LanguageDisplay }}/grand">精彩盛事</a></li>
+      <!--<li class="header-nav-title" id="header-nav-title-news"><a href="/{{ LanguageDisplay }}/news">集团新闻中心</a></li> -->
+      <li class="header-nav-title main-wrapper">
+        <div class="main-menu" id="header-nav-title-news">
+          <a href="javascript:void(0);">集团新闻中心</a>
+          <img class="more-menu" src="/static/imgs/nav-arrow-down.svg"></img>
+        </div>
+        <ol class="header-nav-item-group" id="header-nav-item-group-news">
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/news">新闻动态</a></li>
+          <li class="submenu-item"><a href="/{{ LanguageDisplay }}/release">新闻发布</a></li>
+        </ol>
+      </li>
+        <!-- change events position -->
+      <li class="header-nav-title main-menu" id="header-nav-title-jobs"><a href="/{{ LanguageDisplay }}/jobs-vip">就业机会</a></li>
+      <li class="header-nav-title main-menu" id="header-nav-title-grand"><a href="/{{ LanguageDisplay }}/grand">精彩盛事</a></li>
       <li class="header-nav-group-language">
         <a class="header-toggle-language" href="" data-baseurl="/zh-hant" title="繁体中文">
-          <img src="/static/imgs/hant.svg" alt="suncity-logo"/>
+          <img src="/static/imgs/hant.svg" alt="繁體" />
         </a>
         <a class="header-toggle-language" href="" data-baseurl="/zh-hans" title="簡體中文">
-          <img src="/static/imgs/hans.svg" alt="suncity-logo" />
+          <img src="/static/imgs/hans.svg" alt="简体" />
         </a>
       </li>
     </ol>
@@ -63,10 +65,10 @@
     </a> -->
     <div class="language-box">
       <a class="header-toggle-language" href="" data-baseurl="/zh-hant" title="繁体中文">
-        <img src="/static/imgs/hant.svg" alt="suncity-logo" />
+        <img src="/static/imgs/hant.svg" alt="繁體" />
       </a>
       <a class="header-toggle-language" href="" data-baseurl="/zh-hans" title="簡體中文">
-        <img src="/static/imgs/hans.svg" alt="suncity-logo" />
+        <img src="/static/imgs/hans.svg" alt="简体" />
       </a>
     </div>
   </nav>
