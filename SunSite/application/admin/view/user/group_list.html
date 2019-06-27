@@ -63,7 +63,7 @@
             'core': {
                 'data': {
                     'method': "GET",
-                    'url': "{:url('/admin/ruleList')}",
+                    'url': "{:url('/ruleList')}",
                 },
             },
             'checkbox': {
@@ -88,7 +88,7 @@
         //新闻列表
         var tableIns = table.render({
             elem: '#usersList',
-            url: "{:url('/admin/groupList')}",
+            url: "{:url('/groupList')}",
             cellMinWidth: 95,
             page: true,
             limit: 10,
@@ -197,7 +197,7 @@
                 layer.close(index);
                 var status = data.elem.checked ? 1 : 0;
                 id = data.elem.value;
-                $.post("{:url('/admin/disableGroup')}", {id: id, status: status}, function (data) {
+                $.post("{:url('/disableGroup')}", {id: id, status: status}, function (data) {
                     var icon = 5;
                     if (data.code) {
                         icon = 6;
@@ -212,7 +212,7 @@
             setTimeout(function () {
                 layer.close(index);
                 var data = $('#groupform').serialize();
-                $.post("{:url('/admin/editGroup')}", data, function (data) {
+                $.post("{:url('/editGroup')}", data, function (data) {
                     var icon = 5;
                     if (data.code) {
                         icon = 6;
@@ -233,7 +233,7 @@
                 layer.close(index);
                 var rules = $("#tree").jstree("get_checked");
                 var id = $('#groupid').val();
-                $.post("{:url('/admin/editRule')}", {rules: rules, id: id}, function (data) {
+                $.post("{:url('/editRule')}", {rules: rules, id: id}, function (data) {
                     var icon = 5;
                     if (data.code) {
                         icon = 6;

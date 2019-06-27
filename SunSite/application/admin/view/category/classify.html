@@ -41,7 +41,7 @@
             id: tableId,
             elem: '#' + tableId,
             idField: 'id',
-            url: "{:url('/admin/get_classify_data')}",
+            url: "{:url('/get_classify_data')}",
             cellMinWidth: 100,
             treeId: 'id',//树形id字段名称
             treeUpId: 'parent_id',//树形父id字段名称
@@ -66,7 +66,7 @@
             var data = obj.data;
             if (obj.event === 'del') {
                 layer.confirm('確定刪除操作？', {icon: 3, title: '提示信息'}, function (index) {
-                    $.post("{:url('/admin/classifyDelete')}", {id: data.id}, function (data) {
+                    $.post("{:url('/classifyDelete')}", {id: data.id}, function (data) {
                         var icon = 5;
                         if (data.code) {
                             icon = 6;
@@ -96,7 +96,7 @@
             area: ['100%', '100%'],
             fixed: false, //不固定
             maxmin: true,
-            content: "{:url('/admin/classifyEdit')}",
+            content: "{:url('/classifyEdit')}",
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {
@@ -125,7 +125,7 @@
             area: ['100%', '100%'],
             fixed: false, //不固定
             maxmin: true,
-            content: "{:url('/admin/classifyEdit')}" + '?id=' + id,
+            content: "{:url('/classifyEdit')}" + '?id=' + id,
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {

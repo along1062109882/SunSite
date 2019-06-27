@@ -75,7 +75,7 @@
         var tableIns = {
             // id:'id',
             elem: '#usersList',
-            url : "/admin/get_business_data",
+            url : "/get_business_data",
             cellMinWidth : 95,
             page : true,
             limit:10,
@@ -144,7 +144,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/businessEdit')}",
+                content : "{:url('/businessEdit')}",
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -169,7 +169,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/businessEdit')}"+'?id='+id,
+                content : "{:url('/businessEdit')}"+'?id='+id,
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -198,7 +198,7 @@
                 edit(data.id);
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('確定刪除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/businessDelete')}",{id:data.id},function(data){
+                    $.post("{:url('/businessDelete')}",{id:data.id},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;

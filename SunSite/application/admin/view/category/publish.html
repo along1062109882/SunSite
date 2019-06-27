@@ -107,7 +107,7 @@
         var tableIns = {
             // id:'id',
             elem: '#usersList',
-            url : "/admin/get_publish_data",
+            url : "/get_publish_data",
             cellMinWidth : 95,
             page : true,
             limit:10,
@@ -179,7 +179,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/publishEdit')}"+'?where=add',
+                content : "{:url('/publishEdit')}"+'?where=add',
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -204,7 +204,7 @@
                 area: ['100%', '100%'],
                 fixed: false, //不固定
                 maxmin: true,
-                content : "{:url('/admin/publishEdit')}"+'?id='+id+'&where=edit',
+                content : "{:url('/publishEdit')}"+'?id='+id+'&where=edit',
                 success : function(layero, index){
                     var body = layui.layer.getChildFrame('body', index);
                     setTimeout(function(){
@@ -233,7 +233,7 @@
                 edit(data.id);
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('確定刪除操作？',{icon:3, title:'提示信息'},function(index){
-                    $.post("{:url('/admin/publishDelete')}",{id:data.id},function(data){
+                    $.post("{:url('/publishDelete')}",{id:data.id},function(data){
                         var icon=5;
                         if(data.code){
                             icon=6;

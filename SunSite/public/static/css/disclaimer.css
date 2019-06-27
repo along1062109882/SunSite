@@ -103,6 +103,7 @@
 }
 .grand_container ul li{
     width: 100%;
+    color: #fff;
 }
 /* .grand_container ul li a{
     width: 100%;
@@ -113,6 +114,9 @@
 } */
 .grand-item {
   margin-bottom: 30px;
+}
+.grand-item a{
+    min-height: 197px;
 }
 .grand-box {
     width: 100%;
@@ -201,7 +205,7 @@
     overflow: hidden;
     color: #fff;
 }
-.grand_p .content p  span {
+.grand_p .content {
     color: #fff;
     white-space: normal;
 }
@@ -449,4 +453,9 @@
 .swiper_active {
     background-color: #a19062;
     color: #fff;
+}
+@media (min-width: 1025px) and (max-width: 1220px) {
+    .news-wrapper h2 {
+        max-width: 720px;
+    }
 }

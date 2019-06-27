@@ -2,7 +2,7 @@
 {block name="main"}
 <link href="/textarea/umeditor.min.css" type="text/css" rel="stylesheet">
 
-<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/admin/newsEdit')}">
+<form id="form" method="post" class="layui-form layui-form-pane" action="{:url('/newsEdit')}">
     <div class="btnShow_viewLoading">
         <img src="/images/loading.gif" alt="">
     </div>
@@ -248,7 +248,7 @@
 
                         //ajax执行
                         $.ajax({
-                            url: '/admin/newsEdit',
+                            url: '/newsEdit',
                             type: 'POST',
                             cache: false,
                             data: form,
