@@ -39,9 +39,11 @@
 }
 .header-nav-button {
   padding-top: 3px;
+  -webkit-tap-highlight-color: transparent;
 }
 .header-nav-button img {
   width: 26px;
+  cursor: pointer;
 }
 @media (max-width: 1439px) {
   .language-box {

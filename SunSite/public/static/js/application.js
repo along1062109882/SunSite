@@ -279,7 +279,7 @@ $(function () {
             case 7:
                 $('#content_eight').show().siblings().hide();
                 if (isHans) {
-                    $('.top_title').text('家庭成员信息');
+                    $('.top_title').text('家庭成员讯息');
                 } else {
                     $('.top_title').text('家庭成員訊息');
                 }
@@ -305,7 +305,7 @@ $(function () {
                 if (isHans) {
                     $('.top_title').text('得知招聘途径');
                 } else {
-                    $('.top_title').text('得知招聘途径');
+                    $('.top_title').text('得知招聘途徑');
                 }
                 break;
         }
@@ -569,7 +569,7 @@ $(function () {
             school_web_detail: submitFormData.get('recruitment_route|school_web_detail'),
             others_detail: submitFormData.get('recruitment_route|others_detail'),
         }
-        console.log(JSON.stringify(submitFormObject))
+        // console.log(JSON.stringify(submitFormObject))
         // console.log(submitFormObject)
         if (submiting) return
         submiting = true;
